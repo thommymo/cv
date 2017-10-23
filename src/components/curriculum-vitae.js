@@ -6,7 +6,7 @@ class CurriculumVitae extends Component {
     return (
       <div>
         <p>Hello World</p>
-        <FullWithImage />
+        <FullWithImage assetType=".jpg" assetName="thomas_moser_3" altText="This is Thomas"/>
       </div>
     )
   }

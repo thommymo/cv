@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "grunt-responsive-images": "^0.1.9",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14",
-    "grunt-responsive-images": "^0.1.9"
+    "react-scripts": "1.0.14"
   },
   "scripts": {
     "start": "react-scripts start",

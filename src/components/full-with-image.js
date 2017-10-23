@@ -1,35 +1,48 @@
 import React, { Component } from 'react'
-//import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
+/*  TODO:
+ *  * Style image with styled-components ( import styled from 'styled-components' )
+ *  * make assetDirectory global
+ *  * make assetDirectory relative with storybook still working properly
+ *  * FullWithImage should be a stateless component (since it has no state)
+ *  * Image should always be 100% width
+ */
 
 class FullWithImage extends Component {
   render() {
-    const assetDirectory = "../assets/images/"
-    const assetName = "thomas_moser_3"
+    const { assetName, assetType, altText} = this.props
+    const assetDirectory = "http://localhost:3000/assets/images/"
     const assetPostFix = {
       "3000":["-1000w", "-2000w"],
       "1024":["-750w", "-1500w"],
       "768":["-375w", "-750w"]
     }
-    console.log(assetPostFix);
-    const assetType = ".jpg"
-    const alt = "Das ist Thomas"
-    //TODO: assetName and alt: Make this a prop later
+
     return (
       <picture>
-        { Object.keys(assetPostFix).map((key, index) => (
+        { Object.keys(assetPostFix).map((key, value) => (
           <source key={key} media={`(max-width:${key}px)`}
             srcSet={`
               ${assetDirectory}${assetName}${assetPostFix[key][0]}${assetType} 1x,
               ${assetDirectory}${assetName}${assetPostFix[key][1]}${assetType} 2x,
             `}/>
         ))}
-        <img src={`${assetDirectory}${assetName}${assetPostFix[768][0]}${assetType}`} alt={alt}/>
+        <img src={`${assetDirectory}${assetName}${assetPostFix[768][0]}${assetType}`} alt={altText}/>
       </picture>
     )
   }
 }
 
+FullWithImage.propTypes = {
+  assetType: PropTypes.oneOf(['.jpg', '.png']).isRequired,
+  altText: PropTypes.string.isRequired,
+  assetName: PropTypes.string.isRequired,
+}
+
 export default FullWithImage
+
+
 
 /* Full Width Image Sizes
     Big   Middle  Smaller
