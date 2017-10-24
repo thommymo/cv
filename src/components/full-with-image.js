@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 /*  TODO:
- *  * My solution uses max-width (within media) for now. I think it should use min width instead.
  *  * Style image with styled-components ( import styled from 'styled-components' )
  *  * make assetDirectory global
  *  * make assetDirectory relative with storybook still working properly
@@ -14,22 +13,29 @@ class FullWithImage extends Component {
   render() {
     const { assetName, assetType, altText} = this.props
     const assetDirectory = "http://localhost:3000/assets/images/"
-    const assetPostFix = {
-      "3000":["-1000w", "-2000w"],
-      "1024":["-750w", "-1500w"],
-      "768":["-375 i love you w", "-750w"]
-    }
+    const breakPoints = [[false, 768], [769, 1024], [1025, false]]
+    const assetPostFix = [["-375w", "-750w"], ["-750w", "-1500w"], ["-1000w", "-2000w"]]
+    let minWidth = ""
+    let maxWidth = ""
 
     return (
       <picture>
-        { Object.keys(assetPostFix).map((key, value) => (
-          <source key={key} media={`(max-width:${key}px)`}
+        { breakPoints.map((currentValue, index) => (
+
+            //if(currentValue[0]){ minWidth = `and (max-width:${currentValue[0]}px)` } else { maxWidth = ""}
+          //maxWidth =
+
+            <source key={index}
+              media={`screen
+              ${currentValue[0] ? `and (min-width:${currentValue[0]}px)` : ""}
+              ${currentValue[1] ? `and (max-width:${currentValue[1]}px)` : ""}
+              `}
             srcSet={`
-              ${assetDirectory}${assetName}${assetPostFix[key][0]}${assetType} 1x,
-              ${assetDirectory}${assetName}${assetPostFix[key][1]}${assetType} 2x,
+              ${assetDirectory}${assetName}${assetPostFix[index][0]}${assetType} 1x,
+              ${assetDirectory}${assetName}${assetPostFix[index][1]}${assetType} 2x,
             `}/>
         ))}
-        <img src={`${assetDirectory}${assetName}${assetPostFix[768][0]}${assetType}`} alt={altText}/>
+        <img src={`${assetDirectory}${assetName}${assetPostFix[1][0]}${assetType}`} alt={altText}/>
       </picture>
     )
   }
