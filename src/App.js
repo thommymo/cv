@@ -3,6 +3,7 @@ import CurriculumVitae from './components/curriculum-vitae'
 import { Helmet } from "react-helmet";
 import styled from 'styled-components'
 import { white, primary, primaryDark} from './utils/colors'
+import { StyledH1, StyledP} from './components/styled-atoms'
 
 //TODO: Add React Router and add a 404 page
 //TODO: Maybe add Redux, although this could be a bit over engineered
@@ -19,7 +20,7 @@ class App extends Component {
           {
             //TODO: Title and maybe a Navigation (Mainly Text, maybe with some interaction)
           }
-          <h1>CV Thomas Moser</h1>
+          <StyledH1>CV Thomas Moser</StyledH1>
         </Header>
         <Section>
           <CurriculumVitae />
@@ -47,7 +48,7 @@ class App extends Component {
           }
         </Section>
         <Footer>
-          <p>Thomas Moser, Bireggstrasse 33, 6003 Luzern</p>
+          <StyledP>Thomas Moser, Bireggstrasse 33, 6003 Luzern</StyledP>
           {
             //TODO: Add Footer with adress and contact details
           }
@@ -62,9 +63,9 @@ const StyledDiv = styled.div`
 const Footer = styled.footer`
   color: ${white};
   background-color: ${primary};
-  min-height:120px;
   width:100%;
   display: flex;
+  padding:1em;
 `
 
 const Header = styled.header`
