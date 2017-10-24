@@ -5,6 +5,23 @@ import styled from 'styled-components'
 import { white, primary, primaryDark} from './utils/colors'
 import { StyledH1, StyledP} from './components/styled-atoms'
 
+//TODO: injectGlobal might has to be moved somewhere else
+import { injectGlobal } from 'styled-components';
+
+injectGlobal`
+  @font-face {
+    font-family: 'Assistant';
+    src: url('../assets/fonts/Assistant/Assistant-Light.ttf');
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Assistant', sans-serif;
+    font-size: 100%;
+  }
+`
+
 //TODO: Add React Router and add a 404 page
 //TODO: Maybe add Redux, although this could be a bit over engineered
 //TODO: Add a print version
@@ -57,9 +74,12 @@ class App extends Component {
     );
   }
 }
+
 const StyledDiv = styled.div`
 
+
 `
+
 const Footer = styled.footer`
   color: ${white};
   background-color: ${primary};
