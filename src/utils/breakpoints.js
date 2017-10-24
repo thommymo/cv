@@ -1,3 +1,5 @@
+//TODO: Add this together with the breakpoints from full-with-image
+
 import {css} from 'styled-components'
 
 const sizes = {
