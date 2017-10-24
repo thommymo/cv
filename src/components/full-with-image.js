@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 /*  TODO:
- *  * Style image with styled-components ( import styled from 'styled-components' )
  *  * make assetDirectory global
  *  * make assetDirectory relative with storybook still working properly
  *  * FullWithImage should be a stateless component (since it has no state)
@@ -15,15 +15,12 @@ class FullWithImage extends Component {
     const assetDirectory = "http://localhost:3000/assets/images/"
     const breakPoints = [[false, 768], [769, 1024], [1025, false]]
     const assetPostFix = [["-375w", "-750w"], ["-750w", "-1500w"], ["-1000w", "-2000w"]]
-    let minWidth = ""
-    let maxWidth = ""
 
     return (
       <picture>
         { breakPoints.map((currentValue, index) => (
-
-            <source key={index}
-              media={`screen
+          <source key={index}
+            media={`screen
               ${currentValue[0] ? `and (min-width:${currentValue[0]}px)` : ""}
               ${currentValue[1] ? `and (max-width:${currentValue[1]}px)` : ""}
               `}
@@ -32,7 +29,7 @@ class FullWithImage extends Component {
               ${assetDirectory}${assetName}${assetPostFix[index][1]}${assetType} 2x,
             `}/>
         ))}
-        <img src={`${assetDirectory}${assetName}${assetPostFix[1][0]}${assetType}`} alt={altText}/>
+        <StyledImage src={`${assetDirectory}${assetName}${assetPostFix[1][0]}${assetType}`} alt={altText}/>
       </picture>
     )
   }
@@ -43,6 +40,10 @@ FullWithImage.propTypes = {
   altText: PropTypes.string.isRequired,
   assetName: PropTypes.string.isRequired,
 }
+
+const StyledImage = styled.img`
+  width:100%;
+`
 
 export default FullWithImage
 
