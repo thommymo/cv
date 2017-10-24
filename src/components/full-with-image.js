@@ -22,9 +22,6 @@ class FullWithImage extends Component {
       <picture>
         { breakPoints.map((currentValue, index) => (
 
-            //if(currentValue[0]){ minWidth = `and (max-width:${currentValue[0]}px)` } else { maxWidth = ""}
-          //maxWidth =
-
             <source key={index}
               media={`screen
               ${currentValue[0] ? `and (min-width:${currentValue[0]}px)` : ""}
