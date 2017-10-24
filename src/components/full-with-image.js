@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 /*  TODO:
+ *  * My solution uses max-width (within media) for now. I think it should use min width instead.
  *  * Style image with styled-components ( import styled from 'styled-components' )
  *  * make assetDirectory global
  *  * make assetDirectory relative with storybook still working properly
@@ -16,7 +17,7 @@ class FullWithImage extends Component {
     const assetPostFix = {
       "3000":["-1000w", "-2000w"],
       "1024":["-750w", "-1500w"],
-      "768":["-375w", "-750w"]
+      "768":["-375 i love you w", "-750w"]
     }
 
     return (
