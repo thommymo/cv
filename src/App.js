@@ -9,10 +9,7 @@ import { StyledH1, StyledP} from './components/styled-atoms'
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
-  @font-face {
-    font-family: 'Assistant';
-    src: url('../assets/fonts/Assistant/Assistant-Light.ttf');
-  }
+  @import url('https://fonts.googleapis.com/css?family=Assistant:300');
 
   body {
     margin: 0;
