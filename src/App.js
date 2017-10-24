@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import CurriculumVitae from './components/curriculum-vitae'
 import { Helmet } from "react-helmet";
 import styled from 'styled-components'
+import { white, primary, primaryDark} from './utils/colors'
 
 //TODO: Add React Router and add a 404 page
 //TODO: Maybe add Redux, although this could be a bit over engineered
-//TODO: Add a print version 
+//TODO: Add a print version
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <StyledDiv>
         <Helmet>
           <title>Bewerbung Thomas Moser</title>
         </Helmet>
@@ -46,23 +47,32 @@ class App extends Component {
           }
         </Section>
         <Footer>
+          <p>Thomas Moser, Bireggstrasse 33, 6003 Luzern</p>
           {
             //TODO: Add Footer with adress and contact details
           }
         </Footer>
-      </div>
+      </StyledDiv>
     );
   }
 }
+const StyledDiv = styled.div`
 
+`
 const Footer = styled.footer`
-  flex:1;
-  background-color: #eeeeee;
+  color: ${white};
+  background-color: ${primary};
+  min-height:120px;
+  width:100%;
+  display: flex;
 `
 
 const Header = styled.header`
-  flex:1;
-  background-color: #eeeeee;
+  color: ${white};
+  background-color: ${primary};
+  padding:1em;
+  width:100%;
+  display: flex;
 `
 
 const Section = styled.section`
