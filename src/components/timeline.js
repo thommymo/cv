@@ -12,7 +12,7 @@ class Timeline extends Component {
       background-color: ${primaryDark};
     `
     const Content = styled.div`
-      padding: 0 10px 0 10px;
+      padding: 0 10px 0 20px;
       color: ${white};
       min-height: 50px;
     `
@@ -33,6 +33,7 @@ class Timeline extends Component {
       ${media.phone`width:50px;`};
       ${media.phone`min-width:50px;`};
       color: ${white};
+      padding: 0 10px 0 10px;
     `
     const DivSchoolBorder = styled.div`
       background-color: ${secondaryDark};
@@ -43,8 +44,8 @@ class Timeline extends Component {
     `
     const Object = styled.object`
       position: absolute;
-      left:41px;
-      top:23px;
+      left:61px;
+      top:35px;
     `
     const P = styled.p`
       font-size:1.1em;
@@ -59,24 +60,36 @@ class Timeline extends Component {
       background-color: ${secondaryDark};
       width: ${100-this.props.width}%;
     `
+    const StyledH4Year = StyledH4.extend`
+      text-align: center;
+      ${media.desktop`line-height: 1em;`}
+      ${media.tablet`line-height: 1em;`}
+      ${media.phone`line-height: 1em;`}
+    `
+    const StyledH3FixTopMargin = StyledH3.extend`
+      ${media.desktop`margin-top: 28px;`}
+      ${media.tablet`margin-top: 31px;`}
+      ${media.phone`margin-top: 34px;`}
+    `
     return (
-      <div>
-        <Container>
-          <Work>
-            <Year><StyledH3>2017</StyledH3><Object data="/assets/icons/ic_brightness_1_white_24px.svg" type="image/svg+xml"/></Year>
-            <Content>
-              <StyledH3>Product Onwer bei SRF</StyledH3>
-              <StyledP>What did I do here?</StyledP>
-              <StyledP>Awards</StyledP>
-              <StyledP>More</StyledP>
-            </Content>
-          </Work>
-          <School>
-            <DivSchool><p>test</p></DivSchool>
-            <DivSchoolBorder></DivSchoolBorder>
-          </School>
-        </Container>
-      </div>
+      <Container>
+        <Work>
+          <Year>
+            <StyledH4Year>2017<br/>&#8599;<br/>2015</StyledH4Year>
+            <Object data="/assets/icons/ic_brightness_1_white_24px.svg" type="image/svg+xml"/>
+          </Year>
+          <Content>
+            <StyledH3FixTopMargin>Product Owner bei SRF</StyledH3FixTopMargin>
+            <StyledP>Rolle: Product Owner für srf.ch</StyledP>
+            <StyledP>Awards: Master «Best of Swiss web»</StyledP>
+            <StyledP>More &#8599;</StyledP>
+          </Content>
+        </Work>
+        <School>
+          <DivSchool><p>test</p></DivSchool>
+          <DivSchoolBorder></DivSchoolBorder>
+        </School>
+      </Container>
     )
   }
 }
