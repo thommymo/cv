@@ -29,7 +29,7 @@ class FullWithImage extends Component {
               ${assetDirectory}${assetName}${assetPostFix[index][1]}${assetType} 2x,
             `}/>
         ))}
-        <StyledImage src={`${assetDirectory}${assetName}${assetPostFix[1][0]}${assetType}`} alt={altText}/>
+        <Img src={`${assetDirectory}${assetName}${assetPostFix[1][0]}${assetType}`} alt={altText}/>
       </picture>
     )
   }
@@ -41,7 +41,7 @@ FullWithImage.propTypes = {
   assetName: PropTypes.string.isRequired,
 }
 
-const StyledImage = styled.img`
+const Img = styled.img`
   width:100%;
 `
 
@@ -54,7 +54,7 @@ export default FullWithImage
 1x: 1000  750     375
 2x: 2000  1500    750
 
-TODO: Make Grund file accordingly
+TODO: Make Grunt file accordingly
 
 smaller than 768 px
 smaller than 1024 px

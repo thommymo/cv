@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import CurriculumVitae from './components/curriculum-vitae'
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
 import { white, primary, primaryDark} from './utils/colors'
-import { StyledH1, StyledP} from './components/styled-atoms'
+import { StyledH1, StyledP } from './components/styled-atoms'
+import Timeline from './components/timeline'
 
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Assistant:300');
+  @import url('https://fonts.googleapis.com/css?family=Assistant');
 
   body {
     margin: 0;
@@ -45,16 +46,24 @@ class App extends Component {
           }
         </Section>
         <Section>
+
           {
             //TODO: Why do I want this Job (Mainly Text, maybe with some interaction)
           }
         </Section>
         <Section>
+          <StyledH1>CV Thomas Moser</StyledH1>
           {
             //TODO: Why am I suited for this Job (Mainly Text, maybe with some interaction)
           }
         </Section>
         <Section>
+          <Timeline width={25}/>
+          <Timeline width={80}/>
+          <Timeline width={45}/>
+          <Timeline width={40}/>
+          <Timeline width={35}/>
+          <Timeline width={25}/>
           {
 
             //TODO: What I did so far
