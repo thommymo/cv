@@ -58,12 +58,14 @@ class App extends Component {
           }
         </Section>
         <Section>
-          <Timeline width={25}/>
-          <Timeline width={80}/>
-          <Timeline width={45}/>
-          <Timeline width={40}/>
-          <Timeline width={35}/>
-          <Timeline width={25}/>
+          <Timeline left bottom borderBottomLeftRadius bothleft/>
+          <Timeline top right bothleft borderTopRightRadius bothleft/>
+          <Timeline left bothright />
+          <Timeline right bothleft />
+          <Timeline right bothleft bottom borderBottomRightRadius/>
+          <Timeline left bothleft top bottom borderTopLeftRadius borderBottomLeftRadius/>
+          <Timeline right top borderTopRightRadius />
+
           {
 
             //TODO: What I did so far
