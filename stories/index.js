@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import FullWithImage from '../src/components/full-with-image'
-import { StyledH1, StyledH2, StyledH3, StyledH4, StyledP } from '../src/components/styled-atoms'
+import { StyledH1, StyledH2, StyledH3, StyledH4, StyledP, TimeSpan} from '../src/components/styled-atoms'
 
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
@@ -24,6 +24,17 @@ injectGlobal`
 * ATOMS
 *
 */
+
+//Timeline
+storiesOf('Timeline', module)
+  .addDecorator(withKnobs)
+  .add('timespan', () => (
+    <TimeSpan
+      show={boolean('Show?', "true")}
+      startDate={text("Start date", "1999")}
+      endDate={text("End date", "2007")}
+    />
+  ))
 
 //Images
 storiesOf('FullWithImage', module)

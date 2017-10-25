@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { primaryDark, secondaryDark, white } from '../utils/colors'
 import { media } from '../utils/breakpoints'
-import { StyledH4, StyledP, StyledH3} from '../components/styled-atoms'
+import { StyledH4, StyledP, StyledH3, TimeSpan} from '../components/styled-atoms'
 
 class Timeline extends Component {
   render() {
@@ -10,7 +10,7 @@ class Timeline extends Component {
       <Container>
         <Work>
           <Year left={this.props.bothleft}>
-            <StyledH4Year show={this.props.left}>2017<br/>&#8599;<br/>2015</StyledH4Year>
+            <TimeSpan show={this.props.left} startDate="2012" />
             <Bullet show={this.props.left} left data="/assets/icons/ic_brightness_1_white_24px.svg" type="image/svg+xml"/>
           </Year>
           <Content
@@ -30,7 +30,7 @@ class Timeline extends Component {
           </Content>
         </Work>
         <Year right={this.props.bothright}>
-          <StyledH4Year show={this.props.right}>2017<br/>&#8599;<br/>2015</StyledH4Year>
+          <TimeSpan show={this.props.right} startDate="2017" endDate="2019" />
           <Bullet show={this.props.right} right data="/assets/icons/ic_brightness_1_white_24px.svg" type="image/svg+xml"/>
         </Year>
       </Container>
