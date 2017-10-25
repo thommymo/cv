@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { media } from '../utils/breakpoints'
 import styled from 'styled-components'
+import { white } from '../utils/colors'
 
 //Typography
 
@@ -44,30 +45,64 @@ export const StyledP = styled.p`
   ${media.tablet`line-height: 1.22222222em`}
   ${media.phone`line-height: 1.11111111em`}
 `
-export const TimeSpan = ({show = false, startDate = false, endDate = false}) => (
+export const TimeSpan = ({
+  show = false,
+  startDate = false,
+  endDate = false,
+  right=false,
+  left=false,
+  bothleft=false,
+  bothright=false,
+}) => (
+  <Year borderright={bothright} borderleft={bothleft}>
     <StyledTimeSpan show={show}>
-      { startDate &&
-        <span>{startDate}</span>
+      { endDate &&
+        <span>{endDate}</span>
       }
       { startDate && endDate &&
         <span>&#8599;</span>
       }
-      { endDate &&
-        <span>{endDate}</span>
+      { startDate &&
+        <span>{startDate}</span>
       }
     </StyledTimeSpan>
+    <Bullet
+      show={show}
+      right={right}
+      left={left}
+      src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
+    />
+  </Year>
 );
 
-export const StyledTimeSpan = StyledH4.extend`
+const Bullet = styled.img`
+  ${props => props.left ? 'left:61px;':'right:61px'};
+  position: absolute;
+  top:35px;
+  ${props => !props.show ? 'display:none' : ''};
+`
+const StyledTimeSpan = StyledH4.extend`
   height:2.6em;
   display:flex;
   justify-content: center;
   flex-direction: column;
-
-  vertical-align: middle;
   text-align: center;
   ${media.desktop`line-height: 1em;`}
   ${media.tablet`line-height: 1em;`}
   ${media.phone`line-height: 1em;`}
   ${props => !props.show ? 'display:none' : ''};
+`
+const Year = styled.div`
+  position: relative;
+  ${props => props.borderleft ? 'box-shadow: 6px 0 0 0 #FFF; ' : ''};
+  ${props => props.borderright ? 'box-shadow: -6px 0 0 0 #FFF; ' : ''};
+  ${media.desktop`width:50px;`};
+  ${media.desktop`min-width:50px;`};
+  ${media.tablet`width:50px;`};
+  ${media.tablet`min-width:50px;`};
+  ${media.phone`width:50px;`};
+  ${media.phone`min-width:50px;`};
+  color: ${white};
+  padding: 0 10px 0 10px;
+  z-index: 20;
 `
