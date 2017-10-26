@@ -6,7 +6,6 @@ import styled from 'styled-components'
  *  * make assetDirectory global
  *  * make assetDirectory relative with storybook still working properly
  *  * FullWithImage should be a stateless component (since it has no state)
- *  * Image should always be 100% width
  */
 
 class FullWithImage extends Component {
@@ -47,14 +46,12 @@ const Img = styled.img`
 
 export default FullWithImage
 
-
-
 /* Full Width Image Sizes
     Big   Middle  Smaller
 1x: 1000  750     375
 2x: 2000  1500    750
 
-TODO: Make Grunt file accordingly
+TODO: Make Grunt file according to the breakpoints in breakpoints.js
 
 smaller than 768 px
 smaller than 1024 px
