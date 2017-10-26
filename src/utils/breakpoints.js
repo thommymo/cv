@@ -4,9 +4,9 @@ import {css} from 'styled-components'
 
 // breakpoints with min and max values
 const sizes = {
-	phone: [false, 768],
-	tablet: [769, 1024],
-	desktop: [1025, false]
+	phone: [false, 430],
+	tablet: [431, 768],
+	desktop: [769, false]
 }
 
 // Iterate through the sizes and create a media template

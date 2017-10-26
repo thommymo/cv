@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { media } from '../utils/breakpoints'
 import styled from 'styled-components'
-import { white } from '../utils/colors'
+import { white, primary, primaryDark } from '../utils/colors'
 
 //Typography
 
@@ -46,6 +46,7 @@ export const StyledP = styled.p`
   ${media.phone`line-height: 1.11111111em`}
 `
 export const TimeSpan = ({
+  rightposition = false,
   show = false,
   startDate = false,
   endDate = false,
@@ -54,7 +55,7 @@ export const TimeSpan = ({
   bothleft=false,
   bothright=false,
 }) => (
-  <Year borderright={bothright} borderleft={bothleft}>
+  <Year borderright={bothright} borderleft={bothleft} rightposition={rightposition}>
     <StyledTimeSpan show={show}>
       { endDate &&
         <span>{endDate}</span>
@@ -78,11 +79,11 @@ export const TimeSpan = ({
 const Bullet = styled.img`
   ${props => props.left ? 'left:61px;':'right:61px'};
   position: absolute;
-  top:35px;
+  top:75px;
   ${props => !props.show ? 'display:none' : ''};
 `
 const StyledTimeSpan = StyledH4.extend`
-  height:2.6em;
+  height:121px;
   display:flex;
   justify-content: center;
   flex-direction: column;
@@ -103,6 +104,8 @@ const Year = styled.div`
   ${media.phone`width:50px;`};
   ${media.phone`min-width:50px;`};
   color: ${white};
+  ${props => props.rightposition ? `background-color:${primaryDark};` : `background-color:${primary};`};
+
   padding: 0 10px 0 10px;
   z-index: 20;
 `

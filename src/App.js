@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import CurriculumVitae from './components/curriculum-vitae'
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
-import { white, primary } from './utils/colors'
-import { StyledH1, StyledP, StyledH4 } from './components/styled-atoms'
+import { white, primary, primaryDark } from './utils/colors'
+import { StyledH1, StyledP, StyledH4, StyledH2 } from './components/styled-atoms'
 import Timeline from './components/timeline'
 
 //TODO: injectGlobal might has to be moved somewhere else
@@ -52,17 +52,27 @@ class App extends Component {
           }
         </Section>
         <Section>
-          <StyledH1>CV Thomas Moser</StyledH1>
           {
             //TODO: Why am I suited for this Job (Mainly Text, maybe with some interaction)
           }
         </Section>
-        <Section>
-          <StyledH4>Arbeit</StyledH4>
-          <StyledH4>Ausbildung</StyledH4>
-        </Section>
-        <Section>
+        <SectionFlex>
+          <TurnedDiv1>
+            <StyledH2>Arbeit</StyledH2>
+            <img
+              src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
+            />
+          </TurnedDiv1>
+          <TurnedDiv2 right>
+            <StyledH2>Ausbildung</StyledH2>
+            <img
+              src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
+            />
+          </TurnedDiv2>
+        </SectionFlex>
+        <SectionNoOverflow>
           <Timeline
+            bothleft
             right
             bottom
             borderBottomRightRadius
@@ -77,6 +87,7 @@ class App extends Component {
             top
             borderTopLeftRadius
             left
+            bothleft
             startDate="2015"
             endDate="2017"
             title="Projektleiter Web"
@@ -191,7 +202,7 @@ class App extends Component {
             //TODO: What I did so far
             //This will be more complex and will contain a timeline, all certificates, and employer references including sample projects and prices won
           }
-        </Section>
+        </SectionNoOverflow>
         <Footer>
           <StyledP>Thomas Moser, Bireggstrasse 33, 6003 Luzern</StyledP>
           {
@@ -213,13 +224,13 @@ const Footer = styled.footer`
   background-color: ${primary};
   width:100%;
   display: flex;
-  padding:1em;
+  /*padding:1em;*/
 `
 
 const Header = styled.header`
   color: ${white};
   background-color: ${primary};
-  padding:1em;
+  /*padding:1em;*/
   width:100%;
   display: flex;
 `
@@ -227,6 +238,40 @@ const Header = styled.header`
 const Section = styled.section`
   min-height:100px;
   background-color: #eeeeee;
+`
+const SectionNoOverflow = styled.section`
+  min-height:100px;
+  background-color: #eeeeee;
+  overflow: hidden;
+`
+const TurnedDiv1 = styled.div`
+  ${props => props.right ? `background-color:${primaryDark};` : `background-color:${primary};`};
+  color:${white};
+  width:40%;
+  height:500px;
+  text-align: left;
+  padding-left:63px;
+  vertical-align: middle;
+  border-top-right-radius: 100px;
+  z-index:2;
+
+`
+const TurnedDiv2 = styled.div`
+  ${props => props.right ? `background-color:${primaryDark};` : `background-color:${primary};`};
+  color:${white};
+  width:60%;
+  height:800px;
+  padding-right:61px;
+  text-align: right;
+  vertical-align: middle;
+  z-index:-1;
+  border-top-left-radius: 100px;
+  position:relative;
+  top:73px;
+`
+const SectionFlex = styled.section`
+  display:flex;
+  height:200px;
 `
 
 export default App;
