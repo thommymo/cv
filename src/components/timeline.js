@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { white, secondary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { StyledP, StyledH2, StyledH3, StyledH4 } from '../components/styled-atoms'
+import LifeLapMoreButton from '../components/life-lap'
 
 //TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
 //TODO: Add PropTypes
@@ -121,7 +122,7 @@ export const Timeline = ({
           </SecondaryAdditionalInfoItem>
         }
         { showmore &&
-          <Button>More &#8594;</Button>
+          <LifeLapMoreButton>More &#8594;</LifeLapMoreButton>
         }
       </AdditionalInfo>
     </Content>
@@ -176,16 +177,6 @@ const TimeSpan = ({
 export default Timeline
 
 // Styling
-
-const Button = styled.button`
-  color: ${white};
-  background-color: ${secondary};
-  font-size: 1em;
-  margin-top: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid ${white};
-  border-radius: 3px;
-`
 
 const Icon = styled.img`
   padding-right: 10px;

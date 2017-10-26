@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import FullWithImage from './components/full-with-image'
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { white, primary } from './utils/colors'
 import { StyledH1, StyledP } from './components/styled-atoms'
