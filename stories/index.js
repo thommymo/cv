@@ -21,7 +21,7 @@ injectGlobal`
 
 /*
 *
-* ATOMS
+* MOLECULES
 *
 */
 
@@ -53,6 +53,12 @@ storiesOf('Timeline', module)
       showmore = {boolean("Show more"), false} //TODO: This does not work (see Error Message: Has to do with controlled components)
     />
   ))
+
+/*
+*
+* ATOMS
+*
+*/
 
 //Images
 storiesOf('FullWithImage', module)
