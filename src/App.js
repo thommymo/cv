@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import CurriculumVitae from './components/curriculum-vitae'
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
-import { white, primary, secondary } from './utils/colors'
-import { StyledH1, StyledP, StyledH2 } from './components/styled-atoms'
+import { white, primary } from './utils/colors'
+import { StyledH1, StyledP } from './components/styled-atoms'
 import { Timeline, TimelineHeader } from './components/timeline'
-import { media } from './utils/breakpoints'
-
 
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
@@ -213,10 +211,6 @@ const SectionNoOverflow = styled.section`
   min-height:100px;
   background-color: #eeeeee;
   overflow: hidden;
-`
-const SectionFlex = styled.section`
-  display:flex;
-  height:200px;
 `
 
 export default App;

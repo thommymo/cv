@@ -6,6 +6,7 @@ import { StyledP, StyledH2, StyledH3, StyledH4 } from '../components/styled-atom
 
 //TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
 //TODO: Add PropTypes
+//TODO: Check Frontend Performance: I think this is a bit slow...
 
 export const TimelineHeader = ({
   titleleft = "",
