@@ -37,26 +37,20 @@ storiesOf('Timeline', module)
   ))
   .add('Timeline', () => (
     <Timeline
-      show = {boolean("Show?"), false}
       startDate = {text("Start date", "1999")}
       endDate = {text("End date", "2000")}
-      right = {boolean("Border right?", false)}
-      left = {boolean("Border left?", false)}
-      top = {boolean("Border top?", false)}
-      bottom = {boolean("Border bottom?", false)}
+      right = {boolean("Position right?", false)}
+      left = {boolean("Position left?", true)}
+      addTopBorder = {boolean("Border top?", false)}
+      addBottomBorder = {boolean("Border bottom?", false)}
       bothleft = {boolean("Additional lefthand border?", false)}
       bothright = {boolean("Additional righthand border?", false)}
-      borderTopLeftRadius = {boolean("Border radius top left?", false)}
-      borderTopRightRadius = {boolean("Border radius top right?", false)}
-      borderBottomLeftRadius = {boolean("Border radius bottom left?", false)}
-      borderBottomRightRadius = {boolean("Border radius bottom right?", false)}
+      title = {text("Title of Position", "Product Owner")}
       company = {text("Company:", "SRF")}
       school = {text("School:", "University of Zurich")}
       responsability = {text("Responsability:", "New Website")}
       learned = {text("Learned: ", "SRF")}
-      title = {text("Title of Position", "Product Owner")}
-      more = {boolean("Show more?"), false}
-      rightposition = {boolean("Position Righthand?"), false}
+      showmore = {boolean("Show more"), false} //TODO: This does not work (see Error Message: Has to do with controlled components)
     />
   ))
 

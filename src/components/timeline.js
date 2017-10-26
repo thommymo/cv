@@ -6,7 +6,6 @@ import { StyledP, StyledH2, StyledH3, StyledH4 } from '../components/styled-atom
 
 //TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
 //TODO: Add PropTypes
-//TODO: Rename variables, so they make more sense (espacially left, right, top, bottom (since these items direct the border etc. )
 
 export const TimelineHeader = ({
   titleleft = "",
@@ -34,7 +33,6 @@ const SectionFlex = styled.section`
   display:flex;
   height:200px;
 `
-
 const HeaderLeft = styled.div`
   color:${white};
   width:50%;
@@ -63,29 +61,21 @@ const HeaderRight = styled.div`
   background-color: ${secondary};
 `
 
-
-
 export const Timeline = ({
-  rightposition = false,
-  show = false,
-  startDate = false,
-  endDate = false,
+  showmore = false, // DONE
+  startDate = "",
+  endDate = "",
   right=false,
   left=false,
-  top=false,
-  bottom=false,
+  addTopBorder=false,
+  addBottomBorder=false,
   bothleft=false,
   bothright=false,
-  borderTopLeftRadius=false,
-  borderTopRightRadius=false,
-  borderBottomLeftRadius=false,
-  borderBottomRightRadius=false,
-  company="",
-  school="",
-  responsability="",
-  learned="",
-  title="",
-  more=false,
+  company="", // DONE
+  school="", // DONE
+  responsability="", // DONE
+  learned="", // DONE
+  title="", // DONE
 }) => (
   <Lap right={right}>
     <TimeSpan
@@ -100,12 +90,8 @@ export const Timeline = ({
     <Content
       left={left}
       right={right}
-      top={top}
-      bottom={bottom}
-      borderTopLeftRadius={borderTopLeftRadius}
-      borderTopRightRadius={borderTopRightRadius}
-      borderBottomLeftRadius={borderBottomLeftRadius}
-      borderBottomRightRadius={borderBottomRightRadius}
+      addTopBorder={addTopBorder}
+      addBottomBorder={addBottomBorder}
     >
       <StyledTitle>{title}</StyledTitle>
       <AdditionalInfo
@@ -141,7 +127,7 @@ export const Timeline = ({
             <AdditionalInfoP>{learned}</AdditionalInfoP>
           </SecondaryAdditionalInfoItem>
         }
-        {more &&
+        { showmore &&
           <Button>More &#8594;</Button>
         }
       </AdditionalInfo>
@@ -239,12 +225,12 @@ const Content = styled.div`
   min-height: 280px;
   ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
   ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
-  ${props => props.top ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
-  ${props => props.bottom ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white}; margin-top:-6px;` : ''};
-  ${props => props.borderTopLeftRadius ? 'border-top-left-radius: 30px;':''};
-  ${props => props.borderTopRightRadius ? 'border-top-right-radius: 30px;':''};
-  ${props => props.borderBottomLeftRadius ? 'border-bottom-left-radius: 30px;':''};
-  ${props => props.borderBottomRightRadius ? 'border-bottom-right-radius: 30px;':''};
+  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white}; margin-top:-6px;` : ''};
+  ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
+  ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
+  ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};
+  ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
   flex:1;
 `
 const StyledTitle = StyledH3.extend`

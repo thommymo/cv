@@ -63,18 +63,16 @@ class App extends Component {
           <Timeline
             bothleft
             right
-            bottom
-            borderBottomRightRadius
+            addBottomBorder
             startDate="2015"
             endDate="2017"
             title="Fullstack Web Developer"
             school="Udacity"
             learned="Learning React, Node.js"
-            more="Link to more info"
+            showmore
           />
           <Timeline
-            top
-            borderTopLeftRadius
+            addTopBorder
             left
             bothleft
             startDate="2015"
@@ -82,7 +80,7 @@ class App extends Component {
             title="Projektleiter Web"
             company="Luzerner Kantonsspital"
             responsability="Responsible for Relaunching luks.ch"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             left
@@ -92,31 +90,29 @@ class App extends Component {
             title="Product Owner"
             company="Schweizer Radio und Fernsehen"
             responsability="Responsible as Product Owner for srf.ch"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             left
-            bottom
-            borderBottomLeftRadius
+            addBottomBorder
             bothleft
             startDate="2010"
             endDate="2011"
             title="Projektleiter Web"
             company="Unic AG"
             responsability="Responsible for customor web projects"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             right
-            top
-            borderTopRightRadius
+            addTopBorder
             bothleft
             startDate="2003"
             endDate="2010"
             title="Master of Science UZH"
             school="Universität Zürich"
             learned="Media Science, Cognitive Psychology, Informatics"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             left
@@ -126,7 +122,7 @@ class App extends Component {
             title="Web Developer und Wissenschaftlicher Mitarbeiter"
             school="Pädagogische Hochschule Zentralschweiz"
             responsability="Responsible for customor web projects"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             left
@@ -136,7 +132,7 @@ class App extends Component {
             title="Web Developer und Mitinhaber"
             company="Agentur Sign, Luzern"
             responsability="Responsible for customor web projects"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             left
@@ -146,7 +142,7 @@ class App extends Component {
             title="Web Developer, selbständig erwerbend"
             company="Netzwerk Neuweg, Luzern"
             responsability="Responsible for customor web projects"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             right
@@ -160,19 +156,17 @@ class App extends Component {
           <Timeline
             left
             bothright
-            bottom
-            borderBottomLeftRadius
+            addBottomBorder
             startDate="2000"
             endDate="2000"
             title="Fahrradkurier"
             company="Velokurier, Luzern"
             responsability="Responsible for customor web projects"
-            more="Link to more info"
+            showmore
           />
           <Timeline
             right
-            top
-            borderTopRightRadius
+            addTopBorder
             bothright
             startDate="1995"
             endDate="2002"
