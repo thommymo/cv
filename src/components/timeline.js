@@ -56,7 +56,7 @@ const HeaderRight = styled.div`
 `
 
 export const Timeline = ({
-  showmore = false, // DONE
+  showmore = false,
   startDate = "",
   endDate = "",
   right=false,
@@ -65,11 +65,11 @@ export const Timeline = ({
   addBottomBorder=false,
   bothleft=false,
   bothright=false,
-  company="", // DONE
-  school="", // DONE
-  responsability="", // DONE
-  learned="", // DONE
-  title="", // DONE
+  company="",
+  school="",
+  responsability="",
+  learned="",
+  title="",
 }) => (
   <Lap right={right}>
     <TimeSpan
