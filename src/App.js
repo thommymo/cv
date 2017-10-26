@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import CurriculumVitae from './components/curriculum-vitae'
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
-import { white, primary, primaryDark } from './utils/colors'
+import { white, primary, primaryDark, secondary } from './utils/colors'
 import { StyledH1, StyledP, StyledH4, StyledH2 } from './components/styled-atoms'
 import Timeline from './components/timeline'
+import { media } from './utils/breakpoints'
+
 
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
@@ -27,7 +29,7 @@ injectGlobal`
 class App extends Component {
   render() {
     return (
-      <StyledDiv>
+      <div>
         <Helmet>
           <title>Bewerbung Thomas Moser</title>
         </Helmet>
@@ -63,7 +65,7 @@ class App extends Component {
               src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
             />
           </TurnedDiv1>
-          <TurnedDiv2 right>
+          <TurnedDiv2>
             <StyledH2>Ausbildung</StyledH2>
             <img
               src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
@@ -209,28 +211,20 @@ class App extends Component {
             //TODO: Add Footer with adress and contact details
           }
         </Footer>
-      </StyledDiv>
+      </div>
     );
   }
 }
-
-const StyledDiv = styled.div`
-
-
-`
-
 const Footer = styled.footer`
   color: ${white};
   background-color: ${primary};
   width:100%;
   display: flex;
-  /*padding:1em;*/
 `
 
 const Header = styled.header`
   color: ${white};
   background-color: ${primary};
-  /*padding:1em;*/
   width:100%;
   display: flex;
 `
@@ -245,29 +239,31 @@ const SectionNoOverflow = styled.section`
   overflow: hidden;
 `
 const TurnedDiv1 = styled.div`
-  ${props => props.right ? `background-color:${primaryDark};` : `background-color:${primary};`};
   color:${white};
-  width:40%;
-  height:500px;
+  width:50%;
+  height:200px;
   text-align: left;
-  padding-left:63px;
-  vertical-align: middle;
-  border-top-right-radius: 100px;
-  z-index:2;
-
+  ${media.desktop`padding-left:61px;top:73px;border-top-right-radius: 90px;`}
+  ${media.tablet`padding-left:61px;top:85px;border-top-right-radius: 70px;`}
+  ${media.phone`padding-left:16px;top:105px;border-top-right-radius: 50px;`}
+  position:relative;
+  background-color: ${secondary};
+  z-index:-1;
 `
 const TurnedDiv2 = styled.div`
-  ${props => props.right ? `background-color:${primaryDark};` : `background-color:${primary};`};
   color:${white};
-  width:60%;
-  height:800px;
-  padding-right:61px;
+  width:50%;
+  height:200px;
+  ${media.desktop`padding-right:61px;top:73px;border-top-left-radius: 90px;`}
+  ${media.tablet`padding-right:61px;top:85px;border-top-left-radius: 70px;`}
+  ${media.phone`padding-right:16px;top:105px;border-top-left-radius: 50px;`}
   text-align: right;
-  vertical-align: middle;
+  vertical-align: bottom;
   z-index:-1;
-  border-top-left-radius: 100px;
+
   position:relative;
-  top:73px;
+  top:80px;
+  background-color: ${secondary};
 `
 const SectionFlex = styled.section`
   display:flex;

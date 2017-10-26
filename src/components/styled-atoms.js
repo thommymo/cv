@@ -81,16 +81,16 @@ export const TimeSpan = ({
 );
 
 const Bulletright = styled.img`
-  ${media.desktop`right:61px;`}
-  ${media.tablet`right:61px;`}
-  ${media.phone`right:17px;`}
+  ${media.desktop`right:61px;`};
+  ${media.tablet`right:61px;`};
+  ${media.phone`right:17px;`};
   position: absolute;
   top:75px;
 `
 const Bulletleft = styled.img`
-  ${media.desktop`left:61px;`}
-  ${media.tablet`left:61px;`}
-  ${media.phone`left:16px;`}
+  ${media.desktop`left:61px;`};
+  ${media.tablet`left:61px;`};
+  ${media.phone`left:16px;`};
   position: absolute;
   top:75px;
 `
@@ -116,8 +116,6 @@ const Year = styled.div`
   ${media.phone`width:5px;`};
   ${media.phone`min-width:5px;`};
   color: ${white};
-  ${props => props.rightposition ? `background-color:${primaryDark};` : `background-color:${primary};`};
-
   padding: 0 10px 0 10px;
   z-index: 20;
 `
