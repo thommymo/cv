@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { white, primary } from './utils/colors'
 import { StyledH1, StyledP } from './components/styled-atoms'
-import { TimelineContent } from './components/content/timeline-content'
+import { TimelineContentWithData } from './components/content/timeline-content'
 
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
@@ -46,7 +46,7 @@ class App extends Component {
             //TODO: Why am I suited for this Job (Mainly Text, maybe with some interaction)
           }
         </Section>
-        <TimelineContent />
+        <TimelineContentWithData />
         <Footer>
           <StyledP>Thomas Moser, Bireggstrasse 33, 6003 Luzern</StyledP>
           {
