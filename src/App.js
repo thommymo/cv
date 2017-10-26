@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CurriculumVitae from './components/curriculum-vitae'
+import FullWithImage from './components/full-with-image'
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
 import { white, primary } from './utils/colors'
@@ -38,19 +38,9 @@ class App extends Component {
           <StyledH1>CV Thomas Moser</StyledH1>
         </Header>
         <Section>
-          <CurriculumVitae />
+          <FullWithImage assetType=".jpg" assetName="thomas_moser_3" altText="This is Thomas"/>
         </Section>
-        <Section>
-          {
-            //TODO: Who am I (Mainly Text, maybe with some interaction)
-          }
-        </Section>
-        <Section>
 
-          {
-            //TODO: Why do I want this Job (Mainly Text, maybe with some interaction)
-          }
-        </Section>
         <Section>
           {
             //TODO: Why am I suited for this Job (Mainly Text, maybe with some interaction)
