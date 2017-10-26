@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import FullWithImage from '../src/components/full-with-image'
 import { StyledH1, StyledH2, StyledH3, StyledH4, StyledP, TimeSpan} from '../src/components/styled-atoms'
-
+import { TimelineHeader, Timeline } from '../src/components/timeline'
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
 
@@ -26,13 +26,37 @@ injectGlobal`
 */
 
 //Timeline
+
 storiesOf('Timeline', module)
   .addDecorator(withKnobs)
-  .add('timespan', () => (
-    <TimeSpan
-      show={boolean('Show?', "true")}
-      startDate={text("Start date", "1999")}
-      endDate={text("End date", "2007")}
+  .add('TimelineHeader', () => (
+    <TimelineHeader
+      titleleft={text("Lefthand Title", "Work")}
+      titleright={text("Righthand Title", "Studies")}
+    />
+  ))
+  .add('Timeline', () => (
+    <Timeline
+      show = {boolean("Show?"), false}
+      startDate = {text("Start date", "1999")}
+      endDate = {text("End date", "2000")}
+      right = {boolean("Border right?", false)}
+      left = {boolean("Border left?", false)}
+      top = {boolean("Border top?", false)}
+      bottom = {boolean("Border bottom?", false)}
+      bothleft = {boolean("Additional lefthand border?", false)}
+      bothright = {boolean("Additional righthand border?", false)}
+      borderTopLeftRadius = {boolean("Border radius top left?", false)}
+      borderTopRightRadius = {boolean("Border radius top right?", false)}
+      borderBottomLeftRadius = {boolean("Border radius bottom left?", false)}
+      borderBottomRightRadius = {boolean("Border radius bottom right?", false)}
+      company = {text("Company:", "SRF")}
+      school = {text("School:", "University of Zurich")}
+      responsability = {text("Responsability:", "New Website")}
+      learned = {text("Learned: ", "SRF")}
+      title = {text("Title of Position", "Product Owner")}
+      more = {boolean("Show more?"), false}
+      rightposition = {boolean("Position Righthand?"), false}
     />
   ))
 

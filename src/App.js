@@ -81,7 +81,7 @@ class App extends Component {
             endDate="2017"
             title="Projektleiter Web"
             company="Luzerner Kantonsspital"
-            responsibility="Responsible for Relaunching luks.ch"
+            responsability="Responsible for Relaunching luks.ch"
             more="Link to more info"
           />
           <Timeline
@@ -91,7 +91,7 @@ class App extends Component {
             endDate="2015"
             title="Product Owner"
             company="Schweizer Radio und Fernsehen"
-            responsibility="Responsible as Product Owner for srf.ch"
+            responsability="Responsible as Product Owner for srf.ch"
             more="Link to more info"
           />
           <Timeline
@@ -103,7 +103,7 @@ class App extends Component {
             endDate="2011"
             title="Projektleiter Web"
             company="Unic AG"
-            responsibility="Responsible for customor web projects"
+            responsability="Responsible for customor web projects"
             more="Link to more info"
           />
           <Timeline
@@ -125,7 +125,7 @@ class App extends Component {
             endDate="2010"
             title="Web Developer und Wissenschaftlicher Mitarbeiter"
             school="Pädagogische Hochschule Zentralschweiz"
-            responsibility="Responsible for customor web projects"
+            responsability="Responsible for customor web projects"
             more="Link to more info"
           />
           <Timeline
@@ -135,7 +135,7 @@ class App extends Component {
             endDate="2008"
             title="Web Developer und Mitinhaber"
             company="Agentur Sign, Luzern"
-            responsibility="Responsible for customor web projects"
+            responsability="Responsible for customor web projects"
             more="Link to more info"
           />
           <Timeline
@@ -145,7 +145,7 @@ class App extends Component {
             endDate="2006"
             title="Web Developer, selbständig erwerbend"
             company="Netzwerk Neuweg, Luzern"
-            responsibility="Responsible for customor web projects"
+            responsability="Responsible for customor web projects"
             more="Link to more info"
           />
           <Timeline
@@ -166,7 +166,7 @@ class App extends Component {
             endDate="2000"
             title="Fahrradkurier"
             company="Velokurier, Luzern"
-            responsibility="Responsible for customor web projects"
+            responsability="Responsible for customor web projects"
             more="Link to more info"
           />
           <Timeline

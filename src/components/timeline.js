@@ -82,7 +82,7 @@ export const Timeline = ({
   borderBottomRightRadius=false,
   company="",
   school="",
-  responsibility="",
+  responsability="",
   learned="",
   title="",
   more=false,
@@ -125,12 +125,12 @@ export const Timeline = ({
             <AdditionalInfoP>{school}</AdditionalInfoP>
           </AdditionalInfoItem>
         }
-        { responsibility &&
+        { responsability &&
           <SecondaryAdditionalInfoItem right={right}>
-            <Icon alt="responsibility"
+            <Icon alt="responsability"
               src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M20%206h-4V4c0-1.11-.89-2-2-2h-4c-1.11%200-2%20.89-2%202v2H4c-1.11%200-1.99.89-1.99%202L2%2019c0%201.11.89%202%202%202h16c1.11%200%202-.89%202-2V8c0-1.11-.89-2-2-2zm-6%200h-4V4h4v2z%22%2F%3E%0D%0A%3C%2Fsvg%3E"
             />
-            <AdditionalInfoP>{responsibility}</AdditionalInfoP>
+            <AdditionalInfoP>{responsability}</AdditionalInfoP>
           </SecondaryAdditionalInfoItem>
         }
         { learned &&
