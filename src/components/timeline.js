@@ -205,8 +205,8 @@ const Lap = styled.div`
 const Content = styled.div`
   padding: 0 20px 0 20px;
   padding-top:40px;
+  padding-bottom:40px;
   color: ${white};
-  min-height: 280px;
   ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
   ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
   ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
