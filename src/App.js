@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import CurriculumVitae from './components/curriculum-vitae'
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
-import { white, primary, primaryDark, secondary } from './utils/colors'
-import { StyledH1, StyledP, StyledH4, StyledH2 } from './components/styled-atoms'
+import { white, primary, secondary } from './utils/colors'
+import { StyledH1, StyledP, StyledH2 } from './components/styled-atoms'
 import Timeline from './components/timeline'
 import { media } from './utils/breakpoints'
 
@@ -62,12 +62,14 @@ class App extends Component {
           <TurnedDiv1>
             <StyledH2>Arbeit</StyledH2>
             <img
+              alt="Starting Point"
               src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
             />
           </TurnedDiv1>
           <TurnedDiv2>
             <StyledH2>Ausbildung</StyledH2>
             <img
+              alt="Starting Point"
               src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
             />
           </TurnedDiv2>

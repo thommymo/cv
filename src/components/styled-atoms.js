@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
 import { media } from '../utils/breakpoints'
 import styled from 'styled-components'
-import { white, primary, primaryDark } from '../utils/colors'
 
 //Typography
 

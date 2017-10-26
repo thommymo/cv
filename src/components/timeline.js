@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { primaryDark, white, primary, secondary, secondaryDark } from '../utils/colors'
+import { white, secondary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { StyledP, StyledH3, StyledH4 } from '../components/styled-atoms'
 
