@@ -31,34 +31,26 @@ export const TimelineHeader = ({
 )
 
 const SectionFlex = styled.section`
+  height:140px;
   display:flex;
-  height:200px;
+  align-items:flex-end;
 `
 const HeaderLeft = styled.div`
   color:${white};
   width:50%;
-  height:200px;
   text-align: left;
   ${media.desktop`padding-left:61px;top:73px;border-top-right-radius: 90px;`}
   ${media.tablet`padding-left:61px;top:85px;border-top-right-radius: 70px;`}
   ${media.phone`padding-left:16px;top:105px;border-top-right-radius: 50px;`}
-  position:relative;
   background-color: ${secondary};
-  z-index:-1;
 `
 const HeaderRight = styled.div`
   color:${white};
   width:50%;
-  height:200px;
   ${media.desktop`padding-right:61px;top:73px;border-top-left-radius: 90px;`}
   ${media.tablet`padding-right:61px;top:85px;border-top-left-radius: 70px;`}
   ${media.phone`padding-right:16px;top:105px;border-top-left-radius: 50px;`}
   text-align: right;
-  vertical-align: bottom;
-  z-index:-1;
-
-  position:relative;
-  top:80px;
   background-color: ${secondary};
 `
 
@@ -227,7 +219,7 @@ const Content = styled.div`
   ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
   ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
   ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white}; margin-top:-6px;` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white};` : ''};
   ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
   ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
   ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};

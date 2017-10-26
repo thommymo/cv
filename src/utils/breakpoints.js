@@ -13,9 +13,7 @@ const sizes = {
 export const media = Object.keys(sizes).reduce((acc, label) => {
 
 	acc[label] = (...args) => css`
-		/*@media screen and (max-width: ${sizes[label][1] / 16}em) {*/
     @media screen
-      /*and (max-width: ${sizes[label][1] / 16}em) */
       ${sizes[label][0] ? `and (min-width:${sizes[label][0] / 16}em)` : ""}
       ${sizes[label][1] ? `and (max-width:${sizes[label][1] / 16}em)` : ""}
     {
