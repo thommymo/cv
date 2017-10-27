@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Timeline, TimelineHeader } from '../../components/timeline'
+import { secondary, secondaryLight } from '../../utils/colors'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -31,10 +32,8 @@ const getEntriesQuery = gql`
 class TimelineContent extends Component {
 
   render() {
-    console.log(this.props.data.allCVEntrieses)
 
-    console.log(this.props.data.loading)
-
+    let color = secondary
 
     return(
       <SectionNoOverflow>
@@ -45,6 +44,7 @@ class TimelineContent extends Component {
         }
         { this.props.data.allCVEntrieses &&
           this.props.data.allCVEntrieses.map((entry) => (
+
             <Timeline
               key = {entry.id}
               showmore = {entry.showmore}
@@ -61,6 +61,7 @@ class TimelineContent extends Component {
               responsability = {entry.responsability}
               learned = {entry.learned}
               title = {entry.title}
+              color = {color = color === secondary ? secondaryLight : secondary}
             />
           ))
         }

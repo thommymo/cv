@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, secondary } from '../utils/colors'
+import { white, secondary, secondaryLight} from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { StyledP, StyledH2, StyledH3, StyledH4 } from '../components/styled-atoms'
 import LifeLapMoreButton from '../components/life-lap'
@@ -70,8 +70,9 @@ export const Timeline = ({
   responsability="",
   learned="",
   title="",
+  color=secondary
 }) => (
-  <Lap right={right}>
+  <Lap right={right} color={color}>
     <TimeSpan
       show={left}
       right={right}
@@ -199,7 +200,7 @@ const AdditionalInfo = styled.div`
 `
 const Lap = styled.div`
   display: flex;
-  background-color:${secondary};
+  background-color:${props => props.color};
   width: 100%;
 `
 const Content = styled.div`
