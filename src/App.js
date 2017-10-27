@@ -5,6 +5,15 @@ import styled from 'styled-components'
 import { white, primary } from './utils/colors'
 import { StyledH1, StyledP } from './components/styled-atoms'
 import { TimelineContentWithData } from './components/content/timeline-content'
+import { Chapter } from './components/chapter'
+import { CurriculumVitae } from './components/curriculum-vitae'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Route, Link } from 'react-router-dom'
+import PageShell from './components/page-shell'
+import { FourOoFour } from './components/404'
+
+
+
 
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
@@ -18,61 +27,57 @@ injectGlobal`
     font-family: 'Assistant', sans-serif;
     font-size: 100%;
   }
+
+  .SlideIn-appear {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  .SlideIn-appear.SlideIn-appear-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s ease-out;
+  }
+  .SlideIn-exit{
+      opacity: 0.5;
+      transform: translateY(30px);
+  }
+  .SlideIn-exit.SlideIn-exit-active {
+      opacity: 0.2;
+      transform: translateY(-30px);
+
+  }
+  .SlideIn-leave{
+      opacity: 0.5;
+      transform: translateY(30px);
+  }
+  .SlideIn-leave.SlideIn-leave-active {
+      opacity: 0.2;
+      transform: translateY(-30px);
+
+  }
 `
 
-//TODO: Add React Router and add a 404 page
 //TODO: Maybe add Redux, although this could be a bit over engineered
 //TODO: Add a print version
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Helmet>
-          <title>Bewerbung Thomas Moser</title>
-        </Helmet>
-        <Header>
-          {
-            //TODO: Title and maybe a Navigation (Mainly Text, maybe with some interaction)
-          }
-          <StyledH1>CV Thomas Moser</StyledH1>
-        </Header>
-        <Section>
-          <FullWithImage assetType=".jpg" assetName="thomas_moser_3" altText="This is Thomas"/>
-        </Section>
+        <div>
+          <ul>
+            <li><Link to="/"> - Home - </Link></li>
+            <li><Link to="/chapter"> - Chapter - </Link></li>
+            <li><Link to="/404"> - 404 - </Link></li>
+          </ul>
 
-        <Section>
-          {
-            //TODO: Why am I suited for this Job (Mainly Text, maybe with some interaction)
-          }
-        </Section>
-        <TimelineContentWithData />
-        <Footer>
-          <StyledP>Thomas Moser, Bireggstrasse 33, 6003 Luzern</StyledP>
-          {
-            //TODO: Add Footer with adress and contact details
-          }
-        </Footer>
-      </div>
+          <TransitionGroup>
+            <Route exact path="/" component={PageShell(CurriculumVitae)}/>
+            <Route exact path="/chapter" component={PageShell(Chapter)} />
+            <Route exact path="/404" component={PageShell(FourOoFour)} />
+          </TransitionGroup>
+        </div>
     );
   }
 }
-const Footer = styled.footer`
-  color: ${white};
-  background-color: ${primary};
-  width:100%;
-  display: flex;
-`
-const Header = styled.header`
-  color: ${white};
-  background-color: ${primary};
-  width:100%;
-  display: flex;
-`
-const Section = styled.section`
-  min-height:100px;
-  background-color: #eeeeee;
-`
-
 
 export default App;

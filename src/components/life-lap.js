@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { white, secondary } from '../utils/colors'
+import {
+  Link
+} from 'react-router-dom'
 
 /*class LifeLapDetail extends Component {
   render(){
@@ -17,8 +20,10 @@ class LifeLapMoreButton extends Component {
 
   render(){
     return(
-      <Button onClick={this.showMore}>
-        {this.props.children}
+      <Button>
+        <Link onClick={this.showMore} to="/chapter/">
+          {this.props.children}
+        </Link>
       </Button>
     )
   }
