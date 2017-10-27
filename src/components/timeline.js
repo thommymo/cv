@@ -9,6 +9,8 @@ import LifeLapMoreButton from '../components/life-lap'
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
 
+//Timelineheader shows the title for the whole Timeline
+
 export const TimelineHeader = ({
   titleleft = "",
   titleright = "",
@@ -36,24 +38,25 @@ const SectionFlex = styled.section`
   display:flex;
   align-items:flex-end;
 `
-const HeaderLeft = styled.div`
+const Header = styled.div`
   color:${white};
   width:50%;
+  background-color: ${secondary};
+`
+const HeaderLeft = Header.extend`
   text-align: left;
   ${media.desktop`padding-left:61px;top:73px;border-top-right-radius: 90px;`}
   ${media.tablet`padding-left:61px;top:85px;border-top-right-radius: 70px;`}
   ${media.phone`padding-left:16px;top:105px;border-top-right-radius: 50px;`}
-  background-color: ${secondary};
 `
-const HeaderRight = styled.div`
-  color:${white};
-  width:50%;
+const HeaderRight = Header.extend`
   ${media.desktop`padding-right:61px;top:73px;border-top-left-radius: 90px;`}
   ${media.tablet`padding-right:61px;top:85px;border-top-left-radius: 70px;`}
   ${media.phone`padding-right:16px;top:105px;border-top-left-radius: 50px;`}
   text-align: right;
-  background-color: ${secondary};
 `
+
+//Timeline is a component which shows an entry in my CV and places the line on the left or right side of it.
 
 export const Timeline = ({
   showmore = false,
@@ -140,6 +143,55 @@ export const Timeline = ({
   </Lap>
 )
 
+// Styling for Timespan component elements
+
+const Icon = styled.img`
+  padding-right: 10px;
+`
+
+const AdditionalInfoItem = styled.div`
+  opacity: 0.5;
+  display: flex;
+  ${props => props.right ? 'justify-content: flex-end;': ''};
+`
+const SecondaryAdditionalInfoItem = AdditionalInfoItem.extend`
+  ${media.phone`display:none;`};
+`
+const AdditionalInfoP = StyledP.extend`
+  margin: 5px 0px;
+`
+
+const AdditionalInfo = styled.div`
+  margin-top:-15px;
+`
+const Lap = styled.div`
+  display: flex;
+  background-color:${props => props.color};
+  width: 100%;
+`
+const Content = styled.div`
+  padding: 0 20px 0 20px;
+  padding-top:40px;
+  padding-bottom:68px;
+  color: ${white};
+  ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
+  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white};` : ''};
+  ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
+  ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
+  ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};
+  ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
+  flex:1;
+`
+const StyledTitle = StyledH3.extend`
+  ${media.desktop`margin-top: 28px;`}
+  ${media.tablet`margin-top: 31px;`}
+  ${media.phone`margin-top: 34px;`}
+`
+
+// Timespan Component for displaying the timespan left or right of the content of a Timeline element
+
 const TimeSpan = ({
   rightposition = false,
   show = false,
@@ -175,54 +227,7 @@ const TimeSpan = ({
   </Year>
 );
 
-export default Timeline
-
-// Styling
-
-const Icon = styled.img`
-  padding-right: 10px;
-`
-
-const AdditionalInfoItem = styled.div`
-  opacity: 0.5;
-  display: flex;
-  ${props => props.right ? 'justify-content: flex-end;': ''};
-`
-const SecondaryAdditionalInfoItem = AdditionalInfoItem.extend`
-  ${media.phone`display:none;`};
-`
-const AdditionalInfoP = StyledP.extend`
-  margin: 5px 0px;
-`
-
-const AdditionalInfo = styled.div`
-  margin-top:-15px;
-`
-const Lap = styled.div`
-  display: flex;
-  background-color:${props => props.color};
-  width: 100%;
-`
-const Content = styled.div`
-  padding: 0 20px 0 20px;
-  padding-top:40px;
-  padding-bottom:40px;
-  color: ${white};
-  ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
-  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white};` : ''};
-  ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
-  ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
-  ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};
-  ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
-  flex:1;
-`
-const StyledTitle = StyledH3.extend`
-  ${media.desktop`margin-top: 28px;`}
-  ${media.tablet`margin-top: 31px;`}
-  ${media.phone`margin-top: 34px;`}
-`
+// Styling for Timespan
 
 const Bulletright = styled.img`
   ${media.desktop`right:61px;`};
