@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FullWithImage from './components/full-with-image'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { white, primary } from './utils/colors'
+import { white, primary, secondary } from './utils/colors'
 import { StyledH1, StyledP } from './components/styled-atoms'
 import { TimelineContentWithData } from './components/content/timeline-content'
 import Chapter from './components/chapter'
@@ -12,6 +12,9 @@ import { Route, Link, Redirect, Switch, withRouter} from 'react-router-dom'
 import FourOoFour from './components/404'
 
 //TODO: injectGlobal might has to be moved somewhere else
+
+//TODO: Aufräumen und eine saubere HTML Struktur machen.
+
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
@@ -22,40 +25,41 @@ injectGlobal`
     padding: 0;
     font-family: 'Assistant', sans-serif;
     font-size: 100%;
+    background-color: ${secondary};
   }
 
   .SlideIn-appear {
-    position: absolute;
+    position:absolute;
     opacity: 0;
-    top:21px;
+    top:20px;
   }
   .SlideIn-appear.SlideIn-appear-active {
-    position: absolute;
+    position:absolute;
     opacity: 1;
-    transition: all 1s ease-out 200ms;
-    top:21px;
+    transition: all 300ms ease-out 300ms;
+    top:0px;
   }
   .SlideIn-enter {
-    position: absolute;
+    position:absolute;
     opacity: 0;
-    top:54px;
+    top:20px;
   }
   .SlideIn-enter.SlideIn-enter-active {
-    position: absolute;
+    position:absolute;
     opacity: 1;
-    transition: all 1s ease-out 200ms;
-    top:21px;
+    transition: all 300ms ease-out 300ms;
+    top:0;
   }
   .SlideIn-exit {
-    position: absolute;
+    position:absolute;
     opacity: 1;
-    top:21px;
+    top:0px;
   }
   .SlideIn-exit.SlideIn-exit-active {
-    position: absolute;
+    position:absolute;
     opacity: 0;
-    transition: all 200ms ease-out;
-    top:54px;
+    transition: all 300ms ease-out;
+    top:20px;
   }
 `
 
@@ -65,15 +69,16 @@ injectGlobal`
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="TopBar">
-          <Link to="/">Home</Link>
-          <Link to="/404">Subpage</Link>
-          <Link to="/chapter">Chapter</Link>
-        </div>
         <TransitionGroup
           appear={true}
         >
+          {
+            /*
+            Transitions in context of routing are based on Paul Shermans
+            "A shallow dive into React Router v4 Animated Transitions"
+            https://medium.com/@pshrmn/a-shallow-dive-into-react-router-v4-animated-transitions-4b73f634992a
+            */
+          }
           <CSSTransition
             timeout={200,2000}
             classNames="SlideIn"
@@ -86,7 +91,6 @@ class App extends Component {
             </Switch>
           </CSSTransition>
         </TransitionGroup>
-      </div>
     );
   }
 }

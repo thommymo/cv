@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, secondary, secondaryLight} from '../utils/colors'
+import { white, secondary, secondaryLight, grey} from '../utils/colors'
 import { media } from '../utils/breakpoints'
-import { StyledP, StyledH2, StyledH3, StyledH4 } from '../components/styled-atoms'
+import { StyledP, StyledH2, StyledH3, StyledH4,  } from '../components/styled-atoms'
 import LifeLapMoreButton from '../components/life-lap'
 
 //TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
@@ -75,7 +75,7 @@ export const Timeline = ({
   title="",
   color=secondary
 }) => (
-  <Lap right={right} color={color}>
+  <Lap right={right}>
     <TimeSpan
       show={left}
       right={right}
@@ -86,6 +86,7 @@ export const Timeline = ({
       endDate={endDate}
     />
     <Content
+      color={color}
       left={left}
       right={right}
       addTopBorder={addTopBorder}
@@ -168,6 +169,22 @@ const Lap = styled.div`
   display: flex;
   background-color:${props => props.color};
   width: 100%;
+`
+const BorderContent = styled.div`
+  padding: 0 20px 0 20px;
+  padding-top:40px;
+  padding-bottom:68px;
+  color: ${white};
+  background-color:${grey};
+  ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
+  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white};` : ''};
+  ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
+  ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
+  ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};
+  ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
+  flex:1;
 `
 const Content = styled.div`
   padding: 0 20px 0 20px;
@@ -256,8 +273,8 @@ const StyledTimeSpan = StyledH4.extend`
 `
 const Year = styled.div`
   position: relative;
-  ${props => props.borderleft ? 'box-shadow: 6px 0 0 0 #FFF; ' : ''};
-  ${props => props.borderright ? 'box-shadow: -6px 0 0 0 #FFF; ' : ''};
+  ${props => props.borderleft ? `box-shadow: 6px 0 0 0 ${white} ` : ''};
+  ${props => props.borderright ? `box-shadow: -6px 0 0 0 ${white} ` : ''};
   ${media.desktop`width:50px;`};
   ${media.desktop`min-width:50px;`};
   ${media.tablet`width:50px;`};
