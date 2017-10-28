@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
-import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
-import { CSSTransition } from 'react-transition-group'
+import React, { Component } from "react"
 
-export const FourOoFour = () => (
-    <div>404</div>
-)
+export default class FourOoFour extends Component {
+ render() {
+  return (
+   <div className="page">
+     <h1>404</h1>
+     <p>Hello from the 404 page!</p>
+   </div>
+  )
+ }
+}

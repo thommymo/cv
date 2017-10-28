@@ -1,18 +1,12 @@
-import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React, { Component } from 'react';
+import AnimatedWrapper from '../components/animated-wrapper'
 
-const PageShell = Page => {
-  return props =>
-  <ReactCSSTransitionGroup
-    transitionAppear={true}
-    transitionAppearTimeout={1000}
-    transitionEnterTimeout={100}
-    transitionLeave={true}
-    transitionLeaveTimeout={1000}
-    transitionName="SlideIn"
+export const PageShell = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={1000}
+    classNames="SlideIn"
   >
-    <Page {...props} />
-  </ReactCSSTransitionGroup>;
-};
-
-export default PageShell;
+    {children}
+  </CSSTransition>
+);
