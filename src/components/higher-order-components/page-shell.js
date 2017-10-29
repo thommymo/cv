@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { white, primary, secondaryDark } from '../utils/colors'
-import { timeout } from '../utils/constants'
-import { H1, P} from '../components/styled-atoms'
-import { media } from '../utils/breakpoints'
+import { white, primary, secondaryDark } from '../../utils/colors'
+import { timeout } from '../../utils/constants'
+import { H1, P} from '../../components/styled-atoms'
+import { media } from '../../utils/breakpoints'
 
 function PageShell(WrappedComponent) {
   return class extends Component {
@@ -21,9 +21,7 @@ function PageShell(WrappedComponent) {
             <title>{this.props.title}</title>
           </Helmet>
           <Content>
-            <PageTitle>
-              <H1>Title</H1>
-            </PageTitle>
+            <H1>Title</H1>
             <WrappedComponent />
           </Content>
           <Footer>
@@ -49,10 +47,6 @@ const MainContent = styled.div`
   min-height:100%;
 `
 
-const PageTitle = styled.div`
-
-`
-
 const Content = styled.div`
   max-width:1024px;
   border:1px dashed;
@@ -66,7 +60,6 @@ const Content = styled.div`
 const Footer = styled.footer`
   position:absolute;
   bottom: 0px;
-
   color: ${white};
   background-color: ${secondaryDark};
   width:100%;

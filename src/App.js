@@ -3,7 +3,7 @@ import Chapter from './components/chapter'
 import { CurriculumVitae } from './components/curriculum-vitae'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout } from './utils/constants'
-import PageShell from './components/page-shell'
+import PageShell from './components/higher-order-components/page-shell'
 
 import { Route, Switch, withRouter} from 'react-router-dom'
 import FourOoFour from './components/404'
