@@ -10,8 +10,6 @@ import FourOoFour from './components/404'
 
 //TODO: injectGlobal might has to be moved somewhere else
 
-//TODO: Aufräumen und eine saubere HTML Struktur machen.
-
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`

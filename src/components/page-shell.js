@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { white, primary, secondaryDark } from '../utils/colors'
 import { timeout } from '../utils/constants'
-import { StyledH1, StyledP} from '../components/styled-atoms'
+import { H1, P} from '../components/styled-atoms'
 import { media } from '../utils/breakpoints'
 
 function PageShell(WrappedComponent) {
@@ -22,12 +22,12 @@ function PageShell(WrappedComponent) {
           </Helmet>
           <Content>
             <PageTitle>
-              <StyledH1>Title</StyledH1>
+              <H1>Title</H1>
             </PageTitle>
             <WrappedComponent />
           </Content>
           <Footer>
-            <StyledP>Thomas Moser, Bireggstrasse 33, 6003 Luzern</StyledP>
+            <P>Thomas Moser, Bireggstrasse 33, 6003 Luzern</P>
             <div className="TopBar">
               <Link to="/">Home</Link>
               <Link to="/404">Subpage</Link>

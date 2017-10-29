@@ -1,9 +1,10 @@
 import { media } from '../utils/breakpoints'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 //Typography
 
-export const StyledH1 = styled.h1`
+export const H1 = styled.h1`
   ${media.desktop`font-size: 3em;`}
   ${media.tablet`font-size: 2.5em;`}
   ${media.phone`font-size: 2em;`}
@@ -11,7 +12,7 @@ export const StyledH1 = styled.h1`
   ${media.tablet`line-height: 1.25em;`}
   ${media.phone`line-height: 1.25em;`}
 `
-export const StyledH2 = styled.h2`
+export const H2 = styled.h2`
   ${media.desktop`font-size: 2.25em;`}
   ${media.tablet`font-size: 2em;`}
   ${media.phone`font-size: 1.625em;`}
@@ -19,7 +20,7 @@ export const StyledH2 = styled.h2`
   ${media.tablet`line-height: 1.25em`}
   ${media.phone`line-height: 1.15384615em;`}
 `
-export const StyledH3 = styled.h3`
+export const H3 = styled.h3`
   ${media.desktop`font-size: 1.75em;`}
   ${media.tablet`font-size: 1.5em;`}
   ${media.phone`font-size: 1.375em`}
@@ -27,7 +28,7 @@ export const StyledH3 = styled.h3`
   ${media.tablet`line-height: 1.25em`}
   ${media.phone`line-height: 1.13636364em`}
 `
-export const StyledH4 = styled.h4`
+export const H4 = styled.h4`
   ${media.desktop`font-size: 1.125em`}
   ${media.tablet`font-size: 1.125em`}
   ${media.phone`font-size: 1.125em`}
@@ -35,7 +36,7 @@ export const StyledH4 = styled.h4`
   ${media.tablet`line-height: 1.22222222em`}
   ${media.phone`line-height: 1.11111111em`}
 `
-export const StyledP = styled.p`
+export const P = styled.p`
   ${media.desktop`font-size: 1em;`}
   ${media.tablet`font-size: 1em;`}
   ${media.phone`font-size: 1em;`}
@@ -43,3 +44,10 @@ export const StyledP = styled.p`
   ${media.tablet`line-height: 1.22222222em`}
   ${media.phone`line-height: 1.11111111em`}
 `
+export const Ghostbutton = styled(Link)`
+  border:1px solid;
+  padding: 5px 10px 5px 10px;
+  width: auto;
+  float:none;
+  text-decoration: none;
+`;

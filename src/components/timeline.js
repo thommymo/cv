@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { white, secondary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
-import { StyledP, StyledH2, StyledH3, StyledH4,  } from '../components/styled-atoms'
+import { P, H2, H3, H4,  } from '../components/styled-atoms'
 import LifeLapMoreButton from '../components/life-lap'
 
 //TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
@@ -17,14 +17,14 @@ export const TimelineHeader = ({
 }) => (
   <SectionFlex>
     <HeaderLeft>
-      <StyledH2>{titleleft}</StyledH2>
+      <H2>{titleleft}</H2>
       <img
         alt="Starting Point"
         src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
       />
     </HeaderLeft>
     <HeaderRight>
-      <StyledH2>{titleright}</StyledH2>
+      <H2>{titleright}</H2>
       <img
         alt="Starting Point"
         src="data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%0D%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0D%0A%3C%2Fsvg%3E"
@@ -154,7 +154,7 @@ const AdditionalInfoItem = styled.div`
 const SecondaryAdditionalInfoItem = AdditionalInfoItem.extend`
   ${media.phone`display:none;`};
 `
-const AdditionalInfoP = StyledP.extend`
+const AdditionalInfoP = P.extend`
   margin: 5px 0px;
 `
 
@@ -182,7 +182,7 @@ const Content = styled.div`
   ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
   flex:1;
 `
-const StyledTitle = StyledH3.extend`
+const StyledTitle = H3.extend`
   ${media.desktop`margin-top: 28px;`}
   ${media.tablet`margin-top: 31px;`}
   ${media.phone`margin-top: 34px;`}
@@ -241,7 +241,7 @@ const Bulletleft = styled.img`
   position: absolute;
   top:75px;
 `
-const StyledTimeSpan = StyledH4.extend`
+const StyledTimeSpan = H4.extend`
   height:121px;
   display:flex;
   justify-content: center;
