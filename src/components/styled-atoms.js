@@ -44,6 +44,9 @@ export const P = styled.p`
   ${media.tablet`line-height: 1.22222222em`}
   ${media.phone`line-height: 1.11111111em`}
 `
+
+// Links and Buttons
+
 export const Ghostbutton = styled(Link)`
   border:1px solid;
   padding: 5px 10px 5px 10px;

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import FullWithImage from '../src/components/full-with-image'
-import { StyledH1, StyledH2, StyledH3, StyledH4, StyledP, TimeSpan} from '../src/components/styled-atoms'
+import { H1, H2, H3, H4, P, TimeSpan, Ghostbutton} from '../src/components/styled-atoms'
 import { TimelineHeader, Timeline } from '../src/components/timeline'
 //TODO: injectGlobal might has to be moved somewhere else
 import { injectGlobal } from 'styled-components';
@@ -74,25 +74,25 @@ storiesOf('FullWithImage', module)
 //Typography
 storiesOf('Typography', module)
   .add('h1',() =>(
-    <StyledH1>Sometext</StyledH1>
+    <H1>Sometext</H1>
   ))
   .add('h2',() =>(
-    <StyledH2>Sometext</StyledH2>
+    <H2>Sometext</H2>
   ))
   .add('h3',() =>(
-    <StyledH3>Sometext</StyledH3>
+    <H3>Sometext</H3>
   ))
   .add('h4',() =>(
-    <StyledH4>Sometext</StyledH4>
+    <H4>Sometext</H4>
   ))
   .add('paragraph',() =>(
-    <StyledP>Sometext</StyledP>
+    <P>Sometext</P>
   ))
   .add('Added Together',() =>(
     <div>
-      <StyledH1>Lorem ipsum dolor sit amet consectetuer adipiscing
-      elit</StyledH1>
-      <StyledP>Lorem ipsum dolor sit amet, consectetuer adipiscing
+      <H1>Lorem ipsum dolor sit amet consectetuer adipiscing
+      elit</H1>
+      <P>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa
         <strong>strong</strong>. Cum sociis natoque penatibus
         et magnis dis parturient montes, nascetur ridiculus
@@ -108,35 +108,35 @@ storiesOf('Typography', module)
         dapibus in, viverra quis, feugiat a, tellus. Phasellus
         viverra nulla ut metus varius laoreet. Quisque rutrum.
         Aenean imperdiet. Etiam ultricies nisi vel augue.
-      Curabitur ullamcorper ultricies nisi.</StyledP>
-      <StyledH1>Lorem ipsum dolor sit amet consectetuer adipiscing
-      elit</StyledH1>
-      <StyledH2>Aenean commodo ligula eget dolor aenean massa</StyledH2>
-      <StyledP>Lorem ipsum dolor sit amet, consectetuer adipiscing
+      Curabitur ullamcorper ultricies nisi.</P>
+      <H1>Lorem ipsum dolor sit amet consectetuer adipiscing
+      elit</H1>
+      <H2>Aenean commodo ligula eget dolor aenean massa</H2>
+      <P>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
-      ultricies nec, pellentesque eu, pretium quis, sem.</StyledP>
-      <StyledH2>Aenean commodo ligula eget dolor aenean massa</StyledH2>
-      <StyledP>Lorem ipsum dolor sit amet, consectetuer adipiscing
+      ultricies nec, pellentesque eu, pretium quis, sem.</P>
+      <H2>Aenean commodo ligula eget dolor aenean massa</H2>
+      <P>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
-      ultricies nec, pellentesque eu, pretium quis, sem.</StyledP>
+      ultricies nec, pellentesque eu, pretium quis, sem.</P>
       <ul>
         <li>Lorem ipsum dolor sit amet consectetuer.</li>
         <li>Aenean commodo ligula eget dolor.</li>
         <li>Aenean massa cum sociis natoque penatibus.</li>
       </ul>
-      <StyledH3>Cum sociis natoque penatibus et magnis dis
-      parturient montes nascetur ridiculus mus</StyledH3>
-      <StyledP>Lorem ipsum dolor sit amet, consectetuer adipiscing
+      <H3>Cum sociis natoque penatibus et magnis dis
+      parturient montes nascetur ridiculus mus</H3>
+      <P>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
-      ultricies nec, pellentesque eu, pretium quis, sem.</StyledP>
-      <StyledH4>Donec quam felis ultricies nec pellentesque eu
-      pretium quis sem nlla consequat massa quis enim</StyledH4>
+      ultricies nec, pellentesque eu, pretium quis, sem.</P>
+      <H4>Donec quam felis ultricies nec pellentesque eu
+      pretium quis sem nlla consequat massa quis enim</H4>
       <blockquote>
         Lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor.
@@ -150,18 +150,25 @@ storiesOf('Typography', module)
         justo. Nullam <a class="external ext" href="#">link</a>
         dictum felis eu pede mollis pretium.
       </blockquote>
-      <StyledP>Lorem ipsum dolor sit amet, consectetuer adipiscing
+      <P>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
-      ultricies nec, pellentesque eu, pretium quis, sem.</StyledP>
-      <StyledH4>Donec quam felis ultricies nec pellentesque eu
-      pretium quis sem nlla consequat massa quis enim</StyledH4>
-      <StyledP>Lorem ipsum dolor sit amet, consectetuer adipiscing
+      ultricies nec, pellentesque eu, pretium quis, sem.</P>
+      <H4>Donec quam felis ultricies nec pellentesque eu
+      pretium quis sem nlla consequat massa quis enim</H4>
+      <P>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
-      ultricies nec, pellentesque eu, pretium quis, sem.</StyledP>
+      ultricies nec, pellentesque eu, pretium quis, sem.</P>
 
     </div>
+  ))
+
+// Links and Buttons
+
+storiesOf('Links and Buttons', module)
+  .add('ghostbutton', () => (
+    <Ghostbutton>Test</Ghostbutton>
   ))
