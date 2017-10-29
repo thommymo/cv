@@ -126,10 +126,10 @@ export const Timeline = ({
             <AdditionalInfoP>{learned}</AdditionalInfoP>
           </SecondaryAdditionalInfoItem>
         }
-        { showmore &&
-          <LifeLapMoreButton>More &#8594;</LifeLapMoreButton>
-        }
       </AdditionalInfo>
+      { showmore &&
+        <LifeLapMoreButton>More &#8594;</LifeLapMoreButton>
+      }
     </Content>
     <TimeSpan
       rightposition={true}
@@ -164,32 +164,15 @@ const AdditionalInfoP = StyledP.extend`
 
 const AdditionalInfo = styled.div`
   margin-top:-15px;
+  margin-bottom:20px;
 `
 const Lap = styled.div`
   display: flex;
   background-color:${props => props.color};
   width: 100%;
 `
-const BorderContent = styled.div`
-  padding: 0 20px 0 20px;
-  padding-top:40px;
-  padding-bottom:68px;
-  color: ${white};
-  background-color:${grey};
-  ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
-  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white};` : ''};
-  ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
-  ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
-  ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};
-  ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
-  flex:1;
-`
 const Content = styled.div`
-  padding: 0 20px 0 20px;
-  padding-top:40px;
-  padding-bottom:68px;
+  padding: 40px 20px 68px 20px;
   color: ${white};
   ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
   ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};

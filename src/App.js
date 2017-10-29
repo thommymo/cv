@@ -8,6 +8,8 @@ import { TimelineContentWithData } from './components/content/timeline-content'
 import Chapter from './components/chapter'
 import { CurriculumVitae } from './components/curriculum-vitae'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { timeout } from './utils/constants'
+
 import { Route, Link, Redirect, Switch, withRouter} from 'react-router-dom'
 import FourOoFour from './components/404'
 
@@ -31,24 +33,24 @@ injectGlobal`
   .SlideIn-appear {
     position:absolute;
     opacity: 0;
-    top:20px;
+    top:0px;
   }
   .SlideIn-appear.SlideIn-appear-active {
     position:absolute;
     opacity: 1;
-    transition: all 300ms ease-out 300ms;
+    transition: opacity ${timeout}ms ease-out ${timeout}ms;
     top:0px;
   }
   .SlideIn-enter {
     position:absolute;
     opacity: 0;
-    top:20px;
+    top:0px;
   }
   .SlideIn-enter.SlideIn-enter-active {
     position:absolute;
     opacity: 1;
-    transition: all 300ms ease-out 300ms;
-    top:0;
+    transition: opacity ${timeout}ms ease-out ${timeout}ms;
+    top:0px;
   }
   .SlideIn-exit {
     position:absolute;
@@ -58,8 +60,8 @@ injectGlobal`
   .SlideIn-exit.SlideIn-exit-active {
     position:absolute;
     opacity: 0;
-    transition: all 300ms ease-out;
-    top:20px;
+    transition: opacity ${timeout}ms ease-out;
+    top:0px;
   }
 `
 
@@ -80,7 +82,7 @@ class App extends Component {
             */
           }
           <CSSTransition
-            timeout={200,2000}
+            timeout={`{enter: ${timeout}, exit: ${timeout*2}}`}
             classNames="SlideIn"
             key={this.props.location.key}
           >

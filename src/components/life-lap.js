@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { white, secondary } from '../utils/colors'
+import { black, white, secondary } from '../utils/colors'
 import {
   Link
 } from 'react-router-dom'
@@ -20,16 +20,33 @@ class LifeLapMoreButton extends Component {
 
   render(){
     return(
-      <Button>
-        <Link onClick={this.showMore} to="/chapter/">
+        <GhostbuttonWhite onClick={this.showMore} to="/chapter/">
           {this.props.children}
-        </Link>
-      </Button>
+        </GhostbuttonWhite>
     )
   }
 }
 
-const Button = styled.button`
+const Ghostbutton = styled(Link)`
+  border:1px solid;
+  padding: 5px 10px 5px 10px;
+  width: auto;
+  float:none;
+  text-decoration: none;
+  color:${black};
+  border-color:${black};
+`;
+
+const GhostbuttonWhite = Ghostbutton.extend`
+  color:${white};
+  border-color:${white};
+`
+
+
+
+
+
+/*const Button = styled.Link`
   color: ${white};
   background-color: ${secondary};
   font-size: 1em;
@@ -37,6 +54,6 @@ const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid ${white};
   border-radius: 3px;
-`
+`*/
 
 export default LifeLapMoreButton;
