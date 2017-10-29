@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, secondary, secondaryLight, grey} from '../utils/colors'
+import { white, secondary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { StyledP, StyledH2, StyledH3, StyledH4,  } from '../components/styled-atoms'
 import LifeLapMoreButton from '../components/life-lap'
@@ -41,18 +41,14 @@ const SectionFlex = styled.section`
 const Header = styled.div`
   color:${white};
   width:50%;
-  background-color: ${secondary};
 `
 const HeaderLeft = Header.extend`
   text-align: left;
-  ${media.desktop`padding-left:61px;top:73px;border-top-right-radius: 90px;`}
-  ${media.tablet`padding-left:61px;top:85px;border-top-right-radius: 70px;`}
-  ${media.phone`padding-left:16px;top:105px;border-top-right-radius: 50px;`}
 `
 const HeaderRight = Header.extend`
-  ${media.desktop`padding-right:61px;top:73px;border-top-left-radius: 90px;`}
-  ${media.tablet`padding-right:61px;top:85px;border-top-left-radius: 70px;`}
-  ${media.phone`padding-right:16px;top:105px;border-top-left-radius: 50px;`}
+  ${media.desktop`padding-right:61px;top:73px;`}
+  ${media.tablet`padding-right:61px;top:85px;`}
+  ${media.phone`padding-right:16px;top:105px;`}
   text-align: right;
 `
 
@@ -168,8 +164,10 @@ const AdditionalInfo = styled.div`
 `
 const Lap = styled.div`
   display: flex;
-  background-color:${props => props.color};
-  width: 100%;
+  width: (100% + 61)px;
+  ${media.desktop`margin-left:-61px;margin-right:0px;`}
+  ${media.tablet`margin-left:-61px;margin-right:0px;`}
+  ${media.phone`margin-left:-16px;margin-right:0px;`}
 `
 const Content = styled.div`
   padding: 40px 20px 68px 20px;
@@ -256,8 +254,8 @@ const StyledTimeSpan = StyledH4.extend`
 `
 const Year = styled.div`
   position: relative;
-  ${props => props.borderleft ? `box-shadow: 6px 0 0 0 ${white} ` : ''};
-  ${props => props.borderright ? `box-shadow: -6px 0 0 0 ${white} ` : ''};
+  ${props => props.borderleft && !props.rightposition ? `box-shadow: 6px 0 0 0 ${white} ` : ''};
+  ${props => props.borderright && props.rightposition  ? `box-shadow: -6px 0 0 0 ${white} ` : ''};
   ${media.desktop`width:50px;`};
   ${media.desktop`min-width:50px;`};
   ${media.tablet`width:50px;`};

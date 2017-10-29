@@ -1,16 +1,11 @@
 import React, { Component } from 'react'
-import FullWithImage from './components/full-with-image'
-import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
-import { white, primary, secondary } from './utils/colors'
-import { StyledH1, StyledP } from './components/styled-atoms'
-import { TimelineContentWithData } from './components/content/timeline-content'
 import Chapter from './components/chapter'
 import { CurriculumVitae } from './components/curriculum-vitae'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout } from './utils/constants'
+import PageShell from './components/page-shell'
 
-import { Route, Link, Redirect, Switch, withRouter} from 'react-router-dom'
+import { Route, Switch, withRouter} from 'react-router-dom'
 import FourOoFour from './components/404'
 
 //TODO: injectGlobal might has to be moved somewhere else
@@ -22,14 +17,17 @@ import { injectGlobal } from 'styled-components';
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Assistant');
 
-  body {
+  body:before {
+    height: 100vh;
+    display:block;
+  }
+  html, body {
     margin: 0;
     padding: 0;
     font-family: 'Assistant', sans-serif;
     font-size: 100%;
-    background-color: ${secondary};
+    height: 100%;
   }
-
   .SlideIn-appear {
     position:absolute;
     opacity: 0;
@@ -38,7 +36,7 @@ injectGlobal`
   .SlideIn-appear.SlideIn-appear-active {
     position:absolute;
     opacity: 1;
-    transition: opacity ${timeout}ms ease-out ${timeout}ms;
+    transition: opacity ${(timeout)}ms ease-out ${(timeout)}ms;
     top:0px;
   }
   .SlideIn-enter {
@@ -49,7 +47,7 @@ injectGlobal`
   .SlideIn-enter.SlideIn-enter-active {
     position:absolute;
     opacity: 1;
-    transition: opacity ${timeout}ms ease-out ${timeout}ms;
+    transition: opacity ${(timeout)}ms ease-out ${(timeout)}ms;
     top:0px;
   }
   .SlideIn-exit {
@@ -60,7 +58,7 @@ injectGlobal`
   .SlideIn-exit.SlideIn-exit-active {
     position:absolute;
     opacity: 0;
-    transition: opacity ${timeout}ms ease-out;
+    transition: opacity ${(timeout)}ms ease-out;
     top:0px;
   }
 `
@@ -70,6 +68,8 @@ injectGlobal`
 
 class App extends Component {
   render() {
+    const timeoutTransition = { enter:(timeout*3), exit:300 }
+
     return (
         <TransitionGroup
           appear={true}
@@ -82,14 +82,14 @@ class App extends Component {
             */
           }
           <CSSTransition
-            timeout={`{enter: ${timeout}, exit: ${timeout*2}}`}
+            timeout={timeoutTransition}
             classNames="SlideIn"
             key={this.props.location.key}
           >
             <Switch location={this.props.location}>
-              <Route exact path='/' component={CurriculumVitae} />
-              <Route path='/404' component={FourOoFour} />
-              <Route path='/chapter' component={Chapter} />
+              <Route exact path='/' component={PageShell(CurriculumVitae)} />
+              <Route path='/404' component={PageShell(FourOoFour)} />
+              <Route path='/chapter' component={PageShell(Chapter)} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
