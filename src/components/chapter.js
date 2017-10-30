@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 
 /*
   TODO:
-  1. get ID from URL - partially done
+  1. get ID from URL - partially DONE
   2. get already available data from cache // See http://dev.apollodata.com/react/migration.html#returnPartialData
   3. get the rest of the data from graphcms
 */
@@ -74,6 +74,7 @@ class FullCVEntryWithDataWrapper extends React.PureComponent {
     return(
       <FullCVEntryWithData {...this.props} />
     )
+
   }
 }
 
