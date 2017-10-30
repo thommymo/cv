@@ -21,7 +21,6 @@ function PageShell(WrappedComponent, pathname ) {
             <title>{this.props.title}</title>
           </Helmet>
           <Content>
-            <H1>Title</H1>
             { /* TODO: Check if this is a good solution for getting the id */ }
             { /* TODO: There should be a better solution (i.e. if we have more paths and deeper paths) */}
             <WrappedComponent id={pathname ? pathname.replace(/[/]/g, "") : false} />
