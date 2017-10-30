@@ -15,7 +15,6 @@ function PageShell(WrappedComponent, pathname ) {
       setTimeout(()=>window.scrollTo(0, 0), `${timeout}`)
     }
     render() {
-      const id = pathname
       return(
         <MainContent>
           <Helmet>

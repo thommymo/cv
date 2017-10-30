@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, secondary } from '../utils/colors'
+import { white } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
 

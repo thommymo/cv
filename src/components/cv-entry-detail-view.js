@@ -1,5 +1,4 @@
-import React, { Component } from "react"
-import { history } from 'react-router-dom'
+import React from "react"
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import PageNotFound from '../components/page-not-found'

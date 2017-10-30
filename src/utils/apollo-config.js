@@ -1,7 +1,6 @@
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloProvider} from 'react-apollo';
 import { toIdValue } from 'apollo-utilities';
 
 // create a network interface with data from my graphcms account
