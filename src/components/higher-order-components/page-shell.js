@@ -11,7 +11,7 @@ function PageShell(WrappedComponent, pathname ) {
   return class extends Component {
     componentDidMount(){
       //TODO: Find a better solution for this.
-      //This could maybe be a solution: https://reactcommunity.org/react-transition-group/#Transition-prop-addEndListener
+      //This could maybe be be a solution: https://reactcommunity.org/react-transition-group/#Transition-prop-addEndListener
       setTimeout(()=>window.scrollTo(0, 0), `${timeout}`)
     }
     render() {

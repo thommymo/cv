@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FullCVEntryWithDataWrapper from './components/chapter'
+import CVEntryDetailViewWithData from './components/cv-entry-detail-view'
 import { CurriculumVitae } from './components/curriculum-vitae'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout } from './utils/constants'
@@ -89,7 +89,7 @@ class App extends Component {
           >
             <Switch location={this.props.location}>
               <Route exact path='/' component={PageShell(CurriculumVitae)} />
-              <Route exact path='/:id' component={PageShell(FullCVEntryWithDataWrapper, this.props.location.pathname)} />
+              <Route exact path='/:id' component={PageShell(CVEntryDetailViewWithData, this.props.location.pathname)} />
               <Route component={PageShell(FourOoFour)} />
             </Switch>
           </CSSTransition>

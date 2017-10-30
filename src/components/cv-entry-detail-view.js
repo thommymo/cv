@@ -54,7 +54,7 @@ const FullCVEntry = (props) => {
   }
 }
 
-class FullCVEntryWithDataWrapper extends React.PureComponent {
+class CVEntryDetailViewWithData extends React.PureComponent {
   // Using PureCompenent prevents this Child to rerender four times (because of TransitionGroup)
 
   render(){
@@ -78,4 +78,4 @@ class FullCVEntryWithDataWrapper extends React.PureComponent {
   }
 }
 
-export default FullCVEntryWithDataWrapper
+export default CVEntryDetailViewWithData
