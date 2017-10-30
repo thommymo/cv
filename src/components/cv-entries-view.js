@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { white, secondary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
-import { P, H2, H3, H4,  } from '../components/styled-atoms'
+import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
 import LifeLapMoreButton from '../components/life-lap'
 
 //TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
@@ -11,7 +11,7 @@ import LifeLapMoreButton from '../components/life-lap'
 
 //Timelineheader shows the title for the whole Timeline
 
-export const TimelineHeader = ({
+export const CVEntriesHeader = ({
   titleleft = "",
   titleright = "",
 }) => (
@@ -54,7 +54,7 @@ const HeaderRight = Header.extend`
 
 //Timeline is a component which shows an entry in my CV and places the line on the left or right side of it.
 
-export const Timeline = ({
+export const CVEntries = ({
   id="",
   showmore = false,
   startDate = "",

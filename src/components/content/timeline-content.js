@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Timeline, TimelineHeader } from '../../components/timeline'
+import { CVEntries, CVEntriesHeader } from '../../components/cv-entries-view'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -15,13 +15,13 @@ class TimelineContent extends Component {
     //TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)
     return(
       <div>
-        <TimelineHeader titleleft="Work" titleright="Studies"/>
+        <CVEntriesHeader titleleft="Work" titleright="Studies"/>
         { this.props.data.loading &&
           <div>I am Loading Data, please wait</div>
         }
         { this.props.data.allCVEntrieses &&
           this.props.data.allCVEntrieses.map((entry) => (
-            <Timeline
+            <CVEntries
               id = {entry.id}
               key = {entry.id}
               slug = {entry.slug}
