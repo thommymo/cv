@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CVEntries, CVEntriesHeader } from '../../components/cv-entries-view'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import PageShell from '../../components/page-shell'
 
 //TODO: make this a higher order component, which loads data with gql
 
@@ -14,7 +15,7 @@ class TimelineContent extends Component {
   render() {
     //TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)
     return(
-      <div>
+      <PageShell>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
         { this.props.data.loading &&
           <div>I am Loading Data, please wait</div>
@@ -43,7 +44,7 @@ class TimelineContent extends Component {
             />
           ))
         }
-      </div>
+      </PageShell>
     )
   }
 }

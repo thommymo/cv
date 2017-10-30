@@ -3,8 +3,7 @@ import CVEntryDetailViewWithData from './components/cv-entry-detail-view'
 import { CurriculumVitae } from './components/curriculum-vitae'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout } from './utils/constants'
-import PageShell from './components/higher-order-components/page-shell'
-
+import { primary } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/page-not-found'
 
@@ -13,7 +12,7 @@ import PageNotFound from './components/page-not-found'
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Assistant');
+  @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
 
   body:before {
     height: 100vh;
@@ -22,9 +21,11 @@ injectGlobal`
   html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Assistant', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
     font-size: 100%;
     height: 100%;
+    background-color: ${primary};
   }
   .SlideIn-appear {
     position:absolute;
@@ -88,9 +89,9 @@ class App extends Component {
             key={this.props.location.key}
           >
             <Switch location={this.props.location}>
-              <Route exact path='/' component={PageShell(CurriculumVitae)} />
-              <Route exact path='/:id' component={PageShell(CVEntryDetailViewWithData, this.props.location.pathname)} />
-              <Route component={PageShell(PageNotFound)} />
+              <Route exact path='/' component={CurriculumVitae} />
+              <Route exact path='/:id' component={CVEntryDetailViewWithData} />
+              <Route component={PageNotFound} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
