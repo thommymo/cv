@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { white, secondary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
-import LifeLapMoreButton from '../components/life-lap'
 
 //TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
 //TODO: Add PropTypes
@@ -125,7 +124,7 @@ export const CVEntries = ({
       </AdditionalInfo>
       { showmore &&
         //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-        <LifeLapMoreButton to={`/${id}/`}>More &#8594;</LifeLapMoreButton>
+        <CVEntryMoreButton to={`/${id}/`}>More &#8594;</CVEntryMoreButton>
       }
     </Content>
     <TimeSpan
@@ -266,4 +265,15 @@ const Year = styled.div`
   color: ${white};
   padding: 0 10px 0 10px;
   z-index: 20;
+`
+
+const CVEntryMoreButton = (props) => (
+  <GhostbuttonWhite {...props}>
+    {props.children}
+  </GhostbuttonWhite>
+)
+
+const GhostbuttonWhite = Ghostbutton.extend`
+  color:${white};
+  border-color:${white};
 `
