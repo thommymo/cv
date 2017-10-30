@@ -7,7 +7,7 @@ import { timeout } from '../../utils/constants'
 import { H1, P} from '../../components/styled-atoms'
 import { media } from '../../utils/breakpoints'
 
-function PageShell(WrappedComponent) {
+function PageShell(WrappedComponent, pathname ) {
   return class extends Component {
     componentDidMount(){
       //TODO: Find a better solution for this.
@@ -15,6 +15,7 @@ function PageShell(WrappedComponent) {
       setTimeout(()=>window.scrollTo(0, 0), `${timeout}`)
     }
     render() {
+      const id = pathname
       return(
         <MainContent>
           <Helmet>
@@ -22,7 +23,9 @@ function PageShell(WrappedComponent) {
           </Helmet>
           <Content>
             <H1>Title</H1>
-            <WrappedComponent />
+            { /* TODO: Check if this is a good solution for getting the id */ }
+            { /* TODO: There should be a better solution (i.e. if we have more paths and deeper paths) */}
+            <WrappedComponent id={pathname ? pathname.replace(/[/]/g, "") : false} />
           </Content>
           <Footer>
             <P>Thomas Moser, Bireggstrasse 33, 6003 Luzern</P>

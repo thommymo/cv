@@ -5,7 +5,7 @@ import { Ghostbutton } from '../components/styled-atoms'
 class LifeLapMoreButton extends Component {
   render(){
     return(
-        <GhostbuttonWhite to="/chapter/">
+        <GhostbuttonWhite {...this.props}>
           {this.props.children}
         </GhostbuttonWhite>
     )

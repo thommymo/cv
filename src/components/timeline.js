@@ -55,6 +55,7 @@ const HeaderRight = Header.extend`
 //Timeline is a component which shows an entry in my CV and places the line on the left or right side of it.
 
 export const Timeline = ({
+  id="",
   showmore = false,
   startDate = "",
   endDate = "",
@@ -69,7 +70,7 @@ export const Timeline = ({
   responsability="",
   learned="",
   title="",
-  color=secondary
+  slug=""
 }) => (
   <Lap right={right}>
     <TimeSpan
@@ -82,7 +83,6 @@ export const Timeline = ({
       endDate={endDate}
     />
     <Content
-      color={color}
       left={left}
       right={right}
       addTopBorder={addTopBorder}
@@ -124,7 +124,8 @@ export const Timeline = ({
         }
       </AdditionalInfo>
       { showmore &&
-        <LifeLapMoreButton>More &#8594;</LifeLapMoreButton>
+        //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
+        <LifeLapMoreButton to={`/${id}/`}>More &#8594;</LifeLapMoreButton>
       }
     </Content>
     <TimeSpan

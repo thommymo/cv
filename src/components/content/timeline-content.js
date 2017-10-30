@@ -3,10 +3,16 @@ import { Timeline, TimelineHeader } from '../../components/timeline'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-//TODO: make this a stateless component
+//TODO: make this a higher order component, which loads data with gql
+
+// TODO: Instead of creating my own HOC, I could defently use the one here (recompose)
+// https://dev-blog.apollodata.com/simplify-your-react-components-with-apollo-and-recompose-8b9e302dea51
+
+// TODO: I think I should store the data I'm receiving in a Redux store, so I have all the data available everywhere....
 
 class TimelineContent extends Component {
   render() {
+    //TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)
     return(
       <div>
         <TimelineHeader titleleft="Work" titleright="Studies"/>
@@ -16,7 +22,9 @@ class TimelineContent extends Component {
         { this.props.data.allCVEntrieses &&
           this.props.data.allCVEntrieses.map((entry) => (
             <Timeline
+              id = {entry.id}
               key = {entry.id}
+              slug = {entry.slug}
               showmore = {entry.showmore}
               startDate = {entry.startDate ? entry.startDate.slice(0, 4) : ""}
               endDate = {entry.endDate ? entry.endDate.slice(0, 4) : ""}
@@ -31,6 +39,7 @@ class TimelineContent extends Component {
               responsability = {entry.responsability}
               learned = {entry.learned}
               title = {entry.title}
+              moreinfoentry = {entry.moreinfoentry}
             />
           ))
         }
@@ -44,6 +53,7 @@ const getEntriesQuery = gql`
   query getEntriesQuery {
     allCVEntrieses(orderBy: order_ASC) {
       id
+      slug
       showmore
       startDate
       endDate
@@ -58,6 +68,9 @@ const getEntriesQuery = gql`
       responsability
       learned
       title
+      moreinfoentry {
+        background
+      }
     }
   }
 `

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Chapter from './components/chapter'
+import FullCVEntryWithDataWrapper from './components/chapter'
 import { CurriculumVitae } from './components/curriculum-vitae'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout } from './utils/constants'
@@ -65,6 +65,9 @@ injectGlobal`
 //TODO: Add a print version
 
 class App extends Component {
+  componentWillEnter(){
+    console.log("CSSTransition")
+  }
   render() {
     const timeoutTransition = { enter:(timeout*3), exit:300 }
 
@@ -86,12 +89,12 @@ class App extends Component {
           >
             <Switch location={this.props.location}>
               <Route exact path='/' component={PageShell(CurriculumVitae)} />
-              <Route path='/404' component={PageShell(FourOoFour)} />
-              <Route path='/chapter' component={PageShell(Chapter)} />
+              <Route exact path='/:id' component={PageShell(FullCVEntryWithDataWrapper, this.props.location.pathname)} />
+              <Route component={PageShell(FourOoFour)} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
-    );
+    )
   }
 }
 
