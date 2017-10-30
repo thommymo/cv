@@ -6,7 +6,7 @@ import { timeout } from './utils/constants'
 import PageShell from './components/higher-order-components/page-shell'
 
 import { Route, Switch, withRouter} from 'react-router-dom'
-import FourOoFour from './components/404'
+import PageNotFound from './components/page-not-found'
 
 //TODO: injectGlobal might has to be moved somewhere else
 
@@ -90,7 +90,7 @@ class App extends Component {
             <Switch location={this.props.location}>
               <Route exact path='/' component={PageShell(CurriculumVitae)} />
               <Route exact path='/:id' component={PageShell(CVEntryDetailViewWithData, this.props.location.pathname)} />
-              <Route component={PageShell(FourOoFour)} />
+              <Route component={PageShell(PageNotFound)} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>

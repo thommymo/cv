@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { history } from 'react-router-dom'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import PageNotFound from '../components/page-not-found'
 
 /*
   TODO:
@@ -22,7 +23,7 @@ const PreviewCVEntry = (props) => {
       </div>
     )
   } else {
-    return <div>nothing found PreviewCVEntry</div>
+    return <PageNotFound />
   }
 }
 
@@ -48,7 +49,7 @@ const FullCVEntry = (props) => {
   } else {
     return (
       <div>
-        <div>Sorry, nothing found FullCVEntry</div>
+        <PageNotFound />
       </div>
     )
   }
