@@ -25,10 +25,7 @@ const PreviewCVEntry = (props) => {
       <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
         <LogoColor><Logo/></LogoColor>
         <H1>{props.data.CVEntries.title}</H1>
-        <MainContent>
-          <H1>{props.data.CVEntries.title}</H1>
-          <P>Hello from the PreviewCVEntry page!</P>
-        </MainContent>
+        <P>Hello from the PreviewCVEntry page!</P>
       </PageShell>
     )
   } else {
@@ -38,8 +35,11 @@ const PreviewCVEntry = (props) => {
 
 const FullCVEntry = (props) => {
   //This is most propably cached
+
+  //TODO: Move this into componentWillMount so it doesn't fire more then once
+  console.log(props.queryid)
   const previewQuery = gql`{
-    CVEntries(id: "${props.id}") {
+    CVEntries(id: "${props.queryid}") {
       id
       title
       moreinfoentry {
@@ -50,7 +50,7 @@ const FullCVEntry = (props) => {
   const PreviewCVEntryWithData = graphql(previewQuery)(PreviewCVEntry)
   console.log(`FULLCV: ${props.data.loading}`)
   if (props.data.loading || props.data.networkStatus === 8) {
-    return <PreviewCVEntryWithData {...props} />
+    return <PreviewCVEntryWithData />
   } else if (props.data.CVEntries) {
     const description = {
       __html: props.data.CVEntries.moreinfoentry.description
@@ -85,13 +85,9 @@ const FullCVEntry = (props) => {
   }
 }
 
-const MainContent = styled.div`
-  background-color:${props => props.color};
-`
-
 class CVEntryDetailViewWithData extends React.PureComponent {
   // Using PureCompenent prevents this Child to rerender four times (because of TransitionGroup)
-
+  // This should not more than once
   render(){
     const id = this.props.location.pathname ? this.props.location.pathname.replace(/[/]/g, "") : false
     //query to get the Full View
@@ -112,7 +108,7 @@ class CVEntryDetailViewWithData extends React.PureComponent {
     const FullCVEntryWithData = graphql(fullQuery)(FullCVEntry)
 
     return(
-      <FullCVEntryWithData {...this.props} />
+      <FullCVEntryWithData queryid={id}/>
     )
 
   }
