@@ -5,9 +5,7 @@ import PageShell from '../components/page-shell'
 
 export default class PageNotFound extends PureComponent {
   //TODO: This is rendered 3 Times altough it is not necessary. Why is that?
-  componentWillEnter(){
-    console.log("component did enter")
-  }
+
   render() {
     console.log("404 Rendered")
     return (
