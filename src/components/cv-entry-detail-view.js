@@ -45,7 +45,6 @@ const PreviewCVEntry = (props) => {
 }
 
 const CVEntryHeader = (props) => {
-  console.log(props)
   const startDate = new Date(props.startDate)
   const endDate = new Date(props.endDate)
   const options = { year: 'numeric', month: 'long'}
@@ -56,6 +55,9 @@ const CVEntryHeader = (props) => {
       <LogoColor>
         { props.logo &&
           <Logo src={props.logo.url} background={props.background} />
+        }
+        { !props.logo &&
+          <Logo background={props.background} />
         }
       </LogoColor>
       <H4>{formattedStartDate} – {formattedEndDate}</H4>
@@ -160,9 +162,7 @@ const FullCVEntry = (props) => {
       )
       } else {
         return (
-          <div>
-            <PreviewCVEntryWithData />
-          </div>
+          <PreviewCVEntryWithData />
         )
       }
     }
