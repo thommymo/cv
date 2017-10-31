@@ -7,7 +7,6 @@ export default class PageNotFound extends PureComponent {
   //TODO: This is rendered 3 Times altough it is not necessary. Why is that?
 
   render() {
-    console.log("404 Rendered")
     return (
       <PageShell title="Page not found">
         <H1>Page not found</H1>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import {sizes, imagesizes} from '../utils/breakpoints'
 
 /*  TODO:
  *  * make assetDirectory global
@@ -8,9 +9,55 @@ import styled from 'styled-components'
  *  * FullWithImage should be a stateless component (since it has no state)
  */
 
+export const GraphCMSImages = (props) => {
+  //https://media.graphcms.com/resize=[options]/[File Handle]
+  const baseurl = "https://media.graphcms.com/"
+  const handle = props.handle
+  return (
+    <picture>
+      { Object.keys(sizes).map((label) => (
+
+        <source key={imagesizes[label]}
+          media={`screen
+            ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
+            ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
+            `}
+          srcSet={`
+            ${baseurl}resize=width:${imagesizes[label]}/${handle} 1x,
+            ${baseurl}resize=width:${imagesizes[label]*2}/${handle} 2x,
+          `}/>
+      ))}
+      <Img src={`${baseurl}resize=width:20/${handle}`}/>
+    </picture>
+  )
+}
+
+
+// Iterate through the sizes and create a media template
+/*export const media = Object.keys(sizes).reduce((acc, label) => {
+
+	acc[label] = (...args) => css`
+    @media screen
+      ${sizes[label][0] ? `and (min-width:${sizes[label][0] / 16}em)` : ""}
+      ${sizes[label][1] ? `and (max-width:${sizes[label][1] / 16}em)` : ""}
+    {
+			${css(...args)}
+		}
+	`
+
+	return acc
+}, {})
+
+
+
+
+
+*/
+
+
 class FullWithImage extends Component {
   render() {
-    const { assetName, assetType, altText} = this.props
+    const { assetName, assetType, altText } = this.props
     const assetDirectory = "http://localhost:3000/assets/images/"
     const breakPoints = [[false, 768], [769, 1024], [1025, false]]
     const assetPostFix = [["-375w", "-750w"], ["-750w", "-1500w"], ["-1000w", "-2000w"]]

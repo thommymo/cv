@@ -31,7 +31,7 @@ const cache = new InMemoryCache({
     addTypename stores the Typename in the apollo stores, this makes the store
     more human readable.
   */
-  addTypename: false,
+  addTypename: true,
   /*
    By adding cacheResolvers for the CVEntries field (and having dataIdFromObject
    function which normalizes the cache), the data can be resolved instantly from

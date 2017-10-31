@@ -35,8 +35,9 @@ export default PageShell
 const MainContent = styled.div`
   background-color:${props => props.color};
   width:100%;
-  height:100%;
+  min-height:100%;
   position:absolute;
+  top:0px;
 `
 const Content = styled.div`
   max-width:1024px;
@@ -45,11 +46,16 @@ const Content = styled.div`
   ${media.desktop`padding-left:61px;`}
   ${media.tablet`padding-left:61px;`}
   ${media.phone`padding-left:16px;`}
+  ${media.desktop`padding-right:61px;`}
+  ${media.tablet`padding-right:61px;`}
+  ${media.phone`padding-right:16px;`}
   color:${white}
 `
 const Footer = styled.footer`
   color: ${white};
   background-color: ${secondaryDark};
   width:100%;
-  display: flex;
+  display:flex;
+  position:absolute;
+  bottom:0px;
 `

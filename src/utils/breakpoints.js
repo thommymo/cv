@@ -3,10 +3,16 @@
 import {css} from 'styled-components'
 
 // breakpoints with min and max values
-const sizes = {
+export const sizes = {
 	phone: [false, 430],
 	tablet: [431, 768],
 	desktop: [769, false]
+}
+
+export const imagesizes = {
+	phone: 215,
+	tablet: 431,
+	desktop: 769
 }
 
 // Iterate through the sizes and create a media template

@@ -45,9 +45,9 @@ const HeaderLeft = Header.extend`
   text-align: left;
 `
 const HeaderRight = Header.extend`
-  ${media.desktop`padding-right:61px;top:73px;`}
-  ${media.tablet`padding-right:61px;top:85px;`}
-  ${media.phone`padding-right:16px;top:105px;`}
+  ${media.desktop`top:73px;`}
+  ${media.tablet`top:85px;`}
+  ${media.phone`top:105px;`}
   text-align: right;
 `
 
@@ -165,9 +165,9 @@ const AdditionalInfo = styled.div`
 const Lap = styled.div`
   display: flex;
   width: (100% + 61)px;
-  ${media.desktop`margin-left:-61px;margin-right:0px;`}
-  ${media.tablet`margin-left:-61px;margin-right:0px;`}
-  ${media.phone`margin-left:-16px;margin-right:0px;`}
+  ${media.desktop`margin-left:-61px;margin-right:-61px;`}
+  ${media.tablet`margin-left:-61px;margin-right:-61px;`}
+  ${media.phone`margin-left:-16px;margin-right:-16px;`}
 `
 const Content = styled.div`
   padding: 40px 20px 68px 20px;

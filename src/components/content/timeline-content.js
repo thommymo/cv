@@ -40,7 +40,7 @@ class TimelineContent extends Component {
               responsability = {entry.responsability}
               learned = {entry.learned}
               title = {entry.title}
-              moreinfoentry = {entry.moreinfoentry}
+              moreinfocventry = {entry.moreinfocventry}
             />
           ))
         }
@@ -69,7 +69,7 @@ const getEntriesQuery = gql`
       responsability
       learned
       title
-      moreinfoentry {
+      moreinfocventry {
         background
       }
     }
