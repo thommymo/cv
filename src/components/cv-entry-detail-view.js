@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { H1, P, H4, H2, H3 } from '../components/styled-atoms'
 import styled from 'styled-components'
 import PageNotFound from '../components/page-not-found'
-import { white } from '../utils/colors'
+import { white, primary } from '../utils/colors'
 import PageShell from '../components/page-shell'
 import { GraphCMSImages } from '../components/full-with-image'
 import { media } from '../utils/breakpoints'
@@ -25,11 +25,22 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const PreviewCVEntry = (props) => {
   if (props.data.loading) {
-    return <div>Still Loading</div>
+    return(
+      <PageShell title="Loading">
+        <BasicInfo>
+          <P>The Rest needs some Time to Load </P>
+        </BasicInfo>
+      </PageShell>
+    )
   } else if (props.data.CVEntries && props.data.CVEntries.moreinfocventry){
     const color = JSON.parse(props.data.CVEntries.moreinfocventry.background)
     const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
+    const timeoutTransition = { enter:1800, exit:300 }
     return(
+      // client.select(gql`{ ... }`, '5'); This way I should be able to get data
+      // from the store without loading it, that way I can prevent to make 2
+      // API calls, when no data is available.
+      // Read: https://github.com/apollographql/apollo-client/issues/1036
       <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
         <CVEntryHeader
           background={colorRGBA}
@@ -71,6 +82,8 @@ const CVEntryHeader = (props) => {
 
 const FullCVEntry = (props) => {
   //This is most propably cached
+  //See implementation details on https://github.com/apollographql/apollo-client/issues/1036
+  //further up. This should be possible without doing anything.
   const previewQuery = gql`{
     CVEntries(id: "${props.queryid}") {
       id
@@ -83,7 +96,6 @@ const FullCVEntry = (props) => {
     }
   }`
   const PreviewCVEntryWithData = graphql(previewQuery)(PreviewCVEntry)
-  console.log(`FULLCV: ${props.data.loading}`)
 
   if (props.data.loading || props.data.networkStatus === 8) {
     return <PreviewCVEntryWithData />
@@ -104,13 +116,6 @@ const FullCVEntry = (props) => {
 
     return(
       <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
-        <CVEntryHeader
-          logo={entry.logo}
-          background={entry.background}
-          startDate={props.data.CVEntries.startDate}
-          endDate={props.data.CVEntries.endDate}
-          title={props.data.CVEntries.title}
-        />
         <TransitionGroup
           appear={true}>
           <CSSTransition appear={true}
@@ -120,6 +125,14 @@ const FullCVEntry = (props) => {
             unmountOnExit={true}
           >
             <MainDiv>
+        <CVEntryHeader
+          logo={entry.logo}
+          background={entry.background}
+          startDate={props.data.CVEntries.startDate}
+          endDate={props.data.CVEntries.endDate}
+          title={props.data.CVEntries.title}
+        />
+
               <BasicInfo>
                 { entry.responsabilities &&
                   <TwoColumns>
