@@ -6,7 +6,8 @@ import styled from 'styled-components'
 import PageNotFound from '../components/page-not-found'
 import { white } from '../utils/colors'
 import PageShell from '../components/page-shell'
-import {GraphCMSImages} from '../components/full-with-image'
+import { GraphCMSImages } from '../components/full-with-image'
+import { media } from '../utils/breakpoints'
 
 /*
   TODO:
@@ -14,7 +15,7 @@ import {GraphCMSImages} from '../components/full-with-image'
   2. DONE get already available data from cache // See http://dev.apollodata.com/react/migration.html#returnPartialData
   3. DONE get the rest of the data from graphcms
   4. Create the rest of the Data in graphcms
-  5. Make this more error proove (i.e. only part of the data is available)
+  5. DONE Make this more error proove (i.e. only part of the data is available)
   6. Implement a (global) loading mechanism
   7. Fix CSS clitches
 */
@@ -62,8 +63,6 @@ const CVEntryHeader = (props) => {
     </BasicInfo>
   )
 }
-
-
 
 const FullCVEntry = (props) => {
   //This is most propably cached
@@ -184,10 +183,8 @@ const H1WithDate = H1.extend`
   margin-top:-0.5em;
 `
 const TwoColumns = styled.div`
-  max-width: 800px;
-  display: flex;
-  margin-left:auto;
-  margin-right:auto;
+  ${media.desktop`display: flex;max-width: 800px;margin-left:auto;margin-right:auto;`}
+  ${media.desktop`display: flex;`}
 `
 const Column = styled.div`
   flex:1;
