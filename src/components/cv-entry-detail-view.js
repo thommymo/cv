@@ -116,7 +116,14 @@ const FullCVEntry = (props) => {
 
     return(
       <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
-        <TransitionGroup
+
+        <CVEntryHeader
+          logo={entry.logo}
+          background={entry.background}
+          startDate={props.data.CVEntries.startDate}
+          endDate={props.data.CVEntries.endDate}
+          title={props.data.CVEntries.title}
+        /><TransitionGroup
           appear={true}>
           <CSSTransition appear={true}
             timeout={timeoutTransition}
@@ -125,14 +132,6 @@ const FullCVEntry = (props) => {
             unmountOnExit={true}
           >
             <MainDiv>
-        <CVEntryHeader
-          logo={entry.logo}
-          background={entry.background}
-          startDate={props.data.CVEntries.startDate}
-          endDate={props.data.CVEntries.endDate}
-          title={props.data.CVEntries.title}
-        />
-
               <BasicInfo>
                 { entry.responsabilities &&
                   <TwoColumns>
