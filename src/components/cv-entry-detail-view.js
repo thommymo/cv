@@ -8,6 +8,9 @@ import { white } from '../utils/colors'
 import PageShell from '../components/page-shell'
 import { GraphCMSImages } from '../components/full-with-image'
 import { media } from '../utils/breakpoints'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
+
 
 /*
   TODO:
@@ -84,7 +87,7 @@ const FullCVEntry = (props) => {
 
   if (props.data.loading || props.data.networkStatus === 8) {
     return <PreviewCVEntryWithData />
-  } else if (props.data.CVEntries.moreinfocventry) {
+  } else if (props.data.CVEntries) {
     const entry = props.data.CVEntries.moreinfocventry
     const responsabilitiesdescription = {
       __html: entry.responsabilitiesdescription
@@ -97,6 +100,7 @@ const FullCVEntry = (props) => {
     }
     const color = JSON.parse(entry.background)
     const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
+    const timeoutTransition = { enter:1800, exit:300 }
 
     return(
       <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
@@ -107,57 +111,69 @@ const FullCVEntry = (props) => {
           endDate={props.data.CVEntries.endDate}
           title={props.data.CVEntries.title}
         />
-        <BasicInfo>
-          { entry.responsabilities &&
-            <TwoColumns>
-              <Column>
-                <H4>{entry.responsabilities}</H4>
-                <P dangerouslySetInnerHTML={responsabilitiesdescription} />
-              </Column>
-              <Column>
-                <H4>{entry.projects}</H4>
-                <P dangerouslySetInnerHTML={projectdescription} />
-              </Column>
-            </TwoColumns>
-          }
-          { entry.descriptionimages &&
-            entry.descriptionimages.map((image) => (
-            <GraphCMSImages handle={image.handle} key={image.handle}/>
-          )) }
-        </BasicInfo>
-        { entry.awardstitle &&
-          <Awards>
-            <CenteredContent>
-              <H2>{entry.awardstitle}</H2>
-              <TwoColumns>
-                <Column>
-                  <img src={entry.awardlogo1.url} width="100" height="100"/>
-                  <P>{entry.awarddescription1}</P>
-                </Column>
-                <Column>
-                  <img src={entry.awardlogo2.url} width="100" height="100" />
-                  <P>{entry.awarddescription2}</P>
-                </Column>
-                <Column>
-                  <img src={entry.awardlogo2.url} width="100" height="100" />
-                  <P>{entry.awarddescription2}</P>
-                </Column>
-              </TwoColumns>
-            </CenteredContent>
-          </Awards>
-        }
-        { entry.additionaltitel &&
-          <Additional>
-            <H2>{entry.additionaltitel}</H2>
-            <P dangerouslySetInnerHTML={additionaldescription} />
-          </Additional>
-        }
-        { entry.workreview &&
-          <WorkReview>
-            <H4>Arbeitszeugnis</H4>
-            <P>Maybe an image is needed here</P>
-          </WorkReview>
-        }
+        <TransitionGroup
+          appear={true}>
+          <CSSTransition appear={true}
+            timeout={timeoutTransition}
+            classNames="SlideIn"
+            key="awegf"
+            unmountOnExit={true}
+          >
+            <MainDiv>
+              <BasicInfo>
+                { entry.responsabilities &&
+                  <TwoColumns>
+                    <Column>
+                      <H4>{entry.responsabilities}</H4>
+                      <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+                    </Column>
+                    <Column>
+                      <H4>{entry.projects}</H4>
+                      <P dangerouslySetInnerHTML={projectdescription} />
+                    </Column>
+                  </TwoColumns>
+                }
+                { entry.descriptionimages &&
+                  entry.descriptionimages.map((image) => (
+                    <GraphCMSImages handle={image.handle} key={image.handle}/>
+                  )) }
+              </BasicInfo>
+              { entry.awardstitle &&
+                <Awards>
+                  <CenteredContent>
+                    <H2>{entry.awardstitle}</H2>
+                    <TwoColumns>
+                      <Column>
+                        <img src={entry.awardlogo1.url} width="100" height="100"/>
+                        <P>{entry.awarddescription1}</P>
+                      </Column>
+                      <Column>
+                        <img src={entry.awardlogo2.url} width="100" height="100" />
+                        <P>{entry.awarddescription2}</P>
+                      </Column>
+                      <Column>
+                        <img src={entry.awardlogo2.url} width="100" height="100" />
+                        <P>{entry.awarddescription2}</P>
+                      </Column>
+                    </TwoColumns>
+                  </CenteredContent>
+                </Awards>
+              }
+              { entry.additionaltitel &&
+                <Additional>
+                  <H2>{entry.additionaltitel}</H2>
+                  <P dangerouslySetInnerHTML={additionaldescription} />
+                </Additional>
+              }
+              { entry.workreview &&
+                <WorkReview>
+                  <H4>Arbeitszeugnis</H4>
+                  <P>Maybe an image is needed here</P>
+                </WorkReview>
+              }
+            </MainDiv>
+            </CSSTransition>
+        </TransitionGroup>
       </PageShell>
       )
       } else {
@@ -203,6 +219,9 @@ class CVEntryDetailViewWithData extends React.Component {
   }
 
   render(){
+  //  componentWillMount(){
+      window.setTimeout(() => (window.scrollTo(0, 0)),400)
+  //  }
     const id = this.props.location.pathname ? this.props.location.pathname.replace(/[/]/g, "") : false
     //query to get the Full View
     const fullQuery = gql`{
@@ -242,13 +261,19 @@ class CVEntryDetailViewWithData extends React.Component {
     const FullCVEntryWithData = graphql(fullQuery)(FullCVEntry)
 
     return(
-      <FullCVEntryWithData queryid={id} />
+      <MainDiv>
+        <FullCVEntryWithData queryid={id} />
+      </MainDiv>
     )
-
   }
 }
 
 export default CVEntryDetailViewWithData
+
+const MainDiv = styled.div`
+  width:100%;
+  min-height:100%;
+`
 
 const Logo = styled.svg`
   width:100%;

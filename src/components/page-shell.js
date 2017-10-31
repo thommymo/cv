@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { white, secondaryDark } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 
-class PageShell extends PureComponent {
+class PageShell extends Component {
   // Using PureCompenent prevents this Child to rerender four times (because of TransitionGroup)
 
   render(){
@@ -41,6 +41,7 @@ const MainContent = styled.div`
 `
 const Content = styled.div`
   max-width:1024px;
+  min-height:1000px;
   margin-left:auto;
   margin-right:auto;
   ${media.desktop`padding-left:61px;`}
@@ -56,6 +57,7 @@ const Footer = styled.footer`
   background-color: ${secondaryDark};
   width:100%;
   display:flex;
-  position:absolute;
+  position:relative;
+  min-height:220px;
   bottom:0px;
 `

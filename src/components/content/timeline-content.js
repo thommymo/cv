@@ -9,8 +9,6 @@ import PageShell from '../../components/page-shell'
 // TODO: Instead of creating my own HOC, I could defently use the one here (recompose)
 // https://dev-blog.apollodata.com/simplify-your-react-components-with-apollo-and-recompose-8b9e302dea51
 
-// TODO: I think I should store the data I'm receiving in a Redux store, so I have all the data available everywhere....
-
 class TimelineContent extends Component {
   render() {
     //TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)

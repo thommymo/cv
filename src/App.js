@@ -26,39 +26,34 @@ injectGlobal`
     font-size: 100%;
     height: 100%;
     background-color: ${primary};
+
   }
   .SlideIn-appear {
-    position:absolute;
     opacity: 0;
-    top:0px;
+    transform: translateY(20px);
   }
   .SlideIn-appear.SlideIn-appear-active {
-    position:absolute;
     opacity: 1;
-    transition: opacity ${(timeout)}ms ease-out ${(timeout)}ms;
-    top:0px;
+    transform: translateY(0px);
+    transition: all ${(timeout+600)}ms ease-out ${(timeout+300)}ms;
   }
   .SlideIn-enter {
-    position:absolute;
     opacity: 0;
-    top:0px;
+    transform: translateY(20px);
   }
   .SlideIn-enter.SlideIn-enter-active {
-    position:absolute;
     opacity: 1;
-    transition: opacity ${(timeout)}ms ease-out ${(timeout)}ms;
-    top:0px;
+    transform: translateY(0px);
+    transition: all ${(timeout+300)}ms ease-out ${(timeout+300)}ms;
   }
   .SlideIn-exit {
-    position:absolute;
+    transform: translateY(0px);
     opacity: 1;
-    top:0px;
   }
   .SlideIn-exit.SlideIn-exit-active {
-    position:absolute;
     opacity: 0;
-    transition: opacity ${(timeout)}ms ease-out;
-    top:0px;
+    transform: translateY(20px);
+    transition: all ${(timeout)}ms ease-out;
   }
 `
 
@@ -70,7 +65,7 @@ class App extends Component {
     console.log("CSSTransition")
   }
   render() {
-    const timeoutTransition = { enter:(timeout*3), exit:300 }
+    const timeoutTransition = { enter:1500, exit:300 }
 
     return (
         <TransitionGroup
@@ -84,9 +79,11 @@ class App extends Component {
             */
           }
           <CSSTransition
+            appear={true}
             timeout={timeoutTransition}
             classNames="SlideIn"
             key={this.props.location.key}
+            unmountOnExit={true}
           >
             <Switch location={this.props.location}>
               <Route exact path='/' component={CurriculumVitae} />
