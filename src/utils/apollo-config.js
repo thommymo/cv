@@ -18,7 +18,7 @@ const networkInterface =
   *** For more information on how to do query splitting see this apollo
   documentation: http://dev.apollodata.com/react/query-splitting.html ***
 
-  dataIdFromObject says the cacheResolvers how to connect the entries from
+  dataIdFromObject declares the cacheResolvers how to connect the entries from
   my allCVEntrieses-queries with my CVEntries-queries.
 
 */
@@ -41,6 +41,7 @@ const cache = new InMemoryCache({
   cacheResolvers: {
     Query: {
       CVEntries: (_, { id }) => toIdValue(dataIdFromObject({ __typename: 'allCVEntrieses', id })),
+      //CVEntries: (_, args) => args.ids.map(id => toIdValue(dataIdFromObject({ __typename: 'allCVEntrieses', id: id }))),
     },
   },
 })

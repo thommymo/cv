@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet'
 import { white, secondaryDark } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 
+// This should be a HOC
+
 class PageShell extends Component {
 
   render(){

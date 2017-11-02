@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import CVEntryDetailViewWithData from './components/cv-entry-detail-view'
+import CVEntryDetailViewWithData from './components/cv-entry-detail-molecule'
 import { CurriculumVitae } from './components/curriculum-vitae'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout } from './utils/constants'
 import { primary } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
-import PageNotFound from './components/page-not-found'
+import PageNotFound from './components/page-not-found-molecule'
 
 //TODO: injectGlobal might has to be moved somewhere else
 

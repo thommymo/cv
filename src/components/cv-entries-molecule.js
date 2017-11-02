@@ -47,7 +47,7 @@ const HeaderRight = Header.extend`
 
 //Timeline is a component which shows an entry in my CV and places the line on the left or right side of it.
 
-export const CVEntries = ({
+export const CVEntries = ({data : {
   id="",
   showmore = false,
   startDate = "",
@@ -63,8 +63,16 @@ export const CVEntries = ({
   responsability="",
   learned="",
   title="",
-  slug=""
-}) => (
+  slug="",
+}}) => {
+  const startDateDate = new Date(startDate)
+  const endDateDate = new Date(endDate)
+  const options = { year: 'numeric'}
+  const formattedStartDate = startDateDate.toLocaleDateString('de-DE', options)
+  const formattedEndDate = endDateDate.toLocaleDateString('de-DE', options)
+
+  return (
+
   <Lap right={right}>
     <TimeSpan
       show={left}
@@ -72,8 +80,8 @@ export const CVEntries = ({
       left={left}
       bothright={bothright}
       bothleft={bothleft}
-      startDate={startDate}
-      endDate={endDate}
+      startDate={formattedStartDate}
+      endDate={formattedEndDate}
     />
     <Content
       left={left}
@@ -122,11 +130,12 @@ export const CVEntries = ({
       left={left}
       bothright={bothright}
       bothleft={bothleft}
-      startDate={startDate}
-      endDate={endDate}
+      startDate={formattedStartDate}
+      endDate={formattedEndDate}
     />
   </Lap>
-)
+    )
+}
 
 // Styling for Timespan component elements
 

@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { H1, P, H4, H2, H3, Loading, FullWithImage } from '../components/styled-atoms'
 import styled from 'styled-components'
-import PageNotFound from '../components/page-not-found'
+import PageNotFound from '../components/page-not-found-molecule'
 import { white, primary } from '../utils/colors'
 import PageShell from '../components/page-shell'
 import { media } from '../utils/breakpoints'
@@ -11,7 +11,9 @@ import { CSSTransition } from 'react-transition-group'
 import { loadingIcon } from '../utils/icons'
 import { timeoutTransition } from '../utils/constants'
 
-// Component shows loding bar, when no data is available or when data is only partially available
+// PreviewCVEntry shows loding bar, when no data is available or when data is only partially available
+
+// TODO: Remove API calls
 
 const PreviewCVEntry = (props) => {
   if (props.data.loading) {
@@ -81,6 +83,7 @@ const FullCVEntry = (props) => {
       endDate
       title
       moreinfocventry {
+        id
         background
       }
     }
@@ -242,17 +245,21 @@ class CVEntryDetailViewWithData extends React.Component {
           projectdescription
 
           logo {
+            id
             url
           }
           descriptionimages {
+            id
             handle
           }
           awardstitle
           awardlogo1 {
+            id
             url
           }
           awarddescription1
           awardlogo2 {
+            id
             url
           }
           awarddescription2
