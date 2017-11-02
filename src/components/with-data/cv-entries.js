@@ -15,7 +15,6 @@ import { timeoutTransition } from '../../utils/constants'
 //TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)
 
 const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) => {
-
   if(loading){
     console.log("LOADING")
     return(
@@ -48,6 +47,7 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
 
 
 // here we create a grapphql operation
+// there is an id needed for each graphql object
 const data = gql`
   query getEntriesQuery {
     allCVEntrieses(orderBy: order_ASC) {
@@ -75,6 +75,8 @@ const data = gql`
   }
 `
 
-// We then can use the graphql container to pass the query results returned by getEntriesQuery
-// to a component as a prop (and update them as the results change)
-export const TimelineContentWithData = graphql(data)(TimelineContent);
+/*
+  We then can use the graphql container to pass the query results returned by getEntriesQuery
+  to a component as a prop (and update them as the results change)
+*/
+export const CVEntriesWithData = graphql(data)(TimelineContent);
