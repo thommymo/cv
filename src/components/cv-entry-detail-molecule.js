@@ -9,22 +9,13 @@ import PageShell from '../components/page-shell'
 import { media } from '../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../utils/constants'
+import { FullCVEntryWithData } from '../components/with-data/cv-entry-detail'
 
 // PreviewCVEntry shows loding bar, when no data is available or when data is only partially available
 
-// TODO: Remove API calls
-
-const PreviewCVEntry = (props) => {
-  if (props.data.loading) {
-    return(
-      <PageShell title="Loading">
-        <BasicInfo>
-          <Loading />
-        </BasicInfo>
-      </PageShell>
-    )
-  } else if (props.data.CVEntries && props.data.CVEntries.moreinfocventry){
-    const color = JSON.parse(props.data.CVEntries.moreinfocventry.background)
+export const FullPreviewCVEntry = (props) => {
+  if (props && props.moreinfocventry){
+    const color = JSON.parse(props.moreinfocventry.background)
     const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
     return(
       // TODO: Prevent Apollo to do 2 API calls, when data is available
@@ -32,12 +23,12 @@ const PreviewCVEntry = (props) => {
       // from the store without loading it, that way I can prevent to make 2
       // API calls, when no data is available.
       // Read: https://github.com/apollographql/apollo-client/issues/1036
-      <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
+      <PageShell color={colorRGBA} title={props.title}>
         <CVEntryHeader
           background={colorRGBA}
-          startDate={props.data.CVEntries.startDate}
-          endDate={props.data.CVEntries.endDate}
-          title={props.data.CVEntries.title}
+          startDate={props.startDate}
+          endDate={props.endDate}
+          title={props.title}
         />
         <BasicInfo>
           <Loading />
@@ -71,123 +62,100 @@ const CVEntryHeader = (props) => {
   )
 }
 
-const FullCVEntry = (props) => {
-  //This is most propably cached
-  //See implementation details on https://github.com/apollographql/apollo-client/issues/1036
-  //further up. This should be possible without doing anything.
-  const previewQuery = gql`{
-    CVEntries(id: "${props.queryid}") {
-      id
-      startDate
-      endDate
-      title
-      moreinfocventry {
-        id
-        background
-      }
-    }
-  }`
-  const PreviewCVEntryWithData = graphql(previewQuery)(PreviewCVEntry)
+export const FullCVEntry = (props) => {
 
-  if (props.data.loading || props.data.networkStatus === 8) {
-    return <PreviewCVEntryWithData />
-  } else if (props.data.CVEntries) {
-    const entry = props.data.CVEntries.moreinfocventry
-    const responsabilitiesdescription = {
-      __html: entry.responsabilitiesdescription
-    }
-    const projectdescription = {
-      __html: entry.projectdescription
-    }
-    const additionaldescription = {
-      __html: entry.additionaldescription
-    }
-    const color = JSON.parse(entry.background)
-    const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
+  const entry = props.moreinfocventry
+  const responsabilitiesdescription = {
+    __html: entry.responsabilitiesdescription
+  }
+  const projectdescription = {
+    __html: entry.projectdescription
+  }
+  const additionaldescription = {
+    __html: entry.additionaldescription
+  }
+  const color = JSON.parse(entry.background)
+  const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
 
-    return(
-      <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
+  return(
+    <PageShell color={colorRGBA} title={props.title}>
 
-        <CVEntryHeader
-          logo={entry.logo}
-          background={entry.background}
-          startDate={props.data.CVEntries.startDate}
-          endDate={props.data.CVEntries.endDate}
-          title={props.data.CVEntries.title}
-        />
-        <CSSTransition
-          in
-          appear={true}
-          timeout={timeoutTransition}
-          classNames="SlideIn"
-          key="awegf"
-          unmountOnExit={true}
-        >
-          <MainDiv>
-            <BasicInfo>
-              { entry.responsabilities &&
+      <CVEntryHeader
+        logo={entry.logo}
+        background={entry.background}
+        startDate={props.startDate}
+        endDate={props.endDate}
+        title={props.title}
+      />
+      <CSSTransition
+        in
+        appear={true}
+        timeout={timeoutTransition}
+        classNames="SlideIn"
+        key="awegf"
+        unmountOnExit={true}
+      >
+        <MainDiv>
+          <BasicInfo>
+            { entry.responsabilities &&
+              <TwoColumns>
+                <Column>
+                  <H4>{entry.responsabilities}</H4>
+                  <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+                </Column>
+                <Column>
+                  <H4>{entry.projects}</H4>
+                  <P dangerouslySetInnerHTML={projectdescription} />
+                </Column>
+              </TwoColumns>
+            }
+            { entry.descriptionimages &&
+              entry.descriptionimages.map((image) => (
+                <FullWithImage handle={image.handle} key={image.handle}/>
+              )) }
+          </BasicInfo>
+          { entry.awardstitle &&
+            <Awards>
+              <CenteredContent>
+                <H2>{entry.awardstitle}</H2>
                 <TwoColumns>
                   <Column>
-                    <H4>{entry.responsabilities}</H4>
-                    <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+                    <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
+                    <P>{entry.awarddescription1}</P>
                   </Column>
                   <Column>
-                    <H4>{entry.projects}</H4>
-                    <P dangerouslySetInnerHTML={projectdescription} />
+                    <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
+                    <P>{entry.awarddescription2}</P>
+                  </Column>
+                  <Column>
+                    <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
+                    <P>{entry.awarddescription2}</P>
                   </Column>
                 </TwoColumns>
-              }
-              { entry.descriptionimages &&
-                entry.descriptionimages.map((image) => (
-                  <FullWithImage handle={image.handle} key={image.handle}/>
-                )) }
-            </BasicInfo>
-            { entry.awardstitle &&
-              <Awards>
-                <CenteredContent>
-                  <H2>{entry.awardstitle}</H2>
-                  <TwoColumns>
-                    <Column>
-                      <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
-                      <P>{entry.awarddescription1}</P>
-                    </Column>
-                    <Column>
-                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                      <P>{entry.awarddescription2}</P>
-                    </Column>
-                    <Column>
-                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                      <P>{entry.awarddescription2}</P>
-                    </Column>
-                  </TwoColumns>
-                </CenteredContent>
-              </Awards>
-            }
-            { entry.additionaltitel &&
-              <Additional>
-                <H2>{entry.additionaltitel}</H2>
-                <P dangerouslySetInnerHTML={additionaldescription} />
-              </Additional>
-            }
-            { entry.workreview &&
-              <WorkReview>
-                {/* TODO: Add these fields to GraphCMS */}
-                <H4>Arbeitszeugnis</H4>
-                <P>Maybe an image is needed here</P>
-              </WorkReview>
-            }
-          </MainDiv>
-        </CSSTransition>
-      </PageShell>
-      )
-      } else {
-        return (
-          <PreviewCVEntryWithData />
-        )
-      }
-    }
+              </CenteredContent>
+            </Awards>
+          }
+          { entry.additionaltitel &&
+            <Additional>
+              <H2>{entry.additionaltitel}</H2>
+              <P dangerouslySetInnerHTML={additionaldescription} />
+            </Additional>
+          }
+          { entry.workreview &&
+            <WorkReview>
+              {/* TODO: Add these fields to GraphCMS */}
+              <H4>Arbeitszeugnis</H4>
+              <P>Maybe an image is needed here</P>
+            </WorkReview>
+          }
+        </MainDiv>
+      </CSSTransition>
+    </PageShell>
+  )
+}
 
-//Review if these elements are really needed
+
+//TODO: Review if these elements are really needed
 
 const BasicInfo = styled.section`
   text-align: center;
@@ -217,67 +185,6 @@ const CenteredContent = styled.div`
   margin-right: auto;
   text-align: center;
 `
-class CVEntryDetailViewWithData extends React.Component {
-
-  //Here I'm preventing React to rerender if my props did not change
-  shouldComponentUpdate(nextProps, nextState){
-    return !(nextProps, this.props);
-  }
-
-  render(){
-    //scrolling to top prevents jumping around while loading data
-    window.setTimeout(() => (window.scrollTo(0, 0)),400)
-    const id = this.props.location.pathname ? this.props.location.pathname.replace(/[/]/g, "") : false
-    //query to get the Full View
-    const fullQuery = gql`{
-      CVEntries(id: "${id}") {
-        id
-        title
-        startDate
-        endDate
-        moreinfocventry {
-          id
-          background
-          responsabilities
-          responsabilitiesdescription
-          projects
-          projectdescription
-
-          logo {
-            id
-            url
-          }
-          descriptionimages {
-            id
-            handle
-          }
-          awardstitle
-          awardlogo1 {
-            id
-            url
-          }
-          awarddescription1
-          awardlogo2 {
-            id
-            url
-          }
-          awarddescription2
-          additionaltitel
-          additionaldescription
-        }
-      }
-    }`
-    const FullCVEntryWithData = graphql(fullQuery)(FullCVEntry)
-
-    return(
-      <MainDiv>
-        <FullCVEntryWithData queryid={id} />
-      </MainDiv>
-    )
-  }
-}
-
-export default CVEntryDetailViewWithData
 
 const MainDiv = styled.div`
   width:100%;

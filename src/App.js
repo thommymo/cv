@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CVEntryDetailViewWithData from './components/cv-entry-detail-molecule'
+import {CVEntryWithData} from './components/with-data/cv-entry-detail'
 import { CVEntriesWithData } from './components/with-data/cv-entries'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout } from './utils/constants'
@@ -86,7 +86,7 @@ class App extends Component {
           >
             <Switch location={this.props.location}>
               <Route exact path='/' component={CVEntriesWithData} />
-              <Route exact path='/:id' component={CVEntryDetailViewWithData} />
+              <Route exact path='/:id' component={CVEntryWithData} />
               <Route component={PageNotFound} />
             </Switch>
           </CSSTransition>
