@@ -6,9 +6,13 @@ import { white, secondaryDark } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 
 // This should be a HOC
+// This HOC should not update its components (shouldComponentUpdate should be performed!)
+// I assume that right now shouldComponentUpdate does not work, because it is not a HOC
 
 class PageShell extends Component {
-
+  shouldComponentUpdate(nextProps, nextState){
+    return !(nextProps, this.props);
+  }
   render(){
     return(
       <MainContent color={this.props.color}>
