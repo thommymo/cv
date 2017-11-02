@@ -43,8 +43,11 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
 }
 
 
-// here we create a grapphql operation
-// there is an id needed for each graphql object
+/*
+  here we create a grapphql operation
+ there is an id needed for each graphql object
+ */
+
 const data = gql`
   query getEntriesQuery {
     allCVEntrieses(orderBy: order_ASC) {

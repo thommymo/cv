@@ -1,6 +1,4 @@
 import React from "react"
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
 import { H1, P, H4, H2, Loading, FullWithImage } from '../components/styled-atoms'
 import styled from 'styled-components'
 import PageNotFound from '../components/page-not-found-molecule'
@@ -9,10 +7,8 @@ import PageShell from '../components/page-shell'
 import { media } from '../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../utils/constants'
-import { FullCVEntryWithData } from '../components/with-data/cv-entry-detail'
 
-// PreviewCVEntry shows loding bar, when no data is available or when data is only partially available
-
+// FullPreviewCVEntry shows loding bar, when no data is available or when data is only partially available
 export const FullPreviewCVEntry = (props) => {
   if (props && props.moreinfocventry){
     const color = JSON.parse(props.moreinfocventry.background)
@@ -47,18 +43,27 @@ const CVEntryHeader = (props) => {
   const formattedStartDate = startDate.toLocaleDateString('de-DE', options)
   const formattedEndDate = endDate.toLocaleDateString('de-DE', options)
   return(
-    <BasicInfo>
-      <LogoColor>
-        { props.logo &&
-          <Logo src={props.logo.url} background={props.background} />
-        }
-        { !props.logo &&
-          <Logo background={props.background} />
-        }
-      </LogoColor>
-      <H4>{formattedStartDate} – {formattedEndDate}</H4>
-      <H1WithDate>{props.title}</H1WithDate>
-    </BasicInfo>
+    <CSSTransition
+      in
+      appear={true}
+      timeout={timeoutTransition}
+      classNames="SlideIn"
+      key="awegfawefawef"
+      unmountOnExit={true}
+    >
+      <BasicInfo>
+        <LogoColor>
+          { props.logo &&
+            <Logo src={props.logo.url} background={props.background} />
+          }
+          { !props.logo &&
+            <Logo background={props.background} />
+          }
+        </LogoColor>
+        <H4>{formattedStartDate} – {formattedEndDate}</H4>
+        <H1WithDate>{props.title}</H1WithDate>
+      </BasicInfo>
+    </CSSTransition>
   )
 }
 
@@ -154,8 +159,7 @@ export const FullCVEntry = (props) => {
   )
 }
 
-
-//TODO: Review if these elements are really needed
+//TODO: Review if these elements are all really needed
 
 const BasicInfo = styled.section`
   text-align: center;
