@@ -5,15 +5,14 @@ import gql from 'graphql-tag';
 import PageShell from '../../components/page-shell'
 import { Loading } from '../../components/styled-atoms'
 import { CSSTransition} from 'react-transition-group'
-import {timeoutTransition} from '../../utils/constants'
+import { timeoutTransition } from '../../utils/constants'
 
-//TODO: make this a higher order component, which loads data with gql
-
-// TODO: Instead of creating my own HOC, I could defently use the one here (recompose)
+// TODO: Instead of creating my own HOC, it might be usefull to use someting like recompose. See:
 // https://dev-blog.apollodata.com/simplify-your-react-components-with-apollo-and-recompose-8b9e302dea51
 
 class TimelineContent extends Component {
   render() {
+    //TODO: This does not load/show data if it is not the first page loaded
     //TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)
     return(
       <PageShell>

@@ -12,20 +12,7 @@ import { CSSTransition } from 'react-transition-group'
 import { loadingIcon } from '../utils/icons'
 import { timeoutTransition } from '../utils/constants'
 
-
-
-/*
-  TODO:
-  1. DONE get ID from URL - partially DONE
-  2. DONE get already available data from cache // See http://dev.apollodata.com/react/migration.html#returnPartialData
-  3. DONE get the rest of the data from graphcms
-  4. Create the rest of the Data in graphcms
-  5. DONE Make this more error proove (i.e. only part of the data is available)
-  6. Implement a (global) loading mechanism
-  7. DONE Fix CSS clitches
-*/
-
-//Make this globally accassible
+// Component shows loding bar, when no data is available or when data is only partially available
 
 const PreviewCVEntry = (props) => {
   if (props.data.loading) {
@@ -40,6 +27,7 @@ const PreviewCVEntry = (props) => {
     const color = JSON.parse(props.data.CVEntries.moreinfocventry.background)
     const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
     return(
+      // TODO: Prevent Apollo to do 2 API calls, when data is available
       // client.select(gql`{ ... }`, '5'); This way I should be able to get data
       // from the store without loading it, that way I can prevent to make 2
       // API calls, when no data is available.
@@ -182,6 +170,7 @@ const FullCVEntry = (props) => {
             }
             { entry.workreview &&
               <WorkReview>
+                {/* TODO: Add these fields to GraphCMS */}
                 <H4>Arbeitszeugnis</H4>
                 <P>Maybe an image is needed here</P>
               </WorkReview>
@@ -196,6 +185,8 @@ const FullCVEntry = (props) => {
         )
       }
     }
+
+//Review if these elements are really needed
 
 const BasicInfo = styled.section`
   text-align: center;
@@ -233,9 +224,8 @@ class CVEntryDetailViewWithData extends React.Component {
   }
 
   render(){
-  //  componentWillMount(){
-      window.setTimeout(() => (window.scrollTo(0, 0)),400)
-  //  }
+    //scrolling to top prevents jumping around while loading data
+    window.setTimeout(() => (window.scrollTo(0, 0)),400)
     const id = this.props.location.pathname ? this.props.location.pathname.replace(/[/]/g, "") : false
     //query to get the Full View
     const fullQuery = gql`{
