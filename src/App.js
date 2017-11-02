@@ -3,9 +3,10 @@ import { ShellCVEntryWithData } from './components/with-data/cv-entry-detail'
 import { ShellCVEntriesWithData } from './components/with-data/cv-entries'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout, timeoutTransition } from './utils/constants'
-import { primary } from './utils/colors'
+import { primary, white } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/page-not-found-molecule'
+import PageShell from './components/page-shell'
 
 //TODO: injectGlobal might has to be moved somewhere else
 
@@ -25,7 +26,7 @@ injectGlobal`
     font-weight: 300;
     font-size: 100%;
     height: 100%;
-    background-color: ${primary};
+    background-color: ${white};
   }
   .FadeIn-appear {
     opacity: 0;
@@ -77,7 +78,7 @@ class App extends Component {
     console.log("CSSTransition")
   }
   render() {
-
+    console.log(this.props.location.pathname.replace(/id|[\/]/g, ""))
     return (
         <TransitionGroup
           appear={true}
@@ -97,8 +98,11 @@ class App extends Component {
             unmountOnExit={true}
           >
             <Switch location={this.props.location}>
-              <Route exact path='/' ><ShellCVEntriesWithData/></Route>
-              <Route exact path='/:id'><ShellCVEntryWithData {...this.props}/></Route>
+              <Route exact path='/'><Application/></Route>
+              <Route exact path='/home' ><Application/></Route>
+              <Route exact path='/aboutme' ><AboutMe/></Route>
+              <Route exact path='/cv' ><ShellCVEntriesWithData/></Route>
+              <Route exact path='/:something/:id/'><ShellCVEntryWithData {...this.props}/></Route>
               <Route><PageNotFound/></Route>
             </Switch>
           </CSSTransition>
@@ -106,5 +110,13 @@ class App extends Component {
     )
   }
 }
+
+const Application = () => (
+  <PageShell><div>Something about this Application</div></PageShell>
+)
+
+const AboutMe = () => (
+  <PageShell><div>Something AboutMe</div></PageShell>
+)
 
 export default withRouter(App);

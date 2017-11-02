@@ -44,6 +44,7 @@ const PreviewCVEntryWithData = graphql(
 
 const CVEntry = ({ data : { networkStatus=1, loading=false, CVEntries=false, variables }} ) => {
   if(loading || networkStatus === 8 || !CVEntries){
+    console.log(variables.id)
     return <PreviewCVEntryWithData id={variables.id}/>
   }else{
     return <FullCVEntry {...CVEntries}/>
@@ -93,7 +94,7 @@ const fullQuery = gql`
 export const CVEntryWithData = graphql(
   fullQuery,
   {options: (props) => ({
-     variables: { id: props.location.pathname ? props.location.pathname.replace(/[/]/g, "") : false}
+     variables: { id: props.location.pathname ? props.location.pathname.replace(/id|[\/]/g, "") : false }
     })
   })(CVEntry)
 

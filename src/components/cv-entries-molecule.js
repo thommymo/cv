@@ -128,7 +128,7 @@ export const CVEntries = ({data : {
           </AdditionalInfo>
           { showmore &&
             //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-            <CVEntryMoreButton to={`/${id}/`}>More &#8594;</CVEntryMoreButton>
+            <CVEntryMoreButton to={`/id/${id}/`}>More &#8594;</CVEntryMoreButton>
           }
         </Content>
         <TimeSpan
