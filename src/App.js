@@ -27,6 +27,20 @@ injectGlobal`
     height: 100%;
     background-color: ${primary};
   }
+  .FadeIn-appear {
+    opacity: 0;
+  }
+  .FadeIn-appear.FadeIn-appear-active {
+    opacity: 1;
+    transition: opacity ${(timeout+900)}ms ease-out ${(timeout)}ms;
+  }
+  .FadeIn-enter {
+    opacity: 0;
+  }
+  .FadeIn-enter.FadeIn-enter-active {
+    opacity: 1;
+    transition: opacity ${(timeout+900)}ms ease-out ${(timeout+600)}ms;
+  }
   .SlideIn-appear {
     opacity: 0;
     transform: translateY(20px);

@@ -26,6 +26,10 @@ const previewQuery = gql`
       moreinfocventry {
         id
         background
+        logo {
+          id
+          url
+        }
       }
     }
   }
@@ -92,6 +96,8 @@ export const CVEntryWithData = graphql(
      variables: { id: props.location.pathname ? props.location.pathname.replace(/[/]/g, "") : false}
     })
   })(CVEntry)
+
+//TODO: Replace this with a HOC
 
 export const ShellCVEntryWithData = (props) => (
   <div><CVEntryWithData {...props}/></div>

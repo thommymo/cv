@@ -4,6 +4,8 @@ import { white } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
 import { responsabilityIcon, learnedIcon, schoolIcon, companyIcon, bulletIcon } from '../utils/icons'
+import { CSSTransition } from 'react-transition-group'
+import { timeoutTransition } from '../utils/constants'
 
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
@@ -72,68 +74,75 @@ export const CVEntries = ({data : {
   const formattedEndDate = endDateDate.toLocaleDateString('de-DE', options)
 
   return (
-
-  <Lap right={right}>
-    <TimeSpan
-      show={left}
-      right={right}
-      left={left}
-      bothright={bothright}
-      bothleft={bothleft}
-      startDate={formattedStartDate}
-      endDate={formattedEndDate}
-    />
-    <Content
-      left={left}
-      right={right}
-      addTopBorder={addTopBorder}
-      addBottomBorder={addBottomBorder}
+    <CSSTransition
+      in
+      appear={true}
+      timeout={timeoutTransition}
+      classNames="FadeIn"
+      unmountOnExit={true}
     >
-      <StyledTitle>{title}</StyledTitle>
-      <AdditionalInfo right={right}>
-        { company &&
-          <AdditionalInfoItem right={right}>
-            <Icon alt="company"
-              src={companyIcon}
-            />
-            <AdditionalInfoP>{company}</AdditionalInfoP>
-          </AdditionalInfoItem>
-        }
-        { school &&
-          <AdditionalInfoItem right={right}>
-            <Icon alt="school" src={schoolIcon} />
-            <AdditionalInfoP>{school}</AdditionalInfoP>
-          </AdditionalInfoItem>
-        }
-        { responsability &&
-          <SecondaryAdditionalInfoItem right={right}>
-            <Icon alt="responsability" src={responsabilityIcon}/>
-            <AdditionalInfoP>{responsability}</AdditionalInfoP>
-          </SecondaryAdditionalInfoItem>
-        }
-        { learned &&
-          <SecondaryAdditionalInfoItem right={right}>
-            <Icon alt="learned" src={learnedIcon}/>
-            <AdditionalInfoP>{learned}</AdditionalInfoP>
-          </SecondaryAdditionalInfoItem>
-        }
-      </AdditionalInfo>
-      { showmore &&
-        //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-        <CVEntryMoreButton to={`/${id}/`}>More &#8594;</CVEntryMoreButton>
-      }
-    </Content>
-    <TimeSpan
-      rightposition={true}
-      show={right}
-      right={right}
-      left={left}
-      bothright={bothright}
-      bothleft={bothleft}
-      startDate={formattedStartDate}
-      endDate={formattedEndDate}
-    />
-  </Lap>
+      <Lap right={right}>
+        <TimeSpan
+          show={left}
+          right={right}
+          left={left}
+          bothright={bothright}
+          bothleft={bothleft}
+          startDate={formattedStartDate}
+          endDate={formattedEndDate}
+        />
+        <Content
+          left={left}
+          right={right}
+          addTopBorder={addTopBorder}
+          addBottomBorder={addBottomBorder}
+        >
+          <StyledTitle>{title}</StyledTitle>
+          <AdditionalInfo right={right}>
+            { company &&
+              <AdditionalInfoItem right={right}>
+                <Icon alt="company"
+                  src={companyIcon}
+                />
+                <AdditionalInfoP>{company}</AdditionalInfoP>
+              </AdditionalInfoItem>
+            }
+            { school &&
+              <AdditionalInfoItem right={right}>
+                <Icon alt="school" src={schoolIcon} />
+                <AdditionalInfoP>{school}</AdditionalInfoP>
+              </AdditionalInfoItem>
+            }
+            { responsability &&
+              <SecondaryAdditionalInfoItem right={right}>
+                <Icon alt="responsability" src={responsabilityIcon}/>
+                <AdditionalInfoP>{responsability}</AdditionalInfoP>
+              </SecondaryAdditionalInfoItem>
+            }
+            { learned &&
+              <SecondaryAdditionalInfoItem right={right}>
+                <Icon alt="learned" src={learnedIcon}/>
+                <AdditionalInfoP>{learned}</AdditionalInfoP>
+              </SecondaryAdditionalInfoItem>
+            }
+          </AdditionalInfo>
+          { showmore &&
+            //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
+            <CVEntryMoreButton to={`/${id}/`}>More &#8594;</CVEntryMoreButton>
+          }
+        </Content>
+        <TimeSpan
+          rightposition={true}
+          show={right}
+          right={right}
+          left={left}
+          bothright={bothright}
+          bothleft={bothleft}
+          startDate={formattedStartDate}
+          endDate={formattedEndDate}
+        />
+      </Lap>
+    </CSSTransition>
     )
 }
 

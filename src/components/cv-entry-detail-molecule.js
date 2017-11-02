@@ -6,7 +6,7 @@ import { white } from '../utils/colors'
 import PageShell from '../components/page-shell'
 import { media } from '../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
-import { timeout, timeoutTransition } from '../utils/constants'
+import { timeoutTransition } from '../utils/constants'
 
 // FullPreviewCVEntry shows loding bar, when no data is available or when data is only partially available
 export const FullPreviewCVEntry = (props) => {
@@ -74,80 +74,85 @@ export const FullCVEntry = (props) => {
   const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
   setTimeout(() => window.scrollTo(0, 0), (450))
   return(
-    <PageShell color={colorRGBA} title={props.title} >
-      <CVEntryHeader
-        logo={entry.logo}
-        background={entry.background}
-        startDate={props.startDate}
-        endDate={props.endDate}
-        title={props.title}
-      />
 
-      <MainDiv>
-        <BasicInfo>
-          { entry.responsabilities &&
-            <TwoColumns>
-              <Column>
-                <H4>{entry.responsabilities}</H4>
-                <P dangerouslySetInnerHTML={responsabilitiesdescription} />
-              </Column>
-              <Column>
-                <H4>{entry.projects}</H4>
-                <P dangerouslySetInnerHTML={projectdescription} />
-              </Column>
-            </TwoColumns>
-          }
-          { entry.descriptionimages &&
-            entry.descriptionimages.map((image) => (
-              <FullWithImage handle={image.handle} key={image.handle}/>
-            )) }
-        </BasicInfo>
+      <PageShell color={colorRGBA} title={props.title} >
+
+        <CVEntryHeader
+          logo={entry.logo}
+          background={entry.background}
+          startDate={props.startDate}
+          endDate={props.endDate}
+          title={props.title}
+        />
+
         <CSSTransition
+          in
           appear={true}
-          key="aewlfjae"
           timeout={timeoutTransition}
-          classNames="SlideIn"
+          classNames="FadeIn"
+          unmountOnExit={true}
         >
-          <BasicInfo>
-            { entry.awardstitle &&
-              <Awards>
-                <CenteredContent>
-                  <H2>{entry.awardstitle}</H2>
-                  <TwoColumns>
-                    <Column>
-                      <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
-                      <P>{entry.awarddescription1}</P>
-                    </Column>
-                    <Column>
-                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                      <P>{entry.awarddescription2}</P>
-                    </Column>
-                    <Column>
-                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                      <P>{entry.awarddescription2}</P>
-                    </Column>
-                  </TwoColumns>
-                </CenteredContent>
-              </Awards>
-            }
-            { entry.additionaltitle &&
-              <Additional>
-                <H2>{entry.additionaltitle}</H2>
-                <P dangerouslySetInnerHTML={additionaldescription} />
-              </Additional>
-            }
-            { entry.workreview &&
-              <WorkReview>
-                {/* TODO: Add these fields to GraphCMS */}
-                <H4>Arbeitszeugnis</H4>
-                <P>Maybe an image is needed here</P>
-              </WorkReview>
+          <MainDiv>
+            <BasicInfo>
+              { entry.responsabilities &&
+                <TwoColumns>
+                  <Column>
+                    <H4>{entry.responsabilities}</H4>
+                    <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+                  </Column>
+                  <Column>
+                    <H4>{entry.projects}</H4>
+                    <P dangerouslySetInnerHTML={projectdescription} />
+                  </Column>
+                </TwoColumns>
+              }
+              { entry.descriptionimages &&
+                entry.descriptionimages.map((image) => (
+                  <FullWithImage handle={image.handle} key={image.handle}/>
+                )) }
+            </BasicInfo>
 
-            }
-          </BasicInfo>
+            <BasicInfo>
+              { entry.awardstitle &&
+                <Awards>
+                  <CenteredContent>
+                    <H2>{entry.awardstitle}</H2>
+                    <TwoColumns>
+                      <Column>
+                        <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
+                        <P>{entry.awarddescription1}</P>
+                      </Column>
+                      <Column>
+                        <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
+                        <P>{entry.awarddescription2}</P>
+                      </Column>
+                      <Column>
+                        <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
+                        <P>{entry.awarddescription2}</P>
+                      </Column>
+                    </TwoColumns>
+                  </CenteredContent>
+                </Awards>
+              }
+              { entry.additionaltitle &&
+                <Additional>
+                  <H2>{entry.additionaltitle}</H2>
+                  <P dangerouslySetInnerHTML={additionaldescription} />
+                </Additional>
+              }
+              { entry.workreview &&
+                <WorkReview>
+                  {/* TODO: Add these fields to GraphCMS */}
+                  <H4>Arbeitszeugnis</H4>
+                  <P>Maybe an image is needed here</P>
+                </WorkReview>
+              }
+            </BasicInfo>
+          </MainDiv>
         </CSSTransition>
-      </MainDiv>
-    </PageShell>
+        </PageShell>
+
+
   )
 }
 

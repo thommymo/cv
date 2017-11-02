@@ -64,6 +64,10 @@ const data = gql`
       moreinfocventry {
         id
         background
+        logo {
+          id
+          url
+        }
       }
     }
   }
@@ -74,6 +78,8 @@ const data = gql`
   to a component as a prop (and update them as the results change)
 */
 export const CVEntriesWithData = graphql(data)(TimelineContent);
+
+//TODO: Replace this with a HOC
 
 export const ShellCVEntriesWithData = (props) => (
   <div><CVEntriesWithData {...props}/></div>
