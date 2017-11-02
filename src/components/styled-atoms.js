@@ -97,7 +97,7 @@ export const Loading = () => (
       classNames="SlideIn"
       unmountOnExit={true}
     >
-      <P><img src={loadingIcon}/></P>
+      <P><img src={loadingIcon} alt="Loading icon"/></P>
     </CSSTransition>
 )
 

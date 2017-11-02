@@ -1,14 +1,13 @@
 import React from "react"
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { H1, P, H4, H2, H3, Loading, FullWithImage } from '../components/styled-atoms'
+import { H1, P, H4, H2, Loading, FullWithImage } from '../components/styled-atoms'
 import styled from 'styled-components'
 import PageNotFound from '../components/page-not-found-molecule'
-import { white, primary } from '../utils/colors'
+import { white } from '../utils/colors'
 import PageShell from '../components/page-shell'
 import { media } from '../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
-import { loadingIcon } from '../utils/icons'
 import { timeoutTransition } from '../utils/constants'
 
 // PreviewCVEntry shows loding bar, when no data is available or when data is only partially available
@@ -149,15 +148,15 @@ const FullCVEntry = (props) => {
                   <H2>{entry.awardstitle}</H2>
                   <TwoColumns>
                     <Column>
-                      <img src={entry.awardlogo1.url} width="100" height="100"/>
+                      <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
                       <P>{entry.awarddescription1}</P>
                     </Column>
                     <Column>
-                      <img src={entry.awardlogo2.url} width="100" height="100" />
+                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
                       <P>{entry.awarddescription2}</P>
                     </Column>
                     <Column>
-                      <img src={entry.awardlogo2.url} width="100" height="100" />
+                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
                       <P>{entry.awarddescription2}</P>
                     </Column>
                   </TwoColumns>

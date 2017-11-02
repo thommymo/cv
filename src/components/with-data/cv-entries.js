@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { CVEntries, CVEntriesHeader } from '../../components/cv-entries-molecule'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import PageShell from '../../components/page-shell'
 import { Loading } from '../../components/styled-atoms'
-import { CSSTransition} from 'react-transition-group'
-import { timeoutTransition } from '../../utils/constants'
 
 // TODO: Instead of creating my own HOC, it might be usefull to use someting like recompose. See:
 // https://dev-blog.apollodata.com/simplify-your-react-components-with-apollo-and-recompose-8b9e302dea51
 
 
-//TODO: This does not load/show data if it is not the first page loaded
 //TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)
 
 const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) => {
