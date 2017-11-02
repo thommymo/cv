@@ -8,12 +8,8 @@ import { Loading } from '../../components/styled-atoms'
 // TODO: Instead of creating my own HOC, it might be usefull to use someting like recompose. See:
 // https://dev-blog.apollodata.com/simplify-your-react-components-with-apollo-and-recompose-8b9e302dea51
 
-
-//TODO: Only render once: This is rendered 4 Times now (might be because of the CSSTransition. This does not make any sense)
-
 const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) => {
   if(loading){
-    console.log("LOADING")
     return(
       <PageShell>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
@@ -21,7 +17,6 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
       </PageShell>
     )
   } else if (allCVEntrieses){
-    console.log("Show Entries")
     return(
       <PageShell>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
@@ -31,7 +26,6 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
       </PageShell>
     )
   } else {
-    console.log("Some Error Happend")
     return(
       <PageShell>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
@@ -80,3 +74,7 @@ const data = gql`
   to a component as a prop (and update them as the results change)
 */
 export const CVEntriesWithData = graphql(data)(TimelineContent);
+
+export const ShellCVEntriesWithData = (props) => (
+  <div><CVEntriesWithData {...props}/></div>
+)

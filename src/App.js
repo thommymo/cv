@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {CVEntryWithData} from './components/with-data/cv-entry-detail'
-import { CVEntriesWithData } from './components/with-data/cv-entries'
+import { ShellCVEntryWithData } from './components/with-data/cv-entry-detail'
+import { ShellCVEntriesWithData } from './components/with-data/cv-entries'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { timeout } from './utils/constants'
+import { timeout, timeoutTransition } from './utils/constants'
 import { primary } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/page-not-found-molecule'
@@ -26,7 +26,6 @@ injectGlobal`
     font-size: 100%;
     height: 100%;
     background-color: ${primary};
-
   }
   .SlideIn-appear {
     opacity: 0;
@@ -64,7 +63,6 @@ class App extends Component {
     console.log("CSSTransition")
   }
   render() {
-    const timeoutTransition = { enter:1500, exit:300 }
 
     return (
         <TransitionGroup
@@ -85,9 +83,9 @@ class App extends Component {
             unmountOnExit={true}
           >
             <Switch location={this.props.location}>
-              <Route exact path='/' component={CVEntriesWithData} />
-              <Route exact path='/:id' component={CVEntryWithData} />
-              <Route component={PageNotFound} />
+              <Route exact path='/' ><ShellCVEntriesWithData/></Route>
+              <Route exact path='/:id'><ShellCVEntryWithData {...this.props}/></Route>
+              <Route><PageNotFound/></Route>
             </Switch>
           </CSSTransition>
         </TransitionGroup>

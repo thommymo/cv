@@ -92,3 +92,7 @@ export const CVEntryWithData = graphql(
      variables: { id: props.location.pathname ? props.location.pathname.replace(/[/]/g, "") : false}
     })
   })(CVEntry)
+
+export const ShellCVEntryWithData = (props) => (
+  <div><CVEntryWithData {...props}/></div>
+)

@@ -6,7 +6,7 @@ import { white } from '../utils/colors'
 import PageShell from '../components/page-shell'
 import { media } from '../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
-import { timeoutTransition } from '../utils/constants'
+import { timeout, timeoutTransition } from '../utils/constants'
 
 // FullPreviewCVEntry shows loding bar, when no data is available or when data is only partially available
 export const FullPreviewCVEntry = (props) => {
@@ -43,27 +43,18 @@ const CVEntryHeader = (props) => {
   const formattedStartDate = startDate.toLocaleDateString('de-DE', options)
   const formattedEndDate = endDate.toLocaleDateString('de-DE', options)
   return(
-    <CSSTransition
-      in
-      appear={true}
-      timeout={timeoutTransition}
-      classNames="SlideIn"
-      key="awegfawefawef"
-      unmountOnExit={true}
-    >
-      <BasicInfo>
-        <LogoColor>
-          { props.logo &&
-            <Logo src={props.logo.url} background={props.background} />
-          }
-          { !props.logo &&
-            <Logo background={props.background} />
-          }
-        </LogoColor>
-        <H4>{formattedStartDate} – {formattedEndDate}</H4>
-        <H1WithDate>{props.title}</H1WithDate>
-      </BasicInfo>
-    </CSSTransition>
+    <BasicInfo>
+      <LogoColor>
+        { props.logo &&
+          <Logo src={props.logo.url} background={props.background} />
+        }
+        { !props.logo &&
+          <Logo background={props.background} />
+        }
+      </LogoColor>
+      <H4>{formattedStartDate} – {formattedEndDate}</H4>
+      <H1WithDate>{props.title}</H1WithDate>
+    </BasicInfo>
   )
 }
 
@@ -81,10 +72,9 @@ export const FullCVEntry = (props) => {
   }
   const color = JSON.parse(entry.background)
   const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
-
+  setTimeout(() => window.scrollTo(0, 0), (450))
   return(
-    <PageShell color={colorRGBA} title={props.title}>
-
+    <PageShell color={colorRGBA} title={props.title} >
       <CVEntryHeader
         logo={entry.logo}
         background={entry.background}
@@ -92,69 +82,71 @@ export const FullCVEntry = (props) => {
         endDate={props.endDate}
         title={props.title}
       />
-      <CSSTransition
-        in
-        appear={true}
-        timeout={timeoutTransition}
-        classNames="SlideIn"
-        key="awegf"
-        unmountOnExit={true}
-      >
-        <MainDiv>
+
+      <MainDiv>
+        <BasicInfo>
+          { entry.responsabilities &&
+            <TwoColumns>
+              <Column>
+                <H4>{entry.responsabilities}</H4>
+                <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+              </Column>
+              <Column>
+                <H4>{entry.projects}</H4>
+                <P dangerouslySetInnerHTML={projectdescription} />
+              </Column>
+            </TwoColumns>
+          }
+          { entry.descriptionimages &&
+            entry.descriptionimages.map((image) => (
+              <FullWithImage handle={image.handle} key={image.handle}/>
+            )) }
+        </BasicInfo>
+        <CSSTransition
+          appear={true}
+          key="aewlfjae"
+          timeout={timeoutTransition}
+          classNames="SlideIn"
+        >
           <BasicInfo>
-            { entry.responsabilities &&
-              <TwoColumns>
-                <Column>
-                  <H4>{entry.responsabilities}</H4>
-                  <P dangerouslySetInnerHTML={responsabilitiesdescription} />
-                </Column>
-                <Column>
-                  <H4>{entry.projects}</H4>
-                  <P dangerouslySetInnerHTML={projectdescription} />
-                </Column>
-              </TwoColumns>
+            { entry.awardstitle &&
+              <Awards>
+                <CenteredContent>
+                  <H2>{entry.awardstitle}</H2>
+                  <TwoColumns>
+                    <Column>
+                      <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
+                      <P>{entry.awarddescription1}</P>
+                    </Column>
+                    <Column>
+                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
+                      <P>{entry.awarddescription2}</P>
+                    </Column>
+                    <Column>
+                      <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
+                      <P>{entry.awarddescription2}</P>
+                    </Column>
+                  </TwoColumns>
+                </CenteredContent>
+              </Awards>
             }
-            { entry.descriptionimages &&
-              entry.descriptionimages.map((image) => (
-                <FullWithImage handle={image.handle} key={image.handle}/>
-              )) }
+            { entry.additionaltitle &&
+              <Additional>
+                <H2>{entry.additionaltitle}</H2>
+                <P dangerouslySetInnerHTML={additionaldescription} />
+              </Additional>
+            }
+            { entry.workreview &&
+              <WorkReview>
+                {/* TODO: Add these fields to GraphCMS */}
+                <H4>Arbeitszeugnis</H4>
+                <P>Maybe an image is needed here</P>
+              </WorkReview>
+
+            }
           </BasicInfo>
-          { entry.awardstitle &&
-            <Awards>
-              <CenteredContent>
-                <H2>{entry.awardstitle}</H2>
-                <TwoColumns>
-                  <Column>
-                    <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
-                    <P>{entry.awarddescription1}</P>
-                  </Column>
-                  <Column>
-                    <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                    <P>{entry.awarddescription2}</P>
-                  </Column>
-                  <Column>
-                    <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                    <P>{entry.awarddescription2}</P>
-                  </Column>
-                </TwoColumns>
-              </CenteredContent>
-            </Awards>
-          }
-          { entry.additionaltitel &&
-            <Additional>
-              <H2>{entry.additionaltitel}</H2>
-              <P dangerouslySetInnerHTML={additionaldescription} />
-            </Additional>
-          }
-          { entry.workreview &&
-            <WorkReview>
-              {/* TODO: Add these fields to GraphCMS */}
-              <H4>Arbeitszeugnis</H4>
-              <P>Maybe an image is needed here</P>
-            </WorkReview>
-          }
-        </MainDiv>
-      </CSSTransition>
+        </CSSTransition>
+      </MainDiv>
     </PageShell>
   )
 }
