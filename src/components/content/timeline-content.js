@@ -4,6 +4,8 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import PageShell from '../../components/page-shell'
 import { Loading } from '../../components/styled-atoms'
+import { CSSTransition} from 'react-transition-group'
+import {timeoutTransition} from '../../utils/constants'
 
 //TODO: make this a higher order component, which loads data with gql
 
@@ -21,26 +23,34 @@ class TimelineContent extends Component {
         }
         { this.props.data.allCVEntrieses &&
           this.props.data.allCVEntrieses.map((entry) => (
-            <CVEntries
-              id = {entry.id}
-              key = {entry.id}
-              slug = {entry.slug}
-              showmore = {entry.showmore}
-              startDate = {entry.startDate ? entry.startDate.slice(0, 4) : ""}
-              endDate = {entry.endDate ? entry.endDate.slice(0, 4) : ""}
-              right = {entry.right}
-              left = {entry.left}
-              addTopBorder = {entry.addTopBorder}
-              addBottomBorder = {entry.addBottomBorder}
-              bothleft = {entry.bothleft}
-              bothright = {entry.bothright}
-              company = {entry.company}
-              school = {entry.school}
-              responsability = {entry.responsability}
-              learned = {entry.learned}
-              title = {entry.title}
-              moreinfocventry = {entry.moreinfocventry}
-            />
+            <CSSTransition
+              in
+              appear={true}
+              timeout={timeoutTransition}
+              classNames="SlideIn"
+              unmountOnExit={true}
+            >
+              <CVEntries
+                id = {entry.id}
+                key = {entry.id}
+                slug = {entry.slug}
+                showmore = {entry.showmore}
+                startDate = {entry.startDate ? entry.startDate.slice(0, 4) : ""}
+                endDate = {entry.endDate ? entry.endDate.slice(0, 4) : ""}
+                right = {entry.right}
+                left = {entry.left}
+                addTopBorder = {entry.addTopBorder}
+                addBottomBorder = {entry.addBottomBorder}
+                bothleft = {entry.bothleft}
+                bothright = {entry.bothright}
+                company = {entry.company}
+                school = {entry.school}
+                responsability = {entry.responsability}
+                learned = {entry.learned}
+                title = {entry.title}
+                moreinfocventry = {entry.moreinfocventry}
+              />
+            </CSSTransition>
           ))
         }
       </PageShell>
