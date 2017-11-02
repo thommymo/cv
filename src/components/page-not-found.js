@@ -10,7 +10,7 @@ export default class PageNotFound extends PureComponent {
     return (
       <PageShell title="Page not found">
         <H1>Page not found</H1>
-        <P>Go look for it in the Treasures from the Wreck of the Unbelievable and say hello to Damian.</P>
+        <P>Go look for it in the «Treasures from the Wreck of the Unbelievable» and say hello to Damian.</P>
       </PageShell>
     )
   }

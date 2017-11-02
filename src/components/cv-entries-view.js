@@ -5,7 +5,6 @@ import { media } from '../utils/breakpoints'
 import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
 import { responsabilityIcon, learnedIcon, schoolIcon, companyIcon, bulletIcon } from '../utils/icons'
 
-//TODO: Move Icon into CSS (Now it is loaded x times which doesn't make sense)
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
 
@@ -83,9 +82,7 @@ export const CVEntries = ({
       addBottomBorder={addBottomBorder}
     >
       <StyledTitle>{title}</StyledTitle>
-      <AdditionalInfo
-        right={right}
-      >
+      <AdditionalInfo right={right}>
         { company &&
           <AdditionalInfoItem right={right}>
             <Icon alt="company"

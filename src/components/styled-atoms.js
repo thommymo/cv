@@ -1,5 +1,5 @@
 import React from "react"
-import { media } from '../utils/breakpoints'
+import { media, sizes, imagesizes } from '../utils/breakpoints'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
@@ -8,7 +8,9 @@ import { loadingIcon } from '../utils/icons'
 
 
 
-//Typography
+/*
+  Typography
+*/
 
 export const H1 = styled.h1`
   font-weight:600;
@@ -71,6 +73,22 @@ export const LI = styled.li`
   ${media.phone`line-height: 1.11111111em`}
 `
 
+/*
+  Links and Buttons
+*/
+
+export const Ghostbutton = styled(Link)`
+  border:1px solid;
+  padding: 5px 10px 5px 10px;
+  width: auto;
+  float:none;
+  text-decoration: none;
+`;
+
+/*
+  Loading Animations
+*/
+
 export const Loading = () => (
     <CSSTransition
       in
@@ -83,12 +101,33 @@ export const Loading = () => (
     </CSSTransition>
 )
 
-// Links and Buttons
+/*
+  Images
+*/
 
-export const Ghostbutton = styled(Link)`
-  border:1px solid;
-  padding: 5px 10px 5px 10px;
-  width: auto;
-  float:none;
-  text-decoration: none;
-`;
+export const FullWithImage = (props) => {
+  //https://media.graphcms.com/[options]/[File Handle]
+  const baseurl = "https://media.graphcms.com/"
+  const handle = props.handle
+  return (
+    <picture>
+      { Object.keys(sizes).map((label) => (
+
+        <source key={imagesizes[label]}
+          media={`screen
+            ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
+            ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
+            `}
+          srcSet={`
+            ${baseurl}resize=width:${imagesizes[label]}/${handle} 1x,
+            ${baseurl}resize=width:${imagesizes[label]*2}/${handle} 2x,
+          `}/>
+      ))}
+      <Img src={`${baseurl}resize=width:20/${handle}`}/>
+    </picture>
+  )
+}
+
+const Img = styled.img`
+  width:100%;
+`

@@ -6,7 +6,6 @@ import { white, secondaryDark } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 
 class PageShell extends Component {
-  // Using PureCompenent prevents this Child to rerender four times (because of TransitionGroup)
 
   render(){
     return(

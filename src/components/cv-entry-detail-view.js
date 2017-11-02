@@ -1,12 +1,11 @@
 import React from "react"
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { H1, P, H4, H2, H3, Loading } from '../components/styled-atoms'
+import { H1, P, H4, H2, H3, Loading, FullWithImage } from '../components/styled-atoms'
 import styled from 'styled-components'
 import PageNotFound from '../components/page-not-found'
 import { white, primary } from '../utils/colors'
 import PageShell from '../components/page-shell'
-import { GraphCMSImages } from '../components/full-with-image'
 import { media } from '../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
 import { loadingIcon } from '../utils/icons'
@@ -138,7 +137,7 @@ const FullCVEntry = (props) => {
               }
               { entry.descriptionimages &&
                 entry.descriptionimages.map((image) => (
-                  <GraphCMSImages handle={image.handle} key={image.handle}/>
+                  <FullWithImage handle={image.handle} key={image.handle}/>
                 )) }
             </BasicInfo>
             { entry.awardstitle &&
