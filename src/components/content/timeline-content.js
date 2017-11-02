@@ -3,6 +3,7 @@ import { CVEntries, CVEntriesHeader } from '../../components/cv-entries-view'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import PageShell from '../../components/page-shell'
+import { Loading } from '../../components/styled-atoms'
 
 //TODO: make this a higher order component, which loads data with gql
 
@@ -16,7 +17,7 @@ class TimelineContent extends Component {
       <PageShell>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
         { this.props.data.loading &&
-          <div>I am Loading Data, please wait</div>
+          <div><Loading /></div>
         }
         { this.props.data.allCVEntrieses &&
           this.props.data.allCVEntrieses.map((entry) => (

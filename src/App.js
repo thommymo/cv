@@ -57,7 +57,6 @@ injectGlobal`
   }
 `
 
-//TODO: Maybe add Redux, although this could be a bit over engineered
 //TODO: Add a print version
 
 class App extends Component {

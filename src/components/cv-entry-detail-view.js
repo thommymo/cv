@@ -1,14 +1,16 @@
 import React from "react"
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { H1, P, H4, H2, H3 } from '../components/styled-atoms'
+import { H1, P, H4, H2, H3, Loading } from '../components/styled-atoms'
 import styled from 'styled-components'
 import PageNotFound from '../components/page-not-found'
 import { white, primary } from '../utils/colors'
 import PageShell from '../components/page-shell'
 import { GraphCMSImages } from '../components/full-with-image'
 import { media } from '../utils/breakpoints'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
+import { loadingIcon } from '../utils/icons'
+import { timeoutTransition } from '../utils/constants'
 
 
 
@@ -20,22 +22,23 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
   4. Create the rest of the Data in graphcms
   5. DONE Make this more error proove (i.e. only part of the data is available)
   6. Implement a (global) loading mechanism
-  7. Fix CSS clitches
+  7. DONE Fix CSS clitches
 */
+
+//Make this globally accassible
 
 const PreviewCVEntry = (props) => {
   if (props.data.loading) {
     return(
       <PageShell title="Loading">
         <BasicInfo>
-          <P>The Rest needs some Time to Load </P>
+          <Loading />
         </BasicInfo>
       </PageShell>
     )
   } else if (props.data.CVEntries && props.data.CVEntries.moreinfocventry){
     const color = JSON.parse(props.data.CVEntries.moreinfocventry.background)
     const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
-    const timeoutTransition = { enter:1800, exit:300 }
     return(
       // client.select(gql`{ ... }`, '5'); This way I should be able to get data
       // from the store without loading it, that way I can prevent to make 2
@@ -49,7 +52,7 @@ const PreviewCVEntry = (props) => {
           title={props.data.CVEntries.title}
         />
         <BasicInfo>
-          <P>The Rest needs some Time to Load </P>
+          <Loading />
         </BasicInfo>
       </PageShell>
     )
@@ -112,7 +115,6 @@ const FullCVEntry = (props) => {
     }
     const color = JSON.parse(entry.background)
     const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
-    const timeoutTransition = { enter:1800, exit:300 }
 
     return(
       <PageShell color={colorRGBA} title={props.data.CVEntries.title}>
@@ -123,69 +125,69 @@ const FullCVEntry = (props) => {
           startDate={props.data.CVEntries.startDate}
           endDate={props.data.CVEntries.endDate}
           title={props.data.CVEntries.title}
-        /><TransitionGroup
-          appear={true}>
-          <CSSTransition appear={true}
-            timeout={timeoutTransition}
-            classNames="SlideIn"
-            key="awegf"
-            unmountOnExit={true}
-          >
-            <MainDiv>
-              <BasicInfo>
-                { entry.responsabilities &&
+        />
+        <CSSTransition
+          in
+          appear={true}
+          timeout={timeoutTransition}
+          classNames="SlideIn"
+          key="awegf"
+          unmountOnExit={true}
+        >
+          <MainDiv>
+            <BasicInfo>
+              { entry.responsabilities &&
+                <TwoColumns>
+                  <Column>
+                    <H4>{entry.responsabilities}</H4>
+                    <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+                  </Column>
+                  <Column>
+                    <H4>{entry.projects}</H4>
+                    <P dangerouslySetInnerHTML={projectdescription} />
+                  </Column>
+                </TwoColumns>
+              }
+              { entry.descriptionimages &&
+                entry.descriptionimages.map((image) => (
+                  <GraphCMSImages handle={image.handle} key={image.handle}/>
+                )) }
+            </BasicInfo>
+            { entry.awardstitle &&
+              <Awards>
+                <CenteredContent>
+                  <H2>{entry.awardstitle}</H2>
                   <TwoColumns>
                     <Column>
-                      <H4>{entry.responsabilities}</H4>
-                      <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+                      <img src={entry.awardlogo1.url} width="100" height="100"/>
+                      <P>{entry.awarddescription1}</P>
                     </Column>
                     <Column>
-                      <H4>{entry.projects}</H4>
-                      <P dangerouslySetInnerHTML={projectdescription} />
+                      <img src={entry.awardlogo2.url} width="100" height="100" />
+                      <P>{entry.awarddescription2}</P>
+                    </Column>
+                    <Column>
+                      <img src={entry.awardlogo2.url} width="100" height="100" />
+                      <P>{entry.awarddescription2}</P>
                     </Column>
                   </TwoColumns>
-                }
-                { entry.descriptionimages &&
-                  entry.descriptionimages.map((image) => (
-                    <GraphCMSImages handle={image.handle} key={image.handle}/>
-                  )) }
-              </BasicInfo>
-              { entry.awardstitle &&
-                <Awards>
-                  <CenteredContent>
-                    <H2>{entry.awardstitle}</H2>
-                    <TwoColumns>
-                      <Column>
-                        <img src={entry.awardlogo1.url} width="100" height="100"/>
-                        <P>{entry.awarddescription1}</P>
-                      </Column>
-                      <Column>
-                        <img src={entry.awardlogo2.url} width="100" height="100" />
-                        <P>{entry.awarddescription2}</P>
-                      </Column>
-                      <Column>
-                        <img src={entry.awardlogo2.url} width="100" height="100" />
-                        <P>{entry.awarddescription2}</P>
-                      </Column>
-                    </TwoColumns>
-                  </CenteredContent>
-                </Awards>
-              }
-              { entry.additionaltitel &&
-                <Additional>
-                  <H2>{entry.additionaltitel}</H2>
-                  <P dangerouslySetInnerHTML={additionaldescription} />
-                </Additional>
-              }
-              { entry.workreview &&
-                <WorkReview>
-                  <H4>Arbeitszeugnis</H4>
-                  <P>Maybe an image is needed here</P>
-                </WorkReview>
-              }
-            </MainDiv>
-            </CSSTransition>
-        </TransitionGroup>
+                </CenteredContent>
+              </Awards>
+            }
+            { entry.additionaltitel &&
+              <Additional>
+                <H2>{entry.additionaltitel}</H2>
+                <P dangerouslySetInnerHTML={additionaldescription} />
+              </Additional>
+            }
+            { entry.workreview &&
+              <WorkReview>
+                <H4>Arbeitszeugnis</H4>
+                <P>Maybe an image is needed here</P>
+              </WorkReview>
+            }
+          </MainDiv>
+        </CSSTransition>
       </PageShell>
       )
       } else {

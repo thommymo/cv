@@ -1,6 +1,12 @@
+import React from "react"
 import { media } from '../utils/breakpoints'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group'
+import { timeoutTransition } from '../utils/constants'
+import { loadingIcon } from '../utils/icons'
+
+
 
 //Typography
 
@@ -64,6 +70,18 @@ export const LI = styled.li`
   ${media.tablet`line-height: 1.22222222em`}
   ${media.phone`line-height: 1.11111111em`}
 `
+
+export const Loading = () => (
+    <CSSTransition
+      in
+      appear={true}
+      timeout={timeoutTransition}
+      classNames="SlideIn"
+      unmountOnExit={true}
+    >
+      <P><img src={loadingIcon}/></P>
+    </CSSTransition>
+)
 
 // Links and Buttons
 
