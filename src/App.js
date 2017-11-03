@@ -3,7 +3,7 @@ import { ShellCVEntryWithData } from './components/with-data/cv-entry-detail'
 import { ShellCVEntriesWithData } from './components/with-data/cv-entries'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout, timeoutTransition } from './utils/constants'
-import { primary, white } from './utils/colors'
+import { white } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/page-not-found-molecule'
 import PageShell from './components/page-shell'
@@ -33,32 +33,32 @@ injectGlobal`
   }
   .FadeIn-appear.FadeIn-appear-active {
     opacity: 1;
-    transition: opacity ${(timeout+900)}ms ease-out ${(timeout)}ms;
+    transition: opacity ${(timeout*2)}ms ease-out ${(timeout)}ms;
   }
   .FadeIn-enter {
     opacity: 0;
   }
   .FadeIn-enter.FadeIn-enter-active {
     opacity: 1;
-    transition: opacity ${(timeout+900)}ms ease-out ${(timeout+600)}ms;
+    transition: opacity ${(timeout*2)}ms ease-out ${(timeout)}ms;
   }
   .SlideIn-appear {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   .SlideIn-appear.SlideIn-appear-active {
     opacity: 1;
     transform: translateY(0px);
-    transition: all ${(timeout+600)}ms ease-out ${(timeout+300)}ms;
+    transition: all ${(timeout*2)}ms ease-out ${(timeout*1.5)}ms;
   }
   .SlideIn-enter {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   .SlideIn-enter.SlideIn-enter-active {
     opacity: 1;
     transform: translateY(0px);
-    transition: all ${(timeout+300)}ms ease-out ${(timeout+300)}ms;
+    transition: all ${(timeout*2)}ms ease-out ${(timeout*1.5)}ms;
   }
   .SlideIn-exit {
     transform: translateY(0px);
@@ -74,11 +74,8 @@ injectGlobal`
 //TODO: Add a print version
 
 class App extends Component {
-  componentWillEnter(){
-    console.log("CSSTransition")
-  }
+
   render() {
-    console.log(this.props.location.pathname.replace(/id|[\/]/g, ""))
     return (
         <TransitionGroup
           appear={true}
@@ -96,6 +93,7 @@ class App extends Component {
             classNames="SlideIn"
             key={this.props.location.key}
             unmountOnExit={true}
+            onExited={() => window.scrollTo(0,0)}
           >
             <Switch location={this.props.location}>
               <Route exact path='/'><Application/></Route>
@@ -112,11 +110,11 @@ class App extends Component {
 }
 
 const Application = () => (
-  <PageShell><div>Something about this Application</div></PageShell>
+  <PageShell withMainNavigation={true}><div>Something about this Application</div></PageShell>
 )
 
 const AboutMe = () => (
-  <PageShell><div>Something AboutMe</div></PageShell>
+  <PageShell withMainNavigation={true}><div>Something AboutMe</div></PageShell>
 )
 
 export default withRouter(App);

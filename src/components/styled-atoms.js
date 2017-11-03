@@ -97,9 +97,20 @@ export const Loading = () => (
       classNames="SlideIn"
       unmountOnExit={true}
     >
-      <P><img src={loadingIcon} alt="Loading icon"/></P>
+      <MainDiv><img src={loadingIcon} alt="Loading icon"/></MainDiv>
     </CSSTransition>
 )
+
+const MainDiv = styled.div`
+  position:absolute;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  min-width:100%;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+`
 
 /*
   Images

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Link, NavLink } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { white, secondaryDark, black, primary } from '../utils/colors'
+import { white, black, primary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { H4 } from '../components/styled-atoms'
 import { githubIcon, backIcon } from '../utils/icons'
@@ -13,7 +13,6 @@ class PageShell extends Component {
   shouldComponentUpdate(nextProps, nextState){
     return !(nextProps === this.props);
   }
-
   render(){
     const color = this.props.color ? this.props.color : primary
     return(
@@ -21,24 +20,25 @@ class PageShell extends Component {
         <Header>
           <Backlink>
             {
-              //Define when there should be a back link
+              this.props.backlink &&
+              <Link to={this.props.backlink}><img src={backIcon} alt="Back link" width="40" height="40"/></Link>
             }
-            <Link to="/"><img src={backIcon} alt="Github icon" width="40" height="40"/></Link>
-
           </Backlink>
-          <Navigation>
-            {
-              //Define activ Link
-            }
-            <NavLink to="/home" activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>Application</H4Black></NavLink>
-            <NavLink to="/aboutme/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>About me</H4Black></NavLink>
-            <NavLink to="/cv/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>CV</H4Black></NavLink>
-          </Navigation>
+          {
+            this.props.withMainNavigation &&
+            <Navigation>
+
+              <NavLink to="/home" activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>Application</H4Black></NavLink>
+              <NavLink to="/aboutme/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>About me</H4Black></NavLink>
+              <NavLink to="/cv/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>CV</H4Black></NavLink>
+
+            </Navigation>
+          }
           <NextLink>
             {
-              //Define when there should be a next Link
+              this.props.nextlink &&
+              <Link to={this.props.nextlink}><img src={backIcon} alt="Next icon" width="40" height="40"/></Link>
             }
-            go on
           </NextLink>
         </Header>
         <Helmet>

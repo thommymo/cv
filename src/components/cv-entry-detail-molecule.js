@@ -19,7 +19,7 @@ export const FullPreviewCVEntry = (props) => {
       // from the store without loading it, that way I can prevent to make 2
       // API calls, when no data is available.
       // Read: https://github.com/apollographql/apollo-client/issues/1036
-      <PageShell color={colorRGBA} title={props.title}>
+      <PageShell color={colorRGBA} title={props.title} backlink="/cv">
         <CVEntryHeader
           background={colorRGBA}
           startDate={props.startDate}
@@ -72,10 +72,9 @@ export const FullCVEntry = (props) => {
   }
   const color = JSON.parse(entry.background)
   const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
-  setTimeout(() => window.scrollTo(0, 0), (450))
   return(
 
-      <PageShell color={colorRGBA} title={props.title} >
+      <PageShell color={colorRGBA} title={props.title} backlink="/cv">
 
         <CVEntryHeader
           logo={entry.logo}
@@ -150,7 +149,7 @@ export const FullCVEntry = (props) => {
             </BasicInfo>
           </MainDiv>
         </CSSTransition>
-        </PageShell>
+      </PageShell>
 
 
   )

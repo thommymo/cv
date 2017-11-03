@@ -11,14 +11,14 @@ import { Loading } from '../../components/styled-atoms'
 const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) => {
   if(loading){
     return(
-      <PageShell>
+      <PageShell withMainNavigation>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
-        <div><Loading /></div>
+        <Loading />
       </PageShell>
     )
   } else if (allCVEntrieses){
     return(
-      <PageShell>
+      <PageShell withMainNavigation>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
         { allCVEntrieses.map((entry) => (
           <CVEntries data={entry} key={entry.id} />
@@ -27,7 +27,7 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
     )
   } else {
     return(
-      <PageShell>
+      <PageShell withMainNavigation>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
         <div><Loading /></div>
         <p>something went wrong</p>

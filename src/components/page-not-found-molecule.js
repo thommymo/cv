@@ -8,7 +8,7 @@ export default class PageNotFound extends PureComponent {
 
   render() {
     return (
-      <PageShell title="Page not found">
+      <PageShell title="Page not found" withMainNavigation={true}>
         <H1>Page not found</H1>
         <P>Go look for it in the «Treasures from the Wreck of the Unbelievable» and say hello to Damian.</P>
       </PageShell>
