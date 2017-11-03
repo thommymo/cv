@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../utils/constants'
 import { loadingIcon } from '../utils/icons'
+import { white } from '../utils/colors'
 
 
 
@@ -121,24 +122,29 @@ export const FullWithImage = (props) => {
   const baseurl = "https://media.graphcms.com/"
   const handle = props.handle
   return (
-    <picture>
-      { Object.keys(sizes).map((label) => (
+    <div>
+      <picture>
+        { Object.keys(sizes).map((label) => (
 
-        <source key={imagesizes[label]}
-          media={`screen
+          <source key={imagesizes[label]}
+            media={`screen
             ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
             ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
             `}
-          srcSet={`
+            srcSet={`
             ${baseurl}resize=width:${imagesizes[label]}/${handle} 1x,
             ${baseurl}resize=width:${imagesizes[label]*2}/${handle} 2x,
           `}/>
-      ))}
-      <Img src={`${baseurl}resize=width:20/${handle}`}/>
-    </picture>
+        ))}
+        <Img src={`${baseurl}resize=width:20/${handle}`}/>
+      </picture>
+    </div>
   )
 }
 
 const Img = styled.img`
   width:100%;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.2), 0 6px 45px 0 rgba(0, 0, 0, 0.19);
+
 `

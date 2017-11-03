@@ -117,33 +117,42 @@ export const FullCVEntry = (props) => {
                   <CenteredContent>
                     <H2>{entry.awardstitle}</H2>
                     <TwoColumns>
-                      <Column>
-                        <img src={entry.awardlogo1.url} width="100" height="100" alt="Award Logo"/>
-                        <P>{entry.awarddescription1}</P>
-                      </Column>
-                      <Column>
-                        <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                        <P>{entry.awarddescription2}</P>
-                      </Column>
-                      <Column>
-                        <img src={entry.awardlogo2.url} width="100" height="100" alt="Award Logo" />
-                        <P>{entry.awarddescription2}</P>
-                      </Column>
+                      {
+                        entry.awardlogo1 && entry.awarddescription1 &&
+                        <Column>
+                          <img src={entry.awardlogo1.url} height="100" alt="Award Logo"/>
+                          <P>{entry.awarddescription1}</P>
+                        </Column>
+                      }
+                      {
+                        entry.awardlogo2 && entry.awarddescription2 &&
+                        <Column>
+                          <img src={entry.awardlogo2.url} height="100" alt="Award Logo" />
+                          <P>{entry.awarddescription2}</P>
+                        </Column>
+                      }
+                      {
+                        entry.awardlogo3 && entry.awarddescription3 &&
+                        <Column>
+                          <img src={entry.awardlogo3.url} height="100" alt="Award Logo" />
+                          <P>{entry.awarddescription3}</P>
+                        </Column>
+                      }
                     </TwoColumns>
                   </CenteredContent>
                 </Awards>
               }
-              { entry.additionaltitle &&
+              { entry.additionaltitel &&
                 <Additional>
-                  <H2>{entry.additionaltitle}</H2>
+                  <H2>{entry.additionaltitel}</H2>
                   <P dangerouslySetInnerHTML={additionaldescription} />
                 </Additional>
               }
               { entry.workreview &&
                 <WorkReview>
                   {/* TODO: Add these fields to GraphCMS */}
-                  <H4>Arbeitszeugnis</H4>
-                  <P>Maybe an image is needed here</P>
+                  <H4>{entry.workreviewtitle}</H4>
+                  <P>{entry.workreviewimages}</P>
                 </WorkReview>
               }
             </BasicInfo>
@@ -175,9 +184,14 @@ const H1WithDate = H1.extend`
 const TwoColumns = styled.div`
   ${media.desktop`display: flex;max-width: 800px;margin-left:auto;margin-right:auto;`}
   ${media.desktop`display: flex;`}
+
 `
 const Column = styled.div`
   flex:1;
+  padding: 0 1.5em 0 1.5em;
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
 `
 const CenteredContent = styled.div`
   max-width: 800px;
@@ -196,8 +210,8 @@ const Logo = styled.svg`
   height:1.3em;
   opacity:0.9;
   background-color: ${white};
-  -webkit-mask: url(${props => props.src}) center/4em no-repeat;
-  mask: url(${props => props.src}) center/4em no-repeat;
+  -webkit-mask: url(${props => props.src}) center/3.5em no-repeat;
+  mask: url(${props => props.src}) center/3.5em no-repeat;
   background-position:center;
   background-repeat: no-repeat;
   text-align:center;

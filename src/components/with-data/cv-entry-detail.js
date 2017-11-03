@@ -84,6 +84,11 @@ const fullQuery = gql`
         url
       }
       awarddescription2
+      awardlogo3 {
+        id
+        url
+      }
+      awarddescription3
       additionaltitel
       additionaldescription
     }
