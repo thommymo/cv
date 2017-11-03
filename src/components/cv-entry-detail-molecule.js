@@ -40,8 +40,8 @@ const CVEntryHeader = (props) => {
   const startDate = new Date(props.startDate)
   const endDate = new Date(props.endDate)
   const options = { year: 'numeric', month: 'long'}
-  const formattedStartDate = startDate.toLocaleDateString('de-DE', options)
-  const formattedEndDate = endDate.toLocaleDateString('de-DE', options)
+  const formattedStartDate = props.startDate ? startDate.toLocaleDateString('de-DE', options) : ""
+  const formattedEndDate = props.endDate ? endDate.toLocaleDateString('de-DE', options) : ""
   return(
     <BasicInfo>
       <LogoColor>

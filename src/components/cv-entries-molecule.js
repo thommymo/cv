@@ -70,8 +70,8 @@ export const CVEntries = ({data : {
   const startDateDate = new Date(startDate)
   const endDateDate = new Date(endDate)
   const options = { year: 'numeric'}
-  const formattedStartDate = startDateDate.toLocaleDateString('de-DE', options)
-  const formattedEndDate = endDateDate.toLocaleDateString('de-DE', options)
+  const formattedStartDate = startDate ? startDateDate.toLocaleDateString('de-DE', options) : ""
+  const formattedEndDate = endDate ? endDateDate.toLocaleDateString('de-DE', options) : ""
 
   return (
     <CSSTransition
