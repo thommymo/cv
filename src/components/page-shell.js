@@ -89,7 +89,7 @@ const Content = styled.div`
   color:${white}
 `
 const Backlink = styled.div`
-
+  padding-left:10px;
 `
 const NextLink = styled.div`
 
@@ -131,6 +131,7 @@ const Left = styled.div`
 `
 const BlackLink = styled.a`
   color:${black};
+
 `
 const H4Black = H4.extend`
   color:${black};
