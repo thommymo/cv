@@ -144,6 +144,8 @@ export const FullWithImage = (props) => {
 
 const Img = styled.img`
   width:100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 20px;
   box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.2), 0 6px 45px 0 rgba(0, 0, 0, 0.19);
 
