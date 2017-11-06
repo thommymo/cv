@@ -13,7 +13,7 @@ import PageShell from './components/page-shell'
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200');
 
   body:before {
     height: 100vh;
@@ -22,8 +22,8 @@ injectGlobal`
   html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
     font-size: 100%;
     height: 100%;
     background-color: ${white};

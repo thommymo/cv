@@ -94,16 +94,16 @@ export const FullCVEntry = (props) => {
           <MainDiv>
             <BasicInfo>
               { entry.responsabilities &&
-                <TwoColumns>
-                  <Column>
+                <Columns>
+                  <Tasks>
                     <H4>{entry.responsabilities}</H4>
                     <P dangerouslySetInnerHTML={responsabilitiesdescription} />
-                  </Column>
-                  <Column>
+                  </Tasks>
+                  <Projects>
                     <H4>{entry.projects}</H4>
                     <P dangerouslySetInnerHTML={projectdescription} />
-                  </Column>
-                </TwoColumns>
+                  </Projects>
+                </Columns>
               }
               { entry.descriptionimages &&
                 entry.descriptionimages.map((image) => (
@@ -116,7 +116,7 @@ export const FullCVEntry = (props) => {
                 <Awards>
                   <CenteredContent>
                     <H2>{entry.awardstitle}</H2>
-                    <TwoColumns>
+                    <Columns>
                       {
                         entry.awardlogo1 && entry.awarddescription1 &&
                         <Column>
@@ -138,7 +138,7 @@ export const FullCVEntry = (props) => {
                           <P>{entry.awarddescription3}</P>
                         </Column>
                       }
-                    </TwoColumns>
+                    </Columns>
                   </CenteredContent>
                 </Awards>
               }
@@ -181,10 +181,31 @@ const WorkReview = styled.section`
 const H1WithDate = H1.extend`
   margin-top:-0.5em;
 `
-const TwoColumns = styled.div`
-  ${media.desktop`display: flex;max-width: 800px;margin-left:auto;margin-right:auto;`}
+const Columns = styled.div`
+  ${media.desktop`display: flex;max-width: 800px; margin-left:auto; margin-right:auto;`}
   ${media.desktop`display: flex;`}
+`
+const Tasks = styled.div`
+  flex:2;
+  padding: 0 2em 0 2em;
+  text-align: left;
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
 
+`
+const Projects = styled.div`
+  flex:1;
+  text-align: left;
+  padding: 0 2em 0 2em;
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
+  & > p > ul {
+    padding-left:0.3em;
+    list-style-position: inside;
+  }
+  
 `
 const Column = styled.div`
   flex:1;

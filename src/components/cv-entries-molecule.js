@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white } from '../utils/colors'
+import { white, primary } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
 import { responsabilityIcon, learnedIcon, schoolIcon, companyIcon, bulletIcon } from '../utils/icons'
@@ -97,31 +97,27 @@ export const CVEntries = ({data : {
           addTopBorder={addTopBorder}
           addBottomBorder={addBottomBorder}
         >
+          { company &&
+            <AdditionalInfoItem right={right}>
+              <AdditionalInfoH4>{company}</AdditionalInfoH4>
+            </AdditionalInfoItem>
+          }
+          { school &&
+            <AdditionalInfoItem right={right}>
+              <AdditionalInfoH4>{school}</AdditionalInfoH4>
+            </AdditionalInfoItem>
+          }
           <StyledTitle>{title}</StyledTitle>
           <AdditionalInfo right={right}>
-            { company &&
-              <AdditionalInfoItem right={right}>
-                <Icon alt="company"
-                  src={companyIcon}
-                />
-                <AdditionalInfoP>{company}</AdditionalInfoP>
-              </AdditionalInfoItem>
-            }
-            { school &&
-              <AdditionalInfoItem right={right}>
-                <Icon alt="school" src={schoolIcon} />
-                <AdditionalInfoP>{school}</AdditionalInfoP>
-              </AdditionalInfoItem>
-            }
+
+
             { responsability &&
               <SecondaryAdditionalInfoItem right={right}>
-                <Icon alt="responsability" src={responsabilityIcon}/>
                 <AdditionalInfoP>{responsability}</AdditionalInfoP>
               </SecondaryAdditionalInfoItem>
             }
             { learned &&
               <SecondaryAdditionalInfoItem right={right}>
-                <Icon alt="learned" src={learnedIcon}/>
                 <AdditionalInfoP>{learned}</AdditionalInfoP>
               </SecondaryAdditionalInfoItem>
             }
@@ -151,9 +147,12 @@ export const CVEntries = ({data : {
 const Icon = styled.img`
   padding-right: 10px;
 `
-
+const StyledTitle = H3.extend`
+  ${media.desktop`margin-top: 0px; margin-bottom:0.7em`}
+  ${media.tablet`margin-top: 0px; margin-bottom:0.7em`}
+  ${media.phone`margin-top: 0px; padding-bottom:0.2em`}
+`
 const AdditionalInfoItem = styled.div`
-  opacity: 0.5;
   display: flex;
   ${props => props.right ? 'justify-content: flex-end;': ''};
 `
@@ -161,12 +160,26 @@ const SecondaryAdditionalInfoItem = AdditionalInfoItem.extend`
   ${media.phone`display:none;`};
 `
 const AdditionalInfoP = P.extend`
-  margin: 5px 0px;
+  margin: 0px;
+  padding-left:1px;
+  padding-right:1px;
+`
+const AdditionalInfoH4 = H4.extend`
+  text-transform: uppercase;
+  padding-left:1px;
+  padding-right:1px;
+  margin:4px 0px;
+  ${media.desktop`margin-top: 4px;`}
+  ${media.tablet`margin-top: 7px;`}
+  ${media.phone`margin-top: 10px;`}
+  ${media.desktop`font-size:0.8em;`}
+  ${media.tablet`font-size:0.8em;`}
+  ${media.phone`font-size:0.8em;`}
 `
 
 const AdditionalInfo = styled.div`
   margin-top:-15px;
-  margin-bottom:20px;
+  margin-bottom:28px;
 `
 const Lap = styled.div`
   display: flex;
@@ -176,23 +189,19 @@ const Lap = styled.div`
   ${media.phone`margin-left:-16px;margin-right:-16px;`}
 `
 const Content = styled.div`
-  padding: 40px 20px 68px 20px;
+  padding: 44px 20px 68px 20px;
   color: ${white};
-  ${props => props.left ? `border-left: solid; border-left-width: 6px; border-left-color: ${white}; margin-right:30px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 6px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
-  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 6px; border-top-color: ${white}; margin-top:-6px;` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 6px; border-bottom-color: ${white};` : ''};
+  ${props => props.left ? `border-left: solid; border-left-width: 3px; border-left-color: ${white}; margin-right:30px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 3px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
+  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 3px; border-top-color: ${white}; margin-top:-3px;` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 3px; border-bottom-color: ${white};` : ''};
   ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
   ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
   ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};
   ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
   flex:1;
 `
-const StyledTitle = H3.extend`
-  ${media.desktop`margin-top: 28px;`}
-  ${media.tablet`margin-top: 31px;`}
-  ${media.phone`margin-top: 34px;`}
-`
+
 
 // Timespan Component for displaying the timespan left or right of the content of a Timeline element
 
@@ -230,16 +239,16 @@ const TimeSpan = ({
 // Styling for Timespan
 
 const Bulletright = styled.img`
-  ${media.desktop`right:61px;`};
-  ${media.tablet`right:61px;`};
-  ${media.phone`right:17px;`};
+  ${media.desktop`right:65px;`};
+  ${media.tablet`right:65px;`};
+  ${media.phone`right:20px;`};
   position: absolute;
   top:75px;
 `
 const Bulletleft = styled.img`
-  ${media.desktop`left:61px;`};
-  ${media.tablet`left:61px;`};
-  ${media.phone`left:16px;`};
+  ${media.desktop`left:65px;`};
+  ${media.tablet`left:65px;`};
+  ${media.phone`left:20px;`};
   position: absolute;
   top:75px;
 `
@@ -256,8 +265,8 @@ const StyledTimeSpan = H4.extend`
 `
 const Year = styled.div`
   position: relative;
-  ${props => props.borderleft && !props.rightposition ? `box-shadow: 6px 0 0 0 ${white} ` : ''};
-  ${props => props.borderright && props.rightposition  ? `box-shadow: -6px 0 0 0 ${white} ` : ''};
+  ${props => props.borderleft && !props.rightposition ? `box-shadow: 3px 0 0 0 ${white} ` : ''};
+  ${props => props.borderright && props.rightposition  ? `box-shadow: -3px 0 0 0 ${white} ` : ''};
   ${media.desktop`width:50px;`};
   ${media.desktop`min-width:50px;`};
   ${media.tablet`width:50px;`};
