@@ -12,14 +12,14 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
   if(loading){
     return(
       <PageShell withMainNavigation>
-        <CVEntriesHeader titleleft="Work" titleright="Studies"/>
+        <CVEntriesHeader titleleft="Arbeit" titleright="Bildung"/>
         <Loading />
       </PageShell>
     )
   } else if (allCVEntrieses){
     return(
       <PageShell withMainNavigation>
-        <CVEntriesHeader titleleft="Work" titleright="Studies"/>
+        <CVEntriesHeader titleleft="Arbeit" titleright="Bildung"/>
         { allCVEntrieses.map((entry) => (
           <CVEntries data={entry} key={entry.id} />
         ))}

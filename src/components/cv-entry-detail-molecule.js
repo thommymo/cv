@@ -1,5 +1,5 @@
 import React from "react"
-import { H1, P, H4, H2, Loading, FullWithImage } from '../components/styled-atoms'
+import { H1, P, H4, H2, H3, Loading, FullWithImage } from '../components/styled-atoms'
 import styled from 'styled-components'
 import PageNotFound from '../components/page-not-found-molecule'
 import { white } from '../utils/colors'
@@ -52,8 +52,8 @@ const CVEntryHeader = (props) => {
           <Logo background={props.background} />
         }
       </LogoColor>
-      <H4>{formattedStartDate} – {formattedEndDate}</H4>
       <H1WithDate>{props.title}</H1WithDate>
+      <DateSpan>{formattedStartDate} – {formattedEndDate}</DateSpan>
     </BasicInfo>
   )
 }
@@ -95,16 +95,18 @@ export const FullCVEntry = (props) => {
             <BasicInfo>
               { entry.responsabilities &&
                 <Columns>
-                  <Tasks>
-                    <H4>{entry.responsabilities}</H4>
-                    <P dangerouslySetInnerHTML={responsabilitiesdescription} />
-                  </Tasks>
                   <Projects>
                     <H4>{entry.projects}</H4>
-                    <P dangerouslySetInnerHTML={projectdescription} />
+                    <span dangerouslySetInnerHTML={projectdescription} />
                   </Projects>
+                  <Tasks>
+                    <H3>{entry.responsabilities}</H3>
+                    <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+                  </Tasks>
                 </Columns>
               }
+            </BasicInfo>
+            <BasicInfo>
               { entry.descriptionimages &&
                 entry.descriptionimages.map((image) => (
                   <FullWithImage handle={image.handle} key={image.handle}/>
@@ -166,8 +168,25 @@ export const FullCVEntry = (props) => {
 
 //TODO: Review if these elements are all really needed
 
+/*
+  Typography
+*/
+
+const H1WithDate = H1.extend`
+  margin-bottom:0;
+`
+const DateSpan = H4.extend`
+  text-transform: uppercase;
+`
+
+/*
+  Containers
+*/
+
+
 const BasicInfo = styled.section`
   text-align: center;
+  padding-bottom:5em;
 `
 const Awards = styled.section`
   text-align: center;
@@ -178,34 +197,37 @@ const Additional = styled.section`
 const WorkReview = styled.section`
   text-align: center;
 `
-const H1WithDate = H1.extend`
-  margin-top:-0.5em;
-`
+
 const Columns = styled.div`
-  ${media.desktop`display: flex;max-width: 800px; margin-left:auto; margin-right:auto;`}
+  ${media.desktop`display: flex; margin-left:auto; margin-right:auto;`}
   ${media.desktop`display: flex;`}
 `
 const Tasks = styled.div`
-  flex:2;
+  flex:3;
   padding: 0 2em 0 2em;
   text-align: left;
-  max-width:500px;
   margin-left:auto;
   margin-right:auto;
-
+  & p {
+    font-size: 1.15em;
+    line-height: 1.3em;
+  }
 `
 const Projects = styled.div`
   flex:1;
+  opacity: 0.95;
+  font-size: 0.9em;
+  margin-top: 1.3em;
   text-align: left;
   padding: 0 2em 0 2em;
-  max-width:500px;
   margin-left:auto;
   margin-right:auto;
-  & > p > ul {
-    padding-left:0.3em;
-    list-style-position: inside;
+  & > h4 {
+    text-transform: uppercase;
   }
-  
+  & > span > h3 {
+    text-transform: uppercase;
+  }
 `
 const Column = styled.div`
   flex:1;
