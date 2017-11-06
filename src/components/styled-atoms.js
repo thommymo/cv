@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../utils/constants'
 import { loadingIcon } from '../utils/icons'
-import { white } from '../utils/colors'
-
 
 
 /*

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, primary } from '../utils/colors'
+import { white } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
-import { responsabilityIcon, learnedIcon, schoolIcon, companyIcon, bulletIcon } from '../utils/icons'
+import { bulletIcon } from '../utils/icons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../utils/constants'
 
@@ -144,9 +144,10 @@ export const CVEntries = ({data : {
 
 // Styling for Timespan component elements
 
-const Icon = styled.img`
-  padding-right: 10px;
-`
+/*
+Typography
+*/
+
 const StyledTitle = H3.extend`
   ${media.desktop`margin-top: 0px; margin-bottom:0.7em`}
   ${media.tablet`margin-top: 0px; margin-bottom:0.7em`}
@@ -176,6 +177,10 @@ const AdditionalInfoH4 = H4.extend`
   ${media.tablet`font-size:0.8em;`}
   ${media.phone`font-size:0.8em;`}
 `
+
+/*
+Containers
+*/
 
 const AdditionalInfo = styled.div`
   margin-top:-15px;
