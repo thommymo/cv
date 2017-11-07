@@ -125,21 +125,21 @@ export const FullCVEntry = (props) => {
                         entry.awardlogo1 && entry.awarddescription1 &&
                         <Column>
                           <img src={entry.awardlogo1.url} height="100" alt="Award Logo"/>
-                          <P>{entry.awarddescription1}</P>
+                          <PAward>{entry.awarddescription1}</PAward>
                         </Column>
                       }
                       {
                         entry.awardlogo2 && entry.awarddescription2 &&
                         <Column>
                           <img src={entry.awardlogo2.url} height="100" alt="Award Logo" />
-                          <P>{entry.awarddescription2}</P>
+                          <PAward>{entry.awarddescription2}</PAward>
                         </Column>
                       }
                       {
                         entry.awardlogo3 && entry.awarddescription3 &&
                         <Column>
                           <img src={entry.awardlogo3.url} height="100" alt="Award Logo" />
-                          <P>{entry.awarddescription3}</P>
+                          <PAward>{entry.awarddescription3}</PAward>
                         </Column>
                       }
                     </Columns>
@@ -175,8 +175,8 @@ export const FullCVEntry = (props) => {
 */
 
 const H1DetailPage = H1.extend`
-  margin-bottom:80px;
-  margin-top:100px;
+  margin-bottom:40px;
+  margin-top:120px;
 `
 const DateSpan = H4.extend`
   text-transform: uppercase;
@@ -184,6 +184,12 @@ const DateSpan = H4.extend`
   color:black;
   font-weight: 600;
   opacity: 0.8
+`
+const PAward = P.extend`
+  text-transform:uppercase;
+  max-width: 320px;
+  margin-left:auto;
+  margin-right:auto;
 `
 
 /*
