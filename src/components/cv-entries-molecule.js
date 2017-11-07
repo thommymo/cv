@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, primary, primaryLight, primaryDark } from '../utils/colors'
+import { white, primary, primaryLight, primaryDark, black } from '../utils/colors'
 import { media } from '../utils/breakpoints'
 import { P, H1, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
 import { bulletIcon } from '../utils/icons'
@@ -18,25 +18,23 @@ export const CVEntriesHeader = ({
 }) => (
   <div>
     <Lap>
-      <TimeSpan bothleft  />
       <HeaderContent>
         <H1>Lebenslauf</H1>
       </HeaderContent>
-      <TimeSpan rightposition bothright />
     </Lap>
     <Lap>
-      <TimeSpan bothleft   />
+      <TimeSpan   />
       <HeaderContent>
         <SectionFlex>
           <HeaderLeft>
-            <H4>{titleleft}</H4>
+            <H3>{titleleft}</H3>
           </HeaderLeft>
           <HeaderRight>
-            <H4>{titleright}</H4>
+            <H3>{titleright}</H3>
           </HeaderRight>
         </SectionFlex>
       </HeaderContent>
-      <TimeSpan rightposition bothright   />
+      <TimeSpan rightposition   />
     </Lap>
   </div>
 )
@@ -49,16 +47,16 @@ const SectionFlex = styled.section`
 `
 const Header = styled.div`
   color:${white};
-  margin-top:-5px;
 
-  & > h4 {
+
+  & > h3 {
+    margin-top:-34px;
     text-transform: uppercase;
-    margin-left:-19px;
-    margin-right:-19px;
-    padding-left:3px;
-    padding-right:3px;
-    border:2px solid ${white};
-    font-size:1em;
+    margin-left:-23px;
+    margin-right:-23px;
+    padding-left:5px;
+    padding-right:5px;
+    border:3px solid ${white};
   }
 `
 const HeaderLeft = Header.extend`
@@ -87,12 +85,22 @@ export const CVEntries = ({data : {
   learned="",
   title="",
   slug="",
+  addTopLeftTriangle=false,
+  addBottomLeftTriangle=false,
+  addTopRightTriangle=false,
+  addBottomRightTriangle=false,
+  moreinfocventry={}
 }}) => {
   const startDateDate = new Date(startDate)
   const endDateDate = new Date(endDate)
   const options = { year: 'numeric'}
   const formattedStartDate = startDate ? startDateDate.toLocaleDateString('de-DE', options) : ""
   const formattedEndDate = endDate ? endDateDate.toLocaleDateString('de-DE', options) : ""
+  let colorRGBA = "rgba(175, 9, 131, 0.61)"
+  if(moreinfocventry){
+    const color = JSON.parse(moreinfocventry.background)
+    colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
+  }
 
   return (
     <CSSTransition
@@ -111,6 +119,14 @@ export const CVEntries = ({data : {
           bothleft={bothleft}
           startDate={formattedStartDate}
           endDate={formattedEndDate}
+          addTopBorder={addTopBorder}
+          addBottomBorder={addBottomBorder}
+          rightposition={false}
+          addTopLeftTriangle={addTopLeftTriangle}
+          addTopRightTriangle={addTopRightTriangle}
+          addBottomLeftTriangle={addBottomLeftTriangle}
+          addBottomRightTriangle={addBottomRightTriangle}
+          background={colorRGBA}
         />
         <Content
           left={left}
@@ -145,11 +161,11 @@ export const CVEntries = ({data : {
                 <AdditionalInfoP>{learned}</AdditionalInfoP>
               </SecondaryAdditionalInfoItem>
             }
+            { showmore &&
+              //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
+              <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
+            }
           </AdditionalInfo>
-          { showmore &&
-            //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-            <CVEntryMoreButton to={`/id/${id}/`}>More &#8594;</CVEntryMoreButton>
-          }
         </Content>
         <TimeSpan
           rightposition={true}
@@ -160,6 +176,13 @@ export const CVEntries = ({data : {
           bothleft={bothleft}
           startDate={formattedStartDate}
           endDate={formattedEndDate}
+          addTopBorder={addTopBorder}
+          addBottomBorder={addBottomBorder}
+          addTopLeftTriangle={addTopLeftTriangle}
+          addTopRightTriangle={addTopRightTriangle}
+          addBottomLeftTriangle={addBottomLeftTriangle}
+          addBottomRightTriangle={addBottomRightTriangle}
+          background={colorRGBA}
         />
       </Lap>
     </CSSTransition>
@@ -173,8 +196,8 @@ Typography
 */
 
 const StyledTitle = H3.extend`
-  ${media.desktop`margin-top: 0px; margin-bottom:0.7em`}
-  ${media.tablet`margin-top: 0px; margin-bottom:0.7em`}
+  ${media.desktop`margin-top: -0.5em; margin-bottom:-0.4em`}
+  ${media.tablet`margin-top: 0px; margin-bottom:-0.2em`}
   ${media.phone`margin-top: 0px; padding-bottom:0.2em`}
 `
 const AdditionalInfoItem = styled.div`
@@ -185,7 +208,6 @@ const SecondaryAdditionalInfoItem = AdditionalInfoItem.extend`
   ${media.phone`display:none;`};
 `
 const AdditionalInfoP = P.extend`
-  margin: 0px;
   padding-left:1px;
   padding-right:1px;
 `
@@ -193,7 +215,6 @@ const AdditionalInfoH4 = H4.extend`
   text-transform: uppercase;
   padding-left:1px;
   padding-right:1px;
-  margin:4px 0px;
   ${media.desktop`margin-top: 4px;`}
   ${media.tablet`margin-top: 7px;`}
   ${media.phone`margin-top: 10px;`}
@@ -208,8 +229,7 @@ Containers
 */
 
 const AdditionalInfo = styled.div`
-  margin-top:-15px;
-  margin-bottom:28px;
+
 `
 const Lap = styled.div`
   display: flex;
@@ -219,14 +239,17 @@ const Lap = styled.div`
   ${media.phone`margin-left:-16px;margin-right:-16px;`}
 `
 const Content = styled.div`
-  padding: 44px 20px 68px 20px;
+  /*box-shadow: 3px 0 0 0 ${white}, -3px 0 0 0 ${white};*/
+  padding: 44px 20px 44px 20px;
+  margin-left:3px;
+  margin-right:3px;
   color: ${white};
-  border-top: solid; border-top-width: 12px; border-top-color: ${primary};
-  border-bottom: solid; border-bottom-width: 12px; border-bottom-color: ${primary};
-  ${props => props.left ? `border-left: solid; border-left-width: 12px; border-left-color: ${white}; margin-right:0px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 12px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
-  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 12px; border-top-color: ${primary}; margin-top:3px; box-shadow: 0 -3px 0 0 ${white}` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 12px; border-bottom-color: ${primary};box-shadow: 0 3px 0 0 ${white}` : ''};
+  border-top: solid; border-top-width: 10px; border-top-color: ${primary};
+  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary};
+  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${white}; margin-right:0px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
+  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 10px; border-top-color: ${primary};` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary}` : ''};
   flex:1;
 `
 const HeaderContent = Content.extend`
@@ -247,10 +270,30 @@ const TimeSpan = ({
   left=false,
   bothleft=false,
   bothright=false,
-  peter=false
+  addTopBorder=false,
+  addBottomBorder=false,
+  addTopLeftTriangle=false,
+  addBottomLeftTriangle=false,
+  addBottomRightTriangle=false,
+  addTopRightTriangle=false,
+  background=white
 }) => (
-  <Year borderright={bothright} borderleft={bothleft} rightposition={rightposition}>
-    <StyledTimeSpan show={show}>
+  <Year
+    show={show}
+    addTopBorder={addTopBorder}
+    addBottomBorder={addBottomBorder}
+    bothright={bothright}
+    bothleft={bothleft}
+    rightposition={rightposition}
+    left={left}
+    right={right}
+    addTopLeftTriangle={addTopLeftTriangle}
+    addBottomLeftTriangle={addBottomLeftTriangle}
+    addBottomRightTriangle={addBottomRightTriangle}
+    addTopRightTriangle={addTopRightTriangle}
+    background={background}
+  >
+    <StyledTimeSpan show={show} rightposition={rightposition}>
       { endDate &&
         <span>{endDate}</span>
       }
@@ -261,55 +304,96 @@ const TimeSpan = ({
         <span>{startDate}</span>
       }
     </StyledTimeSpan>
-    { peter && left && show &&
-      <Bulletleft src={bulletIcon}/>
-    }
-    { peter && right && show &&
-      <Bulletright src={bulletIcon}/>
-    }
+
   </Year>
 );
 
 // Styling for Timespan
 
-const Bulletright = styled.img`
-  ${media.desktop`right:65px;`};
-  ${media.tablet`right:65px;`};
-  ${media.phone`right:20px;`};
-  position: absolute;
-  top:75px;
-`
-const Bulletleft = styled.img`
-  ${media.desktop`left:65px;`};
-  ${media.tablet`left:65px;`};
-  ${media.phone`left:20px;`};
-  position: absolute;
-  top:75px;
-`
 const StyledTimeSpan = H4.extend`
   display:flex;
   justify-content: center;
   flex-direction: column;
-  text-align: center;
   ${media.desktop`line-height: 1em;`}
   ${media.tablet`line-height: 1em;`}
   ${media.phone`display: none;`}
   ${props => !props.show ? 'display:none' : ''};
+  ${props => props.rightposition ? 'text-align: left;margin-left:6px' : 'text-align: right'};
+  padding-top: 9px;
   height:123px;
+  color: ${white};
+  font-weight: 600;
 `
 const Year = styled.div`
   position: relative;
-  ${props => props.borderleft && !props.rightposition ? `box-shadow: 3px 0 0 0 ${white} ` : ''};
-  ${props => props.borderright && props.rightposition  ? `box-shadow: -3px 0 0 0 ${white} ` : ''};
+  ${props => (props.left || props.bothleft) && !props.rightposition ? `background:${props.background}`: ''};
+  ${props => (props.right || props.bothright) && props.rightposition  ? `background:${props.background}` : ''};
+
+/*
+  addTopBorder={addTopBorder}
+  addBottomBorder={addBottomBorder}*/
+  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${white}` : ''};
+  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${white}` : ''};
   ${media.desktop`width:50px;`};
   ${media.desktop`min-width:50px;`};
   ${media.tablet`width:50px;`};
   ${media.tablet`min-width:50px;`};
   ${media.phone`width:5px;`};
   ${media.phone`min-width:5px;`};
-  color: ${white};
   padding: 0 10px 0 10px;
   z-index: 20;
+  ${props => props.addTopRightTriangle && props.rightposition ? `
+    &::after {
+      content:'';
+      width: 0;
+      height: 0;
+      line-height: 0;
+      border-left: 70px solid transparent;
+      border-top: 70px solid ${primary};
+      top: 0;
+      right: 0;
+      position: absolute;
+      z-index: 10000;
+      }` : ''};
+  ${props => props.addBottomLeftTriangle && !props.rightposition ? `
+    &::after {
+      content:'';
+      width: 0;
+      height: 0;
+      line-height: 0;
+      border-right: 70px solid transparent;
+      border-bottom: 70px solid ${primary};
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      z-index: 10000;
+      }` : ''};
+  ${props => props.addTopLeftTriangle && !props.rightposition ? `
+    &::before {
+      content:'';
+      width: 0;
+      height: 0;
+      line-height: 0;
+      border-right: 70px solid transparent;
+      border-top: 70px solid ${primary};
+      top: 0;
+      left: 0;
+      position: absolute;
+      z-index: 10000;
+      }` : ''};
+  ${props => props.addBottomRightTriangle && props.rightposition ? `
+    &::before {
+      content:'';
+      width: 0;
+      height: 0;
+      line-height: 0;
+      border-left: 70px solid transparent;
+      border-bottom: 70px solid ${primary};
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 10000;
+      }` : ''};
 `
 
 const CVEntryMoreButton = (props) => (

@@ -52,6 +52,10 @@ const data = gql`
       endDate
       right
       left
+      addTopLeftTriangle
+      addTopRightTriangle
+      addBottomLeftTriangle
+      addBottomRightTriangle
       addTopBorder
       addBottomBorder
       bothleft
