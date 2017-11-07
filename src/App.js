@@ -13,7 +13,7 @@ import PageShell from './components/page-shell'
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200');
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,400,200');
 
   body:before {
     height: 100vh;

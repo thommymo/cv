@@ -23,6 +23,8 @@ const previewQuery = gql`
       startDate
       endDate
       title
+      company
+      school
       moreinfocventry {
         id
         background
@@ -57,6 +59,8 @@ const fullQuery = gql`
     title
     startDate
     endDate
+    company
+    school
     moreinfocventry {
       id
       background

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white } from '../utils/colors'
+import { white, primary, primaryLight, primaryDark } from '../utils/colors'
 import { media } from '../utils/breakpoints'
-import { P, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
+import { P, H1, H2, H3, H4, Ghostbutton } from '../components/styled-atoms'
 import { bulletIcon } from '../utils/icons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../utils/constants'
@@ -16,34 +16,55 @@ export const CVEntriesHeader = ({
   titleleft = "",
   titleright = "",
 }) => (
-  <SectionFlex>
-    <HeaderLeft>
-      <H2>{titleleft}</H2>
-      <img alt="Starting Point" src={bulletIcon} />
-    </HeaderLeft>
-    <HeaderRight>
-      <H2>{titleright}</H2>
-      <img alt="Starting Point" src={bulletIcon} />
-    </HeaderRight>
-  </SectionFlex>
+  <div>
+    <Lap>
+      <TimeSpan bothleft  />
+      <HeaderContent>
+        <H1>Lebenslauf</H1>
+      </HeaderContent>
+      <TimeSpan rightposition bothright />
+    </Lap>
+    <Lap>
+      <TimeSpan bothleft   />
+      <HeaderContent>
+        <SectionFlex>
+          <HeaderLeft>
+            <H4>{titleleft}</H4>
+          </HeaderLeft>
+          <HeaderRight>
+            <H4>{titleright}</H4>
+          </HeaderRight>
+        </SectionFlex>
+      </HeaderContent>
+      <TimeSpan rightposition bothright   />
+    </Lap>
+  </div>
 )
 
+
+
 const SectionFlex = styled.section`
-  height:140px;
   display:flex;
-  align-items:flex-end;
+  justify-content: space-between;
 `
 const Header = styled.div`
   color:${white};
-  width:50%;
+  margin-top:-5px;
+
+  & > h4 {
+    text-transform: uppercase;
+    margin-left:-19px;
+    margin-right:-19px;
+    padding-left:3px;
+    padding-right:3px;
+    border:2px solid ${white};
+    font-size:1em;
+  }
 `
 const HeaderLeft = Header.extend`
   text-align: left;
 `
 const HeaderRight = Header.extend`
-  ${media.desktop`top:73px;`}
-  ${media.tablet`top:85px;`}
-  ${media.phone`top:105px;`}
   text-align: right;
 `
 
@@ -96,6 +117,9 @@ export const CVEntries = ({data : {
           right={right}
           addTopBorder={addTopBorder}
           addBottomBorder={addBottomBorder}
+
+          borderright={bothright}
+          borderleft={bothleft}
         >
           { company &&
             <AdditionalInfoItem right={right}>
@@ -178,6 +202,7 @@ const AdditionalInfoH4 = H4.extend`
   ${media.phone`font-size:0.8em;`}
 `
 
+
 /*
 Containers
 */
@@ -196,15 +221,18 @@ const Lap = styled.div`
 const Content = styled.div`
   padding: 44px 20px 68px 20px;
   color: ${white};
-  ${props => props.left ? `border-left: solid; border-left-width: 3px; border-left-color: ${white}; margin-right:30px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 3px; border-right-color: ${white}; margin-left:30px; text-align:right;` : ''};
-  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 3px; border-top-color: ${white}; margin-top:-3px;` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 3px; border-bottom-color: ${white};` : ''};
-  ${props => props.left && props.addTopBorder ? 'border-top-left-radius: 30px;':''};
-  ${props => props.left && props.addBottomBorder ? 'border-bottom-left-radius: 30px;':''};
-  ${props => props.right && props.addTopBorder ? 'border-top-right-radius: 30px;':''};
-  ${props => props.right && props.addBottomBorder ? 'border-bottom-right-radius: 30px;':''};
+  border-top: solid; border-top-width: 12px; border-top-color: ${primary};
+  border-bottom: solid; border-bottom-width: 12px; border-bottom-color: ${primary};
+  ${props => props.left ? `border-left: solid; border-left-width: 12px; border-left-color: ${white}; margin-right:0px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 12px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
+  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 12px; border-top-color: ${primary}; margin-top:3px; box-shadow: 0 -3px 0 0 ${white}` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 12px; border-bottom-color: ${primary};box-shadow: 0 3px 0 0 ${white}` : ''};
   flex:1;
+`
+const HeaderContent = Content.extend`
+  padding-top:0px;
+  padding-bottom:0px;
+  text-align: center;
 `
 
 
@@ -219,6 +247,7 @@ const TimeSpan = ({
   left=false,
   bothleft=false,
   bothright=false,
+  peter=false
 }) => (
   <Year borderright={bothright} borderleft={bothleft} rightposition={rightposition}>
     <StyledTimeSpan show={show}>
@@ -232,10 +261,10 @@ const TimeSpan = ({
         <span>{startDate}</span>
       }
     </StyledTimeSpan>
-    { left && show &&
+    { peter && left && show &&
       <Bulletleft src={bulletIcon}/>
     }
-    { right && show &&
+    { peter && right && show &&
       <Bulletright src={bulletIcon}/>
     }
   </Year>
@@ -258,7 +287,6 @@ const Bulletleft = styled.img`
   top:75px;
 `
 const StyledTimeSpan = H4.extend`
-  height:121px;
   display:flex;
   justify-content: center;
   flex-direction: column;
@@ -267,6 +295,7 @@ const StyledTimeSpan = H4.extend`
   ${media.tablet`line-height: 1em;`}
   ${media.phone`display: none;`}
   ${props => !props.show ? 'display:none' : ''};
+  height:123px;
 `
 const Year = styled.div`
   position: relative;

@@ -42,21 +42,21 @@ const CVEntryHeader = (props) => {
   const options = { year: 'numeric', month: 'long'}
   const formattedStartDate = props.startDate ? startDate.toLocaleDateString('de-DE', options) : ""
   const formattedEndDate = props.endDate ? endDate.toLocaleDateString('de-DE', options) : ""
+  console.log(props)
   return(
-    <BasicInfo>
-      <LogoColor>
-        { props.logo &&
-          <Logo src={props.logo.url} background={props.background} />
-        }
-        { !props.logo &&
-          <Logo background={props.background} />
-        }
-      </LogoColor>
-      <H1WithDate>{props.title}</H1WithDate>
+    <BasicInfoWithBorder color={props.color}>
       <DateSpan>{formattedStartDate} – {formattedEndDate}</DateSpan>
-    </BasicInfo>
+      <H4Capitals>{props.company}{props.school}</H4Capitals>
+      <H1DetailPage>{props.title}</H1DetailPage>
+
+
+    </BasicInfoWithBorder>
   )
 }
+
+const H4Capitals = H4.extend`
+  text-transform:uppercase;
+`
 
 export const FullCVEntry = (props) => {
 
@@ -77,11 +77,13 @@ export const FullCVEntry = (props) => {
       <PageShell color={colorRGBA} title={props.title} backlink="/cv">
 
         <CVEntryHeader
-          logo={entry.logo}
+          company={props.company}
+          school={props.school}
           background={entry.background}
           startDate={props.startDate}
           endDate={props.endDate}
           title={props.title}
+          color={colorRGBA}
         />
 
         <CSSTransition
@@ -109,7 +111,7 @@ export const FullCVEntry = (props) => {
             <BasicInfo>
               { entry.descriptionimages &&
                 entry.descriptionimages.map((image) => (
-                  <FullWithImage handle={image.handle} key={image.handle}/>
+                  <FullWithImage color={colorRGBA} handle={image.handle} key={image.handle}/>
                 )) }
             </BasicInfo>
 
@@ -172,11 +174,16 @@ export const FullCVEntry = (props) => {
   Typography
 */
 
-const H1WithDate = H1.extend`
-  margin-bottom:0;
+const H1DetailPage = H1.extend`
+  margin-bottom:80px;
+  margin-top:100px;
 `
 const DateSpan = H4.extend`
   text-transform: uppercase;
+  margin-top:-29px;
+  color:black;
+  font-weight: 600;
+  opacity: 0.8
 `
 
 /*
@@ -187,6 +194,15 @@ const DateSpan = H4.extend`
 const BasicInfo = styled.section`
   text-align: center;
   padding-bottom:5em;
+`
+const BasicInfoWithBorder = BasicInfo.extend`
+  border: solid 0px;
+  border-top-width: 40px;
+  border-top-color: ${white};
+  border-left-width: 40px;
+  border-left-color: ${props => props.color};
+  border-right-width: 40px;
+  border-right-color: ${props => props.color};
 `
 const Awards = styled.section`
   text-align: center;
@@ -246,22 +262,4 @@ const CenteredContent = styled.div`
 const MainDiv = styled.div`
   width:100%;
   min-height:100%;
-`
-
-const Logo = styled.svg`
-  width:100%;
-  height:1.3em;
-  opacity:0.9;
-  background-color: ${white};
-  -webkit-mask: url(${props => props.src}) center/3.5em no-repeat;
-  mask: url(${props => props.src}) center/3.5em no-repeat;
-  background-position:center;
-  background-repeat: no-repeat;
-  text-align:center;
-`
-const LogoColor = styled.span`
-  font-size:3em;
-  padding-top:30px;
-  padding-bottom:20px;
-  display:block;
 `

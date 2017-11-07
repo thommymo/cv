@@ -12,14 +12,14 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
   if(loading){
     return(
       <PageShell withMainNavigation>
-        <CVEntriesHeader titleleft="Arbeit" titleright="Bildung"/>
+        <CVEntriesHeader titleleft="Arbeit" titleright="Ausildung"/>
         <Loading />
       </PageShell>
     )
   } else if (allCVEntrieses){
     return(
       <PageShell withMainNavigation>
-        <CVEntriesHeader titleleft="Arbeit" titleright="Bildung"/>
+        <CVEntriesHeader titleleft="Arbeit" titleright="Ausildung"/>
         { allCVEntrieses.map((entry) => (
           <CVEntries data={entry} key={entry.id} />
         ))}
@@ -39,7 +39,7 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
 
 /*
   here we create a grapphql operation
- there is an id needed for each graphql object
+  there is an id needed for each graphql object
  */
 
 const data = gql`
