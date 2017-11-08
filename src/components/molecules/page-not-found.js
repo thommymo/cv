@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react"
-import { H1, P } from '../components/styled-atoms'
-import PageShell from '../components/page-shell'
+import { H1, P } from '../../components/styled-atoms'
+import PageShell from '../../components/page-shell'
 
 
 export default class PageNotFound extends PureComponent {

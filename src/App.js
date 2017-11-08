@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout, timeoutTransition } from './utils/constants'
 import { white } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
-import PageNotFound from './components/page-not-found-molecule'
+import PageNotFound from './components/molecules/page-not-found'
 import PageShell from './components/page-shell'
 
 //TODO: injectGlobal might has to be moved somewhere else

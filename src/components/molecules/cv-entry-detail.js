@@ -1,12 +1,12 @@
 import React from "react"
-import { H1, P, H4, H2, H3, Loading, FullWithImage } from '../components/styled-atoms'
+import { H1, P, H4, H2, H3, Loading, FullWithImage } from '../../components/styled-atoms'
 import styled from 'styled-components'
-import PageNotFound from '../components/page-not-found-molecule'
-import { white } from '../utils/colors'
-import PageShell from '../components/page-shell'
-import { media } from '../utils/breakpoints'
+import PageNotFound from '../../components/molecules/page-not-found'
+import { white } from '../../utils/colors'
+import PageShell from '../../components/page-shell'
+import { media } from '../../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
-import { timeoutTransition } from '../utils/constants'
+import { timeoutTransition } from '../../utils/constants'
 
 // FullPreviewCVEntry shows loding bar, when no data is available or when data is only partially available
 export const FullPreviewCVEntry = (props) => {
