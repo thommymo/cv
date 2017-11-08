@@ -2,7 +2,6 @@ import React from "react"
 import { media } from '../../utils/breakpoints'
 import styled from 'styled-components'
 
-
 /*
   Typography
 */
