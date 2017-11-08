@@ -1,5 +1,7 @@
 import React from "react"
-import { H1, P, H4, H2, H3, Loading, FullWithImage } from '../../components/styled-atoms'
+import { H1, P, H4, H2, H3 } from '../../components/atoms/typography'
+import { FullWithImage } from '../../components/atoms/images'
+import { Loading } from '../../components/atoms/loading'
 import styled from 'styled-components'
 import PageNotFound from '../../components/molecules/page-not-found'
 import { white } from '../../utils/colors'

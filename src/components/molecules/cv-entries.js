@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, primary, primaryLight, primaryDark, black } from '../../utils/colors'
+import { white, primary } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
-import { P, H1, H2, H3, H4, Ghostbutton } from '../../components/styled-atoms'
-import { bulletIcon } from '../../utils/icons'
+import { P, H1, H3, H4,  } from '../../components/atoms/typography'
+import { Ghostbutton } from '../../components/atoms/buttons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
 

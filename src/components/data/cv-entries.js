@@ -3,7 +3,7 @@ import { CVEntries, CVEntriesHeader } from '../../components/molecules/cv-entrie
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import PageShell from '../../components/page-shell'
-import { Loading } from '../../components/styled-atoms'
+import { Loading } from '../../components/atoms/loading'
 
 // TODO: Instead of creating my own HOC, it might be usefull to use someting like recompose. See:
 // https://dev-blog.apollodata.com/simplify-your-react-components-with-apollo-and-recompose-8b9e302dea51
