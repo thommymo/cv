@@ -95,6 +95,11 @@ const fullQuery = gql`
       awarddescription3
       additionaltitel
       additionaldescription
+      workreview
+      workreviewimages {
+        id
+        handle
+      }
     }
   }
 }`

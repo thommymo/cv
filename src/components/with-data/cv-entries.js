@@ -8,7 +8,7 @@ import { Loading } from '../../components/styled-atoms'
 // TODO: Instead of creating my own HOC, it might be usefull to use someting like recompose. See:
 // https://dev-blog.apollodata.com/simplify-your-react-components-with-apollo-and-recompose-8b9e302dea51
 
-const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) => {
+const CVEntriesTemplate = ( { data : { loading=false, allCVEntrieses=false }} ) => {
   if(loading){
     return(
       <PageShell withMainNavigation>
@@ -26,6 +26,9 @@ const TimelineContent = ( { data : { loading=false, allCVEntrieses=false }} ) =>
       </PageShell>
     )
   } else {
+
+    //TODO: Add React 16 Error Handling
+
     return(
       <PageShell withMainNavigation>
         <CVEntriesHeader titleleft="Work" titleright="Studies"/>
@@ -81,7 +84,7 @@ const data = gql`
   We then can use the graphql container to pass the query results returned by getEntriesQuery
   to a component as a prop (and update them as the results change)
 */
-export const CVEntriesWithData = graphql(data)(TimelineContent);
+export const CVEntriesWithData = graphql(data)(CVEntriesTemplate);
 
 //TODO: Replace this with a HOC
 

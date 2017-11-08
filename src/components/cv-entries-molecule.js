@@ -23,7 +23,7 @@ export const CVEntriesHeader = ({
       </HeaderContent>
     </Lap>
     <Lap>
-      <TimeSpan   />
+      <TimeSpan/>
       <HeaderContent>
         <SectionFlex>
           <HeaderLeft>
@@ -34,7 +34,7 @@ export const CVEntriesHeader = ({
           </HeaderRight>
         </SectionFlex>
       </HeaderContent>
-      <TimeSpan rightposition   />
+      <TimeSpan rightposition/>
     </Lap>
   </div>
 )
@@ -328,10 +328,6 @@ const Year = styled.div`
   position: relative;
   ${props => (props.left || props.bothleft) && !props.rightposition ? `background:${props.background}`: ''};
   ${props => (props.right || props.bothright) && props.rightposition  ? `background:${props.background}` : ''};
-
-/*
-  addTopBorder={addTopBorder}
-  addBottomBorder={addBottomBorder}*/
   ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${white}` : ''};
   ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${white}` : ''};
   ${media.desktop`width:50px;`};
@@ -363,6 +359,7 @@ const Year = styled.div`
       line-height: 0;
       border-right: 70px solid transparent;
       border-bottom: 70px solid ${primary};
+
       bottom: 0;
       left: 0;
       position: absolute;

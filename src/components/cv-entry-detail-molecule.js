@@ -21,10 +21,13 @@ export const FullPreviewCVEntry = (props) => {
       // Read: https://github.com/apollographql/apollo-client/issues/1036
       <PageShell color={colorRGBA} title={props.title} backlink="/cv">
         <CVEntryHeader
+          company={props.company}
+          school={props.school}
           background={colorRGBA}
           startDate={props.startDate}
           endDate={props.endDate}
           title={props.title}
+          color={colorRGBA}
         />
         <BasicInfo>
           <Loading />
@@ -42,14 +45,11 @@ const CVEntryHeader = (props) => {
   const options = { year: 'numeric', month: 'long'}
   const formattedStartDate = props.startDate ? startDate.toLocaleDateString('de-DE', options) : ""
   const formattedEndDate = props.endDate ? endDate.toLocaleDateString('de-DE', options) : ""
-  console.log(props)
   return(
     <BasicInfoWithBorder color={props.color}>
       <DateSpan>{formattedStartDate} – {formattedEndDate}</DateSpan>
       <H4Capitals>{props.company}{props.school}</H4Capitals>
       <H1DetailPage>{props.title}</H1DetailPage>
-
-
     </BasicInfoWithBorder>
   )
 }
@@ -155,8 +155,13 @@ export const FullCVEntry = (props) => {
               { entry.workreview &&
                 <WorkReview>
                   {/* TODO: Add these fields to GraphCMS */}
-                  <H4>{entry.workreviewtitle}</H4>
-                  <P>{entry.workreviewimages}</P>
+                  <H2>{entry.workreview}</H2>
+                  { entry.workreviewimages &&
+                    entry.workreviewimages.map((image) => (
+                      <BasicInfo key={image.handle}>
+                        <FullWithImage color={colorRGBA} handle={image.handle} />
+                      </BasicInfo>
+                    )) }
                 </WorkReview>
               }
             </BasicInfo>
@@ -212,12 +217,16 @@ const BasicInfoWithBorder = BasicInfo.extend`
 `
 const Awards = styled.section`
   text-align: center;
+  padding-bottom:5em;
 `
 const Additional = styled.section`
   text-align: center;
 `
 const WorkReview = styled.section`
   text-align: center;
+  max-width: 700px;
+  margin-left:auto;
+  margin-right:auto;
 `
 
 const Columns = styled.div`
