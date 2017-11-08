@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 import { H1, P, H4, H2, H3 } from '../../components/atoms/typography'
 import { FullWithImage } from '../../components/atoms/images'
 import { Loading } from '../../components/atoms/loading'
@@ -275,7 +275,6 @@ const CenteredContent = styled.div`
   margin-right: auto;
   text-align: center;
 `
-
 const MainDiv = styled.div`
   width:100%;
   min-height:100%;
