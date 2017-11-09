@@ -17,7 +17,6 @@ export const Header = ({props}) => (
       props.withMainNavigation &&
       <Navigation>
 
-        <NavLink to="/home" activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>Application</H4Black></NavLink>
         <NavLink to="/aboutme/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>About me</H4Black></NavLink>
         <NavLink to="/cv/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>CV</H4Black></NavLink>
 

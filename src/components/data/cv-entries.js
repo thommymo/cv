@@ -11,7 +11,7 @@ import { Loading } from '../../components/atoms/loading'
 const CVEntriesTemplate = ( { data : { loading=false, allCVEntrieses=false }} ) => {
   if(loading){
     return(
-      <PageShell withMainNavigation>
+      <PageShell withMainNavigation title="CV">
         <CVEntriesHeader titleleft="Arbeit" titleright="Ausildung"/>
         <Loading />
       </PageShell>
