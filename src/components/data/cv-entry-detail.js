@@ -1,16 +1,16 @@
 import React from 'react';
-import { FullCVEntry, FullPreviewCVEntry } from "../../components/molecules/cv-entry-detail"
+import { CVEntry, PreviewCVEntry } from "../../components/molecules/cv-entry-detail"
 import PageNotFound from '../pages/page-not-found'
 import PageShell from '../../components/templates/page-shell'
 import { Loading } from '../../components/atoms/loading'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const PreviewCVEntry = ({ data : { networkStatus=1, loading=false, CVEntries=false } } ) => {
+const PreviewCVEntryState = ({ data : { networkStatus=1, loading=false, CVEntries=false } } ) => {
   if(loading || networkStatus === 8){
     return <PageShell><Loading/></PageShell>
   }else if(CVEntries && CVEntries.moreinfocventry){
-    return <FullPreviewCVEntry {...CVEntries}/>
+    return <PreviewCVEntry {...CVEntries}/>
   }else{
     return <PageNotFound />
   }
@@ -42,13 +42,13 @@ const PreviewCVEntryWithData = graphql(
   {options: (props) => ({
      variables: { id: props.id}
     })
-  })(PreviewCVEntry)
+  })(PreviewCVEntryState)
 
-const CVEntry = ({ data : { networkStatus=1, loading=false, CVEntries=false, variables }} ) => {
+const CVEntryState = ({ data : { networkStatus=1, loading=false, CVEntries=false, variables }} ) => {
   if(loading || networkStatus === 8 || !CVEntries){
     return <PreviewCVEntryWithData id={variables.id}/>
   }else{
-    return <FullCVEntry {...CVEntries}/>
+    return <CVEntry {...CVEntries}/>
   }
 }
 
@@ -109,7 +109,7 @@ export const CVEntryWithData = graphql(
   {options: (props) => ({
      variables: { id: props.location.pathname ? props.location.pathname.replace(/id|[/]/g, "") : false }
     })
-  })(CVEntry)
+  })(CVEntryState)
 
 //TODO: Replace this with a HOC
 

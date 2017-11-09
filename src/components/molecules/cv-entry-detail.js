@@ -10,8 +10,13 @@ import { media } from '../../utils/breakpoints'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
 
-// FullPreviewCVEntry shows loding bar, when no data is available or when data is only partially available
-export const FullPreviewCVEntry = (props) => {
+/*
+  Template
+*/
+
+// PreviewCVEntry shows loding bar, when no data is available or when data is only partially available
+
+export const PreviewCVEntry = (props) => {
   if (props && props.moreinfocventry){
     const color = JSON.parse(props.moreinfocventry.background)
     const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
@@ -41,6 +46,10 @@ export const FullPreviewCVEntry = (props) => {
   }
 }
 
+/*
+  Molecules
+*/
+
 const CVEntryHeader = (props) => {
   const startDate = new Date(props.startDate)
   const endDate = new Date(props.endDate)
@@ -60,18 +69,12 @@ const H4Capitals = H4.extend`
   text-transform:uppercase;
 `
 
-export const FullCVEntry = (props) => {
+/*
+  Template
+*/
 
+export const CVEntry = (props) => {
   const entry = props.moreinfocventry
-  const responsabilitiesdescription = {
-    __html: entry.responsabilitiesdescription
-  }
-  const projectdescription = {
-    __html: entry.projectdescription
-  }
-  const additionaldescription = {
-    __html: entry.additionaldescription
-  }
   const color = JSON.parse(entry.background)
   const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
   return(
@@ -98,16 +101,12 @@ export const FullCVEntry = (props) => {
           <MainDiv>
             <BasicInfo>
               { entry.responsabilities &&
-                <Columns>
-                  <Projects>
-                    <H4>{entry.projects}</H4>
-                    <span dangerouslySetInnerHTML={projectdescription} />
-                  </Projects>
-                  <Tasks>
-                    <H3>{entry.responsabilities}</H3>
-                    <P dangerouslySetInnerHTML={responsabilitiesdescription} />
-                  </Tasks>
-                </Columns>
+                <Jobdesciption
+                  projectstitle={entry.projects}
+                  projectdescription={{__html: entry.projectdescription}}
+                  responsabilities={entry.responsabilities}
+                  responsabilitiesdescription={{__html: entry.responsabilitiesdescription}}
+                />
               }
             </BasicInfo>
             <BasicInfo>
@@ -119,61 +118,78 @@ export const FullCVEntry = (props) => {
 
             <BasicInfo>
               { entry.awardstitle &&
-                <Awards>
-                  <CenteredContent>
-                    <H2>{entry.awardstitle}</H2>
-                    <Columns>
-                      {
-                        entry.awardlogo1 && entry.awarddescription1 &&
-                        <Column>
-                          <img src={entry.awardlogo1.url} height="100" alt="Award Logo"/>
-                          <PAward>{entry.awarddescription1}</PAward>
-                        </Column>
-                      }
-                      {
-                        entry.awardlogo2 && entry.awarddescription2 &&
-                        <Column>
-                          <img src={entry.awardlogo2.url} height="100" alt="Award Logo" />
-                          <PAward>{entry.awarddescription2}</PAward>
-                        </Column>
-                      }
-                      {
-                        entry.awardlogo3 && entry.awarddescription3 &&
-                        <Column>
-                          <img src={entry.awardlogo3.url} height="100" alt="Award Logo" />
-                          <PAward>{entry.awarddescription3}</PAward>
-                        </Column>
-                      }
-                    </Columns>
-                  </CenteredContent>
-                </Awards>
-              }
-              { entry.additionaltitel &&
-                <Additional>
-                  <H2>{entry.additionaltitel}</H2>
-                  <P dangerouslySetInnerHTML={additionaldescription} />
-                </Additional>
+                <Awards
+                  awardstitle={entry.awardstitle}
+                  awards={[
+                    {logo:entry.awardlogo1,description:entry.awarddescription1},
+                    {logo:entry.awardlogo2,description:entry.awarddescription2},
+                    {logo:entry.awardlogo3,description:entry.awarddescription3}
+                  ]}
+                />
               }
               { entry.workreview &&
-                <WorkReview>
-                  {/* TODO: Add these fields to GraphCMS */}
-                  <H2>{entry.workreview}</H2>
-                  { entry.workreviewimages &&
-                    entry.workreviewimages.map((image) => (
-                      <BasicInfo key={image.handle}>
-                        <FullWithImage color={colorRGBA} handle={image.handle} />
-                      </BasicInfo>
-                    )) }
-                </WorkReview>
+                <WorkReview workreview={entry.workreview} workreviewimages={entry.workreviewimages} colorRGBA={colorRGBA}/>
               }
             </BasicInfo>
           </MainDiv>
         </CSSTransition>
       </PageShell>
-
-
   )
 }
+
+/*
+  Atoms
+*/
+
+
+/*
+  Molecules
+*/
+
+const Jobdesciption = ({projectstitle,projectdescription,responsabilities,responsabilitiesdescription}) => (
+  <StyledJobdescription>
+    <Projects>
+      <H4>{projectstitle}</H4>
+      <span dangerouslySetInnerHTML={projectdescription} />
+    </Projects>
+    <Tasks>
+      <H3>{responsabilities}</H3>
+      <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+    </Tasks>
+  </StyledJobdescription>
+)
+
+const Awards = ({awardstitle, awards}) => (
+  <StyledAwards>
+    <CenteredContent>
+      <H2>{awardstitle}</H2>
+      <Columns>
+        { awards.map((award) => {
+          if(award.logo && award.description) {
+            return(
+              <Column key={award.logo}>
+                <img src={award.logo.url} height="100" alt="Award Logo"/>
+                <PAward>{award.description}</PAward>
+              </Column>
+            )
+          }
+        })}
+      </Columns>
+    </CenteredContent>
+  </StyledAwards>
+)
+
+const WorkReview = ({workreview, workreviewimages, colorRGBA}) => (
+  <StyledWorkReview>
+    <H2>{workreview}</H2>
+    { workreviewimages &&
+      workreviewimages.map((image) => (
+        <BasicInfo key={image.handle}>
+          <FullWithImage color={colorRGBA} handle={image.handle} />
+        </BasicInfo>
+      )) }
+  </StyledWorkReview>
+)
 
 //TODO: Review if these elements are all really needed
 
@@ -217,23 +233,24 @@ const BasicInfoWithBorder = BasicInfo.extend`
   border-right-width: 40px;
   border-right-color: ${props => props.color};
 `
-const Awards = styled.section`
+const StyledAwards = styled.section`
   text-align: center;
   padding-bottom:5em;
 `
 const Additional = styled.section`
   text-align: center;
 `
-const WorkReview = styled.section`
+const StyledWorkReview = styled.section`
   text-align: center;
   max-width: 700px;
   margin-left:auto;
   margin-right:auto;
 `
-
 const Columns = styled.div`
-  ${media.desktop`display: flex; margin-left:auto; margin-right:auto;`}
-  ${media.desktop`display: flex;`}
+  ${media.desktop`display: flex; `}
+`
+const StyledJobdescription = styled.div`
+  ${media.desktop`display: flex; `}
 `
 const Tasks = styled.div`
   flex:3;
