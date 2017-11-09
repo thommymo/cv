@@ -47,8 +47,6 @@ const SectionFlex = styled.section`
 `
 const Header = styled.div`
   color:${white};
-
-
   & > h3 {
     margin-top:-34px;
     text-transform: uppercase;
@@ -259,7 +257,7 @@ const HeaderContent = Content.extend`
 `
 
 
-// Timespan Component for displaying the timespan left or right of the content of a Timeline element
+// Timespan Component for displaying the timespan left or right of the content of a CV element
 
 const TimeSpan = ({
   rightposition = false,
