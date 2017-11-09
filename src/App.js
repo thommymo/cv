@@ -7,6 +7,7 @@ import { white } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/molecules/page-not-found'
 import PageShell from './components/templates/page-shell'
+import {AboutMe} from './components/pages/aboutme'
 
 //TODO: injectGlobal might has to be moved somewhere else
 
@@ -96,8 +97,7 @@ class App extends Component {
             onExited={() => window.scrollTo(0,0)}
           >
             <Switch location={this.props.location}>
-              <Route exact path='/'><Application/></Route>
-              <Route exact path='/home' ><Application/></Route>
+              <Route exact path='/'><AboutMe/></Route>
               <Route exact path='/aboutme' ><AboutMe/></Route>
               <Route exact path='/cv' ><ShellCVEntriesWithData/></Route>
               <Route exact path='/:something/:id/'><ShellCVEntryWithData {...this.props}/></Route>
@@ -109,12 +109,8 @@ class App extends Component {
   }
 }
 
-const Application = () => (
-  <PageShell withMainNavigation={true}><div>Something about this Application</div></PageShell>
-)
 
-const AboutMe = () => (
-  <PageShell withMainNavigation={true}><div>Something AboutMe</div></PageShell>
-)
+
+
 
 export default withRouter(App);
