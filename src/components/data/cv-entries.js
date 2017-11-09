@@ -2,7 +2,7 @@ import React from 'react';
 import { CVEntries, CVEntriesHeader } from '../../components/molecules/cv-entries'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import PageShell from '../../components/page-shell'
+import PageShell from '../../components/templates/page-shell'
 import { Loading } from '../../components/atoms/loading'
 
 // TODO: Instead of creating my own HOC, it might be usefull to use someting like recompose. See:

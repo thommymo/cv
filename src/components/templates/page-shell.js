@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { Link, NavLink } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { white, black, primary } from '../utils/colors'
-import { media } from '../utils/breakpoints'
-import { H4 } from '../components/atoms/typography'
-import { githubIcon, backIcon } from '../utils/icons'
-import { Footer } from '../components/organisms/footer'
-import { Header } from '../components/organisms/header'
+import { white, primary } from '../../utils/colors'
+import { media } from '../../utils/breakpoints'
+import { Footer } from '../../components/organisms/footer'
+import { Header } from '../../components/organisms/header'
 
 // TODO: This should be a HOC
 
