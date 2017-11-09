@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { sizes, imagesizes } from '../../utils/breakpoints'
 import styled from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
@@ -9,7 +9,7 @@ import { loadingIcon } from '../../utils/icons'
  TODO: Add loading of image
  */
 
- 
+
 /*
   Images
 */
