@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeout, timeoutTransition } from './utils/constants'
 import { white } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
-import PageNotFound from './components/molecules/page-not-found'
+import PageNotFound from './components/pages/page-not-found'
 import PageShell from './components/templates/page-shell'
 import {AboutMe} from './components/pages/aboutme'
 

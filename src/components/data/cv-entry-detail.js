@@ -1,6 +1,6 @@
 import React from 'react';
 import { FullCVEntry, FullPreviewCVEntry } from "../../components/molecules/cv-entry-detail"
-import PageNotFound from '../../components/molecules/page-not-found'
+import PageNotFound from '../pages/page-not-found'
 import PageShell from '../../components/templates/page-shell'
 import { Loading } from '../../components/atoms/loading'
 import { graphql } from 'react-apollo';
