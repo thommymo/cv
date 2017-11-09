@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {H4} from '../../components/atoms/typography'
+import {H4} from '../atoms/typography'
 import { Link, NavLink } from 'react-router-dom'
 import { backIcon } from '../../utils/icons'
 import { black, white } from '../../utils/colors'

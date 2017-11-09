@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react"
-import { H1, P } from '../../components/atoms/typography'
+import { H1, P } from '../atoms/typography'
 import PageShell from '../../components/templates/page-shell'
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CVEntries, CVEntriesHeader } from '../../components/molecules/cv-entries'
+import { CVEntries, CVEntriesHeader } from '../molecules/cv-entries'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import PageShell from '../../components/templates/page-shell'

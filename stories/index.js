@@ -50,7 +50,7 @@ storiesOf('Timeline', module)
       school = {text("School:", "University of Zurich")}
       responsability = {text("Responsability:", "New Website")}
       learned = {text("Learned: ", "SRF")}
-      showmore = {boolean("Show more"), false} //TODO: This does not work (see Error Message: Has to do with controlled components)
+      showmore = {(boolean("Show more"), false)} //TODO: This does not work (see Error Message: Has to do with controlled components)
     />
   ))
 
