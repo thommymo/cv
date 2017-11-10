@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { ShellCVEntryWithData } from './components/data/cv-entry-detail'
 import { ShellCVEntriesWithData } from './components/data/cv-entries'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { timeout, timeoutTransition } from './utils/constants'
-import { white } from './utils/colors'
+import { timeoutTransition } from './utils/constants'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/pages/page-not-found'
 import { AboutMe } from './components/pages/aboutme'
-import { GlobalCSS } from './utils/global-css'
+import './utils/global-css'
 
 //TODO: Add a print version
 
