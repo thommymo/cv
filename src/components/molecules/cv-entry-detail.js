@@ -97,20 +97,43 @@ const H4Capitals = H4.extend`
   Template
 */
 
-export const CVEntry = (props) => {
-  const entry = props.moreinfocventry
-  const color = JSON.parse(entry.background)
+
+
+
+export const CVEntry = ({
+  company,
+  school,
+  startDate,
+  endDate,
+  title,
+  background,
+  responsabilities,
+  responsabilitiesdescription,
+  projects,
+  projectdescription,
+  descriptionimages,
+  awardstitle,
+  awardlogo1,
+  awarddescription1,
+  awardlogo2,
+  awarddescription2,
+  awardlogo3,
+  awarddescription3,
+  workreview,
+  workreviewimages,
+}) => {
+  const color = JSON.parse(background)
   const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
   return(
 
-      <PageShell color={colorRGBA} title={props.title} backlink="/cv">
+      <PageShell color={colorRGBA} title={title} backlink="/cv">
 
         <CVEntryHeader
-          company={props.company}
-          school={props.school}
-          startDate={props.startDate}
-          endDate={props.endDate}
-          title={props.title}
+          company={company}
+          school={school}
+          startDate={startDate}
+          endDate={endDate}
+          title={title}
           color={colorRGBA}
         />
 
@@ -123,35 +146,35 @@ export const CVEntry = (props) => {
         >
           <MainDiv>
             <BasicInfo>
-              { entry.responsabilities &&
+              { responsabilities &&
                 <Jobdesciption
-                  projectstitle={entry.projects}
-                  projectdescription={{__html: entry.projectdescription}}
-                  responsabilities={entry.responsabilities}
-                  responsabilitiesdescription={{__html: entry.responsabilitiesdescription}}
+                  projectstitle={projects}
+                  projectdescription={{__html: projectdescription}}
+                  responsabilities={responsabilities}
+                  responsabilitiesdescription={{__html: responsabilitiesdescription}}
                 />
               }
             </BasicInfo>
             <BasicInfo>
-              { entry.descriptionimages &&
-                entry.descriptionimages.map((image) => (
+              { descriptionimages &&
+                descriptionimages.map((image) => (
                   <FullWithImage color={colorRGBA} handle={image.handle} key={image.handle}/>
                 )) }
             </BasicInfo>
 
             <BasicInfo>
-              { entry.awardstitle &&
+              { awardstitle &&
                 <Awards
-                  awardstitle={entry.awardstitle}
+                  awardstitle={awardstitle}
                   awards={[
-                    {logo: entry.awardlogo1, description: entry.awarddescription1},
-                    {logo: entry.awardlogo2, description: entry.awarddescription2},
-                    {logo: entry.awardlogo3, description: entry.awarddescription3}
+                    {logo: awardlogo1, description: awarddescription1},
+                    {logo: awardlogo2, description: awarddescription2},
+                    {logo: awardlogo3, description: awarddescription3}
                   ]}
                 />
               }
-              { entry.workreview &&
-                <WorkReview workreview={entry.workreview} workreviewimages={entry.workreviewimages} colorRGBA={colorRGBA}/>
+              { workreview &&
+                <WorkReview workreview={workreview} workreviewimages={workreviewimages} colorRGBA={colorRGBA}/>
               }
             </BasicInfo>
           </MainDiv>

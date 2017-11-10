@@ -57,7 +57,30 @@ const CVEntryState = ({ data : { networkStatus=1, loading=false, CVEntries=false
   if(loading || networkStatus === 8 || !CVEntries){
     return <PreviewCVEntryWithData id={variables.id}/>
   }else{
-    return <CVEntry {...CVEntries}/>
+    return (
+      <CVEntry
+        company={CVEntries.company}
+        school={CVEntries.school}
+        startDate={CVEntries.startDate}
+        endDate={CVEntries.endDate}
+        title={CVEntries.title}
+        background={CVEntries.moreinfocventry.background}
+        responsabilities={CVEntries.moreinfocventry.responsabilities}
+        responsabilitiesdescription={CVEntries.moreinfocventry.responsabilitiesdescription}
+        projects={CVEntries.moreinfocventry.projects}
+        projectdescription={CVEntries.moreinfocventry.projectdescription}
+        descriptionimages={CVEntries.moreinfocventry.descriptionimages}
+        awardstitle={CVEntries.moreinfocventry.awardstitle}
+        awardlogo1={CVEntries.moreinfocventry.awardlogo1}
+        awarddescription1={CVEntries.moreinfocventry.awarddescription1}
+        awardlogo2={CVEntries.moreinfocventry.awardlogo2}
+        awarddescription2={CVEntries.moreinfocventry.awarddescription2}
+        awardlogo3={CVEntries.moreinfocventry.awardlogo3}
+        awarddescription3={CVEntries.moreinfocventry.awarddescription3}
+        workreview={CVEntries.moreinfocventry.workreview}
+        workreviewimages={CVEntries.moreinfocventry.workreviewimages}
+      />
+    )
   }
 }
 
