@@ -42,6 +42,9 @@ export const H4 = styled.h4`
   ${media.tablet`line-height: 1.22222222em`}
   ${media.phone`line-height: 1.11111111em`}
 `
+export const H4Capitals = H4.extend`
+  text-transform: uppercase;
+`
 export const P = styled.p`
   ${media.desktop`font-size: 1em;`}
   ${media.tablet`font-size: 1em;`}
@@ -49,6 +52,9 @@ export const P = styled.p`
   ${media.desktop`line-height: 1.22222222em`}
   ${media.tablet`line-height: 1.22222222em`}
   ${media.phone`line-height: 1.11111111em`}
+`
+export const PCapitals = P.extend`
+  text-transform: uppercase;
 `
 export const UL = styled.ul`
   ${media.desktop`font-size: 1em;`}
