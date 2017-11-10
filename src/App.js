@@ -9,14 +9,9 @@ import PageNotFound from './components/pages/page-not-found'
 import { AboutMe } from './components/pages/aboutme'
 import { GlobalCSS } from './utils/global-css'
 
-//TODO: injectGlobal might has to be moved somewhere else
-
-
-
 //TODO: Add a print version
 
 class App extends Component {
-
   render() {
     return (
         <TransitionGroup
@@ -50,8 +45,4 @@ class App extends Component {
   }
 }
 
-
-
-
-
-export default withRouter(App);
+export default withRouter(App)
