@@ -8,8 +8,6 @@ import PageNotFound from './components/pages/page-not-found'
 import { AboutMe } from './components/pages/aboutme'
 import './utils/global-css'
 
-//TODO: Add a print version
-
 class App extends Component {
   render() {
     return (
