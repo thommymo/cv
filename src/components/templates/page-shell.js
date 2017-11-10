@@ -31,7 +31,7 @@ class PageShell extends Component {
 
 export default PageShell
 
-const MainContent = styled.main`
+const MainContent = styled.div`
   background-color:${props => props.color};
   width:100%;
   min-height:100%;
@@ -44,7 +44,7 @@ const MainContent = styled.main`
     opacity: 0.5;
   }
 `
-const Content = styled.div`
+const Content = styled.main`
   max-width:1024px;
   min-height:1000px;
   margin-left:auto;
