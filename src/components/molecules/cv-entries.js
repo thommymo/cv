@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { white, primary } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
-import { P, H1, H3, H4,  } from '../atoms/typography'
+import { P, H1, H3, H4, H4Capitals } from '../atoms/typography'
 import { Ghostbutton } from '../atoms/buttons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
@@ -19,8 +19,6 @@ const Content = styled.div`
   border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary};
   ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${white}; margin-right:0px;` : ''};
   ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
-  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 10px; border-top-color: ${primary};` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary}` : ''};
   flex:1;
 `
 
@@ -85,8 +83,6 @@ export const CVEntries = ({data : {
   endDate = "",
   right=false,
   left=false,
-  addTopBorder=false,
-  addBottomBorder=false,
   bothleft=false,
   bothright=false,
   company="",
@@ -120,7 +116,7 @@ export const CVEntries = ({data : {
       classNames="FadeIn"
       unmountOnExit={true}
     >
-      <Lap right={right}>
+      <Lap >
         <TimeLine
           show={left}
           right={right}
@@ -129,8 +125,6 @@ export const CVEntries = ({data : {
           bothleft={bothleft}
           startDate={formattedStartDate}
           endDate={formattedEndDate}
-          addTopBorder={addTopBorder}
-          addBottomBorder={addBottomBorder}
           rightposition={false}
           addTopLeftTriangle={addTopLeftTriangle}
           addTopRightTriangle={addTopRightTriangle}
@@ -141,42 +135,42 @@ export const CVEntries = ({data : {
         <Content
           left={left}
           right={right}
-          addTopBorder={addTopBorder}
-          addBottomBorder={addBottomBorder}
           borderright={bothright}
           borderleft={bothleft}
         >
-          { company &&
-            <AdditionalInfoItem right={right}>
-              <AdditionalInfoH4>{company}</AdditionalInfoH4>
-            </AdditionalInfoItem>
-          }
-          {
-            school &&
-            <AdditionalInfoItem right={right}>
-              <AdditionalInfoH4>{school}</AdditionalInfoH4>
-            </AdditionalInfoItem>
-          }
-          <StyledTitle>{title}</StyledTitle>
-          <AdditionalInfo right={right}>
-            {
-              responsability &&
-              <SecondaryAdditionalInfoItem right={right}>
-                <AdditionalInfoP>{responsability}</AdditionalInfoP>
-              </SecondaryAdditionalInfoItem>
+          <article>
+            { company &&
+              <Organization right={right}>
+                <H4Capitals>{company}</H4Capitals>
+              </Organization>
             }
             {
-              learned &&
-              <SecondaryAdditionalInfoItem right={right}>
-                <AdditionalInfoP>{learned}</AdditionalInfoP>
-              </SecondaryAdditionalInfoItem>
+              school &&
+              <Organization right={right}>
+                <H4Capitals>{school}</H4Capitals>
+              </Organization>
             }
-            {
-              showmore &&
-              //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-              <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
-            }
-          </AdditionalInfo>
+            <Title>{title}</Title>
+            <AdditionalInfo right={right}>
+              {
+                responsability &&
+                <Excerpt right={right}>
+                  <P>{responsability}</P>
+                </Excerpt>
+              }
+              {
+                learned &&
+                <Excerpt right={right}>
+                  <P>{learned}</P>
+                </Excerpt>
+              }
+              {
+                showmore &&
+                //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
+                <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
+              }
+            </AdditionalInfo>
+          </article>
         </Content>
         <TimeLine
           rightposition={true}
@@ -187,8 +181,6 @@ export const CVEntries = ({data : {
           bothleft={bothleft}
           startDate={formattedStartDate}
           endDate={formattedEndDate}
-          addTopBorder={addTopBorder}
-          addBottomBorder={addBottomBorder}
           addTopLeftTriangle={addTopLeftTriangle}
           addTopRightTriangle={addTopRightTriangle}
           addBottomLeftTriangle={addBottomLeftTriangle}
@@ -206,33 +198,28 @@ export const CVEntries = ({data : {
 Typography
 */
 
-const StyledTitle = H3.extend`
-  ${media.desktop`margin-top: -0.5em; margin-bottom:-0.4em`}
-  ${media.tablet`margin-top: 0px; margin-bottom:-0.2em`}
-  ${media.phone`margin-top: 0px; padding-bottom:0.2em`}
+const Title = H3.extend`
+  ${media.desktop`margin-top: -0.5em; margin-bottom: -0.4em;`}
+  ${media.tablet`margin-top: -0.5em; margin-bottom: -0.2em;`}
+  ${media.phone`margin-top: -0.5em; padding-bottom: 0em;`}
 `
-const AdditionalInfoItem = styled.div`
+const Organization = styled.div`
   display: flex;
   ${props => props.right ? 'justify-content: flex-end;': ''};
+  padding-left:1px;
+  padding-right:1px;
+  font-size: 0.8em;
+  ${media.desktop`margin-top: -20px;`}
+  ${media.tablet`margin-top: -17px;`}
+  ${media.phone`margin-top: -14px;`}
 `
-const SecondaryAdditionalInfoItem = AdditionalInfoItem.extend`
-  ${media.phone`display:none;`};
-`
-const AdditionalInfoP = P.extend`
+const Excerpt = styled.div`
+  display: flex;
+  ${props => props.right ? 'justify-content: flex-end;': ''};
   padding-left:1px;
   padding-right:1px;
 `
-const AdditionalInfoH4 = H4.extend`
-  text-transform: uppercase;
-  padding-left:1px;
-  padding-right:1px;
-  ${media.desktop`margin-top: 4px;`}
-  ${media.tablet`margin-top: 7px;`}
-  ${media.phone`margin-top: 10px;`}
-  ${media.desktop`font-size:0.8em;`}
-  ${media.tablet`font-size:0.8em;`}
-  ${media.phone`font-size:0.8em;`}
-`
+
 
 
 /*
@@ -262,8 +249,6 @@ const TimeLine = ({
   left=false,
   bothleft=false,
   bothright=false,
-  addTopBorder=false,
-  addBottomBorder=false,
   addTopLeftTriangle=false,
   addBottomLeftTriangle=false,
   addBottomRightTriangle=false,
@@ -271,9 +256,6 @@ const TimeLine = ({
   background=white
 }) => (
   <Year
-    show={show}
-    addTopBorder={addTopBorder}
-    addBottomBorder={addBottomBorder}
     bothright={bothright}
     bothleft={bothleft}
     rightposition={rightposition}
@@ -296,7 +278,6 @@ const TimeLine = ({
         <span>{startDate}</span>
       }
     </StyledTimeSpan>
-
   </Year>
 );
 
@@ -316,6 +297,11 @@ const StyledTimeSpan = H4.extend`
   color: ${white};
   font-weight: 600;
 `
+
+
+
+
+
 const Year = styled.div`
   position: relative;
   ${props => (props.left || props.bothleft) && !props.rightposition ? `background:${props.background}`: ''};
