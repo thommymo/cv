@@ -21,15 +21,15 @@ const Content = styled.div`
   ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
   flex:1;
 `
-
-
 export const CVEntriesHeader = ({
   titleleft = "",
   titleright = "",
 }) => (
   <div>
-    <H1>Lebenslauf</H1>
-    <Lap>
+    <HeaderTitle>
+      <H1>Lebenslauf</H1>
+    </HeaderTitle>
+    <EntryItem>
       <TimeLine/>
       <HeaderContent>
         <SectionFlex>
@@ -42,25 +42,29 @@ export const CVEntriesHeader = ({
         </SectionFlex>
       </HeaderContent>
       <TimeLine rightposition/>
-    </Lap>
+    </EntryItem>
   </div>
 )
 
-
-const SectionFlex = styled.section`
-  display:flex;
+const HeaderTitle = styled.div`
+  text-align: center;
+  margin-top: 7em;
+  margin-bottom: 12em;
+`
+const SectionFlex = styled.div`
+  display: flex;
   justify-content: space-between;
 `
 const Header = styled.div`
   color:${white};
   & > h3 {
-    margin-top:-34px;
+    margin-top: -34px;
     text-transform: uppercase;
-    margin-left:-23px;
-    margin-right:-23px;
-    padding-left:5px;
-    padding-right:5px;
-    border:3px solid ${white};
+    margin-left: -23px;
+    margin-right: -23px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 3px solid ${white};
   }
 `
 const HeaderLeft = Header.extend`
@@ -114,7 +118,7 @@ export const CVEntries = ({data : {
       classNames="FadeIn"
       unmountOnExit={true}
     >
-      <Lap >
+      <EntryItem >
         <TimeLine
           show={left}
           right={right}
@@ -133,24 +137,20 @@ export const CVEntries = ({data : {
         <Content
           left={left}
           right={right}
-          borderright={bothright}
-          borderleft={bothleft}
         >
           <article>
             <Organization right={right}>
               <H4Capitals>{organization}</H4Capitals>
             </Organization>
             <Title>{title}</Title>
-            <AdditionalInfo right={right}>
-              <Excerpt right={right}>
-                <P>{excerpt}</P>
-              </Excerpt>
-              {
+            <Excerpt right={right}>
+              <P>{excerpt}</P>
+            </Excerpt>
+            {
                 showmore &&
                 //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-                <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
-              }
-            </AdditionalInfo>
+              <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
+            }
           </article>
         </Content>
         <TimeLine
@@ -168,7 +168,7 @@ export const CVEntries = ({data : {
           addBottomRightTriangle={addBottomRightTriangle}
           background={colorRGBA}
         />
-      </Lap>
+      </EntryItem>
     </CSSTransition>
     )
 }
@@ -207,10 +207,7 @@ const Excerpt = styled.div`
 Containers
 */
 
-const AdditionalInfo = styled.div`
-
-`
-const Lap = styled.div`
+const EntryItem = styled.div`
   display: flex;
   width: (100% + 61)px;
   ${media.desktop`margin-left:-61px;margin-right:-61px;`}
@@ -236,7 +233,7 @@ const TimeLine = ({
   addTopRightTriangle=false,
   background=white
 }) => (
-  <Year
+  <StyledTimeLine
     bothright={bothright}
     bothleft={bothleft}
     rightposition={rightposition}
@@ -259,7 +256,7 @@ const TimeLine = ({
         <span>{startDate}</span>
       }
     </StyledTimeSpan>
-  </Year>
+  </StyledTimeLine>
 );
 
 // Styling for Timespan
@@ -276,14 +273,9 @@ const StyledTimeSpan = H4.extend`
   padding-top: 9px;
   height:123px;
   color: ${white};
-  font-weight: 600;
 `
 
-
-
-
-
-const Year = styled.div`
+const StyledTimeLine = styled.div`
   position: relative;
   ${props => (props.left || props.bothleft) && !props.rightposition ? `background:${props.background}`: ''};
   ${props => (props.right || props.bothright) && props.rightposition  ? `background:${props.background}` : ''};
@@ -318,7 +310,6 @@ const Year = styled.div`
       line-height: 0;
       border-right: 70px solid transparent;
       border-bottom: 70px solid ${primary};
-
       bottom: 0;
       left: 0;
       position: absolute;
@@ -339,7 +330,7 @@ const Year = styled.div`
       }` : ''};
   ${props => props.addBottomRightTriangle && props.rightposition ? `
     &::before {
-      content:'';
+      content: '';
       width: 0;
       height: 0;
       line-height: 0;
@@ -361,4 +352,7 @@ const CVEntryMoreButton = (props) => (
 const GhostbuttonWhite = Ghostbutton.extend`
   color:${white};
   border-color:${white};
+  text-transform: uppercase;
+  font-size:0.8em;
+  font-weight:400;
 `
