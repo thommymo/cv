@@ -17,8 +17,7 @@ import { timeoutTransition } from '../../utils/constants'
 */
 
 export const CVEntryHeader = ({
-  company,
-  school,
+  organization,
   startDate,
   endDate,
   title,
@@ -35,7 +34,7 @@ export const CVEntryHeader = ({
         <HeaderWithDate>
           <H4Capitals>{formattedStartDate} – {formattedEndDate}</H4Capitals>
         </HeaderWithDate>
-        <H4Capitals>{company}{school}</H4Capitals>
+        <H4Capitals>{organization}</H4Capitals>
       </DateAndCompany>
       <H1>{title}</H1>
     </HeaderWithBorder>
