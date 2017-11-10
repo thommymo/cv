@@ -10,7 +10,16 @@ const PreviewCVEntryState = ({ data : { networkStatus=1, loading=false, CVEntrie
   if(loading || networkStatus === 8){
     return <PageShell><Loading/></PageShell>
   }else if(CVEntries && CVEntries.moreinfocventry){
-    return <PreviewCVEntry {...CVEntries}/>
+    return (
+      <PreviewCVEntry
+        company={CVEntries.company}
+        school={CVEntries.school}
+        startDate={CVEntries.startDate}
+        endDate={CVEntries.endDate}
+        title={CVEntries.title}
+        background={CVEntries.moreinfocventry.background}
+      />
+      )
   }else{
     return <PageNotFound />
   }
