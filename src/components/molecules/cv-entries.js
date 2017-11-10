@@ -143,7 +143,6 @@ export const CVEntries = ({data : {
           right={right}
           addTopBorder={addTopBorder}
           addBottomBorder={addBottomBorder}
-
           borderright={bothright}
           borderleft={bothleft}
         >
@@ -152,26 +151,28 @@ export const CVEntries = ({data : {
               <AdditionalInfoH4>{company}</AdditionalInfoH4>
             </AdditionalInfoItem>
           }
-          { school &&
+          {
+            school &&
             <AdditionalInfoItem right={right}>
               <AdditionalInfoH4>{school}</AdditionalInfoH4>
             </AdditionalInfoItem>
           }
           <StyledTitle>{title}</StyledTitle>
           <AdditionalInfo right={right}>
-
-
-            { responsability &&
+            {
+              responsability &&
               <SecondaryAdditionalInfoItem right={right}>
                 <AdditionalInfoP>{responsability}</AdditionalInfoP>
               </SecondaryAdditionalInfoItem>
             }
-            { learned &&
+            {
+              learned &&
               <SecondaryAdditionalInfoItem right={right}>
                 <AdditionalInfoP>{learned}</AdditionalInfoP>
               </SecondaryAdditionalInfoItem>
             }
-            { showmore &&
+            {
+              showmore &&
               //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
               <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
             }
@@ -248,7 +249,6 @@ const Lap = styled.div`
   ${media.tablet`margin-left:-61px;margin-right:-61px;`}
   ${media.phone`margin-left:-16px;margin-right:-16px;`}
 `
-
 
 
 // Timespan Component for displaying the timespan left or right of the content of a CV element
