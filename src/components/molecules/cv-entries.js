@@ -85,12 +85,10 @@ export const CVEntries = ({data : {
   left=false,
   bothleft=false,
   bothright=false,
-  company="",
-  school="",
-  responsability="",
-  learned="",
   title="",
   slug="",
+  organization="",
+  excerpt="",
   addTopLeftTriangle=false,
   addBottomLeftTriangle=false,
   addTopRightTriangle=false,
@@ -139,31 +137,14 @@ export const CVEntries = ({data : {
           borderleft={bothleft}
         >
           <article>
-            { company &&
-              <Organization right={right}>
-                <H4Capitals>{company}</H4Capitals>
-              </Organization>
-            }
-            {
-              school &&
-              <Organization right={right}>
-                <H4Capitals>{school}</H4Capitals>
-              </Organization>
-            }
+            <Organization right={right}>
+              <H4Capitals>{organization}</H4Capitals>
+            </Organization>
             <Title>{title}</Title>
             <AdditionalInfo right={right}>
-              {
-                responsability &&
-                <Excerpt right={right}>
-                  <P>{responsability}</P>
-                </Excerpt>
-              }
-              {
-                learned &&
-                <Excerpt right={right}>
-                  <P>{learned}</P>
-                </Excerpt>
-              }
+              <Excerpt right={right}>
+                <P>{excerpt}</P>
+              </Excerpt>
               {
                 showmore &&
                 //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.

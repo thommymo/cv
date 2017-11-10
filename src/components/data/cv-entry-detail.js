@@ -12,8 +12,7 @@ const PreviewCVEntryState = ({ data : { networkStatus=1, loading=false, CVEntrie
   }else if(CVEntries && CVEntries.moreinfocventry){
     return (
       <PreviewCVEntry
-        company={CVEntries.company}
-        school={CVEntries.school}
+        organization={CVEntries.organization}
         startDate={CVEntries.startDate}
         endDate={CVEntries.endDate}
         title={CVEntries.title}
@@ -32,8 +31,7 @@ const previewQuery = gql`
       startDate
       endDate
       title
-      company
-      school
+      organization
       moreinfocventry {
         id
         background
@@ -55,8 +53,7 @@ const CVEntryState = ({ data : { networkStatus=1, loading=false, CVEntries=false
   }else{
     return (
       <CVEntry
-        company={CVEntries.company}
-        school={CVEntries.school}
+        organization={CVEntries.organization}
         startDate={CVEntries.startDate}
         endDate={CVEntries.endDate}
         title={CVEntries.title}
@@ -87,8 +84,7 @@ const fullQuery = gql`
     title
     startDate
     endDate
-    company
-    school
+    organization
     moreinfocventry {
       id
       background

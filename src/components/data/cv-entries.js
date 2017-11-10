@@ -41,10 +41,8 @@ const data = gql`
       addBottomRightTriangle
       bothleft
       bothright
-      company
-      school
-      responsability
-      learned
+      organization
+      excerpt
       title
       moreinfocventry {
         id

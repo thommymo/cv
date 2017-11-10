@@ -13,8 +13,7 @@ import { timeoutTransition } from '../../utils/constants'
 import { CVEntryHeader, JobDescription, Awards, WorkReview } from '../molecules/cv-entry-detail'
 
 export const PreviewCVEntry = ({
-  company,
-  school,
+  organization,
   startDate,
   endDate,
   title,
@@ -30,8 +29,7 @@ export const PreviewCVEntry = ({
     // Read: https://github.com/apollographql/apollo-client/issues/1036
     <PageShell color={colorRGBA} title={title} backlink="/cv">
       <CVEntryHeader
-        company={company}
-        school={school}
+        organization={organization}
         startDate={startDate}
         endDate={endDate}
         title={title}
@@ -49,8 +47,7 @@ export const PreviewCVEntry = ({
 */
 
 export const CVEntry = ({
-  company,
-  school,
+  organization,
   startDate,
   endDate,
   title,
@@ -77,8 +74,7 @@ export const CVEntry = ({
       <PageShell color={colorRGBA} title={title} backlink="/cv">
 
         <CVEntryHeader
-          company={company}
-          school={school}
+          organization={organization}
           startDate={startDate}
           endDate={endDate}
           title={title}
