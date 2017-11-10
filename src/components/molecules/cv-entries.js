@@ -10,20 +10,29 @@ import { timeoutTransition } from '../../utils/constants'
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
 
-//Timelineheader shows the title for the whole Timeline
+const Content = styled.div`
+  padding: 44px 20px 44px 20px;
+  margin-left:3px;
+  margin-right:3px;
+  color: ${white};
+  border-top: solid; border-top-width: 10px; border-top-color: ${primary};
+  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary};
+  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${white}; margin-right:0px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
+  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 10px; border-top-color: ${primary};` : ''};
+  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary}` : ''};
+  flex:1;
+`
+
 
 export const CVEntriesHeader = ({
   titleleft = "",
   titleright = "",
 }) => (
   <div>
+    <H1>Lebenslauf</H1>
     <Lap>
-      <HeaderContent>
-        <H1>Lebenslauf</H1>
-      </HeaderContent>
-    </Lap>
-    <Lap>
-      <TimeSpan/>
+      <TimeLine/>
       <HeaderContent>
         <SectionFlex>
           <HeaderLeft>
@@ -34,11 +43,10 @@ export const CVEntriesHeader = ({
           </HeaderRight>
         </SectionFlex>
       </HeaderContent>
-      <TimeSpan rightposition/>
+      <TimeLine rightposition/>
     </Lap>
   </div>
 )
-
 
 
 const SectionFlex = styled.section`
@@ -63,8 +71,12 @@ const HeaderLeft = Header.extend`
 const HeaderRight = Header.extend`
   text-align: right;
 `
-
-//Timeline is a component which shows an entry in my CV and places the line on the left or right side of it.
+const HeaderContent = Content.extend`
+  padding-top:0px;
+  padding-bottom:0px;
+  text-align: center;
+`
+//CVEntries is a component which shows an entry in my CV and places the line on the left or right side of it.
 
 export const CVEntries = ({data : {
   id="",
@@ -109,7 +121,7 @@ export const CVEntries = ({data : {
       unmountOnExit={true}
     >
       <Lap right={right}>
-        <TimeSpan
+        <TimeLine
           show={left}
           right={right}
           left={left}
@@ -165,7 +177,7 @@ export const CVEntries = ({data : {
             }
           </AdditionalInfo>
         </Content>
-        <TimeSpan
+        <TimeLine
           rightposition={true}
           show={right}
           right={right}
@@ -236,30 +248,12 @@ const Lap = styled.div`
   ${media.tablet`margin-left:-61px;margin-right:-61px;`}
   ${media.phone`margin-left:-16px;margin-right:-16px;`}
 `
-const Content = styled.div`
-  /*box-shadow: 3px 0 0 0 ${white}, -3px 0 0 0 ${white};*/
-  padding: 44px 20px 44px 20px;
-  margin-left:3px;
-  margin-right:3px;
-  color: ${white};
-  border-top: solid; border-top-width: 10px; border-top-color: ${primary};
-  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary};
-  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${white}; margin-right:0px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
-  ${props => props.addTopBorder ? `border-top: solid; border-top-width: 10px; border-top-color: ${primary};` : ''};
-  ${props => props.addBottomBorder ? `border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary}` : ''};
-  flex:1;
-`
-const HeaderContent = Content.extend`
-  padding-top:0px;
-  padding-bottom:0px;
-  text-align: center;
-`
+
 
 
 // Timespan Component for displaying the timespan left or right of the content of a CV element
 
-const TimeSpan = ({
+const TimeLine = ({
   rightposition = false,
   show = false,
   startDate = false,
