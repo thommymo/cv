@@ -14,5 +14,5 @@ ReactDOM.render(
         <App />
       </ApolloProvider>
     </Router>,
-  document.getElementById('root'));
-registerServiceWorker();
+  document.getElementById('root'))
+registerServiceWorker()
