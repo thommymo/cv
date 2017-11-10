@@ -32,7 +32,9 @@ export const CVEntryHeader = ({
   return(
     <HeaderWithBorder color={color}>
       <DateAndCompany>
-        <HeaderWithDate><H4Capitals>{formattedStartDate} – {formattedEndDate}</H4Capitals></HeaderWithDate>
+        <HeaderWithDate>
+          <H4Capitals>{formattedStartDate} – {formattedEndDate}</H4Capitals>
+        </HeaderWithDate>
         <H4Capitals>{company}{school}</H4Capitals>
       </DateAndCompany>
       <H1>{title}</H1>
@@ -63,10 +65,6 @@ const HeaderWithDate = styled.div`
   margin-top: -52px;
   color: ${black};
 `
-
-
-
-
 
 /*
   Molecules
@@ -115,8 +113,6 @@ const Tasks = styled.div`
   }
 `
 
-
-
 export const Awards = ({
   awardstitle,
   awards,
@@ -164,7 +160,6 @@ const StyledAward = styled.div`
   margin-left: auto;
   margin-right: auto;
 `
-
 
 export const WorkReview = ({
   workreview,
