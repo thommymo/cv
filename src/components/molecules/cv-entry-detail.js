@@ -16,7 +16,14 @@ import { timeoutTransition } from '../../utils/constants'
 
 // PreviewCVEntry shows loding bar, when no data is available or when data is only partially available
 
-export const PreviewCVEntry = ({company, school, startDate, endDate, title, background}) => {
+export const PreviewCVEntry = ({
+  company,
+  school,
+  startDate,
+  endDate,
+  title,
+  background,
+}) => {
   const color = JSON.parse(background)
   const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
   return(
@@ -45,7 +52,14 @@ export const PreviewCVEntry = ({company, school, startDate, endDate, title, back
   Molecules
 */
 
-const CVEntryHeader = ({company, school, startDate, endDate, title, color}) => {
+const CVEntryHeader = ({
+  company,
+  school,
+  startDate,
+  endDate,
+  title,
+  color,
+}) => {
   const startDateDate = new Date(startDate)
   const endDateDate = new Date(endDate)
   const options = { year: 'numeric', month: 'long'}
@@ -192,7 +206,12 @@ export const CVEntry = ({
   Molecules
 */
 
-const Jobdesciption = ({projectstitle,projectdescription,responsabilities,responsabilitiesdescription}) => (
+const Jobdesciption = ({
+  projectstitle,
+  projectdescription,
+  responsabilities,
+  responsabilitiesdescription,
+}) => (
   <StyledJobdescription>
     <Projects>
       <H4>{projectstitle}</H4>
@@ -205,7 +224,10 @@ const Jobdesciption = ({projectstitle,projectdescription,responsabilities,respon
   </StyledJobdescription>
 )
 
-const Awards = ({awardstitle, awards}) => (
+const Awards = ({
+  awardstitle,
+  awards,
+}) => (
   <StyledAwards>
     <CenteredContent>
       <H2>{awardstitle}</H2>
@@ -224,14 +246,21 @@ const Awards = ({awardstitle, awards}) => (
 
 //TODO: Image handling should be done via its own component (Loading and resizing etc.)
 
-const Award = ({logo, description}) => (
+const Award = ({
+  logo,
+  description
+}) => (
   <Column key={logo}>
     <img src={logo.url} height="100" alt="Award Logo"/>
     <PAward>{description}</PAward>
   </Column>
 )
 
-const WorkReview = ({workreview, workreviewimages, colorRGBA}) => (
+const WorkReview = ({
+  workreview, 
+  workreviewimages,
+  colorRGBA,
+}) => (
   <StyledWorkReview>
     <H2>{workreview}</H2>
     { workreviewimages &&
