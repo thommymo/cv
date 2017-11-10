@@ -1,5 +1,5 @@
 import React from 'react';
-import { CVEntry, PreviewCVEntry } from "../../components/molecules/cv-entry-detail"
+import { CVEntry, PreviewCVEntry } from "../../components/templates/cv-entry"
 import PageNotFound from '../pages/page-not-found'
 import PageShell from '../../components/templates/page-shell'
 import { Loading } from '../../components/atoms/loading'
