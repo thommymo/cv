@@ -15,7 +15,7 @@ import { timeoutTransition } from '../../utils/constants'
   Template
 */
 
-// PreviewCVEntry shows loding bar, when no data is available or when data is only partially available
+// PreviewCVEntry shows loding bar, when data is only partially available
 
 export const PreviewCVEntry = ({
   company,
@@ -46,6 +46,95 @@ export const PreviewCVEntry = ({
         <Loading />
       </SectionCentered>
     </PageShell>
+  )
+}
+
+/*
+  Template
+*/
+
+export const CVEntry = ({
+  company,
+  school,
+  startDate,
+  endDate,
+  title,
+  background,
+  responsabilities,
+  responsabilitiesdescription,
+  projects,
+  projectdescription,
+  descriptionimages,
+  awardstitle,
+  awardlogo1,
+  awarddescription1,
+  awardlogo2,
+  awarddescription2,
+  awardlogo3,
+  awarddescription3,
+  workreview,
+  workreviewimages,
+}) => {
+  const color = JSON.parse(background)
+  const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
+  return(
+
+      <PageShell color={colorRGBA} title={title} backlink="/cv">
+
+        <CVEntryHeader
+          company={company}
+          school={school}
+          startDate={startDate}
+          endDate={endDate}
+          title={title}
+          color={colorRGBA}
+        />
+
+        <CSSTransition
+          in
+          appear={true}
+          timeout={timeoutTransition}
+          classNames="FadeIn"
+          unmountOnExit={true}
+        >
+          <div>
+            <Section>
+              { responsabilities &&
+                <Jobdesciption
+                  projectstitle={projects}
+                  projectdescription={{__html: projectdescription}}
+                  responsabilities={responsabilities}
+                  responsabilitiesdescription={{__html: responsabilitiesdescription}}
+                />
+              }
+            </Section>
+            <SectionCentered>
+              { descriptionimages &&
+                descriptionimages.map((image) => (
+                  <FullWithImage color={colorRGBA} handle={image.handle} key={image.handle}/>
+                )) }
+            </SectionCentered>
+
+            <SectionCentered>
+              { awardstitle &&
+                <Awards
+                  awardstitle={awardstitle}
+                  awards={[
+                    {logo: awardlogo1, description: awarddescription1},
+                    {logo: awardlogo2, description: awarddescription2},
+                    {logo: awardlogo3, description: awarddescription3}
+                  ]}
+                />
+              }
+            </SectionCentered>
+            <SectionCentered>
+              { workreview &&
+                <WorkReview workreview={workreview} workreviewimages={workreviewimages} colorRGBA={colorRGBA}/>
+              }
+            </SectionCentered>
+          </div>
+        </CSSTransition>
+      </PageShell>
   )
 }
 
@@ -102,98 +191,7 @@ const HeaderWithDate = styled.div`
 `
 
 
-/*
-  Template
-*/
 
-export const CVEntry = ({
-  company,
-  school,
-  startDate,
-  endDate,
-  title,
-  background,
-  responsabilities,
-  responsabilitiesdescription,
-  projects,
-  projectdescription,
-  descriptionimages,
-  awardstitle,
-  awardlogo1,
-  awarddescription1,
-  awardlogo2,
-  awarddescription2,
-  awardlogo3,
-  awarddescription3,
-  workreview,
-  workreviewimages,
-}) => {
-  const color = JSON.parse(background)
-  const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
-  return(
-
-      <PageShell color={colorRGBA} title={title} backlink="/cv">
-
-        <CVEntryHeader
-          company={company}
-          school={school}
-          startDate={startDate}
-          endDate={endDate}
-          title={title}
-          color={colorRGBA}
-        />
-
-        <CSSTransition
-          in
-          appear={true}
-          timeout={timeoutTransition}
-          classNames="FadeIn"
-          unmountOnExit={true}
-        >
-          <MainDiv>
-            <Section>
-              { responsabilities &&
-                <Jobdesciption
-                  projectstitle={projects}
-                  projectdescription={{__html: projectdescription}}
-                  responsabilities={responsabilities}
-                  responsabilitiesdescription={{__html: responsabilitiesdescription}}
-                />
-              }
-            </Section>
-            <SectionCentered>
-              { descriptionimages &&
-                descriptionimages.map((image) => (
-                  <FullWithImage color={colorRGBA} handle={image.handle} key={image.handle}/>
-                )) }
-            </SectionCentered>
-
-            <SectionCentered>
-              { awardstitle &&
-                <Awards
-                  awardstitle={awardstitle}
-                  awards={[
-                    {logo: awardlogo1, description: awarddescription1},
-                    {logo: awardlogo2, description: awarddescription2},
-                    {logo: awardlogo3, description: awarddescription3}
-                  ]}
-                />
-              }
-              { workreview &&
-                <WorkReview workreview={workreview} workreviewimages={workreviewimages} colorRGBA={colorRGBA}/>
-              }
-            </SectionCentered>
-          </MainDiv>
-        </CSSTransition>
-      </PageShell>
-  )
-}
-
-
-const MainDiv = styled.div`
-  width: 100%;
-  min-height: 100%;
-`
 
 
 /*
@@ -218,13 +216,8 @@ const Jobdesciption = ({
   </StyledJobdescription>
 )
 
-const Tasks = styled.div`
-  flex: 3;
-  padding: 0 2em 0 2em;
-  & p {
-    font-size: 1.15em;
-    line-height: 1.3em;
-  }
+const StyledJobdescription = styled.div`
+  ${media.desktop`display: flex; `}
 `
 const Projects = styled.div`
   flex: 1;
@@ -239,28 +232,32 @@ const Projects = styled.div`
     text-transform: uppercase;
   }
 `
-
-const StyledJobdescription = styled.div`
-  ${media.desktop`display: flex; `}
+const Tasks = styled.div`
+  flex: 3;
+  padding: 0 2em 0 2em;
+  & p {
+    font-size: 1.15em;
+    line-height: 1.3em;
+  }
 `
+
+
 
 const Awards = ({
   awardstitle,
   awards,
 }) => (
   <StyledAwards>
-    <CenteredContent>
-      <H2>{awardstitle}</H2>
-      <Row>
-        { awards.map((award) => {
-          if(award.logo && award.description) {
-            return(
-              <Award key={award.logo.url} logo={award.logo} description={award.description} />
-            )
-          }
-        })}
-      </Row>
-    </CenteredContent>
+    <H2>{awardstitle}</H2>
+    <Row>
+      { awards.map((award) => {
+        if(award.logo && award.description) {
+          return(
+            <Award key={award.logo.url} logo={award.logo} description={award.description} />
+          )
+        }
+      })}
+    </Row>
   </StyledAwards>
 )
 
@@ -268,16 +265,10 @@ const Row = styled.div`
   ${media.desktop`display: flex; `}
 `
 
-const CenteredContent = styled.div`
+const StyledAwards = styled.section`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-`
-
-const StyledAwards = styled.section`
-  text-align: center;
-  padding-bottom: 5em;
 `
 
 //TODO: Image handling should be done via its own component (Loading and resizing etc.)
@@ -328,16 +319,3 @@ const StyledWorkReview = SectionCentered.extend`
   margin-left: auto;
   margin-right: auto;
 `
-
-//TODO: Review if these elements (are all elements really needed)
-
-/*
-  Typography
-*/
-
-
-
-
-/*
-  Containers
-*/
