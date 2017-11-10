@@ -92,7 +92,7 @@ export const CVEntry = ({
           classNames="FadeIn"
           unmountOnExit={true}
         >
-          <div>
+          <article>
             <Section>
               { responsabilities &&
                 <JobDescription
@@ -127,7 +127,7 @@ export const CVEntry = ({
                 <WorkReview workreview={workreview} workreviewimages={workreviewimages} colorRGBA={colorRGBA}/>
               }
             </SectionCentered>
-          </div>
+          </article>
         </CSSTransition>
       </PageShell>
   )
