@@ -1,15 +1,10 @@
 import React from 'react';
 import { H1, P, H4, H2, H3, H4Capitals, PCapitals } from '../../components/atoms/typography'
-import { Section, SectionCentered } from '../../components/atoms/containers'
+import { SectionCentered } from '../../components/atoms/containers'
 import { FullWithImage } from '../../components/atoms/images'
-import { Loading } from '../../components/atoms/loading'
 import styled from 'styled-components'
-import PageNotFound from '../pages/page-not-found'
 import { white, black } from '../../utils/colors'
-import PageShell from '../../components/templates/page-shell'
 import { media } from '../../utils/breakpoints'
-import { CSSTransition } from 'react-transition-group'
-import { timeoutTransition } from '../../utils/constants'
 
 
 /*
@@ -119,13 +114,18 @@ export const Awards = ({
   <StyledAwards>
     <H2>{awardstitle}</H2>
     <Row>
-      { awards.map((award) => {
-        if(award.logo && award.description) {
-          return(
-            <Award key={award.logo.url} logo={award.logo} description={award.description} />
-          )
-        }
-      })}
+      {
+        awards.map((award) => {
+          if(award.logo && award.description) {
+            return(
+              <Award key={award.logo.url} logo={award.logo} description={award.description} />
+            )
+          } else {
+            return("")
+          }
+          })
+      }
+
     </Row>
   </StyledAwards>
 )
@@ -169,8 +169,8 @@ export const WorkReview = ({
     <H2>{workreview}</H2>
     { workreviewimages &&
       workreviewimages.map((image) => (
-        <FullWithImagePadding>
-          <FullWithImage color={colorRGBA} handle={image.handle} key={image.handle}/>
+        <FullWithImagePadding key={image.handle}>
+          <FullWithImage color={colorRGBA} handle={image.handle}/>
         </FullWithImagePadding>
       )) }
   </StyledWorkReview>

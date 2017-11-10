@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import PageShell from '../../components/templates/page-shell'
 import { CVEntries, CVEntriesHeader } from '../molecules/cv-entries'
 import { Loading } from '../../components/atoms/loading'

@@ -6,8 +6,7 @@ import { timeout, timeoutTransition } from './utils/constants'
 import { white } from './utils/colors'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/pages/page-not-found'
-import PageShell from './components/templates/page-shell'
-import {AboutMe} from './components/pages/aboutme'
+import { AboutMe } from './components/pages/aboutme'
 
 //TODO: injectGlobal might has to be moved somewhere else
 

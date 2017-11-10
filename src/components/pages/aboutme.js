@@ -1,5 +1,4 @@
-import React, { PureComponent } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import PageShell from '../../components/templates/page-shell'
 
 export const AboutMe = () => (

@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import PageShell from '../../components/templates/page-shell'
 import { CVIsLoading, CV } from '../../components/templates/cv'
 
 
