@@ -37,10 +37,6 @@ const previewQuery = gql`
       moreinfocventry {
         id
         background
-        logo {
-          id
-          url
-        }
       }
     }
   }
@@ -100,15 +96,11 @@ const fullQuery = gql`
       responsabilitiesdescription
       projects
       projectdescription
-
-      logo {
-        id
-        url
-      }
       descriptionimages {
         id
         handle
       }
+
       awardstitle
       awardlogo1 {
         id
@@ -125,8 +117,6 @@ const fullQuery = gql`
         url
       }
       awarddescription3
-      additionaltitel
-      additionaldescription
       workreview
       workreviewimages {
         id

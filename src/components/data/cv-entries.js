@@ -10,13 +10,9 @@ import { CVIsLoading, CV } from '../../components/templates/cv'
 
 const CVEntriesState = ( { data : { loading=false, allCVEntrieses=false }} ) => {
   if(loading){
-    return(
-      <CVIsLoading />
-    )
+    return(<CVIsLoading />)
   } else if (allCVEntrieses){
-    return(
-      <CV allCVEntrieses={allCVEntrieses}/>
-    )
+    return(<CV allCVEntrieses={allCVEntrieses}/>)
   } else {
     return(
       //TODO: Add React 16 Error Handling, because here an error happend. Most propably the graphql server is down or there is no internet connectivity
@@ -34,7 +30,6 @@ const data = gql`
   query getEntriesQuery {
     allCVEntrieses(orderBy: order_ASC) {
       id
-      slug
       showmore
       startDate
       endDate
@@ -44,8 +39,6 @@ const data = gql`
       addTopRightTriangle
       addBottomLeftTriangle
       addBottomRightTriangle
-      addTopBorder
-      addBottomBorder
       bothleft
       bothright
       company
@@ -56,10 +49,6 @@ const data = gql`
       moreinfocventry {
         id
         background
-        logo {
-          id
-          url
-        }
       }
     }
   }
