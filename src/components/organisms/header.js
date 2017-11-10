@@ -37,7 +37,7 @@ const Backlink = styled.div`
 const NextLink = styled.div`
 
 `
-const Navigation = styled.div`
+const Navigation = styled.nav`
   display:flex;
 `
 const StyledHeader = styled.header`
