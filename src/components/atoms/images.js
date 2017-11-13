@@ -2,16 +2,31 @@ import React, {Component} from 'react'
 import { sizes, imagesizes } from '../../utils/breakpoints'
 import styled from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
-import { timeout } from '../../utils/constants'
-import { Loading } from './loading'
+import { timeout, baseurl} from '../../utils/constants'
 
 /*
  TODO: Add loading of image
  */
 
+export const Image = (props) => (
+  <picture>
+    { Object.keys(sizes).map((label) => (
+      <source key={imagesizes[label]}
+        media={`screen
+          ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
+          ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
+          `}
+        srcSet={`
+          ${baseurl}resize=height:${props.height}/${props.handle} 1x,
+          ${baseurl}resize=height:${props.height*2}/${props.handle} 2x,
+        `}/>
+    ))}
+    <img src={`${baseurl}resize=height:${props.height}/${props.handle}`} alt={props.alt}/>
+  </picture>
+)
 
 /*
-  Images
+Images
 */
 
 export class FullWithImage extends Component {
@@ -28,26 +43,22 @@ export class FullWithImage extends Component {
     this.setState({ opacity: 1 })
   }
 
-  handlePreviewImageErrored() {
-  }
-
   shouldComponentUpdate(nextProps, nextState){
     return !(nextState.imageLoaded === this.state.imageLoaded);
   }
 
   render(){
-    const baseurl = "https://media.graphcms.com/"
+
     const handle = this.props.handle
     console.log(this.state.imageLoaded)
     return (
-      <Image>
+      <ImagePosition>
         <CSSTransition
           in={!(this.state.imageLoaded)}
           classNames="ImageFadeIn"
           timeout={(timeout*2)}
         >
           <PreviewImage imageLoaded={this.state.imageLoaded}>
-
             <picture>
               { Object.keys(sizes).map((label) => (
 
@@ -89,11 +100,11 @@ export class FullWithImage extends Component {
             </picture>
           </WithBorder>
         </CSSTransition>
-      </Image>
+      </ImagePosition>
     )
   }
 }
-const Image = styled.div`
+const ImagePosition = styled.div`
   position: relative;
 `
 

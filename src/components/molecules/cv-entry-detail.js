@@ -1,7 +1,7 @@
 import React from 'react';
 import { H1, P, H4, H2, H3, H4Capitals, PCapitals } from '../../components/atoms/typography'
 import { SectionCentered } from '../../components/atoms/containers'
-import { FullWithImage } from '../../components/atoms/images'
+import { FullWithImage, Image } from '../../components/atoms/images'
 import styled from 'styled-components'
 import { white, black } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
@@ -118,12 +118,12 @@ export const Awards = ({
         awards.map((award) => {
           if(award.logo && award.description) {
             return(
-              <Award key={award.logo.url} logo={award.logo} description={award.description} />
+              <Award key={award.logo.handle} logo={award.logo} description={award.description} />
             )
           } else {
             return("")
           }
-          })
+        })
       }
 
     </Row>
@@ -147,7 +147,7 @@ const Award = ({
   description
 }) => (
   <StyledAward key={logo}>
-    <img src={logo.url} height="100" alt="Award Logo"/>
+    <Image handle={logo.handle} height="120" alt="Award Logo"/>
     <PCapitals>{description}</PCapitals>
   </StyledAward>
 )

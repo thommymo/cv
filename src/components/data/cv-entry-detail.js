@@ -100,17 +100,17 @@ const fullQuery = gql`
       awardstitle
       awardlogo1 {
         id
-        url
+        handle
       }
       awarddescription1
       awardlogo2 {
         id
-        url
+        handle
       }
       awarddescription2
       awardlogo3 {
         id
-        url
+        handle
       }
       awarddescription3
       workreview
