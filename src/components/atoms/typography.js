@@ -36,10 +36,10 @@ export const H4 = styled.h4`
   font-weight:400;
   ${media.desktop`font-size: 1.125em`}
   ${media.tablet`font-size: 1.125em`}
-  ${media.phone`font-size: 1.125em`}
+  ${media.phone`font-size: 1em`}
   ${media.desktop`line-height: 1.22222222em`}
   ${media.tablet`line-height: 1.22222222em`}
-  ${media.phone`line-height: 1.11111111em`}
+  ${media.phone`line-height: 1.22222222em`}
 `
 export const H4Capitals = H4.extend`
   text-transform: uppercase;

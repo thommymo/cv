@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { sizes, imagesizes } from '../../utils/breakpoints'
+import { sizes, imagesizes, media } from '../../utils/breakpoints'
 import styled from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
 import { timeout, baseurl} from '../../utils/constants'
@@ -30,7 +30,6 @@ Images
 */
 
 export class FullWithImage extends Component {
-  //https://media.graphcms.com/[options]/[File Handle]
 
   constructor(props) {
     super(props)
@@ -48,9 +47,7 @@ export class FullWithImage extends Component {
   }
 
   render(){
-
     const handle = this.props.handle
-    console.log(this.state.imageLoaded)
     return (
       <ImagePosition>
         <CSSTransition
@@ -114,7 +111,7 @@ const PreviewImage = styled.div`
 
 const Img = styled.img`
   width:100%;
-  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.2), 0 6px 45px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
   position:relative;
   z-index: 0;
 `
@@ -134,10 +131,13 @@ const WithBorder = styled.div`
     width: 0;
     height: 0;
     line-height: 0;
-    border-right: 120px solid transparent;
-    border-top: 120px solid ${props => props.color};
-    top: -40px;
-    left: -40px;
+    ${media.desktop`border-right-width: 120px; border-top-width: 120px; top: -40px; left: -40px;`}
+    ${media.tablet`border-right-width: 100px; border-top-width: 100px; top: -30px; left: -30px;`}
+    ${media.phone`border-right-width: 60px; border-top-width: 60px; top: -16px; left: -16px;`}
+    border-right-style: solid;
+    border-right-color: transparent;
+    border-top-style: solid;
+    border-top-color: ${props => props.color};
     position: absolute;
     z-index: 1000;
   }
@@ -146,10 +146,13 @@ const WithBorder = styled.div`
     width: 0;
     height: 0;
     line-height: 0;
-    border-left: 120px solid transparent;
-    border-bottom: 120px solid ${props => props.color};
-    bottom: -40px;
-    right: -40px;
+    ${media.desktop`border-left-width: 120px; border-bottom-width: 120px; bottom: -40px; right: -40px;`}
+    ${media.tablet`border-left-width: 100px; border-bottom-width: 100px; bottom: -30px; right: -30px;`}
+    ${media.phone`border-left-width: 60px; border-bottom-width: 60px; bottom: -16px; right: -16px;`}
+    border-left-style: solid;
+    border-left-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-color: ${props => props.color};
     position: absolute;
     z-index: 1000;
   }

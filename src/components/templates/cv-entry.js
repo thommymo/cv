@@ -65,9 +65,7 @@ export const CVEntry = ({
   const color = JSON.parse(background)
   const colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
   return(
-
       <PageShell color={colorRGBA} title={title} backlink="/cv">
-        
         <CVEntryHeader
           organization={organization}
           startDate={startDate}
@@ -75,7 +73,6 @@ export const CVEntry = ({
           title={title}
           color={colorRGBA}
         />
-
         <CSSTransition
           in
           appear={true}
@@ -84,25 +81,25 @@ export const CVEntry = ({
           unmountOnExit={true}
         >
           <article>
-            <Section>
-              { responsabilities &&
+            { responsabilities &&
+              <Section>
                 <JobDescription
                   projectstitle={projects}
                   projectdescription={{__html: projectdescription}}
                   responsabilities={responsabilities}
                   responsabilitiesdescription={{__html: responsabilitiesdescription}}
                 />
-              }
-            </Section>
-            <SectionCentered>
-              { descriptionimages &&
-                descriptionimages.map((image) => (
+              </Section>
+            }
+            { descriptionimages &&
+              <SectionCentered>
+                {descriptionimages.map((image) => (
                   <FullWithImage color={colorRGBA} handle={image.handle} key={image.handle}/>
                 )) }
-            </SectionCentered>
-
-            <SectionCentered>
-              { awardstitle &&
+              </SectionCentered>
+            }
+            { awardstitle &&
+              <SectionCentered>
                 <Awards
                   awardstitle={awardstitle}
                   awards={[
@@ -111,13 +108,13 @@ export const CVEntry = ({
                     {logo: awardlogo3, description: awarddescription3}
                   ]}
                 />
-              }
-            </SectionCentered>
-            <SectionCentered>
-              { workreview &&
+              </SectionCentered>
+            }
+            { workreview &&
+              <SectionCentered>
                 <WorkReview workreview={workreview} workreviewimages={workreviewimages} colorRGBA={colorRGBA}/>
-              }
-            </SectionCentered>
+              </SectionCentered>
+            }
           </article>
         </CSSTransition>
       </PageShell>

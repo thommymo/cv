@@ -71,19 +71,20 @@ export const JobDescription = ({
   responsabilitiesdescription,
 }) => (
   <StyledJobdescription>
-    <Projects>
-      <H4>{projectstitle}</H4>
-      <span dangerouslySetInnerHTML={projectdescription} />
-    </Projects>
     <Tasks>
       <H3>{responsabilities}</H3>
       <P dangerouslySetInnerHTML={responsabilitiesdescription} />
     </Tasks>
+    <Projects>
+      <H4>{projectstitle}</H4>
+      <span dangerouslySetInnerHTML={projectdescription} />
+    </Projects>
   </StyledJobdescription>
 )
 
 const StyledJobdescription = styled.div`
   ${media.desktop`display: flex; `}
+  ${media.tablet`display: flex; `}
 `
 const Projects = styled.div`
   flex: 1;
@@ -100,13 +101,15 @@ const Projects = styled.div`
 `
 const Tasks = styled.div`
   flex: 3;
-  padding: 0 2em 0 2em;
+  padding: 0 2em 0 2.25em;
   & p {
-    font-size: 1.15em;
-    line-height: 1.3em;
+    ${media.desktop`font-size: 1.15em; line-height: 1.3em; `}
+    ${media.tablet`font-size: 1.15em; line-height: 1.2em; `}
+    ${media.phone`font-size: 1.1em; line-height: 1.15em; `}
   }
+  ${media.desktop`order: 1; `}
+  ${media.tablet`order: 1; `}
 `
-
 export const Awards = ({
   awardstitle,
   awards,
@@ -132,8 +135,8 @@ export const Awards = ({
 
 const Row = styled.div`
   ${media.desktop`display: flex; `}
+  ${media.tablet`display: flex; `}
 `
-
 const StyledAwards = styled.section`
   max-width: 800px;
   margin-left: auto;
@@ -154,8 +157,8 @@ const Award = ({
 
 const StyledAward = styled.div`
   flex: 1;
-  padding: 0 1.5em 0 1.5em;
-  max-width: 320px;
+  padding: 1em 1.5em 1em 1.5em;
+  max-width: 280px;
   margin-left: auto;
   margin-right: auto;
 `
