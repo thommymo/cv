@@ -209,10 +209,9 @@ Containers
 
 const EntryItem = styled.div`
   display: flex;
-  width: (100% + 61)px;
-  ${media.desktop`margin-left:-61px;margin-right:-61px;`}
-  ${media.tablet`margin-left:-61px;margin-right:-61px;`}
-  ${media.phone`margin-left:-16px;margin-right:-16px;`}
+  ${media.desktop`margin-left:-51px;margin-right:-51px;`}
+  ${media.tablet`margin-left:-51px;margin-right:-51px;`}
+  ${media.phone`margin-left:-6px;margin-right:-6px;`}
 `
 
 
@@ -269,7 +268,7 @@ const StyledTimeSpan = H4.extend`
   ${media.tablet`line-height: 1em;`}
   ${media.phone`display: none;`}
   ${props => !props.show ? 'display:none' : ''};
-  ${props => props.rightposition ? 'text-align: left;margin-left:6px' : 'text-align: right'};
+  ${props => props.rightposition ? 'text-align: left;margin-left:0px' : 'text-align: right;'};
   padding-top: 9px;
   height:123px;
   color: ${white};
@@ -277,16 +276,17 @@ const StyledTimeSpan = H4.extend`
 
 const StyledTimeLine = styled.div`
   position: relative;
-  ${props => (props.left || props.bothleft) && !props.rightposition ? `background:${props.background}`: ''};
-  ${props => (props.right || props.bothright) && props.rightposition  ? `background:${props.background}` : ''};
+  ${props => (props.left || props.bothleft) && !props.rightposition ? `background:${props.background};`: ''};
+  ${props => (props.right || props.bothright) && props.rightposition  ? `background:${props.background};` : ''};
   ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${white}` : ''};
   ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${white}` : ''};
-  ${media.desktop`width:50px;`};
-  ${media.desktop`min-width:50px;`};
-  ${media.tablet`width:50px;`};
-  ${media.tablet`min-width:50px;`};
-  ${media.phone`width:5px;`};
+  ${media.desktop`width:35px;`};
+  ${media.desktop`min-width:35px;`};
+  ${media.tablet`width:35px;`};
+  ${media.tablet`min-width:35px;`};
+  ${media.phone`width:5px;overflow:hidden;`};
   ${media.phone`min-width:5px;`};
+
   padding: 0 10px 0 10px;
   z-index: 20;
   ${props => props.addTopRightTriangle && props.rightposition ? `
@@ -295,8 +295,8 @@ const StyledTimeLine = styled.div`
       width: 0;
       height: 0;
       line-height: 0;
-      border-left: 70px solid transparent;
-      border-top: 70px solid ${primary};
+      border-left: 55px solid transparent;
+      border-top: 55px solid ${primary};
       top: 0;
       right: 0;
       position: absolute;
@@ -308,8 +308,8 @@ const StyledTimeLine = styled.div`
       width: 0;
       height: 0;
       line-height: 0;
-      border-right: 70px solid transparent;
-      border-bottom: 70px solid ${primary};
+      border-right: 55px solid transparent;
+      border-bottom: 55px solid ${primary};
       bottom: 0;
       left: 0;
       position: absolute;
@@ -321,8 +321,8 @@ const StyledTimeLine = styled.div`
       width: 0;
       height: 0;
       line-height: 0;
-      border-right: 70px solid transparent;
-      border-top: 70px solid ${primary};
+      border-right: 55px solid transparent;
+      border-top: 55px solid ${primary};
       top: 0;
       left: 0;
       position: absolute;
@@ -334,8 +334,8 @@ const StyledTimeLine = styled.div`
       width: 0;
       height: 0;
       line-height: 0;
-      border-left: 70px solid transparent;
-      border-bottom: 70px solid ${primary};
+      border-left: 55px solid transparent;
+      border-bottom: 55px solid ${primary};
       bottom: 0;
       right: 0;
       position: absolute;
