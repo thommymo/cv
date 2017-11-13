@@ -67,7 +67,7 @@ export const CVEntry = ({
   return(
 
       <PageShell color={colorRGBA} title={title} backlink="/cv">
-
+        
         <CVEntryHeader
           organization={organization}
           startDate={startDate}
