@@ -18,6 +18,21 @@ injectGlobal`
     height: 100%;
     background-color: ${white};
   }
+
+  .ImageFadeIn-enter {
+    opacity: 0;
+  }
+  .ImageFadeIn-enter.ImageFadeIn-enter-active {
+    opacity: 1;
+    transition: opacity ${(timeout*2)}ms ease-out;
+  }
+  .ImageFadeIn-exit {
+    opacity: 1;
+  }
+  .ImageFadeIn-exit.ImageFadeIn-exit-active {
+    opacity: 0;
+    transition: opacity ${(timeout*2)}ms ease-out;
+  }
   .FadeIn-appear {
     opacity: 0;
   }
