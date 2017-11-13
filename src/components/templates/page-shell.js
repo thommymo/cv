@@ -6,8 +6,6 @@ import { media } from '../../utils/breakpoints'
 import { Footer } from '../../components/organisms/footer'
 import { Header } from '../../components/organisms/header'
 
-// TODO: This should be a HOC
-
 class PageShell extends Component {
   shouldComponentUpdate(nextProps, nextState){
     return !(nextProps === this.props);
