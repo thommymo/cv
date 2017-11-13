@@ -7,12 +7,7 @@ import { black, white } from '../../utils/colors'
 
 export const Header = ({props}) => (
   <StyledHeader>
-    <Backlink>
-      {
-        props.backlink &&
-        <Link to={props.backlink}><img src={backIcon} alt="Back link" width="40" height="40"/></Link>
-      }
-    </Backlink>
+
     {
       props.withMainNavigation &&
       <Navigation>
@@ -22,32 +17,30 @@ export const Header = ({props}) => (
 
       </Navigation>
     }
-    <NextLink>
-      {
-        props.nextlink &&
-        <Link to={props.nextlink}><img src={backIcon} alt="Next icon" width="40" height="40"/></Link>
-      }
-    </NextLink>
+    {
+      props.backlink &&
+      <Navigation>
+        <Link to={props.backlink}><Img src={backIcon} alt="Back link" width="40" height="40"/></Link>
+      </Navigation>
+    }
+
   </StyledHeader>
 )
 
-const Backlink = styled.div`
-  padding-left:10px;
-`
-const NextLink = styled.div`
 
+const Img = styled.img`
+  transform: rotate(90deg);
 `
 const Navigation = styled.nav`
   display:flex;
 `
 const StyledHeader = styled.header`
+  display: flex;
   color: ${black};
   background-color: ${white};
   width:100%;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height:60px;
+  justify-content: center;
+  min-height: 60px;
   a {
     text-decoration: none;
   }
