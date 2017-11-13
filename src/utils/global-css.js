@@ -24,54 +24,50 @@ injectGlobal`
   }
   .ImageFadeIn-enter.ImageFadeIn-enter-active {
     opacity: 1;
-    transition: opacity ${(timeout*2)}ms ease-out;
+    transition: opacity ${(timeout*2)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
   }
   .ImageFadeIn-exit {
     opacity: 1;
   }
   .ImageFadeIn-exit.ImageFadeIn-exit-active {
     opacity: 0;
-    transition: opacity ${(timeout*2)}ms ease-out;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
   }
   .FadeIn-appear {
     opacity: 0;
   }
   .FadeIn-appear.FadeIn-appear-active {
     opacity: 1;
-    transition: opacity ${(timeout*2)}ms ease-out ${(timeout)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
   }
   .FadeIn-enter {
     opacity: 0;
   }
   .FadeIn-enter.FadeIn-enter-active {
     opacity: 1;
-    transition: opacity ${(timeout*2)}ms ease-out ${(timeout)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
   }
+
+
   .SlideIn-appear {
     opacity: 0;
-    transform: translateY(10px);
   }
   .SlideIn-appear.SlideIn-appear-active {
     opacity: 1;
-    transform: translateY(0px);
-    transition: all ${(timeout*2)}ms ease-out ${(timeout*1.5)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
   }
   .SlideIn-enter {
     opacity: 0;
-    transform: translateY(10px);
   }
   .SlideIn-enter.SlideIn-enter-active {
     opacity: 1;
-    transform: translateY(0px);
-    transition: all ${(timeout*2)}ms ease-out ${(timeout*1.5)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
   }
   .SlideIn-exit {
-    transform: translateY(0px);
     opacity: 1;
   }
   .SlideIn-exit.SlideIn-exit-active {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all ${(timeout)}ms ease-out;
+    transition: opacity ${(timeout*1.5)}ms cubic-bezier(.22,.07,.3,1);
   }
 `
