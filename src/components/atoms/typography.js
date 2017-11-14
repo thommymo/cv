@@ -11,12 +11,12 @@ export const H1 = styled.h1`
   ${media.desktop`font-size: 4em;`}
   ${media.tablet`font-size: 2.5em;`}
   ${media.phone`font-size: 2em;`}
-  ${media.desktop`line-height: 1.05em;`}
+  ${media.desktop`line-height: 1.25em;`}
   ${media.tablet`line-height: 1.25em;`}
   ${media.phone`line-height: 1.25em;`}
   border-bottom:solid 5px ${black};
   border-left:solid 8px transparent;
-  display:inline-block;
+  display: inline;
 `
 export const H2 = styled.h2`
   font-weight:400;
