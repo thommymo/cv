@@ -137,7 +137,8 @@ const Row = styled.div`
   ${media.desktop`display: flex; `}
   ${media.tablet`display: flex; `}
 `
-const StyledAwards = styled.section`
+const StyledAwards = styled.div`
+  display.block;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -157,6 +158,7 @@ const Award = ({
 
 const StyledAward = styled.div`
   flex: 1;
+  display:block;
   padding: 1em 1.5em 1em 1.5em;
   max-width: 280px;
   margin-left: auto;
