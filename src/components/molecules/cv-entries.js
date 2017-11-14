@@ -311,8 +311,8 @@ const StyledTimeSpan = H4.extend`
 
 const StyledTimeLine = styled.div`
   position: relative;
-  ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${green} -80%,${blue} 100%);`: ''};
-  ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${violet} -70%,${blue} 100%);` : ''};
+  ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${green} -50%,${blue} 100%);`: ''};
+  ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${violet} -50%,${blue} 100%);` : ''};
   ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${blue}` : ''};
   ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${blue}` : ''};
   ${media.desktop`width:35px;`};

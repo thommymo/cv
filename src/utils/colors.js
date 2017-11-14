@@ -1,4 +1,4 @@
-//Colors are inspired by https://coolors.co/1b998b-1c77c3-fffd82-ff9b71-e84855
+//Colors are inspired by https://coolors.co/d35bc3-9958ce-2d63c6-11a37e-f1f1f1
 
 //Main Colors
 export const secondary = "rgba(28, 119, 195, 1)"
@@ -12,7 +12,7 @@ export const primaryDark = "rgba(20, 112, 102, 1)"
 export const black = "rgba(20, 20, 15, 1)"
 export const white = "rgba(253, 253, 250, 1)"
 export const blue = "rgba(45, 99, 198, 1)"
-export const green = "rgba(119,239,209,1)"
+export const green = "rgba(17, 163, 126, 1)"
 export const violet = "rgba(179,9,131,1)"
 //Additional Colors
 export const red = "rgba(232, 72, 85, 1)"
