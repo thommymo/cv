@@ -11,10 +11,8 @@ export const Header = ({props}) => (
     {
       props.withMainNavigation &&
       <Navigation>
-
-        <NavLink to="/aboutme/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>About me</H4Black></NavLink>
-        <NavLink to="/cv/"  activeStyle={{ borderBottom: '3px solid #000' }}><H4Black>CV</H4Black></NavLink>
-
+        <NavLink to="/aboutme/"  activeStyle={{ borderBottom: '3px solid #000', borderLeft: '5px solid transparent' }}><H4Black>About me</H4Black></NavLink>
+        <NavLink to="/cv/"  activeStyle={{ borderBottom: '3px solid #000', borderLeft: '5px solid transparent' }}><H4Black>CV</H4Black></NavLink>
       </Navigation>
     }
     {
@@ -23,7 +21,6 @@ export const Header = ({props}) => (
         <Link to={props.backlink}><Img src={backIcon} alt="Back link" width="40" height="40"/></Link>
       </Navigation>
     }
-
   </StyledHeader>
 )
 
@@ -49,4 +46,5 @@ const H4Black = H4.extend`
   color:${black};
   text-decoration: none;
   padding: 0px 20px;
+  border-bottom
 `
