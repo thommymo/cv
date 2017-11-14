@@ -84,7 +84,7 @@ export class FullWithImage extends Component {
               { Object.keys(sizes).map((label) => (
 
                 <source key={imagesizes[label]}
-                  media={`screen
+                  media={`all
               ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
               ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
               `}
