@@ -19,7 +19,7 @@ class PageShell extends Component {
         <Helmet>
           <title>{this.props.title}</title>
         </Helmet>
-        <Content fontColor={fontColor}>
+        <Content fontColor={fontColor} color={color} >
           {this.props.children}
         </Content>
         <Footer />
@@ -46,16 +46,12 @@ const MainContent = styled.div`
 `
 const Content = styled.main`
   display:block;
+  margin-top:-40px;
+  box-shadow: 1000px 0px ${props => props.color}, -1000px 0px ${props => props.color};
   max-width:1024px;
   min-height:1000px;
   margin-left:auto;
   margin-right:auto;
   color:${props => props.fontColor};
-  ${media.desktop`padding-left:61px;`}
-  ${media.tablet`padding-left:61px;`}
-  ${media.phone`padding-left:16px;`}
-  ${media.desktop`padding-right:61px;`}
-  ${media.tablet`padding-right:61px;`}
-  ${media.phone`padding-right:16px;`}
 
 `

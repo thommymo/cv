@@ -3,7 +3,7 @@ import { H1, P, H4, H2, H3, H4Capitals, PCapitals } from '../../components/atoms
 import { SectionCentered } from '../../components/atoms/containers'
 import { FullWithImage, Image } from '../../components/atoms/images'
 import styled from 'styled-components'
-import { white, black } from '../../utils/colors'
+import { white, black, blue, primary } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
 
 
@@ -47,17 +47,17 @@ const HeaderWithBorder = styled.div`
   border: solid 0px;
   text-align: center;
   border-top-width: 40px;
-  border-top-color: ${white};
+  border-top-color: transparent;
   border-left-width: 40px;
-  border-left-color: ${props => props.color};
+  border-left-color: ${primary};
   border-right-width: 40px;
-  border-right-color: ${props => props.color};
+  border-right-color: ${primary};
   padding-bottom: 5em;
   position: relative;
 `
 const HeaderWithDate = styled.div`
   margin-top: -52px;
-  color: ${black};
+  color: ${white};
 `
 
 /*

@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import {H4} from '../atoms/typography'
 import { Link, NavLink } from 'react-router-dom'
 import { backIcon } from '../../utils/icons'
-import { black, white } from '../../utils/colors'
+import { black, white, green, blue, violet } from '../../utils/colors'
 
 export const Header = ({props}) => (
-  <StyledHeader>
+  <StyledHeader gradient={props.gradient}>
 
     {
       props.withMainNavigation &&
@@ -37,13 +37,13 @@ const Navigation = styled.nav`
 const StyledHeader = styled.header`
   display: flex;
   color: ${black};
-  background-color: ${white};
   width:100%;
   justify-content: center;
-  min-height: 60px;
   a {
     text-decoration: none;
   }
+  ${props => props.gradient ? `background: linear-gradient(170deg, ${green} -80%,${blue} 100%); min-height: 100px;`:'background:white'}
+
 `
 const H4Black = H4.extend`
   color:${black};
