@@ -12,13 +12,14 @@ class PageShell extends Component {
   }
   render(){
     const color = this.props.color ? this.props.color : primary
+    const fontColor = this.props.fontColor ? this.props.fontColor : white
     return(
-      <MainContent color={color}>
+      <MainContent color={color} >
         <Header props={this.props}/>
         <Helmet>
           <title>{this.props.title}</title>
         </Helmet>
-        <Content>
+        <Content fontColor={fontColor}>
           {this.props.children}
         </Content>
         <Footer />
@@ -49,11 +50,12 @@ const Content = styled.main`
   min-height:1000px;
   margin-left:auto;
   margin-right:auto;
+  color:${props => props.fontColor};
   ${media.desktop`padding-left:61px;`}
   ${media.tablet`padding-left:61px;`}
   ${media.phone`padding-left:16px;`}
   ${media.desktop`padding-right:61px;`}
   ${media.tablet`padding-right:61px;`}
   ${media.phone`padding-right:16px;`}
-  color:${white}
+
 `

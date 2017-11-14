@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, primary } from '../../utils/colors'
+import { primary, blue, green, violet } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
 import { P, H1, H3, H4, H4Capitals } from '../atoms/typography'
 import { Ghostbutton } from '../atoms/buttons'
@@ -14,11 +14,10 @@ const Content = styled.div`
   padding: 44px 20px 44px 20px;
   margin-left:3px;
   margin-right:3px;
-  color: ${white};
   border-top: solid; border-top-width: 10px; border-top-color: ${primary};
   border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary};
-  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${white}; margin-right:0px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${white}; margin-left:0px; text-align:right; ` : ''};
+  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${blue}; margin-right:0px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${blue}; margin-left:0px; text-align:right; ` : ''};
   flex:1;
 `
 export const CVEntriesHeader = ({
@@ -56,22 +55,27 @@ const SectionFlex = styled.div`
   justify-content: space-between;
 `
 const Header = styled.div`
-  color:${white};
   & > h3 {
-    margin-top: -34px;
+    margin-top: -48px;
     text-transform: uppercase;
     margin-left: -23px;
     margin-right: -23px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 3px solid ${white};
+    border-bottom: 3px solid ${blue};
+    color:${blue};
   }
 `
 const HeaderLeft = Header.extend`
   text-align: left;
+  & > h3 {
+    border-left: 4px solid transparent;
+  }
 `
 const HeaderRight = Header.extend`
   text-align: right;
+
+  & > h3 {
+    border-right: 4px solid transparent;
+  }
 `
 const HeaderContent = Content.extend`
   padding-top:0px;
@@ -142,15 +146,17 @@ export const CVEntries = ({data : {
             <Organization right={right}>
               <H4Capitals>{organization}</H4Capitals>
             </Organization>
-            <Title>{title}</Title>
+            <Title left={left} right={right}>{title}</Title>
             <Excerpt right={right}>
-              <P>{excerpt}</P>
+              <P>{excerpt}
+                {
+                  showmore &&
+                  //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
+                  <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
+                }
+              </P>
             </Excerpt>
-            {
-                showmore &&
-                //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-              <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
-            }
+
           </article>
         </Content>
         <TimeLine
@@ -180,16 +186,19 @@ Typography
 */
 
 const Title = H3.extend`
-  margin-top: -0.5em;
   margin-bottom: -0.4em;
+  display: inline;
+  ${props => props.left ? `border-bottom: solid 3px ${blue}; border-left: solid 4px transparent;` : ''};
+  ${props => props.right ? `border-bottom: solid 3px ${blue}; border-right: solid 4px transparent;` : ''};
+  border-left
 `
 const Organization = styled.div`
   display: flex;
   ${props => props.right ? 'justify-content: flex-end;': ''};
-  padding-left: 1px;
-  padding-right: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
   font-size: 0.8em;
-  ${media.desktop`margin-top: -20px;`}
+  ${media.desktop`margin-top: -20px; margin-bottom: -1.3em`}
   ${media.tablet`margin-top: -17px;`}
   ${media.phone`margin-top: -14px;`}
 `
@@ -198,6 +207,9 @@ const Excerpt = styled.div`
   ${props => props.right ? 'justify-content: flex-end;': ''};
   padding-left: 1px;
   padding-right: 1px;
+  & > p > a {
+    color:${blue};
+  }
 `
 
 /*
@@ -227,7 +239,7 @@ const TimeLine = ({
   addBottomLeftTriangle=false,
   addBottomRightTriangle=false,
   addTopRightTriangle=false,
-  background=white
+  background=blue
 }) => (
   <StyledTimeLine
     bothright={bothright}
@@ -265,15 +277,15 @@ const StyledTimeSpan = H4.extend`
   ${props => !props.show ? 'display:none !important;' : ''};
   ${props => props.rightposition ? 'text-align: left;margin-left:0px' : 'text-align: right;'};
   text-align: center;
-  color: ${white};
+  color:${primary};
 `
 
 const StyledTimeLine = styled.div`
   position: relative;
-  ${props => (props.left || props.bothleft) && !props.rightposition ? `background:${props.background};`: ''};
-  ${props => (props.right || props.bothright) && props.rightposition  ? `background:${props.background};` : ''};
-  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${white}` : ''};
-  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${white}` : ''};
+  ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${green} -80%,${blue} 100%);`: ''};
+  ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${violet} -70%,${blue} 100%);` : ''};
+  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${blue}` : ''};
+  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${blue}` : ''};
   ${media.desktop`width:35px;`};
   ${media.desktop`min-width:35px;`};
   ${media.tablet`width:35px;`};
@@ -344,9 +356,11 @@ const CVEntryMoreButton = (props) => (
 )
 
 const GhostbuttonWhite = Ghostbutton.extend`
-  color:${white};
-  border-color:${white};
+  border-color:${blue};
   text-transform: uppercase;
   font-size:0.8em;
   font-weight:400;
+  color:${blue} important!;
+  display:inline;
+  margin-left:10px;
 `
