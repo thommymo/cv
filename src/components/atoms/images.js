@@ -106,7 +106,7 @@ const ImagePosition = styled.div`
 `
 
 const PreviewImage = styled.div`
-  ${props => props.imageLoaded ? "opacity:0;" : ""};
+  ${props => props.imageLoaded ? "opacity: 0; filter: alpha(opacity=0);" : ""};
 `
 
 const Img = styled.img`
@@ -121,7 +121,7 @@ const ImgBlured = Img.extend`
   z-index: 100000;
 `
 const WithBorder = styled.div`
-  ${props => props.imageLoaded ? "" : "opacity:0;"};
+  ${props => props.imageLoaded ? "" : "opacity: 0; filter: alpha(opacity=0);"};
   position:absolute;
   width:100%;
   top:0px;
