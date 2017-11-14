@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { primary, blue, green, violet } from '../../utils/colors'
+import { primary, blue, green, violet, primaryFontColor } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
 import { P, H1, H3, H4, H4Capitals } from '../atoms/typography'
-import { Ghostbutton } from '../atoms/buttons'
+import { TextLink } from '../atoms/buttons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
 
@@ -173,17 +173,19 @@ export const CVEntries = ({data : {
             <Organization right={right}>
               <H4Capitals>{organization}</H4Capitals>
             </Organization>
-            <Title left={left} right={right}>{title}</Title>
+            {
+              showmore &&
+              <CVEntryMoreButton to={`/id/${id}/`}>
+                <Title left={left} right={right}>{title}</Title>
+              </CVEntryMoreButton>
+            }
+            {
+              !showmore &&
+              <Title left={left} right={right}>{title}</Title>
+            }
             <Excerpt right={right}>
-              <P>{excerpt}
-                {
-                  showmore &&
-                  //TODO: Here the slug should be used. For now I only use the id, to implement the detail view.
-                  <CVEntryMoreButton to={`/id/${id}/`}>Mehr &#8594;</CVEntryMoreButton>
-                }
-              </P>
+              <P>{excerpt}</P>
             </Excerpt>
-
           </article>
         </Content>
         <TimeLine
@@ -226,8 +228,8 @@ const Organization = styled.div`
   padding-right: 5px;
   font-size: 0.8em;
   ${media.desktop`margin-top: -20px; margin-bottom: -1.3em`}
-  ${media.tablet`margin-top: -17px;`}
-  ${media.phone`margin-top: -14px;`}
+  ${media.tablet`margin-top: -17px; margin-bottom: -1.2em`}
+  ${media.phone`margin-top: -14px; margin-bottom: -1.1em`}
 `
 const Excerpt = styled.div`
   display: flex;
@@ -382,12 +384,10 @@ const CVEntryMoreButton = (props) => (
   </GhostbuttonWhite>
 )
 
-const GhostbuttonWhite = Ghostbutton.extend`
-  border-color:${blue};
-  text-transform: uppercase;
-  font-size:0.8em;
-  font-weight:400;
-  color:${blue} important!;
-  display:inline;
-  margin-left:10px;
+
+
+const GhostbuttonWhite = TextLink.extend`
+  & > h3 {
+    color:${primaryFontColor};
+  }
 `

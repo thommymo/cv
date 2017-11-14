@@ -12,3 +12,8 @@ export const Ghostbutton = styled(Link)`
   float:none;
   text-decoration: none;
 `;
+
+export const TextLink = styled(Link)`
+  float:none;
+  text-decoration: none;
+`;
