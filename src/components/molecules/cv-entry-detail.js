@@ -139,7 +139,6 @@ export const Awards = ({
 
 const Row = styled.div`
   ${media.desktop`display: flex; `}
-  ${media.tablet`display: flex; `}
 `
 const StyledAwards = styled.div`
   display: block;
