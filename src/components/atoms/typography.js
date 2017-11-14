@@ -1,5 +1,6 @@
 import { media } from '../../utils/breakpoints'
 import styled from 'styled-components'
+import { black } from '../../utils/colors'
 
 /*
   Typography
@@ -13,6 +14,9 @@ export const H1 = styled.h1`
   ${media.desktop`line-height: 1.05em;`}
   ${media.tablet`line-height: 1.25em;`}
   ${media.phone`line-height: 1.25em;`}
+  border-bottom:solid 5px ${black};
+  border-left:solid 8px transparent;
+  display:inline-block;
 `
 export const H2 = styled.h2`
   font-weight:400;
@@ -22,6 +26,9 @@ export const H2 = styled.h2`
   ${media.desktop`line-height: 1.25em`}
   ${media.tablet`line-height: 1.25em`}
   ${media.phone`line-height: 1.15384615em;`}
+  border-bottom:solid 3px ${black};
+  border-left:solid 5px transparent;
+  display:inline-block;
 `
 export const H3 = styled.h3`
   font-weight:400;
