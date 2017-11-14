@@ -76,7 +76,7 @@ export const JobDescription = ({
       <P dangerouslySetInnerHTML={responsabilitiesdescription} />
     </Tasks>
     <Projects>
-      <H4>{projectstitle}</H4>
+      <H3>{projectstitle}</H3>
       <span dangerouslySetInnerHTML={projectdescription} />
     </Projects>
   </StyledJobdescription>
@@ -88,20 +88,24 @@ const StyledJobdescription = styled.div`
 `
 const Projects = styled.div`
   flex: 1;
-  opacity: 0.95;
-  font-size: 0.9em;
+  font-size: 1em;
   margin-top: 1.3em;
-  padding: 0 2em 0 2.5em;
-  & > h4 {
+  ${media.desktop`padding: 0 2em 0 2.5em; `}
+  ${media.tablet`padding: 0 2em 0 2.5em; `}
+  & > h3 {
+    font-size: 1.1em;
     text-transform: uppercase;
   }
   & > span > h3 {
+    font-size: 1.1em;
+    font-weight: 400;
     text-transform: uppercase;
   }
 `
 const Tasks = styled.div`
   flex: 3;
-  padding: 0 2em 0 2.25em;
+  ${media.desktop`padding: 0 2em 0 2.5em; `}
+  ${media.tablet`padding: 0 2em 0 2.5em; `}
   & p {
     ${media.desktop`font-size: 1.15em; line-height: 1.3em; `}
     ${media.tablet`font-size: 1.15em; line-height: 1.2em; `}
