@@ -30,6 +30,7 @@ class PageShell extends Component {
 export default PageShell
 
 const MainContent = styled.div`
+  display:block;
   background-color:${props => props.color};
   width:100%;
   min-height:100%;
