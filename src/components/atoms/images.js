@@ -104,14 +104,15 @@ export class FullWithImage extends Component {
 const ImagePosition = styled.div`
   position: relative;
 `
-
 const PreviewImage = styled.div`
   ${props => props.imageLoaded ? "opacity: 0; filter: alpha(opacity=0);" : ""};
 `
-
 const Img = styled.img`
   width:100%;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
+  ${media.desktop`box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);`}
+  ${media.tablet`box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);`}
+  ${media.phone`box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);`}
   position:relative;
   z-index: 0;
 `
