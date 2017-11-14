@@ -271,11 +271,11 @@ const TimeLine = ({
 
 const StyledTimeSpan = H4.extend`
   line-height: 1em;
-  ${media.desktop`display:flex;justify-content: center;flex-direction: column;height:123px;padding-top: 9px;`};
-  ${media.tablet`display:flex;justify-content: center;flex-direction: column;height:123px;padding-top: 9px;`};
-  ${media.phone`transform: rotate(270deg); display: flex; flex-direction: row-reverse; margin-top: 55px;`};
-  ${props => !props.show ? 'display:none !important;' : ''};
-  ${props => props.rightposition ? 'text-align: left;margin-left:0px' : 'text-align: right;'};
+  ${media.desktop`display: flex; justify-content: center; flex-direction: column; height: 123px; padding-top: 9px; `};
+  ${media.tablet`display: flex; justify-content: center; flex-direction: column; height: 123px; padding-top: 9px;`};
+  ${media.phone`transform: rotate(270deg); display: flex; flex-direction: row-reverse; margin-top: 75px;`};
+  ${props => !props.show ? 'display: none !important;' : ''};
+  ${props => props.rightposition ? 'text-align: left; margin-left: -12px' : 'text-align: right; margin-right: -12px'};
   text-align: center;
   color:${primary};
 `
