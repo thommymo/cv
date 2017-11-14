@@ -44,6 +44,7 @@ const MainContent = styled.div`
   }
 `
 const Content = styled.main`
+  display:block;
   max-width:1024px;
   min-height:1000px;
   margin-left:auto;
