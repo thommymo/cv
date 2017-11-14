@@ -35,9 +35,9 @@ export const H3 = styled.h3`
   ${media.desktop`font-size: 1.75em;`}
   ${media.tablet`font-size: 1.5em;`}
   ${media.phone`font-size: 1.375em`}
-  ${media.desktop`line-height: 1.25em`}
-  ${media.tablet`line-height: 1.25em`}
-  ${media.phone`line-height: 1.13636364em`}
+  ${media.desktop`line-height: 1.7em`}
+  ${media.tablet`line-height: 1.4em`}
+  ${media.phone`line-height: 1.30em`}
 `
 export const H4 = styled.h4`
   font-weight:400;
