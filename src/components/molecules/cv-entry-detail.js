@@ -138,7 +138,7 @@ const Row = styled.div`
   ${media.tablet`display: flex; `}
 `
 const StyledAwards = styled.div`
-  display.block;
+  display: block;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -158,7 +158,7 @@ const Award = ({
 
 const StyledAward = styled.div`
   flex: 1;
-  display:block;
+  display: block;
   padding: 1em 1.5em 1em 1.5em;
   max-width: 280px;
   margin-left: auto;
