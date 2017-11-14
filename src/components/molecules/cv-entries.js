@@ -33,10 +33,14 @@ export const CVEntriesHeader = ({
       <HeaderContent>
         <SectionFlex>
           <HeaderLeft>
-            <H3>{titleleft}</H3>
+            <RotateHeaderLeft>
+              <H3>{titleleft}</H3>
+            </RotateHeaderLeft>
           </HeaderLeft>
           <HeaderRight>
-            <H3>{titleright}</H3>
+            <RotateHeaderRight>
+              <H3>{titleright}</H3>
+            </RotateHeaderRight>
           </HeaderRight>
         </SectionFlex>
       </HeaderContent>
@@ -55,27 +59,50 @@ const SectionFlex = styled.div`
   justify-content: space-between;
 `
 const Header = styled.div`
-  & > h3 {
-    margin-top: -48px;
+
+  & > div > h3 {
     text-transform: uppercase;
-    margin-left: -23px;
-    margin-right: -23px;
     border-bottom: 3px solid ${blue};
     color:${blue};
+    display: inline;
+    font-size:1.1em;
+    font-weight:400;
   }
 `
 const HeaderLeft = Header.extend`
   text-align: left;
-  & > h3 {
-    border-left: 4px solid transparent;
+  & > div > h3 {
+    border-left: 5px solid transparent;
   }
 `
 const HeaderRight = Header.extend`
   text-align: right;
 
-  & > h3 {
-    border-right: 4px solid transparent;
+  & > div > h3 {
+    border-right: 5px solid transparent;
   }
+`
+const RotateHeaderRight = styled.div`
+  display:flex;
+  align-items:flex-start;
+  justify-content: flex-end;
+  width: 150px;
+  height: 50px;
+  margin-top: -108px;
+  transform: rotate(45deg);
+  margin-right: -55px;
+  vertical-align: bottom;
+`
+const RotateHeaderLeft = styled.div`
+  display:flex;
+  align-items:flex-start;
+  justify-content: flex-start;
+  width: 150px;
+  height: 50px;
+  margin-top: -108px;
+  transform: rotate(-45deg);
+  margin-left: -55px;
+  vertical-align: bottom;
 `
 const HeaderContent = Content.extend`
   padding-top:0px;
