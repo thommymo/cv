@@ -246,7 +246,7 @@ const TimeLine = ({
         <span>{endDate}</span>
       }
       { startDate && endDate &&
-        <span>&#8599;</span>
+        <span> – </span>
       }
       { startDate &&
         <span>{startDate}</span>
@@ -258,16 +258,13 @@ const TimeLine = ({
 // Styling for Timespan
 
 const StyledTimeSpan = H4.extend`
-  display:flex;
-  justify-content: center;
-  flex-direction: column;
-  ${media.desktop`line-height: 1em;`}
-  ${media.tablet`line-height: 1em;`}
-  ${media.phone`display: none;`}
-  ${props => !props.show ? 'display:none' : ''};
+  line-height: 1em;
+  ${media.desktop`display:flex;justify-content: center;flex-direction: column;height:123px;padding-top: 9px;`};
+  ${media.tablet`display:flex;justify-content: center;flex-direction: column;height:123px;padding-top: 9px;`};
+  ${media.phone`transform: rotate(270deg); display: flex; flex-direction: row-reverse; margin-top: 55px;`};
+  ${props => !props.show ? 'display:none !important;' : ''};
   ${props => props.rightposition ? 'text-align: left;margin-left:0px' : 'text-align: right;'};
-  padding-top: 9px;
-  height:123px;
+  text-align: center;
   color: ${white};
 `
 
