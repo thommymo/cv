@@ -84,7 +84,7 @@ export class FullWithImage extends Component {
               { Object.keys(sizes).map((label) => (
 
                 <source key={imagesizes[label]}
-                  media={`all
+                  media={`screen
               ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
               ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
               `}
@@ -93,7 +93,7 @@ export class FullWithImage extends Component {
               ${baseurl}resize=width:${imagesizes[label]*2}/${handle} 2x,
             `}/>
               ))}
-              <Img src={`${baseurl}resize=width:300/${handle}`} onLoad={this.handleImageLoaded.bind(this)}/>
+              <Img src={`${baseurl}resize=width:800/${handle}`} onLoad={this.handleImageLoaded.bind(this)}/>
             </picture>
           </WithBorder>
         </CSSTransition>
