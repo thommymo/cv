@@ -10,18 +10,12 @@ import { timeout, baseurl} from '../../utils/constants'
 
 export const Image = (props) => (
   <picture>
-    { Object.keys(sizes).map((label) => (
-      <source key={imagesizes[label]}
-        media={`screen
-          ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
-          ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
-          `}
-        srcSet={`
+    <source
+      srcSet={`
           ${baseurl}resize=height:${props.height}/${props.handle} 1x,
           ${baseurl}resize=height:${props.height*2}/${props.handle} 2x,
         `}/>
-    ))}
-    <img src={`${baseurl}resize=height:${props.height}/${props.handle}`} alt={props.alt}/>
+    <img src={`${baseurl}resize=height:${props.height}/${props.handle}`} alt={props.alt} height={props.height} />
   </picture>
 )
 
