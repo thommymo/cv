@@ -39,7 +39,7 @@ const StyledHeader = styled.header`
   a {
     text-decoration: none;
   }
-  ${props => props.gradient ? `background: linear-gradient(170deg, ${green} -80%,${blue} 100%); min-height: 100px;`:'background:white'}
+  ${props => props.gradient ? `background: linear-gradient(165deg, ${green} -20%,${blue} 120%); min-height: 100px;`:'background:white'}
 
 `
 const H4Black = H4.extend`
