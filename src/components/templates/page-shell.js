@@ -39,9 +39,6 @@ const MainContent = styled.div`
   min-height:100%;
   position:absolute;
   top:0px;
-  & a {
-    color: ${white};
-  }
   & a:hover {
     opacity: 0.5;
   }
