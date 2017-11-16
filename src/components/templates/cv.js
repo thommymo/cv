@@ -13,7 +13,7 @@ export const CVIsLoading = () => (
 
 export const CV = ({allCVEntrieses}) => (
   <PageShell withMainNavigation fontColor={primaryFontColor}>
-    <CVEntriesHeader titleleft="Arbeit" titleright="Ausildung"/>
+    <CVEntriesHeader titleleft="Arbeit" titleright="Ausbildung"/>
     { allCVEntrieses.map((entry) => (
       <CVEntries data={entry} key={entry.id} />
     ))}
