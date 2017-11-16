@@ -181,7 +181,7 @@ export const CVEntries = ({data : {
             {
               showmore &&
 
-              <Title left={left} right={right}><CVEntryTextLink to={`/id/${id}/`}>{title}</CVEntryTextLink></Title>
+              <Title left={left} right={right}><CVEntryTextLink to={`/id/${id}/`}>{title}  &rarr;</CVEntryTextLink></Title>
 
             }
             {
