@@ -23,59 +23,46 @@ export const H2 = styled.h2`
   ${media.desktop`font-size: 2.25em;`}
   ${media.tablet`font-size: 2em;`}
   ${media.phone`font-size: 1.625em;`}
-  ${media.desktop`line-height: 1.25em`}
-  ${media.tablet`line-height: 1.25em`}
+  ${media.desktop`line-height: 1.25em;`}
+  ${media.tablet`line-height: 1.25em;`}
   ${media.phone`line-height: 1.15384615em;`}
 
   display: inline-block;
 `
 export const H3 = styled.h3`
-  font-weight:400;
-  ${media.desktop`font-size: 1.75em;`}
-  ${media.tablet`font-size: 1.5em;`}
-  ${media.phone`font-size: 1.375em`}
-  ${media.desktop`line-height: 1.7em`}
-  ${media.tablet`line-height: 1.4em`}
-  ${media.phone`line-height: 1.30em`}
+
 `
 export const H4 = styled.h4`
   font-weight:400;
-  ${media.desktop`font-size: 1.125em`}
-  ${media.tablet`font-size: 1.125em`}
-  ${media.phone`font-size: 1em`}
-  ${media.desktop`line-height: 1.22222222em`}
-  ${media.tablet`line-height: 1.22222222em`}
-  ${media.phone`line-height: 1.22222222em`}
+  ${media.desktop`font-size: 1.125em;`}
+  ${media.tablet`font-size: 1.125em;`}
+  ${media.phone`font-size: 1em;`}
+  ${media.desktop`line-height: 1.22222222em;`}
+  ${media.tablet`line-height: 1.22222222em;`}
+  ${media.phone`line-height: 1.22222222em;`}
 `
 export const H4Capitals = H4.extend`
   text-transform: uppercase;
 `
-export const P = styled.p`
-  ${media.desktop`font-size: 1em;`}
-  ${media.tablet`font-size: 1em;`}
-  ${media.phone`font-size: 1em;`}
-  ${media.desktop`line-height: 1.22222222em`}
-  ${media.tablet`line-height: 1.22222222em`}
-  ${media.phone`line-height: 1.11111111em`}
+export const Small = styled.small`
+  ${media.desktop`font-size: 0.7em;`}
+  ${media.tablet`font-size: 0.7em;`}
+  ${media.phone`font-size: 0.7em;`}
+  ${media.desktop`line-height: 0.6em;`}
+  ${media.tablet`line-height: 0.6em;`}
+  ${media.phone`line-height: 0.6em;`}
 `
-export const PCapitals = P.extend`
+export const P = styled.p`
+
+`
+export const PCapitals = styled.p`
   text-transform: uppercase;
 `
 export const UL = styled.ul`
-  ${media.desktop`font-size: 1em;`}
-  ${media.tablet`font-size: 1em;`}
-  ${media.phone`font-size: 1em;`}
-  ${media.desktop`line-height: 1.22222222em`}
-  ${media.tablet`line-height: 1.22222222em`}
-  ${media.phone`line-height: 1.11111111em`}
+
   padding-left:0.3em;
   list-style-position: inside;
 `
 export const LI = styled.li`
-  ${media.desktop`font-size: 1em;`}
-  ${media.tablet`font-size: 1em;`}
-  ${media.phone`font-size: 1em;`}
-  ${media.desktop`line-height: 1.22222222em`}
-  ${media.tablet`line-height: 1.22222222em`}
-  ${media.phone`line-height: 1.11111111em`}
+
 `

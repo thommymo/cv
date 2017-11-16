@@ -1,5 +1,5 @@
 import React from 'react';
-import { H1, P, H4, H2, H3, H4Capitals, PCapitals } from '../../components/atoms/typography'
+import { H1, P, H4, H2, H3, H4Capitals, PCapitals, Small } from '../../components/atoms/typography'
 import { SectionCentered } from '../../components/atoms/containers'
 import { FullWithImage, Image } from '../../components/atoms/images'
 import styled from 'styled-components'
@@ -41,7 +41,7 @@ Containers (as part of a molecule)
 */
 
 const DateAndCompany = styled.div`
-  padding-bottom:3em;
+  padding-bottom:2em;
 `
 const HeaderWithBorder = styled.div`
   border: solid 0px;
@@ -52,7 +52,7 @@ const HeaderWithBorder = styled.div`
   border-left-color: ${primary};
   border-right-width: 40px;
   border-right-color: ${primary};
-  padding-bottom: 5em;
+  padding-bottom: 6em;
   position: relative;
 `
 const HeaderWithDate = styled.div`
@@ -73,11 +73,13 @@ export const JobDescription = ({
   <StyledJobdescription>
     <Tasks>
       <H3>{responsabilities}</H3>
-      <P dangerouslySetInnerHTML={responsabilitiesdescription} />
+      <span dangerouslySetInnerHTML={responsabilitiesdescription} />
     </Tasks>
     <Projects>
-      <H3>{projectstitle}</H3>
-      <span dangerouslySetInnerHTML={projectdescription} />
+      <Small>
+        <H3>{projectstitle}</H3>
+        <span dangerouslySetInnerHTML={projectdescription} />
+      </Small>
     </Projects>
   </StyledJobdescription>
 )
@@ -92,13 +94,7 @@ const Projects = styled.div`
   margin-top: 1.3em;
   ${media.desktop`padding: 0 2em 0 2.5em; `}
   ${media.tablet`padding: 0 2em 0 2.5em; `}
-  & > h3 {
-    font-size: 1.1em;
-    text-transform: uppercase;
-  }
-  & > span > h3 {
-    font-size: 1.1em;
-    font-weight: 400;
+  & h3 {
     text-transform: uppercase;
   }
 `
@@ -106,11 +102,6 @@ const Tasks = styled.div`
   flex: 3;
   ${media.desktop`padding: 0 2em 0 2.5em; `}
   ${media.tablet`padding: 0 2em 0 2.5em; `}
-  & p {
-    ${media.desktop`font-size: 1.15em; line-height: 1.3em; `}
-    ${media.tablet`font-size: 1.15em; line-height: 1.2em; `}
-    ${media.phone`font-size: 1.1em; line-height: 1.15em; `}
-  }
   ${media.desktop`order: 1; `}
   ${media.tablet`order: 1; `}
 `
@@ -155,7 +146,7 @@ const Award = ({
 }) => (
   <StyledAward key={logo}>
     <Image handle={logo.handle} height="120" alt="Award Logo"/>
-    <PCapitals>{description}</PCapitals>
+    <Small><PCapitals>{description}</PCapitals></Small>
   </StyledAward>
 )
 

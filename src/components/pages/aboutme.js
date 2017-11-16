@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PageShell from '../../components/templates/page-shell'
-import { H1, H2, H3, P } from '../../components/atoms/typography'
+import { H1, H2, H3, P, Small } from '../../components/atoms/typography'
 import { green, blue, black, violet } from '../../utils/colors'
 import { TextLink } from '../../components/atoms/buttons'
 import { Image } from '../../components/atoms/images'
@@ -16,7 +16,7 @@ export const AboutMe = () => (
     <Content>
       <Row>
         <ColumnLabel>
-          <PLabel>Erfahrung</PLabel>
+          <Small><H3Label>Erfahrung</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
           <PFront>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend </PFront>
@@ -25,7 +25,7 @@ export const AboutMe = () => (
       </Row>
       <Row>
         <ColumnLabel>
-          <PLabel>Technologie</PLabel>
+          <Small><H3Label>Technologie</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
           <PFront>React, ES6 und alles was dazugehört. Diesen CV habe ich mit reactjs* und GraphCMS als CMS erstellt.</PFront>
@@ -105,12 +105,21 @@ export const AboutMe = () => (
 const CenteredRow = styled.div`
   display: block;
   text-align: center;
+  padding-bottom:5em;
+  max-width: 900px;
+  margin: 0 auto;
+`
+const Row = styled.div`
+  ${media.desktop`display:flex;`}
+  margin-bottom:2em;
+  max-width: 900px;
+  margin: 1em auto;
 `
 
 const HeaderTitle = styled.div`
   color:transparent;
   text-align: center;
-  margin-top: 7em;
+  margin-top: 10em;
   margin-bottom: 9em;
   background-image: -webkit-linear-gradient(165deg, ${green} 20%,${black} 110%); /* For Chrome and Safari */
   background-image:         linear-gradient(165deg, ${green} 20%,${black} 110%); /* Standard syntax; must be last */
@@ -162,26 +171,16 @@ const Content = styled.div`
   color:${black}
 `
 const PFront = P.extend`
-  ${media.desktop`font-size: 1.5em;`}
-  ${media.tablet`font-size: 1.25em;`}
-  ${media.phone`font-size: 1.25em;`}
-  margin-top:0;
+
 `
-const PLabel = PFront.extend`
+const H3Label = H3.extend`
   text-transform: uppercase;
-  ${media.desktop`font-size: 0.9em;`}
-  ${media.tablet`font-size: 0.9em;`}
-  ${media.phone`font-size: 0.9em;`}
-  font-weight: 400;
-  margin-top: 10px;
+  padding-top:8px;
 `
-const Row = styled.div`
-  ${media.desktop`display:flex;`}
-  margin-bottom:2em;
-`
+
 const ColumnLabel = styled.div`
   flex:1;
 `
 const ColumnDescription = styled.div`
-  flex:5;
+  flex:3;
 `

@@ -1,6 +1,7 @@
 import { injectGlobal } from 'styled-components';
 import { white, blue, violet } from './colors'
 import { timeout } from './constants'
+import { media } from './breakpoints'
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,400,200');
@@ -23,6 +24,21 @@ injectGlobal`
       color:transparent;
       -webkit-background-clip: text;
       background-clip: text;
+    }
+    & p {
+        ${media.desktop`font-size: 1.5em; line-height: 1.5em; `}
+        ${media.tablet`font-size: 1.3em; line-height: 1.35em; `}
+        ${media.phone`font-size: 1.2em; line-height: 1.3em; `}
+      }
+    }
+    & h3 {
+      font-weight:400;
+      ${media.desktop`font-size: 1.75em;`}
+      ${media.tablet`font-size: 1.5em;`}
+      ${media.phone`font-size: 1.375em`}
+      ${media.desktop`line-height: 1.7em`}
+      ${media.tablet`line-height: 1.4em`}
+      ${media.phone`line-height: 1.30em`}
     }
   }
 
