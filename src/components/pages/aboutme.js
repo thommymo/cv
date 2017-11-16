@@ -33,111 +33,80 @@ export const AboutMe = () => (
           <PFront><TextLinkGradient to="/cv">Github &rarr;</TextLinkGradient></PFront>
         </ColumnDescription>
       </Row>
-      <Row>
-        <ColumnLabel>
-          <PLabel>Awards</PLabel>
-        </ColumnLabel>
-        <ColumnDescription>
-          <RowImages>
-            <Logo>
-              <Image handle="jsnZ6OFJSiKMI8XKIomE" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="ONnC5Gt6Tam0DOJDD4wJ" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="IZu0yTbaT3GrHZOSBKtj" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="PM9hcfSCqtvJMARYHcQ8" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="q35H0JAHShOSNvIEwkVg" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="WTEDLoc2RleNnxlxG23R" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="w7ammVlTMWvbP7AvC5jX" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="YRMPWRWkQYuSgcPBFfT6" height="100" />
-            </Logo>
-            <Logo>
-              <Image handle="5kb26FtFTluYw1mGEkI4" height="100" />
-            </Logo>
-          </RowImages>
-        </ColumnDescription>
-      </Row>
-      <Row>
-        <ColumnLabel>
-          <PLabel>Arbeit- und Auftraggeber</PLabel>
-        </ColumnLabel>
-        <ColumnDescription>
-          <PFront>
-            <small>
-              Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Akris, UBS, Credit Suisse, Winterthur Versicherungen, Quickline, Doodah, Walo Bertschinger
-            </small>
-          </PFront>
-        </ColumnDescription>
-      </Row>
-      <Row>
-        <ColumnLabel>
-          <PLabel>Beim Arbeiten</PLabel>
-        </ColumnLabel>
-        <ColumnDescription>
-          <img src="/assets/images/thomas_moser_3-1000w.jpg" width="400"/>
-        </ColumnDescription>
-      </Row>
-      <Row>
-        <ColumnLabel>
-          <PLabel>In der Freizeit</PLabel>
-        </ColumnLabel>
-        <ColumnDescription>
-          <RowImages>
-            <SmallImage>
-              <img src="https://media.graphcms.com/HCgGXNqFTxOFVQa3hX4R" />
-            </SmallImage>
-            <SmallImage>
-              <img src="https://media.graphcms.com/rg7ELbbGTH6AAb72hK7Z" />
-            </SmallImage>
-            <SmallImage>
-              <img src="https://media.graphcms.com/J1vMC6coS8KwmsgT1e4m" />
-              </SmallImage>
-            </RowImages>
-          </ColumnDescription>
-      </Row>
+      <CenteredRow>
+        <H2>Awards</H2>
+        <RowImages>
+          <Logo>
+            <Image handle="jsnZ6OFJSiKMI8XKIomE" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="ONnC5Gt6Tam0DOJDD4wJ" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="IZu0yTbaT3GrHZOSBKtj" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="PM9hcfSCqtvJMARYHcQ8" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="q35H0JAHShOSNvIEwkVg" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="WTEDLoc2RleNnxlxG23R" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="w7ammVlTMWvbP7AvC5jX" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="YRMPWRWkQYuSgcPBFfT6" height="100" />
+          </Logo>
+          <Logo>
+            <Image handle="5kb26FtFTluYw1mGEkI4" height="100" />
+          </Logo>
+        </RowImages>
+      </CenteredRow>
+      <CenteredRow>
+        <H2>Arbeit- und Auftraggeber</H2>
+        <PFront>
+          <small>
+            Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Akris, UBS, Credit Suisse, Winterthur Versicherungen, Quickline, Doodah, Walo Bertschinger
+          </small>
+        </PFront>
+      </CenteredRow>
+      <CenteredRow>
+        <H2>Beim Arbeiten</H2>
+        <RowImages>
+          <TwoImages>
+            <img src="/assets/images/thomas_moser_3-1000w.jpg" />
+          </TwoImages>
+          <TwoImages>
+            <img src="/assets/images/thomas_moser_4-1000w.jpg" />
+          </TwoImages>
+        </RowImages>
+      </CenteredRow>
+      <CenteredRow>
+        <H2>In der Freizeit</H2>
+        <RowImages>
+          <ThreeImages>
+            <img src="https://media.graphcms.com/HCgGXNqFTxOFVQa3hX4R" />
+          </ThreeImages>
+          <ThreeImages>
+            <img src="https://media.graphcms.com/rg7ELbbGTH6AAb72hK7Z" />
+          </ThreeImages>
+          <ThreeImages>
+            <img src="https://media.graphcms.com/J1vMC6coS8KwmsgT1e4m" />
+          </ThreeImages>
+        </RowImages>
+      </CenteredRow>
     </Content>
   </PageShell>
 )
-const H1Front = H1.extend`
-  display: inline;
+
+const CenteredRow = styled.div`
+  display: block;
+  text-align: center;
 `
-const H2Front = H2.extend`
-  margin-top: 10px;
-  line-height: 5em;
-  display: inline;
-`
-const TitleDiv = styled.div`
-  padding-bottom:10px;
-`
-const RowImages = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
-const Logo = styled.div`
-  padding-right:10px;
-  padding-bottom:5px;
-  filter: grayscale(100%) opacity(90%);
-`
-const SmallImage = styled.div`
-  padding-right:10px;
-  padding-bottom:5px;
-  width: calc(100% / 3 - 20px);
-  & > img {
-    width: 100%;
-  }
-`
+
 const HeaderTitle = styled.div`
   color:transparent;
   text-align: center;
@@ -148,20 +117,51 @@ const HeaderTitle = styled.div`
   -webkit-background-clip: text;
   background-clip: text;
 `
-const TextLinkGradient =  TextLink.extend`
-  background-image: -webkit-linear-gradient(165deg, ${blue} 20%,${violet} 70%); /* For Chrome and Safari */
-  background-image:         linear-gradient(165deg, ${blue} 20%,${violet} 70%); /* Standard syntax; must be last */
-  color:transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-weight: 400;
-  font-size: 0.9;
+const H1Front = H1.extend`
+  display: inline;
+`
+const H2Front = H2.extend`;
+  display: inline;
+`
+const TitleDiv = styled.div`
+  padding-bottom: 10px;
+`
+const RowImages = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto 0 auto;
+`
+const Logo = styled.div`
+  padding: 5px 10px 0 0;
+  filter: opacity(80%);
+`
+const ThreeImages = styled.div`
+  padding-bottom:5px;
+  ${media.desktop`width: calc(100% / 3 - 10px); padding-right: 10px;`}
+  ${media.tablet`width: calc(100% / 3 - 10px); padding-right: 10px;`}
+  & > img {
+    width: 100%;
+  }
+`
+const TwoImages = styled.div`
+  padding-bottom:5px;
+  ${media.desktop`width: calc(100% / 2 - 10px); padding-right: 10px;`}
+  ${media.tablet`width: calc(100% / 2 - 10px); padding-right: 10px;`}
+  & > img {
+    width: 100%;
+  }
 `
 
+const TextLinkGradient =  TextLink.extend`
+  font-weight: 400;
+  font-size: 0.9em;
+`
 const Content = styled.div`
   color:${black}
 `
-const PFront = styled.p`
+const PFront = P.extend`
   ${media.desktop`font-size: 1.5em;`}
   ${media.tablet`font-size: 1.25em;`}
   ${media.phone`font-size: 1.25em;`}
@@ -177,8 +177,6 @@ const PLabel = PFront.extend`
 `
 const Row = styled.div`
   ${media.desktop`display:flex;`}
-  ${media.tablet`display:flex;`}
-
   margin-bottom:2em;
 `
 const ColumnLabel = styled.div`

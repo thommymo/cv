@@ -1,5 +1,5 @@
 import { injectGlobal } from 'styled-components';
-import { white } from './colors'
+import { white, blue, violet } from './colors'
 import { timeout } from './constants'
 
 injectGlobal`
@@ -17,6 +17,13 @@ injectGlobal`
     font-size: 100%;
     height: 100%;
     background-color: ${white};
+    & a {
+      background-image: -webkit-linear-gradient(165deg, ${blue} 20%,${violet} 70%); /* For Chrome and Safari */
+      background-image:         linear-gradient(165deg, ${blue} 20%,${violet} 70%); /* Standard syntax; must be last */
+      color:transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
   }
 
   .ImageFadeIn-enter {
