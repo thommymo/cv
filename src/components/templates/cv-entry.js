@@ -5,7 +5,7 @@ import { Loading } from '../../components/atoms/loading'
 import PageShell from '../../components/templates/page-shell'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
-import { CVEntryHeader, JobDescription, Awards, WorkReview } from '../molecules/cv-entry-detail'
+import { CVEntryHeader, JobDescription, Awards, WorkReview, CVEntryFooter } from '../molecules/cv-entry-detail'
 import { primaryFontColor, primary } from '../../utils/colors'
 
 export const PreviewCVEntry = ({
@@ -118,6 +118,7 @@ export const CVEntry = ({
             }
           </article>
         </CSSTransition>
+        <CVEntryFooter />
       </PageShell>
   )
 }

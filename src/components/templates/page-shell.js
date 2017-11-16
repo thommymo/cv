@@ -24,7 +24,7 @@ class PageShell extends Component {
             {this.props.children}
           </Content>
         </ContentWrapper>
-        <Footer />
+        <Footer props={this.props}/>
       </MainContent>
     )
   }
@@ -52,12 +52,13 @@ const ContentWrapper = styled.div`
   ${media.phone`border-right:solid 16px ${props => props.color};`}
 `
 const Content = styled.main`
-  display:block;
-  margin-top:-40px;
+  display: block;
+  margin-top: -40px;
+  margin-bottom: 0px;
   box-shadow: 1000px 0px ${props => props.color}, -1000px 0px ${props => props.color};
-  max-width:1024px;
-  min-height:1000px;
-  margin-left:auto;
-  margin-right:auto;
+  max-width: 1024px;
+  min-height: 1000px;
+  margin-left: auto;
+  margin-right: auto;
   color:${props => props.fontColor};
 `

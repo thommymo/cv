@@ -186,3 +186,30 @@ const StyledWorkReview = SectionCentered.extend`
   margin-left: auto;
   margin-right: auto;
 `
+
+/*
+  Molecule
+*/
+
+export const CVEntryFooter = () => (
+    <FooterWithBorder />
+)
+
+/*
+Containers (as part of a molecule)
+*/
+
+
+const FooterWithBorder = styled.div`
+  border: solid 0px;
+  border-bottom-width: 40px;
+  border-bottom-color: transparent;
+  border-left-width: 40px;
+  border-left-color: ${primary};
+  border-right-width: 40px;
+  border-right-color: ${primary};
+  margin-bottom: -40px;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 1000px 0px ${primary}, -1000px 0px ${primary};
+`
