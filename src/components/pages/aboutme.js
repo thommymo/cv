@@ -19,7 +19,7 @@ export const AboutMe = () => (
           <Small><H3Label>Erfahrung</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
-          <PFront>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend </PFront>
+          <PFront>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend.</PFront>
           <PFront><TextLinkGradient to="/cv">Mein CV &rarr;</TextLinkGradient></PFront>
         </ColumnDescription>
       </Row>

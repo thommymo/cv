@@ -26,7 +26,7 @@ export const Header = ({props}) => (
 
 
 const Img = styled.img`
-  padding-top:10px;
+  padding-top: 10px;
 `
 const Navigation = styled.nav`
   display:flex;
