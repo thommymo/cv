@@ -28,14 +28,14 @@ export const AboutMe = () => (
           <Small><H3Label>Technologie</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
-          <PFront>React, ES6 und alles was dazugehört. Diesen CV habe ich mit reactjs* und GraphCMS als CMS erstellt.</PFront>
-          <PFront><small>(*reactjs, styled components, storybook, apollo, graphql)</small></PFront>
-          <PFront><TextLinkGradient to="/cv">Github &rarr;</TextLinkGradient></PFront>
+          <PFront>React, ES6 und alles was dazugehört*.</PFront>
+          <PFront><small>*Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, Graphql und GraphCMS erstellt.</small></PFront>
+          <PFront><TextLinkGradient to="/cv">Code auf Github &rarr;</TextLinkGradient><TextLinkGradient to="/cv">Design in Storybook &rarr;</TextLinkGradient></PFront>
         </ColumnDescription>
       </Row>
       <CenteredRow>
         <H2>Awards</H2>
-        <RowImages>
+        <RowLogos>
           <Logo>
             <Image handle="jsnZ6OFJSiKMI8XKIomE" height="100" />
           </Logo>
@@ -63,13 +63,13 @@ export const AboutMe = () => (
           <Logo>
             <Image handle="5kb26FtFTluYw1mGEkI4" height="100" />
           </Logo>
-        </RowImages>
+        </RowLogos>
       </CenteredRow>
       <CenteredRow>
         <H2>Arbeit- und Auftraggeber</H2>
         <PFront>
           <small>
-            Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Akris, UBS, Credit Suisse, Winterthur Versicherungen, Quickline, Doodah, Walo Bertschinger
+            Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Pädagogische Hochschule Zentralscheiz, Universität Zürich, UBS, Credit Suisse, Winterthur Versicherungen, Walo Bertschinger, Quickline, Akris, Doodah
           </small>
         </PFront>
       </CenteredRow>
@@ -105,14 +105,15 @@ export const AboutMe = () => (
 const CenteredRow = styled.div`
   display: block;
   text-align: center;
-  padding-bottom:5em;
-  max-width: 900px;
+  padding-top:3em;
+  padding-bottom:2em;
+  max-width: 1000px;
   margin: 0 auto;
 `
 const Row = styled.div`
   ${media.desktop`display:flex;`}
   margin-bottom:2em;
-  max-width: 900px;
+  max-width: 800px;
   margin: 1em auto;
 `
 
@@ -139,8 +140,10 @@ const RowImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 800px;
-  margin: 0 auto 0 auto;
+`
+const RowLogos = RowImages.extend`
+  max-width: 600px;
+  margin: 0 auto;
 `
 const Logo = styled.div`
   padding: 5px 10px 0 0;
@@ -166,6 +169,7 @@ const TwoImages = styled.div`
 const TextLinkGradient =  TextLink.extend`
   font-weight: 400;
   font-size: 0.9em;
+  padding-right: 20px;
 `
 const Content = styled.div`
   color:${black}
