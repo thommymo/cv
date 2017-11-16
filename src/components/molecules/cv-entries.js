@@ -175,9 +175,9 @@ export const CVEntries = ({data : {
             </Organization>
             {
               showmore &&
-              <CVEntryMoreButton to={`/id/${id}/`}>
-                <Title left={left} right={right}>{title}</Title>
-              </CVEntryMoreButton>
+
+              <Title left={left} right={right}><CVEntryTextLink to={`/id/${id}/`}>{title}</CVEntryTextLink></Title>
+
             }
             {
               !showmore &&
@@ -215,30 +215,36 @@ Typography
 */
 
 const Title = H3.extend`
-  margin-bottom: -0.4em;
-  display: inline;
-  ${props => props.left ? `border-bottom: solid 3px ${blue}; border-left: solid 4px transparent;` : ''};
-  ${props => props.right ? `border-bottom: solid 3px ${blue}; border-right: solid 4px transparent;` : ''};
-  border-left
+  & a {
+    display:inline-block;
+    ${props => props.right ?
+      `background-image: -webkit-linear-gradient(165deg, ${violet} 20%,${blue} 120%); background-image: linear-gradient(165deg, ${violet} 20%,${blue} 120%);`: 
+      `background-image: -webkit-linear-gradient(165deg, ${blue} 20%,${green} 120%); background-image: linear-gradient(165deg, ${blue} 20%,${green} 120%);`}; /* For Chrome and Safari */
+
+
+  }
 `
 const Organization = styled.div`
   display: flex;
   ${props => props.right ? 'justify-content: flex-end;': ''};
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 1px;
+  padding-right: 1px;
   font-size: 0.8em;
-  ${media.desktop`margin-top: -20px; margin-bottom: -1.3em`}
-  ${media.tablet`margin-top: -17px; margin-bottom: -1.2em`}
-  ${media.phone`margin-top: -14px; margin-bottom: -1.1em`}
+  ${media.desktop`margin-top: -20px; margin-bottom: -3.3em`}
+  ${media.tablet`margin-top: -17px; margin-bottom: -2.7em`}
+  ${media.phone`margin-top: -14px; margin-bottom: -2.4em`}
 `
 const Excerpt = styled.div`
   display: flex;
   ${props => props.right ? 'justify-content: flex-end;': ''};
   padding-left: 1px;
   padding-right: 1px;
-  & > p > a {
-    color:${blue};
-  }
+  font-size: 0.75em;
+  line-height: 0.75em;
+  ${media.desktop`margin-top: -3.7em;`}
+  ${media.tablet`margin-top: -2.8em;`}
+  ${media.phone`margin-top: -2.3em;`}
+
 `
 
 /*
@@ -378,16 +384,13 @@ const StyledTimeLine = styled.div`
       }` : ''};
 `
 
-const CVEntryMoreButton = (props) => (
+const CVEntryTextLink = (props) => (
   <GhostbuttonWhite {...props}>
     {props.children}
   </GhostbuttonWhite>
 )
 
 
-
 const GhostbuttonWhite = TextLink.extend`
-  & > h3 {
-    color:${primaryFontColor};
-  }
+
 `
