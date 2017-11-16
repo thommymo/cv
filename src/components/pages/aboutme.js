@@ -25,11 +25,11 @@ export const AboutMe = () => (
       </Row>
       <Row>
         <ColumnLabel>
-          <Small><H3Label>Technologie</H3Label></Small>
+          <Small><H3Label>Lieblings-Technologie</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
           <PFront>React, ES6 und alles was dazugehört*.</PFront>
-          <PFront><small>*Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, Graphql und GraphCMS erstellt.</small></PFront>
+          <PFront><small>*Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></PFront>
           <PFront><TextLinkGradient to="/cv">Code auf Github &rarr;</TextLinkGradient><TextLinkGradient to="/cv">Design in Storybook &rarr;</TextLinkGradient></PFront>
         </ColumnDescription>
       </Row>
@@ -147,7 +147,6 @@ const RowLogos = RowImages.extend`
 `
 const Logo = styled.div`
   padding: 5px 10px 0 0;
-  filter: opacity(80%);
 `
 const ThreeImages = styled.div`
   padding-bottom:5px;
