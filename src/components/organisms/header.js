@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {H4} from '../atoms/typography'
 import { Link, NavLink } from 'react-router-dom'
-import { backIcon } from '../../utils/icons'
+import { closeIcon } from '../../utils/icons'
 import { black, white, green, blue, violet } from '../../utils/colors'
 
 export const Header = ({props}) => (
@@ -18,7 +18,7 @@ export const Header = ({props}) => (
     {
       props.backlink &&
       <Navigation>
-        <Link to={props.backlink}><Img src={backIcon} alt="Back link" width="40" height="40"/></Link>
+        <Link to={props.backlink}><Img src={closeIcon} alt="Back link" width="40" height="40"/></Link>
       </Navigation>
     }
   </StyledHeader>
@@ -26,7 +26,7 @@ export const Header = ({props}) => (
 
 
 const Img = styled.img`
-  transform: rotate(90deg);
+  padding-top:10px;
 `
 const Navigation = styled.nav`
   display:flex;
