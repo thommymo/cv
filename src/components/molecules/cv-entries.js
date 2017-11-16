@@ -59,7 +59,6 @@ const SectionFlex = styled.div`
   justify-content: space-between;
 `
 const Header = styled.div`
-
   & > div > h3 {
     text-transform: uppercase;
     border-bottom: 3px solid ${blue};
@@ -90,7 +89,10 @@ const RotateHeaderRight = styled.div`
   height: 50px;
   margin-top: -108px;
   transform: rotate(45deg);
-  margin-right: -55px;
+  ${media.desktop`margin-right: -60px; margin-top: -113px;`}
+  ${media.tablet`margin-right: -60px; margin-top: -113px;`}
+  ${media.phone`margin-right: -55px; margin-top: -108px;`}
+
   vertical-align: bottom;
 `
 const RotateHeaderLeft = styled.div`
@@ -99,9 +101,12 @@ const RotateHeaderLeft = styled.div`
   justify-content: flex-start;
   width: 150px;
   height: 50px;
-  margin-top: -108px;
+
   transform: rotate(-45deg);
-  margin-left: -55px;
+  ${media.desktop`margin-left: -60px; margin-top: -113px;`}
+  ${media.tablet`margin-left: -60px; margin-top: -113px;`}
+  ${media.phone`margin-left: -55px; margin-top: -108px;`}
+
   vertical-align: bottom;
 `
 const HeaderContent = Content.extend`
@@ -218,7 +223,7 @@ const Title = H3.extend`
   & a {
     display:inline-block;
     ${props => props.right ?
-      `background-image: -webkit-linear-gradient(165deg, ${violet} 20%,${blue} 120%); background-image: linear-gradient(165deg, ${violet} 20%,${blue} 120%);`: 
+      `background-image: -webkit-linear-gradient(165deg, ${violet} 20%,${blue} 120%); background-image: linear-gradient(165deg, ${violet} 20%,${blue} 120%);`:
       `background-image: -webkit-linear-gradient(165deg, ${blue} 20%,${green} 120%); background-image: linear-gradient(165deg, ${blue} 20%,${green} 120%);`}; /* For Chrome and Safari */
 
 
