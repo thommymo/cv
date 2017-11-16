@@ -208,8 +208,9 @@ const FooterWithBorder = styled.div`
   border-left-color: ${primary};
   border-right-width: 40px;
   border-right-color: ${primary};
-  margin-bottom: -40px;
   position: relative;
   z-index: 1000;
-  box-shadow: 1000px 0px ${primary}, -1000px 0px ${primary};
+  ${media.desktop`box-shadow: 700px 0px ${primary}, -700px 0px ${primary}; `}
+  ${media.tablet`box-shadow: 300px 0px ${primary}, -300px 0px ${primary}; `}
+  ${media.phone`box-shadow: 100px 0px ${primary}, -100px 0px ${primary}; `}
 `

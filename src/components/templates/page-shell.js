@@ -20,7 +20,7 @@ class PageShell extends Component {
           <title>{this.props.title}</title>
         </Helmet>
         <ContentWrapper color={color} >
-          <Content fontColor={fontColor} color={color} >
+          <Content fontColor={fontColor} color={color} gradient={this.props.gradient} >
             {this.props.children}
           </Content>
         </ContentWrapper>
@@ -54,7 +54,7 @@ const ContentWrapper = styled.div`
 const Content = styled.main`
   display: block;
   margin-top: -40px;
-  margin-bottom: 0px;
+  ${props => props.gradient ? "margin-bottom: -40px;":"margin-bottom: 0px;"};
   box-shadow: 1000px 0px ${props => props.color}, -1000px 0px ${props => props.color};
   max-width: 1024px;
   min-height: 1000px;
