@@ -90,8 +90,8 @@ const StyledJobdescription = styled.div`
 `
 const Projects = styled.div`
   flex: 1;
-  font-size: 1em;
-  margin-top: 1.3em;
+  font-size: 1.2em;
+  margin-top: 0.5em;
   ${media.desktop`padding: 0 2em 0 2.5em; `}
   ${media.tablet`padding: 0 2em 0 2.5em; `}
   & h3 {

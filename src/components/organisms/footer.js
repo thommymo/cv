@@ -60,7 +60,7 @@ const Left = styled.div`
   ${props => props.gradient ? 'display: none;':''}
 `
 const Middle = styled.div`
-  padding-bottom:20px;
+  padding-bottom: 20px;
   flex: 1;
   text-align: center;
 `
@@ -79,7 +79,7 @@ const BlackLink = styled.a`
 const WhiteCapitalH4 = H4.extend`
   text-transform: uppercase;
   color: ${white};
-  padding-bottom:  0px;
+  padding-bottom: 0px;
   &:hover {
     opacity: 0.8;
   }

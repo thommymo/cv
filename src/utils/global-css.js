@@ -26,9 +26,9 @@ injectGlobal`
       background-clip: text;
     }
     & p {
-        ${media.desktop`font-size: 1.5em; line-height: 1.5em; `}
-        ${media.tablet`font-size: 1.3em; line-height: 1.35em; `}
-        ${media.phone`font-size: 1.2em; line-height: 1.3em; `}
+        ${media.desktop`font-size: 1.4em; line-height: 1.4em; `}
+        ${media.tablet`font-size: 1.3em; line-height: 1.3em; `}
+        ${media.phone`font-size: 1.25em; line-height: 1.3em; `}
       }
     }
     & h3 {

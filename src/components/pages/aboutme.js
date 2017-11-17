@@ -25,7 +25,7 @@ export const AboutMe = () => (
       </Row>
       <Row>
         <ColumnLabel>
-          <Small><H3Label>Lieblings-Technologie</H3Label></Small>
+          <Small><H3Label>&#10084;-Technologie</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
           <PFront>React, ES6 und alles was dazugehört*.</PFront>
@@ -164,7 +164,6 @@ const TwoImages = styled.div`
     width: 100%;
   }
 `
-
 const TextLinkGradient =  TextLink.extend`
   font-weight: 400;
   font-size: 0.9em;
@@ -178,7 +177,7 @@ const PFront = P.extend`
 `
 const H3Label = H3.extend`
   text-transform: uppercase;
-  padding-top:8px;
+  padding-top:2px;
 `
 
 const ColumnLabel = styled.div`
