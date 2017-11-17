@@ -24,6 +24,7 @@ injectGlobal`
       color:transparent;
       -webkit-background-clip: text;
       background-clip: text;
+      display:inline-block;
     }
     & p {
         ${media.desktop`font-size: 1.4em; line-height: 1.4em; `}
