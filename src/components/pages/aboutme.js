@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PageShell from '../../components/templates/page-shell'
 import { H1, H2, H3, P, Small } from '../../components/atoms/typography'
-import { green, blue, black, violet } from '../../utils/colors'
 import { TextLink } from '../../components/atoms/buttons'
 import { Image } from '../../components/atoms/images'
 import { media } from '../../utils/breakpoints'
@@ -122,8 +121,8 @@ const HeaderTitle = styled.div`
   text-align: center;
   margin-top: 10em;
   margin-bottom: 9em;
-  background-image: -webkit-linear-gradient(165deg, ${green} 20%,${black} 110%); /* For Chrome and Safari */
-  background-image:         linear-gradient(165deg, ${green} 20%,${black} 110%); /* Standard syntax; must be last */
+  background-image: -webkit-linear-gradient(165deg, ${props => props.theme.green} 20%,${props => props.theme.black} 110%); /* For Chrome and Safari */
+  background-image:         linear-gradient(165deg, ${props => props.theme.green} 20%,${props => props.theme.black} 110%); /* Standard syntax; must be last */
   -webkit-background-clip: text;
   background-clip: text;
 `
@@ -170,7 +169,7 @@ const TextLinkGradient =  TextLink.extend`
   padding-right: 20px;
 `
 const Content = styled.div`
-  color:${black}
+  color:${props => props.theme.black}
 `
 const PFront = P.extend`
 

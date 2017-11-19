@@ -6,7 +6,6 @@ import PageShell from '../../components/templates/page-shell'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
 import { CVEntryHeader, JobDescription, Awards, WorkReview, CVEntryFooter } from '../molecules/cv-entry-detail'
-import { primaryFontColor, primary } from '../../utils/colors'
 
 export const PreviewCVEntry = ({
   organization,
@@ -15,21 +14,18 @@ export const PreviewCVEntry = ({
   title,
   background,
 }) => {
-  const color = JSON.parse(background)
-  const colorRGBA = primary
   return(
     // TODO: Prevent Apollo to do 2 API calls, when data is available
     // client.select(gql`{ ... }`, '5'); This way I should be able to get data
     // from the store without loading it, that way I can prevent to make 2
     // API calls, when no data is available.
     // Read: https://github.com/apollographql/apollo-client/issues/1036
-    <PageShell color={colorRGBA} title={title} backlink="/cv"  fontColor={primaryFontColor} gradient={true}>
+    <PageShell title={title} backlink="/cv" gradient={true}>
       <CVEntryHeader
         organization={organization}
         startDate={startDate}
         endDate={endDate}
         title={title}
-        color={colorRGBA}
       />
       <SectionCentered>
         <Loading />
@@ -47,7 +43,6 @@ export const CVEntry = ({
   startDate,
   endDate,
   title,
-  background,
   responsabilities,
   responsabilitiesdescription,
   projects,
@@ -63,16 +58,13 @@ export const CVEntry = ({
   workreview,
   workreviewimages,
 }) => {
-  const color = JSON.parse(background)
-  const colorRGBA = primary
   return(
-      <PageShell color={colorRGBA} title={title} backlink="/cv"  fontColor={primaryFontColor} gradient={true}>
+      <PageShell title={title} backlink="/cv" gradient={true}>
         <CVEntryHeader
           organization={organization}
           startDate={startDate}
           endDate={endDate}
           title={title}
-          color={colorRGBA}
         />
         <CSSTransition
           in
@@ -95,7 +87,7 @@ export const CVEntry = ({
             { descriptionimages &&
               <SectionCentered>
                 {descriptionimages.map((image) => (
-                  <FullWithImage color={colorRGBA} handle={image.handle} key={image.handle}/>
+                  <FullWithImage handle={image.handle} key={image.handle}/>
                 )) }
               </SectionCentered>
             }
@@ -113,7 +105,7 @@ export const CVEntry = ({
             }
             { workreview &&
               <SectionCentered>
-                <WorkReview workreview={workreview} workreviewimages={workreviewimages} colorRGBA={colorRGBA}/>
+                <WorkReview workreview={workreview} workreviewimages={workreviewimages}/>
               </SectionCentered>
             }
           </article>

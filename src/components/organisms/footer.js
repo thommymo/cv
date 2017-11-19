@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { black, white, green, blue } from '../../utils/colors'
 import { H4 } from '../atoms/typography'
 import { githubIcon, closeIcon } from '../../utils/icons'
 import { Link } from 'react-router-dom'
@@ -36,8 +35,8 @@ export const Footer = ({props}) => (
 )
 
 const StyledFooter = styled.footer`
-  color: ${black};
-  background-color: ${white};
+  color: ${props => props.theme.black};
+  background-color: ${props => props.theme.white};
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -45,7 +44,7 @@ const StyledFooter = styled.footer`
   position: relative;
   min-height: 95px;
   bottom: 0px;
-  ${props => props.gradient ? `background: linear-gradient(165deg, ${green} -20%,${blue} 120%); min-height: 135px;`:`background:${white}`}
+  ${props => props.gradient ? `background: linear-gradient(165deg, ${props.theme.green} -20%,${props.theme.blue} 120%); min-height: 135px;`:`background:${props.theme.white}`}
 `
 const Right = styled.div`
   padding: 12px 20px;
@@ -65,20 +64,20 @@ const Middle = styled.div`
   text-align: center;
 `
 const BackLink = styled.a`
-  color: ${black} !important;
+  color: ${props => props.theme.black} !important;
   &: hover {
     opacity: 0.8;
   }
 `
 const BlackLink = styled.a`
-  color: ${black} !important;
+  color: ${props => props.theme.black} !important;
   & : hover {
     opacity: 0.8;
   }
 `
 const WhiteCapitalH4 = H4.extend`
   text-transform: uppercase;
-  color: ${white};
+  color: ${props => props.theme.white};
   padding-bottom: 0px;
   &:hover {
     opacity: 0.8;

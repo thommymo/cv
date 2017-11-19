@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { primary, blue, green, violet, primaryFontColor } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
 import { P, H1, H3, H4, H4Capitals } from '../atoms/typography'
 import { TextLink } from '../atoms/buttons'
@@ -14,10 +13,10 @@ const Content = styled.div`
   padding: 44px 20px 44px 20px;
   margin-left:3px;
   margin-right:3px;
-  border-top: solid; border-top-width: 10px; border-top-color: ${primary};
-  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${primary};
-  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${blue}; margin-right:0px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${blue}; margin-left:0px; text-align:right; ` : ''};
+  border-top: solid; border-top-width: 10px; border-top-color: ${props => props.theme.primary};
+  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${props => props.theme.primary};
+  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${props.theme.blue}; margin-right:0px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${props.theme.blue}; margin-left:0px; text-align:right; ` : ''};
   flex:1;
 `
 export const CVEntriesHeader = ({
@@ -61,8 +60,8 @@ const SectionFlex = styled.div`
 const Header = styled.div`
   & > div > h3 {
     text-transform: uppercase;
-    border-bottom: 3px solid ${blue};
-    color:${blue};
+    border-bottom: 3px solid ${props => props.theme.blue};
+    color:${props => props.theme.blue};
     display: inline;
     font-size:1.1em;
     font-weight:400;
@@ -140,11 +139,7 @@ export const CVEntries = ({data : {
   const options = { year: 'numeric'}
   const formattedStartDate = startDate ? startDateDate.toLocaleDateString('de-DE', options) : ""
   const formattedEndDate = endDate ? endDateDate.toLocaleDateString('de-DE', options) : ""
-  let colorRGBA = "rgba(175, 9, 131, 0.61)"
-  if(moreinfocventry){
-    const color = JSON.parse(moreinfocventry.background)
-    colorRGBA = `rgba(${color.r},${color.g},${color.b},${color.a})`
-  }
+
 
   return (
     <CSSTransition
@@ -168,7 +163,6 @@ export const CVEntries = ({data : {
           addTopRightTriangle={addTopRightTriangle}
           addBottomLeftTriangle={addBottomLeftTriangle}
           addBottomRightTriangle={addBottomRightTriangle}
-          background={colorRGBA}
         />
         <Content
           left={left}
@@ -206,7 +200,6 @@ export const CVEntries = ({data : {
           addTopRightTriangle={addTopRightTriangle}
           addBottomLeftTriangle={addBottomLeftTriangle}
           addBottomRightTriangle={addBottomRightTriangle}
-          background={colorRGBA}
         />
       </EntryItem>
     </CSSTransition>
@@ -223,10 +216,8 @@ const Title = H3.extend`
   & a {
     display:inline-block;
     ${props => props.right ?
-      `background-image: -webkit-linear-gradient(165deg, ${violet} 20%,${blue} 120%); background-image: linear-gradient(165deg, ${violet} 20%,${blue} 120%);`:
-      `background-image: -webkit-linear-gradient(165deg, ${blue} 20%,${green} 120%); background-image: linear-gradient(165deg, ${blue} 20%,${green} 120%);`}; /* For Chrome and Safari */
-
-
+      `background-image: -webkit-linear-gradient(165deg, ${props.theme.violet} 20%,${props.theme.blue} 120%); background-image: linear-gradient(165deg, ${props.theme.violet} 20%,${props.theme.blue} 120%);`:
+      `background-image: -webkit-linear-gradient(165deg, ${props.theme.blue} 20%,${props.theme.green} 120%); background-image: linear-gradient(165deg, ${props.theme.blue} 20%,${props.theme.green} 120%);`}; /* For Chrome and Safari */
   }
 `
 const Organization = styled.div`
@@ -249,7 +240,6 @@ const Excerpt = styled.div`
   ${media.desktop`margin-top: -3.7em;`}
   ${media.tablet`margin-top: -2.8em;`}
   ${media.phone`margin-top: -2.3em;`}
-
 `
 
 /*
@@ -262,7 +252,6 @@ const EntryItem = styled.div`
   ${media.tablet`margin-left: -51px; margin-right: -51px;`}
   ${media.phone`margin-left: -6px; margin-right: -6px;`}
 `
-
 
 // Timespan Component for displaying the timespan left or right of the content of a CV element
 
@@ -279,7 +268,6 @@ const TimeLine = ({
   addBottomLeftTriangle=false,
   addBottomRightTriangle=false,
   addTopRightTriangle=false,
-  background=blue
 }) => (
   <StyledTimeLine
     bothright={bothright}
@@ -291,7 +279,6 @@ const TimeLine = ({
     addBottomLeftTriangle={addBottomLeftTriangle}
     addBottomRightTriangle={addBottomRightTriangle}
     addTopRightTriangle={addTopRightTriangle}
-    background={background}
   >
     <StyledTimeSpan show={show} rightposition={rightposition}>
       { endDate &&
@@ -317,15 +304,15 @@ const StyledTimeSpan = H4.extend`
   ${props => !props.show ? 'display: none !important;' : ''};
   ${props => props.rightposition ? 'text-align: left; margin-left: -12px' : 'text-align: right; margin-right: -12px'};
   text-align: center;
-  color:${primary};
+  color:${props => props.theme.primary};
 `
 
 const StyledTimeLine = styled.div`
   position: relative;
-  ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${green} -50%,${blue} 100%);`: ''};
-  ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${violet} -50%,${blue} 100%);` : ''};
-  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${blue}` : ''};
-  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${blue}` : ''};
+  ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${props.theme.green} -50%,${props.theme.blue} 100%);`: ''};
+  ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${props.theme.violet} -50%,${props.theme.blue} 100%);` : ''};
+  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${props.theme.blue}` : ''};
+  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${props.theme.blue}` : ''};
   ${media.desktop`width:35px;`};
   ${media.desktop`min-width:35px;`};
   ${media.tablet`width:35px;`};
@@ -342,7 +329,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-left: 55px solid transparent;
-      border-top: 55px solid ${primary};
+      border-top: 55px solid ${props.theme.primary};
       top: 0;
       right: 0;
       position: absolute;
@@ -355,7 +342,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-right: 55px solid transparent;
-      border-bottom: 55px solid ${primary};
+      border-bottom: 55px solid ${props.theme.primary};
       bottom: 0;
       left: 0;
       position: absolute;
@@ -368,7 +355,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-right: 55px solid transparent;
-      border-top: 55px solid ${primary};
+      border-top: 55px solid ${props.theme.primary};
       top: 0;
       left: 0;
       position: absolute;
@@ -381,7 +368,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-left: 55px solid transparent;
-      border-bottom: 55px solid ${primary};
+      border-bottom: 55px solid ${props.theme.primary};
       bottom: 0;
       right: 0;
       position: absolute;

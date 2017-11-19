@@ -73,7 +73,7 @@ export class FullWithImage extends Component {
           classNames="ImageFadeIn"
           timeout={(timeout*2)}
         >
-          <WithBorder color={this.props.color} imageLoaded={this.state.imageLoaded}>
+          <WithBorder imageLoaded={this.state.imageLoaded}>
             <picture>
               { Object.keys(sizes).map((label) => (
 
@@ -132,7 +132,7 @@ const WithBorder = styled.div`
     border-right-style: solid;
     border-right-color: transparent;
     border-top-style: solid;
-    border-top-color: ${props => props.color};
+    border-top-color: ${props => props.theme.primary};
     position: absolute;
     z-index: 1000;
   }
@@ -147,7 +147,7 @@ const WithBorder = styled.div`
     border-left-style: solid;
     border-left-color: transparent;
     border-bottom-style: solid;
-    border-bottom-color: ${props => props.color};
+    border-bottom-color: ${props => props.theme.primary};
     position: absolute;
     z-index: 1000;
   }

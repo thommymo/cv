@@ -2,7 +2,6 @@ import React from 'react'
 import PageShell from '../../components/templates/page-shell'
 import { CVEntries, CVEntriesHeader } from '../molecules/cv-entries'
 import { Loading } from '../../components/atoms/loading'
-import { primaryFontColor } from '../../utils/colors'
 
 export const CVIsLoading = () => (
   <PageShell withMainNavigation title="CV">
@@ -12,7 +11,7 @@ export const CVIsLoading = () => (
 )
 
 export const CV = ({allCVEntrieses}) => (
-  <PageShell withMainNavigation fontColor={primaryFontColor}>
+  <PageShell withMainNavigation>
     <CVEntriesHeader titleleft="Arbeit" titleright="Ausbildung"/>
     { allCVEntrieses.map((entry) => (
       <CVEntries data={entry} key={entry.id} />

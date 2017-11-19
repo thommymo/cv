@@ -1,5 +1,4 @@
 import { injectGlobal } from 'styled-components';
-import { white, blue, violet } from './colors'
 import { timeout } from './constants'
 import { media } from './breakpoints'
 
@@ -17,14 +16,14 @@ injectGlobal`
     font-weight: 200;
     font-size: 100%;
     height: 100%;
-    background-color: ${white};
+    background-color: white; /*{white}*/
     & a {
-      background-image: -webkit-linear-gradient(165deg, ${blue} 20%,${violet} 70%); /* For Chrome and Safari */
-      background-image:         linear-gradient(165deg, ${blue} 20%,${violet} 70%); /* Standard syntax; must be last */
-      color:transparent;
+      background-image: -webkit-linear-gradient(165deg, blue 20%,red 70%); /* For Chrome and Safari */
+      background-image:         linear-gradient(165deg, blue 20%,red 70%); /* Standard syntax; must be last */
+      color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
-      display:inline-block;
+      display: inline-block;
     }
     & p {
         ${media.desktop`font-size: 1.4em; line-height: 1.4em; `}

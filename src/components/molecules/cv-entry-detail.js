@@ -3,7 +3,6 @@ import { H1, P, H4, H2, H3, H4Capitals, PCapitals, Small } from '../../component
 import { SectionCentered } from '../../components/atoms/containers'
 import { FullWithImage, Image } from '../../components/atoms/images'
 import styled from 'styled-components'
-import { white, black, blue, primary } from '../../utils/colors'
 import { media } from '../../utils/breakpoints'
 
 
@@ -49,15 +48,15 @@ const HeaderWithBorder = styled.div`
   border-top-width: 40px;
   border-top-color: transparent;
   border-left-width: 40px;
-  border-left-color: ${primary};
+  border-left-color: ${props=>props.theme.primary};
   border-right-width: 40px;
-  border-right-color: ${primary};
+  border-right-color: ${props=>props.theme.primary};
   padding-bottom: 6em;
   position: relative;
 `
 const HeaderWithDate = styled.div`
   margin-top: -52px;
-  color: ${white};
+  color: ${props => props.theme.white};
 `
 
 /*
@@ -205,12 +204,12 @@ const FooterWithBorder = styled.div`
   border-bottom-width: 40px;
   border-bottom-color: transparent;
   border-left-width: 40px;
-  border-left-color: ${primary};
+  border-left-color: ${props=>props.theme.primary};
   border-right-width: 40px;
-  border-right-color: ${primary};
+  border-right-color: ${props=>props.theme.primary};
   position: relative;
   z-index: 1000;
-  ${media.desktop`box-shadow: 700px 0px ${primary}, -700px 0px ${primary}; `}
-  ${media.tablet`box-shadow: 300px 0px ${primary}, -300px 0px ${primary}; `}
-  ${media.phone`box-shadow: 100px 0px ${primary}, -100px 0px ${primary}; `}
+  ${media.desktop`box-shadow: 700px 0px ${props=>props.theme.primary}, -700px 0px ${props=>props.theme.primary}; `}
+  ${media.tablet`box-shadow: 300px 0px ${props=>props.theme.primary}, -300px 0px ${props=>props.theme.primary}; `}
+  ${media.phone`box-shadow: 100px 0px ${props=>props.theme.primary}, -100px 0px ${props=>props.theme.primary}; `}
 `
