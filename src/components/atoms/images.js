@@ -37,11 +37,11 @@ export const ImageDynWidth = ({
     ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
     `}
         srcSet={`
-    ${baseurl}resize=width:${imagesizes[label]/columns}/${handle} 1x,
-    ${baseurl}resize=width:${imagesizes[label]*2/columns}/${handle} 2x,
+    ${baseurl}resize=width:${Math.ceil(imagesizes[label]/columns)}/${handle} 1x,
+    ${baseurl}resize=width:${Math.ceil(imagesizes[label]*2/columns)}/${handle} 2x,
   `}/>
     ))}
-    <Img src={`${baseurl}resize=width:${800/columns}/${handle}`} onLoad={onLoad} withShadow={withShadow}/>
+    <Img src={`${baseurl}resize=width:${Math.ceil(800/columns)}/${handle}`} onLoad={onLoad} withShadow={withShadow}/>
   </picture>
 )
 
