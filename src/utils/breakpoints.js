@@ -1,5 +1,3 @@
-//TODO: Add this together with the breakpoints from full-with-image
-
 import {css} from 'styled-components'
 
 // breakpoints with min and max values
@@ -9,6 +7,7 @@ export const sizes = {
 	desktop: [769, false]
 }
 
+//according image sizes that should be produced
 export const imagesizes = {
 	phone: 215,
 	tablet: 431,
