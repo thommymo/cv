@@ -17,10 +17,10 @@ export const Footer = ({props}) => (
     }
     { props.gradient &&
       <Middle>
-        <Link to={props.backlink}>
-          <WhiteCapitalH4>Zurück zum CV</WhiteCapitalH4>
+        <WhiteLink to={props.backlink}>
+          <H4>Zurück zum CV</H4>
           <img src={closeIcon} alt="Back link" width="40" height="40"/>
-        </Link>
+        </WhiteLink>
       </Middle>
     }
     { !props.gradient &&
@@ -59,8 +59,11 @@ const Left = styled.div`
 `
 const Middle = styled.div`
   padding-bottom: 20px;
-  flex: 1;
+  display: flex;
+  width: 100%;
+  justify-content: center;
   text-align: center;
+  z-index:1000;
 `
 const BlackLink = styled.a`
   color: ${props => props.theme.colors.black} !important;
@@ -68,10 +71,12 @@ const BlackLink = styled.a`
     opacity: 0.8;
   }
 `
-const WhiteCapitalH4 = H4.extend`
+const WhiteLink = styled(Link)`
   text-transform: uppercase;
   color: ${props => props.theme.colors.white};
-  padding-bottom: 0px;
+  text-decoration: none;
+  max-width: 200px;
+  display:block;
   &:hover {
     opacity: 0.8;
   }
