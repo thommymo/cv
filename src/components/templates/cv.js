@@ -1,6 +1,7 @@
 import React from 'react'
 import PageShell from '../../components/templates/page-shell'
-import { CVEntries, CVEntriesHeader } from '../molecules/cv-entries'
+import { CVEntries } from '../molecules/cv-entries'
+import { CVEntriesHeader } from '../molecules/cv-entries-header'
 import { Loading } from '../../components/atoms/loading'
 
 export const CVIsLoading = () => (
