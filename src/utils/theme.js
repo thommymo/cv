@@ -34,6 +34,11 @@ export const theme = {
       tablet: "1.125em",
       phone: "1em"
     },
+    small: {
+      desktop: "0.7em",
+      tablet: "0.7em",
+      phone: "0.7em"
+    },
   },
   lineHeight: {
     p: {
@@ -60,6 +65,11 @@ export const theme = {
       desktop: "1.22222222em",
       tablet: "1.22222222em",
       phone: "1.22222222em"
+    },
+    small: {
+      desktop: "0.6em",
+      tablet: "0.6em",
+      phone: "0.6em"
     },
   }
 }
