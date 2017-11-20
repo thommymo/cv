@@ -5,6 +5,7 @@ import { P, H1, H3, H4, H4Capitals } from '../atoms/typography'
 import { TextLink } from '../atoms/buttons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
+import { HeaderTitle } from '../../components/atoms/containers'
 
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
@@ -48,11 +49,6 @@ export const CVEntriesHeader = ({
   </div>
 )
 
-const HeaderTitle = styled.div`
-  text-align: center;
-  margin-top: 7em;
-  margin-bottom: 12em;
-`
 const SectionFlex = styled.div`
   display: flex;
   justify-content: space-between;

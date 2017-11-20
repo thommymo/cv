@@ -1,22 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
 import { H1, H2 } from '../../components/atoms/typography'
+import { HeaderTitle } from '../atoms/containers'
 
 export const FrontTitle = ({
   title,
   subtitle
 }) => (
-  <HeaderTitle>
+  <FrontHeaderTitle>
     <H1Front>{title}</H1Front>
     <H2Front>{subtitle}</H2Front>
-  </HeaderTitle>
+  </FrontHeaderTitle>
 )
 
-const HeaderTitle = styled.div`
+const FrontHeaderTitle = HeaderTitle.extend`
   color:transparent;
-  text-align: center;
   margin-top: 10em;
-  margin-bottom: 9em;
   background-image: -webkit-linear-gradient(165deg, ${props => props.theme.colors.green} 20%,${props => props.theme.colors.black} 110%); /* For Chrome and Safari */
   background-image:         linear-gradient(165deg, ${props => props.theme.colors.green} 20%,${props => props.theme.colors.black} 110%); /* Standard syntax; must be last */
   -webkit-background-clip: text;

@@ -8,3 +8,8 @@ export const Section = styled.div`
 export const SectionCentered = Section.extend`
   text-align: center;
 `
+export const HeaderTitle = styled.div`
+  text-align: center;
+  margin-top: 7em;
+  margin-bottom: 9em;
+`
