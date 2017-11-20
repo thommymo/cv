@@ -36,7 +36,7 @@ export const theme = {
     },
     small: {
       desktop: "0.6em",
-      tablet: "0.6em",
+      tablet: "0.8em",
       phone: "0.8em"
     },
   },
@@ -68,7 +68,7 @@ export const theme = {
     },
     small: {
       desktop: "0.5em",
-      tablet: "0.5em",
+      tablet: "0.8em",
       phone: "0.8em"
     },
   }

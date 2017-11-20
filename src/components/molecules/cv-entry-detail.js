@@ -85,14 +85,12 @@ export const JobDescription = ({
 
 const StyledJobdescription = styled.div`
   ${media.desktop`display: flex; `}
-  ${media.tablet`display: flex; `}
 `
 const Projects = styled.div`
   flex: 1;
   font-size: 1.2em;
   margin-top: 0.5em;
   ${media.desktop`padding: 0 2em 0 2.5em; `}
-  ${media.tablet`padding: 0 2em 0 2.5em; `}
   & h3 {
     text-transform: uppercase;
   }
@@ -100,9 +98,7 @@ const Projects = styled.div`
 const Tasks = styled.div`
   flex: 3;
   ${media.desktop`padding: 0 2em 0 2.5em; `}
-  ${media.tablet`padding: 0 2em 0 2.5em; `}
   ${media.desktop`order: 1; `}
-  ${media.tablet`order: 1; `}
 `
 export const Awards = ({
   awardstitle,

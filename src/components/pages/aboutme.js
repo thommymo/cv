@@ -178,7 +178,6 @@ const H3Label = H3.extend`
   text-transform: uppercase;
   padding-top:2px;
   ${media.desktop`text-align: right; padding-right: 40px;`}
-  ${media.tablet`text-align: right; padding-right: 20px;`}
 `
 
 const ColumnLabel = styled.div`
