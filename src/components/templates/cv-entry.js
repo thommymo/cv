@@ -5,8 +5,10 @@ import { Loading } from '../../components/atoms/loading'
 import PageShell from '../../components/templates/page-shell'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
-import { CVEntryHeader, JobDescription, ImagesWithTitle, CVEntryFooter } from '../molecules/cv-entry-detail'
+import { CVEntryHeader, CVEntryFooter } from '../molecules/cv-entry-detail'
+import { TextWithInfo } from '../molecules/text-with-info'
 import { LogosWithText } from '../molecules/logos-with-text'
+import { ImagesWithTitle } from '../molecules/images-with-title'
 
 export const PreviewCVEntry = ({
   organization,
@@ -77,11 +79,11 @@ export const CVEntry = ({
           <article>
             { responsabilities &&
               <Section>
-                <JobDescription
-                  projectstitle={projects}
-                  projectdescription={{__html: projectdescription}}
-                  responsabilities={responsabilities}
-                  responsabilitiesdescription={{__html: responsabilitiesdescription}}
+                <TextWithInfo
+                  title={projects}
+                  description={{__html: projectdescription}}
+                  infoTitle={responsabilities}
+                  infoDescrition={{__html: responsabilitiesdescription}}
                 />
               </Section>
             }

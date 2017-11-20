@@ -58,77 +58,7 @@ const HeaderWithDate = styled.div`
   color: ${props => props.theme.colors.white};
 `
 
-/*
-  Molecules
-*/
 
-export const JobDescription = ({
-  projectstitle,
-  projectdescription,
-  responsabilities,
-  responsabilitiesdescription,
-}) => (
-  <StyledJobdescription>
-    <Tasks>
-      <H3>{responsabilities}</H3>
-      <InnerHTML dangerouslySetInnerHTML={responsabilitiesdescription} />
-    </Tasks>
-    <Projects>
-      <Small>
-        <H3>{projectstitle}</H3>
-        <InnerHTML dangerouslySetInnerHTML={projectdescription} />
-      </Small>
-    </Projects>
-  </StyledJobdescription>
-)
-
-const StyledJobdescription = styled.div`
-  ${media.desktop`display: flex; `}
-`
-const Projects = styled.div`
-  flex: 1;
-  font-size: 1.2em;
-  margin-top: 0.5em;
-  ${media.desktop`padding: 0 2em 0 2.5em; `}
-  & h3 {
-    text-transform: uppercase;
-  }
-`
-const Tasks = styled.div`
-  flex: 3;
-  ${media.desktop`padding: 0 2em 0 2.5em; `}
-  ${media.desktop`order: 1; `}
-`
-
-
-export const ImagesWithTitle = ({
-  title,
-  images
-}) => (
-  <StyledImagesWithTitle>
-    {title &&
-      <H2>{title}</H2>
-    }
-    { images &&
-      images.map((image) => (
-        <ImagePadding key={image.handle}>
-          <FullWithImage handle={image.handle} withBorder={true} withShadow={true}/>
-        </ImagePadding>
-      )) }
-  </StyledImagesWithTitle>
-)
-
-const ImagePadding = styled.div`
-  padding-bottom: 5em;
-  &:last-child {
-    padding-bottom: 0em;
-  }
-`
-const StyledImagesWithTitle = SectionCentered.extend`
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-`
 
 /*
   Molecule

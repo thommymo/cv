@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { H2, PCapitals } from '../../components/atoms/typography'
+
 import { Image } from '../../components/atoms/images'
 import { media } from '../../utils/breakpoints'
 
