@@ -76,10 +76,10 @@ export const AboutMe = () => (
         <H2>Beim Arbeiten</H2>
         <RowImages>
           <TwoImages>
-            <img src="/assets/images/thomas_moser_3-1000w.jpg" />
+            <img src="/assets/images/thomas_moser_3-1000w.jpg" alt="Thomas beim Arbeiten"/>
           </TwoImages>
           <TwoImages>
-            <img src="/assets/images/thomas_moser_4-1000w.jpg" />
+            <img src="/assets/images/thomas_moser_4-1000w.jpg" alt="Thomas beim Arbeiten"/>
           </TwoImages>
         </RowImages>
       </CenteredRow>
@@ -87,13 +87,13 @@ export const AboutMe = () => (
         <H2>In der Freizeit</H2>
         <RowImages>
           <ThreeImages>
-            <img src="https://media.graphcms.com/HCgGXNqFTxOFVQa3hX4R" />
+            <img src="https://media.graphcms.com/HCgGXNqFTxOFVQa3hX4R" alt="Thomas beim Biken"/>
           </ThreeImages>
           <ThreeImages>
-            <img src="https://media.graphcms.com/rg7ELbbGTH6AAb72hK7Z" />
+            <img src="https://media.graphcms.com/rg7ELbbGTH6AAb72hK7Z" alt="Thomas beim Wandern"/>
           </ThreeImages>
           <ThreeImages>
-            <img src="https://media.graphcms.com/J1vMC6coS8KwmsgT1e4m" />
+            <img src="https://media.graphcms.com/J1vMC6coS8KwmsgT1e4m" alt="Thomas beim Skitouren"/>
           </ThreeImages>
         </RowImages>
       </CenteredRow>

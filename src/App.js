@@ -6,8 +6,6 @@ import { timeoutTransition } from './utils/constants'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/pages/page-not-found'
 import { AboutMe } from './components/pages/aboutme'
-import ThemeProvider from 'styled-components'
-import { theme } from './utils/theme'
 import './utils/global-css'
 
 class App extends Component {
