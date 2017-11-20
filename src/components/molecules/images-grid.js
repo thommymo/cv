@@ -4,14 +4,18 @@ import { FullWithImage } from '../atoms/images'
 import { H2 } from '../atoms/typography'
 import { media } from '../../utils/breakpoints'
 
-export const ImagesGrid = (props) => (
+export const ImagesGrid = ({
+  title,
+  images,
+  columns
+}) => (
   <div>
-    { props.title &&
-      <H2>{props.title}</H2>
+    { title &&
+      <H2>{title}</H2>
     }
     <ImageRow>
-      {props.images.map((image)=> (
-        <ImageColumn columns={props.columns} key={image.handle}>
+      {images.map((image)=> (
+        <ImageColumn columns={columns} key={image.handle}>
           <FullWithImage handle={image.handle} alt="Thomas beim Arbeiten" height={image.height} columns="2"/>
         </ImageColumn>
       ))}

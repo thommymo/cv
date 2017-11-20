@@ -3,13 +3,16 @@ import styled from 'styled-components'
 import { Small, H3Capitals } from '../../components/atoms/typography'
 import { media } from '../../utils/breakpoints'
 
-export const TextWithLabel = (props) => (
+export const TextWithLabel = ({
+  label,
+  children
+}) => (
   <Row>
     <ColumnLabel>
-      <Small><H3Capitals>{props.label}</H3Capitals></Small>
+      <Small><H3Capitals>{label}</H3Capitals></Small>
     </ColumnLabel>
     <ColumnDescription>
-      {props.children}
+      {children}
     </ColumnDescription>
   </Row>
 )

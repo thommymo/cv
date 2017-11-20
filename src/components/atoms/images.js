@@ -8,18 +8,27 @@ import { timeout, baseurl} from '../../utils/constants'
  TODO: Add loading of image
  */
 
-export const Image = (props) => (
+export const Image = ({
+  handle,
+  height,
+  alt
+}) => (
   <picture>
     <source
       srcSet={`
-          ${baseurl}resize=height:${props.height}/${props.handle} 1x,
-          ${baseurl}resize=height:${props.height*2}/${props.handle} 2x,
+          ${baseurl}resize=height:${height}/${handle} 1x,
+          ${baseurl}resize=height:${height*2}/${handle} 2x,
         `}/>
-    <img src={`${baseurl}resize=height:${props.height}/${props.handle}`} alt={props.alt} height={props.height} />
+    <img src={`${baseurl}resize=height:${height}/${handle}`} alt={alt} height={height} />
   </picture>
 )
 
-export const ImageDynWidth = (props) => (
+export const ImageDynWidth = ({
+  handle,
+  columns,
+  onLoad,
+  withShadow
+}) => (
   <picture>
     { Object.keys(sizes).map((label) => (
       <source key={imagesizes[label]}
@@ -28,11 +37,11 @@ export const ImageDynWidth = (props) => (
     ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
     `}
         srcSet={`
-    ${baseurl}resize=width:${imagesizes[label]/props.columns}/${props.handle} 1x,
-    ${baseurl}resize=width:${imagesizes[label]*2/props.columns}/${props.handle} 2x,
+    ${baseurl}resize=width:${imagesizes[label]/columns}/${handle} 1x,
+    ${baseurl}resize=width:${imagesizes[label]*2/columns}/${handle} 2x,
   `}/>
     ))}
-    <Img src={`${baseurl}resize=width:${800/props.columns}/${props.handle}`} onLoad={props.onLoad} withShadow={props.withShadow}/>
+    <Img src={`${baseurl}resize=width:${800/columns}/${handle}`} onLoad={onLoad} withShadow={withShadow}/>
   </picture>
 )
 

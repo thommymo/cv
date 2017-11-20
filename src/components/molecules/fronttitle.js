@@ -2,10 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { H1, H2 } from '../../components/atoms/typography'
 
-export const FrontTitle = (props) => (
+export const FrontTitle = ({
+  title,
+  subtitle
+}) => (
   <HeaderTitle>
-    <H1Front>{props.title}</H1Front>
-    <H2Front>{props.subtitle}</H2Front>
+    <H1Front>{title}</H1Front>
+    <H2Front>{subtitle}</H2Front>
   </HeaderTitle>
 )
 

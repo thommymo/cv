@@ -3,13 +3,17 @@ import styled from 'styled-components'
 import { Image } from '../atoms/images'
 import { H2 } from '../atoms/typography'
 
-export const LogoCloud = (props) => (
+export const LogoCloud = ({
+  title,
+  images,
+  height
+}) => (
   <div>
-    <H2>{props.title}</H2>
+    <H2>{title}</H2>
     <RowLogos>
-      {props.images.map((image) => (
+      {images.map((image) => (
         <Logo key={image.handle}>
-          <Image handle={image.handle} height={props.height} />
+          <Image handle={image.handle} height={height} />
         </Logo>
       ))}
     </RowLogos>
