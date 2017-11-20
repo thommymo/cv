@@ -21,6 +21,13 @@ export const AboutMe = () => (
         <P><small>Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></P>
         <P><TextLinkBold to="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextLinkBold><TextLinkBold to="/cv">Design in Storybook &rarr;</TextLinkBold></P>
       </TextWithLabel>
+      <TextWithLabel label="Sprachen">
+        <P>
+          Deutsch: Muttersprache<br/>
+          Englisch: sehr gut (4-monatiger Sprachaufenthalt in Kanada)<br/>
+          Französisch: Basiskenntnisse
+        </P>
+      </TextWithLabel>
     </Section>
     <SectionCentered>
       <LogoCloud
