@@ -1,5 +1,5 @@
 import React from 'react';
-import { H1, H2, H3, H4Capitals, PCapitals, Small } from '../../components/atoms/typography'
+import { H1, H2, H3, H4Capitals, PCapitals, Small, InnerHTML } from '../../components/atoms/typography'
 import { SectionCentered } from '../../components/atoms/containers'
 import { FullWithImage, Image } from '../../components/atoms/images'
 import styled from 'styled-components'
@@ -72,12 +72,12 @@ export const JobDescription = ({
   <StyledJobdescription>
     <Tasks>
       <H3>{responsabilities}</H3>
-      <span dangerouslySetInnerHTML={responsabilitiesdescription} />
+      <InnerHTML dangerouslySetInnerHTML={responsabilitiesdescription} />
     </Tasks>
     <Projects>
       <Small>
         <H3>{projectstitle}</H3>
-        <span dangerouslySetInnerHTML={projectdescription} />
+        <InnerHTML dangerouslySetInnerHTML={projectdescription} />
       </Small>
     </Projects>
   </StyledJobdescription>
@@ -145,7 +145,7 @@ const Award = ({
 }) => (
   <StyledAward key={logo}>
     <Image handle={logo.handle} height="120" alt="Award Logo"/>
-    <Small><PCapitals>{description}</PCapitals></Small>
+    <PCapitals>{description}</PCapitals>
   </StyledAward>
 )
 
