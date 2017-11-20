@@ -5,7 +5,8 @@ import { Loading } from '../../components/atoms/loading'
 import PageShell from '../../components/templates/page-shell'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
-import { CVEntryHeader, JobDescription, Awards, WorkReview, CVEntryFooter } from '../molecules/cv-entry-detail'
+import { CVEntryHeader, JobDescription, ImagesWithTitle, CVEntryFooter } from '../molecules/cv-entry-detail'
+import { LogosWithText } from '../molecules/logos-with-text'
 
 export const PreviewCVEntry = ({
   organization,
@@ -93,9 +94,9 @@ export const CVEntry = ({
             }
             { awardstitle &&
               <SectionCentered>
-                <Awards
-                  awardstitle={awardstitle}
-                  awards={[
+                <LogosWithText
+                  text={awardstitle}
+                  logos={[
                     {logo: awardlogo1, description: awarddescription1},
                     {logo: awardlogo2, description: awarddescription2},
                     {logo: awardlogo3, description: awarddescription3}
@@ -105,7 +106,7 @@ export const CVEntry = ({
             }
             { workreview &&
               <SectionCentered>
-                <WorkReview workreview={workreview} workreviewimages={workreviewimages}/>
+                <ImagesWithTitle title={workreview} images={workreviewimages}/>
               </SectionCentered>
             }
           </article>
