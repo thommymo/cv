@@ -5,14 +5,14 @@ import { CVEntriesHeader } from '../molecules/cv-entries-header'
 import { Loading } from '../../components/atoms/loading'
 
 export const CVIsLoading = () => (
-  <PageShell withMainNavigation title="CV">
+  <PageShell withMainNavigation title="Lebenslauf">
     <CVEntriesHeader titleleft="Arbeit" titleright="Ausbildung"/>
     <Loading />
   </PageShell>
 )
 
 export const CV = ({allCVEntrieses}) => (
-  <PageShell withMainNavigation>
+  <PageShell withMainNavigation title="Lebenslauf">
     <CVEntriesHeader titleleft="Arbeit" titleright="Ausbildung"/>
     { allCVEntrieses.map((entry) => (
       <CVEntries data={entry} key={entry.id} />
