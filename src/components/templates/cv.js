@@ -5,7 +5,7 @@ import { Loading } from '../../components/atoms/loading'
 
 export const CVIsLoading = () => (
   <PageShell withMainNavigation title="CV">
-    <CVEntriesHeader titleleft="Arbeit" titleright="Ausildung"/>
+    <CVEntriesHeader titleleft="Arbeit" titleright="Ausbildung"/>
     <Loading />
   </PageShell>
 )
