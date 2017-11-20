@@ -121,8 +121,8 @@ const HeaderTitle = styled.div`
   text-align: center;
   margin-top: 10em;
   margin-bottom: 9em;
-  background-image: -webkit-linear-gradient(165deg, ${props => props.theme.green} 20%,${props => props.theme.black} 110%); /* For Chrome and Safari */
-  background-image:         linear-gradient(165deg, ${props => props.theme.green} 20%,${props => props.theme.black} 110%); /* Standard syntax; must be last */
+  background-image: -webkit-linear-gradient(165deg, ${props => props.theme.colors.green} 20%,${props => props.theme.colors.black} 110%); /* For Chrome and Safari */
+  background-image:         linear-gradient(165deg, ${props => props.theme.colors.green} 20%,${props => props.theme.colors.black} 110%); /* Standard syntax; must be last */
   -webkit-background-clip: text;
   background-clip: text;
 `
@@ -169,7 +169,7 @@ const TextLinkGradient =  TextLink.extend`
   padding-right: 20px;
 `
 const Content = styled.div`
-  color:${props => props.theme.black}
+  color:${props => props.theme.colors.black}
 `
 const PFront = P.extend`
 

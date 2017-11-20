@@ -32,17 +32,17 @@ const Navigation = styled.nav`
 `
 const StyledHeader = styled.header`
   display: flex;
-  color:${props => props.theme.black};
+  color:${props => props.theme.colors.black};
   width:100%;
   justify-content: center;
   a {
     text-decoration: none;
   }
-  ${props => props.gradient ? `background: linear-gradient(165deg, ${props.theme.green} -20%,${props.theme.blue} 120%); min-height: 100px;`:`background:${props.theme.white}`}
+  ${props => props.gradient ? `background: linear-gradient(165deg, ${props.theme.colors.green} -20%,${props.theme.colors.blue} 120%); min-height: 100px;`:`background:${props.theme.colors.white}`}
 
 `
 const H4Black = H4.extend`
-  color:${props => props.theme.black};
+  color:${props => props.theme.colors.black};
   text-decoration: none;
   padding: 0px 20px;
 `

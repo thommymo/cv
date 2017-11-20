@@ -13,10 +13,10 @@ const Content = styled.div`
   padding: 44px 20px 44px 20px;
   margin-left:3px;
   margin-right:3px;
-  border-top: solid; border-top-width: 10px; border-top-color: ${props => props.theme.primary};
-  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${props => props.theme.primary};
-  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${props.theme.blue}; margin-right:0px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${props.theme.blue}; margin-left:0px; text-align:right; ` : ''};
+  border-top: solid; border-top-width: 10px; border-top-color: ${props => props.theme.colors.primary};
+  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${props => props.theme.colors.primary};
+  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${props.theme.colors.blue}; margin-right:0px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${props.theme.colors.blue}; margin-left:0px; text-align:right; ` : ''};
   flex:1;
 `
 export const CVEntriesHeader = ({
@@ -60,8 +60,8 @@ const SectionFlex = styled.div`
 const Header = styled.div`
   & > div > h3 {
     text-transform: uppercase;
-    border-bottom: 3px solid ${props => props.theme.blue};
-    color:${props => props.theme.blue};
+    border-bottom: 3px solid ${props => props.theme.colors.blue};
+    color:${props => props.theme.colors.blue};
     display: inline;
     font-size:1.1em;
     font-weight:400;
@@ -216,8 +216,8 @@ const Title = H3.extend`
   & a {
     display:inline-block;
     ${props => props.right ?
-      `background-image: -webkit-linear-gradient(165deg, ${props.theme.violet} 20%,${props.theme.blue} 120%); background-image: linear-gradient(165deg, ${props.theme.violet} 20%,${props.theme.blue} 120%);`:
-      `background-image: -webkit-linear-gradient(165deg, ${props.theme.blue} 20%,${props.theme.green} 120%); background-image: linear-gradient(165deg, ${props.theme.blue} 20%,${props.theme.green} 120%);`}; /* For Chrome and Safari */
+      `background-image: -webkit-linear-gradient(165deg, ${props.theme.colors.violet} 20%,${props.theme.colors.blue} 120%); background-image: linear-gradient(165deg, ${props.theme.colors.violet} 20%,${props.theme.colors.blue} 120%);`:
+      `background-image: -webkit-linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%); background-image: linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%);`}; /* For Chrome and Safari */
   }
 `
 const Organization = styled.div`
@@ -304,15 +304,15 @@ const StyledTimeSpan = H4.extend`
   ${props => !props.show ? 'display: none !important;' : ''};
   ${props => props.rightposition ? 'text-align: left; margin-left: -12px' : 'text-align: right; margin-right: -12px'};
   text-align: center;
-  color:${props => props.theme.primary};
+  color:${props => props.theme.colors.primary};
 `
 
 const StyledTimeLine = styled.div`
   position: relative;
-  ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${props.theme.green} -50%,${props.theme.blue} 100%);`: ''};
-  ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${props.theme.violet} -50%,${props.theme.blue} 100%);` : ''};
-  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${props.theme.blue}` : ''};
-  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${props.theme.blue}` : ''};
+  ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${props.theme.colors.green} -50%,${props.theme.colors.blue} 100%);`: ''};
+  ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${props.theme.colors.violet} -50%,${props.theme.colors.blue} 100%);` : ''};
+  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${props.theme.colors.blue}` : ''};
+  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${props.theme.colors.blue}` : ''};
   ${media.desktop`width:35px;`};
   ${media.desktop`min-width:35px;`};
   ${media.tablet`width:35px;`};
@@ -329,7 +329,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-left: 55px solid transparent;
-      border-top: 55px solid ${props.theme.primary};
+      border-top: 55px solid ${props.theme.colors.primary};
       top: 0;
       right: 0;
       position: absolute;
@@ -342,7 +342,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-right: 55px solid transparent;
-      border-bottom: 55px solid ${props.theme.primary};
+      border-bottom: 55px solid ${props.theme.colors.primary};
       bottom: 0;
       left: 0;
       position: absolute;
@@ -355,7 +355,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-right: 55px solid transparent;
-      border-top: 55px solid ${props.theme.primary};
+      border-top: 55px solid ${props.theme.colors.primary};
       top: 0;
       left: 0;
       position: absolute;
@@ -368,7 +368,7 @@ const StyledTimeLine = styled.div`
       height: 0;
       line-height: 0;
       border-left: 55px solid transparent;
-      border-bottom: 55px solid ${props.theme.primary};
+      border-bottom: 55px solid ${props.theme.colors.primary};
       bottom: 0;
       right: 0;
       position: absolute;

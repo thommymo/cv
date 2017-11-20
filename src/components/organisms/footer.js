@@ -34,8 +34,8 @@ export const Footer = ({props}) => (
 )
 
 const StyledFooter = styled.footer`
-  color: ${props => props.theme.black};
-  background-color: ${props => props.theme.white};
+  color: ${props => props.theme.colors.black};
+  background-color: ${props => props.theme.colors.white};
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -43,7 +43,7 @@ const StyledFooter = styled.footer`
   position: relative;
   min-height: 95px;
   bottom: 0px;
-  ${props => props.gradient ? `background: linear-gradient(165deg, ${props.theme.green} -20%,${props.theme.blue} 120%); min-height: 135px;`:`background:${props.theme.white}`}
+  ${props => props.gradient ? `background: linear-gradient(165deg, ${props.theme.colors.green} -20%,${props.theme.colors.blue} 120%); min-height: 135px;`:`background:${props.theme.colors.white}`}
 `
 const Right = styled.div`
   padding: 12px 20px;
@@ -63,14 +63,14 @@ const Middle = styled.div`
   text-align: center;
 `
 const BlackLink = styled.a`
-  color: ${props => props.theme.black} !important;
+  color: ${props => props.theme.colors.black} !important;
   & : hover {
     opacity: 0.8;
   }
 `
 const WhiteCapitalH4 = H4.extend`
   text-transform: uppercase;
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.colors.white};
   padding-bottom: 0px;
   &:hover {
     opacity: 0.8;

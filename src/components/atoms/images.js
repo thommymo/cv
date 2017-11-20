@@ -132,7 +132,7 @@ const WithBorder = styled.div`
     border-right-style: solid;
     border-right-color: transparent;
     border-top-style: solid;
-    border-top-color: ${props => props.theme.primary};
+    border-top-color: ${props => props.theme.colors.primary};
     position: absolute;
     z-index: 1000;
   }
@@ -147,7 +147,7 @@ const WithBorder = styled.div`
     border-left-style: solid;
     border-left-color: transparent;
     border-bottom-style: solid;
-    border-bottom-color: ${props => props.theme.primary};
+    border-bottom-color: ${props => props.theme.colors.primary};
     position: absolute;
     z-index: 1000;
   }

@@ -13,7 +13,7 @@ export const H1 = styled.h1`
   ${media.desktop`line-height: 1.25em;`}
   ${media.tablet`line-height: 1.25em;`}
   ${media.phone`line-height: 1.25em;`}
-  border-bottom:solid 5px ${props => props.theme.black};
+  border-bottom:solid 5px ${props => props.theme.colors.black};
   border-left:solid 8px transparent;
   display: inline-block;
 `
