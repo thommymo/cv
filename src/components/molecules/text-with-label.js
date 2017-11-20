@@ -16,7 +16,6 @@ export const TextWithLabel = ({
     </ColumnDescription>
   </Row>
 )
-
 const Row = styled.div`
   ${media.desktop`display:flex;`}
   margin-bottom:2em;

@@ -82,9 +82,7 @@ export const CVEntries = ({data : {
             </Organization>
             {
               showmore &&
-
               <Title left={left} right={right}><CVEntryTextLink to={`/id/${id}/`}>{title}  &rarr;</CVEntryTextLink></Title>
-
             }
             {
               !showmore &&
