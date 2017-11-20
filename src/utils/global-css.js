@@ -1,6 +1,5 @@
 import { injectGlobal } from 'styled-components';
 import { timeout } from './constants'
-import { media } from './breakpoints'
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,400,200');

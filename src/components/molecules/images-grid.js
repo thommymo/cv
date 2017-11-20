@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SectionCentered } from '../atoms/containers'
 import { FullWithImage } from '../atoms/images'
 import { H2 } from '../atoms/typography'
 import { media } from '../../utils/breakpoints'
