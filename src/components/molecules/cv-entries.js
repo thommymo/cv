@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../../utils/breakpoints'
-import { P, H1, H3, H4, H4Capitals } from '../atoms/typography'
+import { P, H3, H4, H4Capitals } from '../atoms/typography'
 import { TextLink } from '../atoms/buttons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
-import { HeaderTitle } from '../../components/atoms/containers'
 
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
