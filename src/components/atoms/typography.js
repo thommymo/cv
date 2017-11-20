@@ -2,7 +2,7 @@ import { media } from '../../utils/breakpoints'
 import styled, { css } from 'styled-components'
 
 /*
-  Typography
+  Helpers
 */
 
 const fontSize = css`
@@ -25,6 +25,10 @@ const coloredLink = css`
     display: inline-block;
   }
 `
+
+/*
+  Typography
+*/
 
 export const H1 = styled.h1.attrs({ type: "h1" })`
   font-weight:400;
