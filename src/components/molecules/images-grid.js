@@ -6,7 +6,7 @@ import { H2 } from '../atoms/typography'
 import { media } from '../../utils/breakpoints'
 
 export const ImagesGrid = (props) => (
-  <SectionCentered>
+  <div>
     { props.title &&
       <H2>{props.title}</H2>
     }
@@ -17,7 +17,7 @@ export const ImagesGrid = (props) => (
         </ImageColumn>
       ))}
     </ImageRow>
-  </SectionCentered>
+  </div>
 )
 
 const ImageRow = styled.div`
