@@ -1,9 +1,6 @@
 import React from 'react';
-import { H1, H2, H3, H4Capitals, PCapitals, Small, InnerHTML } from '../../components/atoms/typography'
-import { SectionCentered } from '../../components/atoms/containers'
-import { FullWithImage, Image } from '../../components/atoms/images'
+import { H1, H4Capitals } from '../../components/atoms/typography'
 import styled from 'styled-components'
-import { media } from '../../utils/breakpoints'
 
 /*
   Molecule
@@ -56,34 +53,4 @@ const HeaderWithBorder = styled.div`
 const HeaderWithDate = styled.div`
   margin-top: -52px;
   color: ${props => props.theme.colors.white};
-`
-
-
-
-/*
-  Molecule
-*/
-
-export const CVEntryFooter = () => (
-    <FooterWithBorder />
-)
-
-/*
-Containers (as part of a molecule)
-*/
-
-
-const FooterWithBorder = styled.div`
-  border: solid 0px;
-  border-bottom-width: 40px;
-  border-bottom-color: transparent;
-  border-left-width: 40px;
-  border-left-color: ${props=>props.theme.colors.primary};
-  border-right-width: 40px;
-  border-right-color: ${props=>props.theme.colors.primary};
-  position: relative;
-  z-index: 1000;
-  ${media.desktop`box-shadow: 700px 0px ${props=>props.theme.colors.primary}, -700px 0px ${props=>props.theme.colors.primary}; `}
-  ${media.tablet`box-shadow: 300px 0px ${props=>props.theme.colors.primary}, -300px 0px ${props=>props.theme.colors.primary}; `}
-  ${media.phone`box-shadow: 100px 0px ${props=>props.theme.colors.primary}, -100px 0px ${props=>props.theme.colors.primary}; `}
 `
