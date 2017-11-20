@@ -35,9 +35,9 @@ export const theme = {
       phone: "1em"
     },
     small: {
-      desktop: "0.7em",
-      tablet: "0.7em",
-      phone: "0.7em"
+      desktop: "0.6em",
+      tablet: "0.6em",
+      phone: "0.8em"
     },
   },
   lineHeight: {
@@ -67,9 +67,9 @@ export const theme = {
       phone: "1.22222222em"
     },
     small: {
-      desktop: "0.6em",
-      tablet: "0.6em",
-      phone: "0.6em"
+      desktop: "0.5em",
+      tablet: "0.5em",
+      phone: "0.8em"
     },
   }
 }
