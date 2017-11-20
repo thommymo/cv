@@ -34,6 +34,7 @@ const Projects = styled.div`
   ${media.desktop`padding: 0 2em 0 2.5em; `}
   & h3 {
     text-transform: uppercase;
+    margin-bottom: -10px;
   }
 `
 const Tasks = styled.div`
