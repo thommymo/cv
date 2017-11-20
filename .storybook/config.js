@@ -1,5 +1,6 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../src/utils/theme'
 import '../src/utils/global-css'
@@ -17,7 +18,7 @@ function loadStories() {
 }
 
 addDecorator(story => (
-    <ThemeProvider theme={theme}>{story()}</ThemeProvider>
+    <BrowserRouter><ThemeProvider theme={theme}>{story()}</ThemeProvider></BrowserRouter>
 ))
 
 configure(loadStories, module);
