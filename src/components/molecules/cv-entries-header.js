@@ -12,7 +12,7 @@ export const CVEntriesHeader = ({
   titleleft = "",
   titleright = "",
 }) => (
-  <div>
+  <ContentWrapper>
     <HeaderTitle>
       <H1>Lebenslauf</H1>
     </HeaderTitle>
@@ -28,9 +28,13 @@ export const CVEntriesHeader = ({
         </RotateRight>
       </Header>
     </SectionFlex>
-  </div>
+  </ContentWrapper>
 )
-
+const ContentWrapper = styled.div`
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+`
 const SectionFlex = styled.div`
   width:100%;
   display: flex;

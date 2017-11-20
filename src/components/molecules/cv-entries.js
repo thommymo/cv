@@ -57,6 +57,7 @@ export const CVEntries = ({data : {
       classNames="FadeIn"
       unmountOnExit={true}
     >
+      <ContentWrapper>
       <EntryItem >
         <TimeLine
           show={left}
@@ -108,6 +109,7 @@ export const CVEntries = ({data : {
           addBottomRightTriangle={addBottomRightTriangle}
         />
       </EntryItem>
+    </ContentWrapper>
     </CSSTransition>
     )
 }
@@ -117,6 +119,11 @@ export const CVEntries = ({data : {
 /*
 Typography
 */
+const ContentWrapper = styled.div`
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+`
 
 const Title = H3.extend`
   & a {
