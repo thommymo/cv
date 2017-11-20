@@ -50,6 +50,9 @@ export const H3 = styled.h3.attrs({ type: 'h3' })`
   ${lineHeight}
   ${coloredLink}
 `
+export const H3Capitals = H3.extend`
+  text-transform: uppercase;
+`
 export const H4 = styled.h4.attrs({ type: 'h4' })`
   font-weight:400;
   ${fontSize}
