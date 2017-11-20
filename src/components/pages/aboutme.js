@@ -5,21 +5,25 @@ import { H1, H2, H3, P, Small } from '../../components/atoms/typography'
 import { TextLink } from '../../components/atoms/buttons'
 import { Image } from '../../components/atoms/images'
 import { media } from '../../utils/breakpoints'
+import { Section, SectionCentered } from '../../components/atoms/containers'
+import { ImagesGrid } from '../../components/molecules/images-grid'
+import { LogoCloud } from '../../components/molecules/logo-cloud'
 
 export const AboutMe = () => (
   <PageShell withMainNavigation={true} title="Über mich">
     <HeaderTitle>
-      <TitleDiv><H1Front>Thomas Moser</H1Front></TitleDiv>
-      <TitleDiv><H2Front>Frontend Web Developer</H2Front></TitleDiv>
+      <H1Front>Thomas Moser</H1Front>
+      <H2Front>Frontend Web Developer</H2Front>
     </HeaderTitle>
-    <Content>
+
+    <Section>
       <Row>
         <ColumnLabel>
           <Small><H3Label>Erfahrung</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
-          <PFront>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend.</PFront>
-          <PFront><TextLinkGradient to="/cv">Mein CV &rarr;</TextLinkGradient></PFront>
+          <P>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend.</P>
+          <P><TextLinkGradient to="/cv">Mein CV &rarr;</TextLinkGradient></P>
         </ColumnDescription>
       </Row>
       <Row>
@@ -27,88 +31,59 @@ export const AboutMe = () => (
           <Small><H3Label>&#10084;-Technologie</H3Label></Small>
         </ColumnLabel>
         <ColumnDescription>
-          <PFront>React, ES6 und alles was dazugehört*.</PFront>
-          <PFront><small>*Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></PFront>
-          <PFront><TextLinkGradient to="/cv">Code auf Github &rarr;</TextLinkGradient><TextLinkGradient to="/cv">Design in Storybook &rarr;</TextLinkGradient></PFront>
+          <P>React, ES6 und alles was dazugehört*.</P>
+          <P><small>*Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></P>
+          <P><TextLinkGradient to="/cv">Code auf Github &rarr;</TextLinkGradient><TextLinkGradient to="/cv">Design in Storybook &rarr;</TextLinkGradient></P>
         </ColumnDescription>
       </Row>
-      <CenteredRow>
-        <H2>Awards</H2>
-        <RowLogos>
-          <Logo>
-            <Image handle="jsnZ6OFJSiKMI8XKIomE" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="ONnC5Gt6Tam0DOJDD4wJ" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="IZu0yTbaT3GrHZOSBKtj" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="PM9hcfSCqtvJMARYHcQ8" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="q35H0JAHShOSNvIEwkVg" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="WTEDLoc2RleNnxlxG23R" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="w7ammVlTMWvbP7AvC5jX" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="YRMPWRWkQYuSgcPBFfT6" height="100" />
-          </Logo>
-          <Logo>
-            <Image handle="5kb26FtFTluYw1mGEkI4" height="100" />
-          </Logo>
-        </RowLogos>
-      </CenteredRow>
-      <CenteredRow>
-        <H2>Arbeit- und Auftraggeber</H2>
-        <PFront>
-          <small>
-            Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Pädagogische Hochschule Zentralscheiz, Universität Zürich, UBS, Credit Suisse, Winterthur Versicherungen, Walo Bertschinger, Quickline, Akris, Doodah
-          </small>
-        </PFront>
-      </CenteredRow>
-      <CenteredRow>
-        <H2>Beim Arbeiten</H2>
-        <RowImages>
-          <TwoImages>
-            <img src="/assets/images/thomas_moser_3-1000w.jpg" alt="Thomas beim Arbeiten"/>
-          </TwoImages>
-          <TwoImages>
-            <img src="/assets/images/thomas_moser_4-1000w.jpg" alt="Thomas beim Arbeiten"/>
-          </TwoImages>
-        </RowImages>
-      </CenteredRow>
-      <CenteredRow>
-        <H2>In der Freizeit</H2>
-        <RowImages>
-          <ThreeImages>
-            <img src="https://media.graphcms.com/HCgGXNqFTxOFVQa3hX4R" alt="Thomas beim Biken"/>
-          </ThreeImages>
-          <ThreeImages>
-            <img src="https://media.graphcms.com/rg7ELbbGTH6AAb72hK7Z" alt="Thomas beim Wandern"/>
-          </ThreeImages>
-          <ThreeImages>
-            <img src="https://media.graphcms.com/J1vMC6coS8KwmsgT1e4m" alt="Thomas beim Skitouren"/>
-          </ThreeImages>
-        </RowImages>
-      </CenteredRow>
-    </Content>
+    </Section>
+    <SectionCentered>
+      <LogoCloud
+        title="Awards"
+        images={[
+          { handle:"jsnZ6OFJSiKMI8XKIomE"},
+          { handle:"ONnC5Gt6Tam0DOJDD4wJ"},
+          { handle:"IZu0yTbaT3GrHZOSBKtj"},
+          { handle:"PM9hcfSCqtvJMARYHcQ8"},
+          { handle:"q35H0JAHShOSNvIEwkVg"},
+          { handle:"WTEDLoc2RleNnxlxG23R"},
+          { handle:"w7ammVlTMWvbP7AvC5jX"},
+          { handle:"YRMPWRWkQYuSgcPBFfT6"},
+          { handle:"5kb26FtFTluYw1mGEkI4"}
+        ]}
+        height="110"
+      />
+    </SectionCentered>
+    <SectionCentered>
+      <H2>Arbeit- und Auftraggeber</H2>
+      <P>
+        <small>
+          Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Pädagogische Hochschule Zentralscheiz, Universität Zürich, UBS, Credit Suisse, Winterthur Versicherungen, Walo Bertschinger, Quickline, Akris, Doodah
+        </small>
+      </P>
+    </SectionCentered>
+    <SectionCentered>
+      <ImagesGrid
+        columns={2}
+        title="Bei der Arbeit"
+        images={[
+          {handle: "HCgGXNqFTxOFVQa3hX4R"},
+          {handle: "rg7ELbbGTH6AAb72hK7Z"}
+        ]}/>
+    </SectionCentered>
+    <SectionCentered>
+      <ImagesGrid
+        columns={3}
+        title="In der Freizeit"
+        images={[
+          {handle: "HCgGXNqFTxOFVQa3hX4R"},
+          {handle: "rg7ELbbGTH6AAb72hK7Z"},
+          {handle: "J1vMC6coS8KwmsgT1e4m"}
+        ]}/>
+    </SectionCentered>
   </PageShell>
 )
 
-const CenteredRow = styled.div`
-  display: block;
-  text-align: center;
-  padding-top:3em;
-  padding-bottom:2em;
-  max-width: 1000px;
-  margin: 0 auto;
-`
 const Row = styled.div`
   ${media.desktop`display:flex;`}
   margin-bottom:2em;
@@ -130,16 +105,15 @@ const H1Front = H1.extend`
   display: inline;
 `
 const H2Front = H2.extend`;
-  display: inline;
-`
-const TitleDiv = styled.div`
-  padding-bottom: 10px;
+  display: block;
+  margin-top: 0.4em;
 `
 const RowImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 `
+
 const RowLogos = RowImages.extend`
   max-width: 600px;
   margin: 0 auto;
@@ -147,6 +121,7 @@ const RowLogos = RowImages.extend`
 const Logo = styled.div`
   padding: 5px 10px 0 0;
 `
+
 const ThreeImages = styled.div`
   padding-bottom:5px;
   ${media.desktop`width: calc(100% / 3 - 10px); padding-right: 10px;`}
@@ -168,16 +143,10 @@ const TextLinkGradient =  TextLink.extend`
   font-size: 0.9em;
   padding-right: 20px;
 `
-const Content = styled.div`
-  color:${props => props.theme.colors.black}
-`
-const PFront = P.extend`
 
-`
 const H3Label = H3.extend`
   text-transform: uppercase;
-  padding-top:2px;
-  ${media.desktop`text-align: right; padding-right: 40px;`}
+  ${media.desktop`padding-top:8px; text-align: right; padding-right: 40px;`}
 `
 
 const ColumnLabel = styled.div`

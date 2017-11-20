@@ -87,7 +87,7 @@ export const CVEntry = ({
             { descriptionimages &&
               <SectionCentered>
                 {descriptionimages.map((image) => (
-                  <FullWithImage handle={image.handle} key={image.handle}/>
+                  <FullWithImage handle={image.handle} key={image.handle} withBorder={true} withShadow={true}/>
                 )) }
               </SectionCentered>
             }

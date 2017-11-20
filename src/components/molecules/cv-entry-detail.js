@@ -164,7 +164,7 @@ export const WorkReview = ({
     { workreviewimages &&
       workreviewimages.map((image) => (
         <FullWithImagePadding key={image.handle}>
-          <FullWithImage color={colorRGBA} handle={image.handle}/>
+          <FullWithImage color={colorRGBA} handle={image.handle} withBorder={true} withShadow={true}/>
         </FullWithImagePadding>
       )) }
   </StyledWorkReview>

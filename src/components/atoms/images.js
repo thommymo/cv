@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { sizes, imagesizes, media } from '../../utils/breakpoints'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
 import { timeout, baseurl} from '../../utils/constants'
 
@@ -19,6 +19,23 @@ export const Image = (props) => (
   </picture>
 )
 
+export const ImageDynWidth = (props) => (
+  <picture>
+    { Object.keys(sizes).map((label) => (
+      <source key={imagesizes[label]}
+        media={`screen
+    ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
+    ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
+    `}
+        srcSet={`
+    ${baseurl}resize=width:${imagesizes[label]/props.columns}/${props.handle} 1x,
+    ${baseurl}resize=width:${imagesizes[label]*2/props.columns}/${props.handle} 2x,
+  `}/>
+    ))}
+    <Img src={`${baseurl}resize=width:${800/props.columns}/${props.handle}`} onLoad={props.onLoad} withShadow={props.withShadow}/>
+  </picture>
+)
+
 /*
 Images
 */
@@ -27,8 +44,7 @@ export class FullWithImage extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { imageLoaded: false }
-    this.state = { opacity: 0 }
+    this.state = { opacity: 0, imageLoaded: false }
   }
 
   handleImageLoaded() {
@@ -41,7 +57,9 @@ export class FullWithImage extends Component {
   }
 
   render(){
-    const handle = this.props.handle
+    console.log(this.state);
+    const { handle, withBorder, withShadow } = this.props
+    const columns = this.props.columns ? this.props.columns : 1
     return (
       <ImagePosition>
         <CSSTransition
@@ -50,45 +68,16 @@ export class FullWithImage extends Component {
           timeout={(timeout*2)}
         >
           <PreviewImage imageLoaded={this.state.imageLoaded}>
-            <picture>
-              { Object.keys(sizes).map((label) => (
-
-                <source key={imagesizes[label]}
-                  media={`screen
-              ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
-              ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
-              `}
-                  srcSet={`
-              ${baseurl}resize=width:20/${handle} 1x,
-              ${baseurl}resize=width:20/${handle} 2x,
-            `}/>
-              ))}
-              <ImgBlured src={`${baseurl}resize=width:20/${handle}`}/>
-            </picture>
+            <ImgBlured src={`${baseurl}resize=width:20/${handle}`}/>
           </PreviewImage>
-
         </CSSTransition>
         <CSSTransition
           in={this.state.imageLoaded}
           classNames="ImageFadeIn"
           timeout={(timeout*2)}
         >
-          <WithBorder imageLoaded={this.state.imageLoaded}>
-            <picture>
-              { Object.keys(sizes).map((label) => (
-
-                <source key={imagesizes[label]}
-                  media={`screen
-              ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
-              ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
-              `}
-                  srcSet={`
-              ${baseurl}resize=width:${imagesizes[label]}/${handle} 1x,
-              ${baseurl}resize=width:${imagesizes[label]*2}/${handle} 2x,
-            `}/>
-              ))}
-              <Img src={`${baseurl}resize=width:800/${handle}`} onLoad={this.handleImageLoaded.bind(this)}/>
-            </picture>
+          <WithBorder withBorder={this.props.withBorder} imageLoaded={this.state.imageLoaded}  >
+            <ImageDynWidth withShadow={this.props.withShadow} columns={columns} handle={handle} onLoad={this.handleImageLoaded.bind(this)}/>
           </WithBorder>
         </CSSTransition>
       </ImagePosition>
@@ -101,26 +90,22 @@ const ImagePosition = styled.div`
 const PreviewImage = styled.div`
   ${props => props.imageLoaded ? "opacity: 0; filter: alpha(opacity=0);" : ""};
 `
-const Img = styled.img`
-  width:100%;
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
+const Shadow = css`
   ${media.desktop`box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);`}
   ${media.tablet`box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);`}
   ${media.phone`box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);`}
   position:relative;
-  z-index: 0;
+  z-index: 1;
+`
+const Img = styled.img`
+  width:100%;
+  ${props => props.withShadow ? Shadow : ""};
 `
 const ImgBlured = Img.extend`
-
   filter: blur(15px) brightness(0.9);
-  z-index: 100000;
+  z-index: 0;
 `
-const WithBorder = styled.div`
-  ${props => props.imageLoaded ? "" : "opacity: 0; filter: alpha(opacity=0);"};
-  position:absolute;
-  width:100%;
-  top:0px;
-  left:0px;
+const Border = css`
   &::before {
     content:'';
     width: 0;
@@ -151,4 +136,12 @@ const WithBorder = styled.div`
     position: absolute;
     z-index: 1000;
   }
+`
+const WithBorder = styled.div`
+  ${props => props.withBorder ? Border : ""};
+  ${props => props.imageLoaded ? "" : "opacity: 0; filter: alpha(opacity=0);"};
+  position:absolute;
+  width:100%;
+  top:0px;
+  left:0px;
 `
