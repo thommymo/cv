@@ -14,12 +14,12 @@ export const AboutMe = () => (
     <Section>
       <TextWithLabel label="Erfahrung">
         <P>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend.</P>
-        <P><TextLinkBold to="/cv">Mein CV &rarr;</TextLinkBold></P>
+        <P><TextLinkBold to="/cv">Mein Lebenslauf &rarr;</TextLinkBold></P>
       </TextWithLabel>
       <TextWithLabel label="&#10084;-Technologie">
-        <P>React, ES6 und alles was dazugehört*.</P>
-        <P><small>*Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></P>
-        <P><TextLinkBold to="/cv">Code auf Github &rarr;</TextLinkBold><TextLinkBold to="/cv">Design in Storybook &rarr;</TextLinkBold></P>
+        <P>React, ES6 und alles was dazugehört.</P>
+        <P><small>Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></P>
+        <P><TextLinkBold to="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextLinkBold><TextLinkBold to="/cv">Design in Storybook &rarr;</TextLinkBold></P>
       </TextWithLabel>
     </Section>
     <SectionCentered>
