@@ -17,18 +17,18 @@ export const CVEntriesHeader = ({
       <H1>Lebenslauf</H1>
     </HeaderTitle>
     <SectionFlex>
-        <Header>
-          <RotateLeft>
-            <H3>{titleleft}</H3>
-          </RotateLeft>
-        </Header>
-        <Header>
-          <RotateRight>
-            <H3>{titleright}</H3>
-          </RotateRight>
-        </Header>
-      </SectionFlex>
-    </div>
+      <Header>
+        <RotateLeft>
+          <H3>{titleleft}</H3>
+        </RotateLeft>
+      </Header>
+      <Header>
+        <RotateRight>
+          <H3>{titleright}</H3>
+        </RotateRight>
+      </Header>
+    </SectionFlex>
+  </div>
 )
 
 const SectionFlex = styled.div`
