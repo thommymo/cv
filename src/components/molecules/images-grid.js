@@ -9,20 +9,22 @@ export const ImagesGrid = ({
   images,
   columns
 }) => (
-  <div>
+  <StyledImagesGrid>
     { title &&
       <H2>{title}</H2>
     }
     <ImageRow>
       {images.map((image)=> (
         <ImageColumn columns={columns} key={image.handle}>
-          <FullWithImage handle={image.handle} alt="Thomas beim Arbeiten" height={image.height} columns="2"/>
+          <FullWithImage handle={image.handle} alt="Thomas beim Arbeiten" columns="2"/>
         </ImageColumn>
       ))}
     </ImageRow>
-  </div>
+  </StyledImagesGrid>
 )
-
+const StyledImagesGrid = styled.div`
+  text-align: center;
+`
 const ImageRow = styled.div`
   display: flex;
   flex-wrap: wrap;
