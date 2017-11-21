@@ -45,6 +45,7 @@ const StyledLogosWithText = styled.div`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 `
 
 const StyledAward = styled.div`
