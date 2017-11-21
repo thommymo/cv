@@ -307,5 +307,6 @@ const CVEntryTextLink = (props) => (
 
 
 const GhostbuttonWhite = TextLink.extend`
+  line-height: 1.25em;
 
 `
