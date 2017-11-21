@@ -11,7 +11,6 @@ export const CVEntryHeader = ({
   startDate,
   endDate,
   title,
-  color,
 }) => {
   const startDateDate = new Date(startDate)
   const endDateDate = new Date(endDate)
@@ -19,7 +18,7 @@ export const CVEntryHeader = ({
   const formattedStartDate = startDate ? startDateDate.toLocaleDateString('de-DE', options) : ""
   const formattedEndDate = endDate ? endDateDate.toLocaleDateString('de-DE', options) : ""
   return(
-    <HeaderWithBorder color={color}>
+    <HeaderWithBorder>
       <DateAndCompany>
         <HeaderWithDate>
           <H4Capitals>{formattedStartDate} – {formattedEndDate}</H4Capitals>
