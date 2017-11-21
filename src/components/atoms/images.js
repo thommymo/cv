@@ -66,7 +66,6 @@ export class FullWithImage extends Component {
   }
 
   render(){
-    console.log(this.state);
     const { handle, withBorder, withShadow } = this.props
     const columns = this.props.columns ? this.props.columns : 1
     return (
