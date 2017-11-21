@@ -7,7 +7,7 @@ import {
   TextLinkBold
 } from '../../components/atoms/buttons'
 
-storiesOf('Buttons', module)
+storiesOf('Atoms: Buttons', module)
   .add('Ghostbutton',() =>(
     <Ghostbutton to="#">Sometext</Ghostbutton>
   ))

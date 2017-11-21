@@ -14,7 +14,7 @@ import {
 } from '../../components/atoms/typography'
 
 
-storiesOf('Typography', module)
+storiesOf('Atoms: Typography', module)
   .add('H1',() =>(
     <H1>Sometext</H1>
   ))

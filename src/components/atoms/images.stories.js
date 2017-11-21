@@ -8,7 +8,7 @@ import {
   FullWithImage
 } from '../../components/atoms/images'
 
-storiesOf('Atom: Images', module)
+storiesOf('Atoms: Images', module)
   .addDecorator(withKnobs)
   .add('Image', () => (
     <Image
