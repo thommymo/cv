@@ -30,7 +30,7 @@ const StyledJobdescription = styled.div`
 const Projects = styled.div`
   flex: 1;
   font-size: 1.2em;
-  margin-top: 0.5em;
+  margin-top: 0.9em;
   ${media.desktop`padding: 0 2em 0 2.5em; `}
   & h3 {
     text-transform: uppercase;
