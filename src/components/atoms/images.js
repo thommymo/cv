@@ -61,10 +61,6 @@ export class FullWithImage extends Component {
     this.setState({ opacity: 1 })
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    return !(nextState.imageLoaded === this.state.imageLoaded);
-  }
-
   render(){
     const { handle, withBorder, withShadow } = this.props
     const columns = this.props.columns ? this.props.columns : 1
