@@ -15,7 +15,26 @@ export const CV = ({allCVEntrieses}) => (
   <PageShell withMainNavigation title="Lebenslauf">
     <CVEntriesHeader titleleft="Arbeit" titleright="Ausbildung"/>
     { allCVEntrieses.map((entry) => (
-      <CVEntries data={entry} key={entry.id} />
+      <CVEntries
+        id={entry.id}
+        showmore={entry.showmore}
+        startDate={entry.startDate}
+        endDate={entry.endDate}
+        right={entry.right}
+        left={entry.left}
+        bothleft={entry.bothleft}
+        bothright={entry.bothright}
+        title={entry.title}
+        organization={entry.organization}
+        excerpt={entry.excerpt}
+        addTopLeftTriangle={entry.addTopLeftTriangle}
+        addBottomLeftTriangle={entry.addBottomLeftTriangle}
+        addTopRightTriangle={entry.addTopRightTriangle}
+        addBottomRightTriangle={entry.addBottomRightTriangle}
+        moreinfocventry={entry.moreinfocventry}
+        furtherEducationTitle={entry.furtherEducationTitle}
+        furtherEducationContent={entry.furtherEducationContent}
+      />
     ))}
   </PageShell>
 )

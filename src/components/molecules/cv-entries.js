@@ -14,7 +14,7 @@ import SmallEntry from '../molecules/small-entry'
 
 //CVEntries is a component which shows an entry in my CV and places the line on the left or right side of it.
 
-export const CVEntries = ({data : {
+export const CVEntries = ({
   id="",
   showmore = false,
   startDate = "",
@@ -24,7 +24,6 @@ export const CVEntries = ({data : {
   bothleft=false,
   bothright=false,
   title="",
-  slug="",
   organization="",
   excerpt="",
   addTopLeftTriangle=false,
@@ -34,7 +33,7 @@ export const CVEntries = ({data : {
   moreinfocventry={},
   furtherEducationTitle="",
   furtherEducationContent=""
-}}) => {
+}) => {
   const startDateDate = new Date(startDate)
   const endDateDate = new Date(endDate)
   const options = { year: 'numeric'}
@@ -107,7 +106,7 @@ export const CVEntries = ({data : {
         </EntryItem>
       </ContentWrapper>
     </CSSTransition>
-    )
+  )
 }
 
 const Content = styled.div`
