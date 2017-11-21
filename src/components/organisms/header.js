@@ -10,8 +10,8 @@ export const Header = ({props}) => (
     {
       props.withMainNavigation &&
       <Navigation>
-        <NavLink to="/aboutme/"  activeStyle={{ borderBottom: '3px solid #000', borderLeft: '5px solid transparent' }}><H4Black>Über mich</H4Black></NavLink>
-        <NavLink to="/cv/"  activeStyle={{ borderBottom: '3px solid #000', borderLeft: '5px solid transparent' }}><H4Black>Lebenslauf</H4Black></NavLink>
+        <NavLink to="/" exact  activeStyle={{ borderBottom: '3px solid #000', borderLeft: '5px solid transparent' }}><H4Black>Über mich</H4Black></NavLink>
+        <NavLink to="/cv"  activeStyle={{ borderBottom: '3px solid #000', borderLeft: '5px solid transparent' }}><H4Black>Lebenslauf</H4Black></NavLink>
       </Navigation>
     }
     {

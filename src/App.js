@@ -31,10 +31,7 @@ class App extends Component {
         >
 
           <Switch location={this.props.location}>
-            <Route exact path='/'>
-              <AboutMe/>
-            </Route>
-            <Route exact path='/aboutme' ><AboutMe/></Route>
+            <Route exact path='/'><AboutMe/></Route>
             <Route exact path='/cv' ><ShellCVEntriesWithData/></Route>
             <Route exact path='/:something/:id/'><ShellCVEntryWithData {...this.props}/></Route>
             <Route><PageNotFound/></Route>
