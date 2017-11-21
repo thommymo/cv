@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import { TextLinkBold } from '../atoms/buttons'
-import { P, H4Capitals, Small, InnerHTML } from '../atoms/typography'
+import { H4Capitals, InnerHTML } from '../atoms/typography'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
 import { closeIconBlack } from '../../utils/icons'
