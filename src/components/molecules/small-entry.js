@@ -4,6 +4,7 @@ import { TextLinkBold } from '../atoms/buttons'
 import { P, H4Capitals, Small, InnerHTML } from '../atoms/typography'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
+import { closeIconBlack } from '../../utils/icons'
 
 class SmallEntry extends Component {
   constructor(props) {
@@ -54,18 +55,25 @@ class SmallEntry extends Component {
           timeout={900}
           classNames="FadeInFast"
           unmountOnExit={true}
-          >
-            <WeiterbildungBackground show={this.state.smallEntryOpen} onClick={this.handleClose.bind(this)}>
-              <a onClick={this.handleClose.bind(this)}>close</a>
-            </WeiterbildungBackground>
-          </CSSTransition>
-        </StyledSmallEntry>
+        >
+          <WeiterbildungBackground show={this.state.smallEntryOpen} onClick={this.handleClose.bind(this)}>
+            <nav>
+              <Img src={closeIconBlack} alt="Close" width="40" height="40"  onClick={this.handleClose.bind(this)}/>
+            </nav>
+          </WeiterbildungBackground>
+        </CSSTransition>
+      </StyledSmallEntry>
 
     )
   }
 }
 
 export default SmallEntry
+
+const Img = styled.img`
+  cursor: pointer;
+  padding: 15px;
+`
 
 const Title = H4Capitals.extend`
   background-image: -webkit-linear-gradient(165deg, ${props => props.theme.colors.violet} 20%,${props => props.theme.colors.blue} 120%);
