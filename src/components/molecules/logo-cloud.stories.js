@@ -10,6 +10,6 @@ storiesOf('Molecules: LogoCloud', module)
     <LogoCloud
       title={text("Title","Awards")}
       images={object("Logos",[{ handle:"jsnZ6OFJSiKMI8XKIomE"},{ handle:"ONnC5Gt6Tam0DOJDD4wJ"},{ handle:"IZu0yTbaT3GrHZOSBKtj"}])}
-      height={text("Title","110")}
+      height={text("Height","110")}
     />
   ))
