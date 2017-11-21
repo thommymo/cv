@@ -5,6 +5,7 @@ import { P, H4Capitals, Small, InnerHTML } from '../atoms/typography'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
 import { closeIconBlack } from '../../utils/icons'
+import { media } from '../../utils/breakpoints'
 
 class SmallEntry extends Component {
   constructor(props) {
@@ -88,6 +89,7 @@ const Title = H4Capitals.extend`
     opacity:0.5;
   }
   white-space: normal;
+  width:140px;
 `
 const PSmallEntry = InnerHTML.extend`
   ${props => props.show ? `visibility: visible;` : "visibility: hidden;" }
@@ -125,6 +127,8 @@ const StyledSmallEntry = styled.div`
   flex: 1;
   ${props => props.show ? `z-index:101;` : "z-index:0;" }
   font-size: 0.8em;
+  ${media.phone`display:none;`};
+  ${media.tablet`display:none;`};
 `
 const WeiterbildungBackground = styled.div`
   position:fixed;
