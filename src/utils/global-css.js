@@ -18,6 +18,13 @@ injectGlobal`
     background-color: white; /*{white}*/
   }
 
+  .FadeInFast-enter {
+    opacity: 0;
+  }
+  .FadeInFast-enter.FadeInFast-enter-active {
+    opacity: 0.9;
+    transition: opacity ${(timeout*2)}ms cubic-bezier(.22,.07,.3,1);
+  }
   .ImageFadeIn-enter {
     opacity: 0;
   }

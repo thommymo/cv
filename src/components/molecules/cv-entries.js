@@ -1,24 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../../utils/breakpoints'
-import { P, H3, H4, H4Capitals } from '../atoms/typography'
-import { TextLink } from '../atoms/buttons'
+import { P, H3, H4, H4Capitals, Small } from '../atoms/typography'
+import { TextLink, TextLinkBold } from '../atoms/buttons'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
+import SmallEntry from '../molecules/small-entry'
 
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
 
-const Content = styled.div`
-  padding: 44px 20px 44px 20px;
-  margin-left:3px;
-  margin-right:3px;
-  border-top: solid; border-top-width: 10px; border-top-color: ${props => props.theme.colors.primary};
-  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${props => props.theme.colors.primary};
-  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${props.theme.colors.blue}; margin-right:0px;` : ''};
-  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${props.theme.colors.blue}; margin-left:0px; text-align:right; ` : ''};
-  flex:1;
-`
+
 
 //CVEntries is a component which shows an entry in my CV and places the line on the left or right side of it.
 
@@ -39,7 +31,9 @@ export const CVEntries = ({data : {
   addBottomLeftTriangle=false,
   addTopRightTriangle=false,
   addBottomRightTriangle=false,
-  moreinfocventry={}
+  moreinfocventry={},
+  furtherEducationTitle="",
+  furtherEducationContent=""
 }}) => {
   const startDateDate = new Date(startDate)
   const endDateDate = new Date(endDate)
@@ -57,63 +51,80 @@ export const CVEntries = ({data : {
       unmountOnExit={true}
     >
       <ContentWrapper>
-      <EntryItem >
-        <TimeLine
-          show={left}
-          right={right}
-          left={left}
-          bothright={bothright}
-          bothleft={bothleft}
-          startDate={formattedStartDate}
-          endDate={formattedEndDate}
-          rightposition={false}
-          addTopLeftTriangle={addTopLeftTriangle}
-          addTopRightTriangle={addTopRightTriangle}
-          addBottomLeftTriangle={addBottomLeftTriangle}
-          addBottomRightTriangle={addBottomRightTriangle}
-        />
-        <Content
-          left={left}
-          right={right}
-        >
-          <article>
-            <Organization right={right}>
-              <H4Capitals>{organization}</H4Capitals>
-            </Organization>
-            {
-              showmore &&
-              <Title left={left} right={right}><CVEntryTextLink to={`/id/${id}/`}>{title}  &rarr;</CVEntryTextLink></Title>
+        <EntryItem >
+          <TimeLine
+            show={left}
+            right={right}
+            left={left}
+            bothright={bothright}
+            bothleft={bothleft}
+            startDate={formattedStartDate}
+            endDate={formattedEndDate}
+            rightposition={false}
+            addTopLeftTriangle={addTopLeftTriangle}
+            addTopRightTriangle={addTopRightTriangle}
+            addBottomLeftTriangle={addBottomLeftTriangle}
+            addBottomRightTriangle={addBottomRightTriangle}
+          />
+          <Content
+            left={left}
+            right={right}
+          >
+            <Article>
+              <Organization right={right}>
+                <H4Capitals>{organization}</H4Capitals>
+              </Organization>
+              {
+                showmore &&
+                <Title left={left} right={right}><CVEntryTextLink to={`/id/${id}/`}>{title}  &rarr;</CVEntryTextLink></Title>
+              }
+              {
+                !showmore &&
+                <Title left={left} right={right}>{title}</Title>
+              }
+              <Excerpt right={right}>
+                <P>{excerpt}</P>
+              </Excerpt>
+            </Article>
+            { furtherEducationTitle &&
+              <SmallEntry furtherEducationTitle={furtherEducationTitle} furtherEducationContent={furtherEducationContent} />
             }
-            {
-              !showmore &&
-              <Title left={left} right={right}>{title}</Title>
-            }
-            <Excerpt right={right}>
-              <P>{excerpt}</P>
-            </Excerpt>
-          </article>
-        </Content>
-        <TimeLine
-          rightposition={true}
-          show={right}
-          right={right}
-          left={left}
-          bothright={bothright}
-          bothleft={bothleft}
-          startDate={formattedStartDate}
-          endDate={formattedEndDate}
-          addTopLeftTriangle={addTopLeftTriangle}
-          addTopRightTriangle={addTopRightTriangle}
-          addBottomLeftTriangle={addBottomLeftTriangle}
-          addBottomRightTriangle={addBottomRightTriangle}
-        />
-      </EntryItem>
-    </ContentWrapper>
+          </Content>
+          <TimeLine
+            rightposition={true}
+            show={right}
+            right={right}
+            left={left}
+            bothright={bothright}
+            bothleft={bothleft}
+            startDate={formattedStartDate}
+            endDate={formattedEndDate}
+            addTopLeftTriangle={addTopLeftTriangle}
+            addTopRightTriangle={addTopRightTriangle}
+            addBottomLeftTriangle={addBottomLeftTriangle}
+            addBottomRightTriangle={addBottomRightTriangle}
+          />
+        </EntryItem>
+      </ContentWrapper>
     </CSSTransition>
     )
 }
 
+const Content = styled.div`
+  display: flex;
+  padding: 44px 20px 44px 20px;
+  margin-left:3px;
+  margin-right:3px;
+  border-top: solid; border-top-width: 10px; border-top-color: ${props => props.theme.colors.primary};
+  border-bottom: solid; border-bottom-width: 10px; border-bottom-color: ${props => props.theme.colors.primary};
+  ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${props.theme.colors.blue}; margin-right:0px;` : ''};
+  ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${props.theme.colors.blue}; margin-left:0px; text-align:right; ` : ''};
+  flex:1;
+`
 // Styling for Timespan component elements
+const Article = styled.article`
+  flex:5;
+`
 
 /*
 Typography

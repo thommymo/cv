@@ -5,27 +5,30 @@ import { H1, H3 } from '../atoms/typography'
 import { HeaderTitle } from '../../components/atoms/containers'
 
 
+
 export const CVEntriesHeader = ({
   titleleft = "",
   titleright = "",
 }) => (
-  <ContentWrapper>
-    <HeaderTitle>
-      <H1>Lebenslauf</H1>
-    </HeaderTitle>
-    <SectionFlex>
-      <Header>
-        <RotateLeft>
-          <H3>{titleleft}</H3>
-        </RotateLeft>
-      </Header>
-      <Header>
-        <RotateRight>
-          <H3>{titleright}</H3>
-        </RotateRight>
-      </Header>
-    </SectionFlex>
-  </ContentWrapper>
+
+    <ContentWrapper>
+      <HeaderTitle>
+        <H1>Lebenslauf</H1>
+      </HeaderTitle>
+      <SectionFlex>
+        <Header>
+          <RotateLeft>
+            <H3>{titleleft}</H3>
+          </RotateLeft>
+        </Header>
+        <Header>
+          <RotateRight>
+            <H3>{titleright}</H3>
+          </RotateRight>
+        </Header>
+      </SectionFlex>
+    </ContentWrapper>
+
 )
 const ContentWrapper = styled.div`
   max-width: 800px;

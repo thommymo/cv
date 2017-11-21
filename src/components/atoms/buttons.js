@@ -21,5 +21,5 @@ export const TextLink = styled(Link)`
 export const TextLinkBold =  TextLink.extend`
   font-weight: 400;
   font-size: 0.9em;
-  padding-right: 20px;
+  padding-right: 18px;
 `

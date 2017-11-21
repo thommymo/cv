@@ -47,6 +47,8 @@ const data = gql`
         id
         background
       }
+      furtherEducationTitle
+      furtherEducationContent
     }
   }
 `
