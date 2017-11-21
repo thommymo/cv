@@ -4,13 +4,10 @@ import { media } from '../../utils/breakpoints'
 import { H1, H3 } from '../atoms/typography'
 import { HeaderTitle } from '../../components/atoms/containers'
 
-
-
 export const CVEntriesHeader = ({
   titleleft = "",
   titleright = "",
 }) => (
-
     <ContentWrapper>
       <HeaderTitle>
         <H1>Lebenslauf</H1>
@@ -28,7 +25,6 @@ export const CVEntriesHeader = ({
         </Header>
       </SectionFlex>
     </ContentWrapper>
-
 )
 const ContentWrapper = styled.div`
   max-width: 800px;
