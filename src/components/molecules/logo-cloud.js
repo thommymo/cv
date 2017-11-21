@@ -8,7 +8,7 @@ export const LogoCloud = ({
   images,
   height
 }) => (
-  <div>
+  <StyledLogoCloud>
     <H2>{title}</H2>
     <RowLogos>
       {images.map((image) => (
@@ -17,15 +17,16 @@ export const LogoCloud = ({
         </Logo>
       ))}
     </RowLogos>
-  </div>
+  </StyledLogoCloud>
 )
-
+const StyledLogoCloud = styled.div`
+  text-align: center;
+`
 const RowImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 `
-
 const RowLogos = RowImages.extend`
   max-width: 600px;
   margin: 0 auto;
