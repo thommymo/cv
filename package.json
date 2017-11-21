@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "build-storybook -c .storybook -o public/stories"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.2.13",
