@@ -7,8 +7,8 @@ import { toIdValue } from 'apollo-utilities';
 
 const networkInterface =
   new HttpLink({
-    headers: { Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MDkwMzM3MTMsImNsaWVudElkIjoiY2l2Z29zNmNqMDE5MjAxODRucDAxZGRkMiIsInByb2plY3RJZCI6ImNqOGQzNnp3ejA3dmYwMTY1OXdob2Q2b2MiLCJwZXJtYW5lbnRBdXRoVG9rZW5JZCI6ImNqOThucGxnYTVwcDIwMTM2dHlkdWFpZmcifQ.uamhbiJruoE8Y9mqF742Pq-iWEIKYGPsDuu8D_qhjjQ`},
-    uri: 'https://api.graphcms.com/simple/v1/cj8d36zwz07vf01659whod6oc'
+    headers: { Authorization: `Bearer ${process.env.REACT_APP_GRAPHQL_KEY}`},
+    uri: `${process.env.REACT_APP_GRAPHQL_URI}`
   })
 
 /*
