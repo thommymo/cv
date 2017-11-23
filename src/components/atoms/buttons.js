@@ -18,7 +18,9 @@ export const TextLink = styled(Link)`
   text-decoration: none;
 `
 
-export const TextLinkBold =  TextLink.extend`
+export const TextLinkBold =  styled.a`
+  float:none;
+  text-decoration: none;
   font-weight: 400;
   font-size: 0.9em;
   padding-right: 18px;
