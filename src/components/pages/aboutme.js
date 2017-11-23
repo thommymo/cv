@@ -24,8 +24,8 @@ export const AboutMe = () => (
       <TextWithLabel label="Sprachen">
         <P>
           Deutsch: Muttersprache<br/>
-          Englisch: sehr gut (4-monatiger Sprachaufenthalt in Kanada)<br/>
-          Französisch: Basiskenntnisse
+          Englisch: sehr gut in Wort und Schrift (4-monatiger Aufenthalt in Kanada)<br/>
+          Französisch: Matura-Niveau (7 Jahre Unterricht)
         </P>
       </TextWithLabel>
     </Section>
