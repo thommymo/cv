@@ -22,11 +22,11 @@ export const AboutMe = () => (
         <P><TextLinkBold href="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextLinkBold><TextLinkBold href="/stories">Design in Storybook &rarr;</TextLinkBold></P>
       </TextWithLabel>
       <TextWithLabel label="Sprachen">
-        <P>
+        <P><small>
           Deutsch: Muttersprache<br/>
           Englisch: sehr gut in Wort und Schrift (4-monatiger Aufenthalt in Kanada)<br/>
           Französisch: Matura-Niveau (7 Jahre Unterricht)
-        </P>
+          </small></P>
       </TextWithLabel>
     </Section>
     <SectionCentered>
