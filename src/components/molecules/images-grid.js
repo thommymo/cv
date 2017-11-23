@@ -34,6 +34,8 @@ const ImageColumn = styled.div`
   padding-bottom:5px;
   ${media.desktop`width: calc(100% / ${props => props.columns} - 10px); padding-right: 10px;`}
   ${media.tablet`width: calc(100% / ${props => props.columns} - 10px); padding-right: 10px;`}
+  ${media.phone`width: 100%;`}
+  & > img {
   & > img {
     width: 100%;
   }
