@@ -26,7 +26,7 @@ export const AboutMe = () => (
           Deutsch: Muttersprache<br/>
           Englisch: sehr gut in Wort und Schrift (4-monatiger Aufenthalt in Kanada)<br/>
           Französisch: Matura-Niveau (7 Jahre Unterricht)
-          </small></P>
+        </small></P>
       </TextWithLabel>
     </Section>
     <SectionCentered>
@@ -53,15 +53,6 @@ export const AboutMe = () => (
           Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Pädagogische Hochschule Zentralscheiz, Universität Zürich, UBS, Credit Suisse, Winterthur Versicherungen, Walo Bertschinger, Quickline, Akris, Doodah
         </small>
       </P>
-    </SectionCentered>
-    <SectionCentered>
-      <ImagesGrid
-        columns={2}
-        title="Bei der Arbeit"
-        images={[
-          {handle: "HCgGXNqFTxOFVQa3hX4R"},
-          {handle: "rg7ELbbGTH6AAb72hK7Z"}
-        ]}/>
     </SectionCentered>
     <SectionCentered>
       <ImagesGrid
