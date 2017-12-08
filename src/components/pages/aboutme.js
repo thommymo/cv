@@ -19,7 +19,7 @@ export const AboutMe = () => (
       <TextWithLabel label="&#10084;-Technologie">
         <P>React, ES6 und alles was dazugehört.</P>
         <P><small>Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></P>
-        <P><TextLinkBold href="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextLinkBold><TextLinkBold href="/stories">Design in Storybook &rarr;</TextLinkBold></P>
+        <P><TextLinkBold href="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextLinkBold></P>
       </TextWithLabel>
       <TextWithLabel label="Sprachen">
         <P><small>
