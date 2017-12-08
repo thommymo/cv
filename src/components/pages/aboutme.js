@@ -47,11 +47,15 @@ export const AboutMe = () => (
       />
     </SectionCentered>
     <SectionCentered>
-      <H2>Arbeit- und Auftraggeber</H2>
+      <H2>Arbeitgeber</H2>
       <P>
         <small>
-          Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Pädagogische Hochschule Zentralscheiz, Universität Zürich, UBS, Credit Suisse, Winterthur Versicherungen, Walo Bertschinger, Quickline, Akris, Doodah
+          Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Pädagogische Hochschule Zentralschweiz
         </small>
+      </P>
+      <H2>Auftraggeber</H2>
+      <P>
+        <small>UBS, Credit Suisse, Winterthur Versicherungen, Universität Zürich, Walo Bertschinger, Quickline, Akris, Doodah</small>
       </P>
     </SectionCentered>
     <SectionCentered>
