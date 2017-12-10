@@ -15,7 +15,7 @@ export const CV = ({allCVEntrieses}) => (
   <PageShell withMainNavigation title="Lebenslauf">
     <CVEntriesHeader titleleft="Arbeit" titleright="Ausbildung"/>
     { allCVEntrieses.map((entry) => (
-      <CVEntries
+      <CVEntries key={entry.id}
         {...entry}
       />
     ))}
