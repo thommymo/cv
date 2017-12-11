@@ -8,6 +8,7 @@
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
     "grunt-responsive-images": "^0.1.9",
+    "idb": "^2.0.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-apollo": "^2.0.0",
@@ -23,7 +24,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook": "build-storybook -c .storybook -o public/stories"
   },
   "devDependencies": {

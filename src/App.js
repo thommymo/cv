@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ShellCVEntryWithData } from './components/data/cv-entry-detail'
-import { ShellCVEntriesWithData } from './components/data/cv-entries'
+import ShellCVEntriesWithData from './components/data/cv-entries'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { timeoutTransition } from './utils/constants'
 import { Route, Switch, withRouter} from 'react-router-dom'

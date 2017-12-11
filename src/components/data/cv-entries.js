@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CVIsLoading, CV } from '../../components/templates/cv'
+import idb from 'idb'
 
 
 // TODO: Instead of creating my own HOC, it might be usefull to use someting like recompose. See:
@@ -11,8 +12,13 @@ const CVEntriesState = ( { data : { loading=false, allCVEntrieses=false }} ) => 
   if(loading){
     return(<CVIsLoading />)
   } else if (allCVEntrieses){
-    //TODO: Put data in Cache with name tm-cv-entries
-    console.log(allCVEntrieses)
+    //TODO: Update version number, if data changes
+    const dbPromise = idb.open('tm-cv',1,upgradeDB => {
+      upgradeDB.createObjectStore('keyval');
+    }).then((db)=>{
+      const tx = db.transaction('keyval','readwrite').objectStore('keyval').put(allCVEntrieses,'all-entries');
+      return tx.complete;
+    })
     return(<CV allCVEntrieses={allCVEntrieses}/>)
   } else {
     return(
@@ -60,31 +66,43 @@ const data = gql`
   to a component as a prop (and update them as the results change)
 */
 
-const CVEntriesWithData = (...props) => {
-  const dataInCache = checkIfDataInCache()
-  if(dataInCache){
-    return <CVEntriesWithDataFromCache {...dataInCache}/>
-  }else{
-    return <CVEntriesWithDataFromAPI {...props}/>
-  }
-}
-
-const checkIfDataInCache = () => {
-  //TODO: Check if IndexedDB with the name tm-cv-entries exists, return true if yes
-  return false
-}
-
 const CVEntriesWithDataFromAPI = graphql(data)(CVEntriesState);
 
-const CVEntriesWithDataFromCache = () => {
-  let allCVEntriesesfromCache = {}
-  //TODO: Get data from indexedDB with the name tm-cv-entries
-  return <CV allCVEntrieses={allCVEntriesesfromCache}/>
+class ShellCVEntriesWithData extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      dataInCache: false,
+      checkedIfDataInCache: false,
+      dataFromCache: {}
+    }
+  }
+  componentWillMount(){
+    //Check if data is available from indexedDB if yes set State to yes
+    idb.open('tm-cv', 1, upgradeDB => {
+      upgradeDB.createObjectStore('keyval');
+    }).then((db)=>(
+      db.transaction('keyval').objectStore('keyval').get('all-entries')
+    )).then((data) => {
+      if(data){
+        this.setState({dataInCache: true, checkedIfDataInCache: true, dataFromCache: data})
+      }else{
+        this.setState({dataInCache: false, checkedIfDataInCache: true})
+      }
+    })
+  }
+  render(){
+    const {dataInCache, checkedIfDataInCache, dataFromCache} = this.state
+    return(
+      <div>
+        { !dataInCache && checkedIfDataInCache &&
+          <CVEntriesWithDataFromAPI {...this.props}/>
+        }
+        { dataInCache && checkedIfDataInCache &&
+          <CV allCVEntrieses={dataFromCache}/>
+        }
+      </div>
+  )
 }
-
-
-//TODO: Replace this with a HOC
-
-export const ShellCVEntriesWithData = (props) => (
-  <div><CVEntriesWithData {...props}/></div>
-)
+}
+export default ShellCVEntriesWithData;
