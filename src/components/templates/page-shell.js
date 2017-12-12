@@ -19,9 +19,9 @@ class PageShell extends Component {
         <Helmet>
           <title>{this.props.title}</title>
         </Helmet>
-        <a href="#maincontent" onClick={this.skipNavigation}>
+        <Skipnavigation href="#maincontent" onClick={this.skipNavigation}>
           Skip to main content
-        </a>
+        </Skipnavigation>
         <Header props={this.props}/>
         <ContentWrapper id="maincontent" tabIndex={-1}>
           <Content gradient={this.props.gradient} >
