@@ -9,19 +9,26 @@ class PageShell extends Component {
   shouldComponentUpdate(nextProps, nextState){
     return !(nextProps === this.props);
   }
+  skipNavigation(event){
+    document.getElementById('maincontent').focus()
+    event.preventDefault()
+  }
   render(){
     return(
       <MainContent>
-        <Header props={this.props}/>
         <Helmet>
           <title>{this.props.title}</title>
         </Helmet>
-        <ContentWrapper>
+        <a href="#maincontent" onClick={this.skipNavigation}>
+          Skip to main content
+        </a>
+        <Header props={this.props}/>
+        <ContentWrapper id="maincontent" tabIndex={-1}>
           <Content gradient={this.props.gradient} >
             {this.props.children}
           </Content>
         </ContentWrapper>
-        <Footer props={this.props}/>
+        <Footer props={this.props} />
       </MainContent>
     )
   }
@@ -39,6 +46,14 @@ const MainContent = styled.div`
   & a:hover {
     opacity: 0.5;
   }
+`
+const Skipnavigation = styled.a`
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
 `
 const ContentWrapper = styled.div`
   ${media.desktop`border-left:solid 61px ${props => props.theme.colors.primary};`}
