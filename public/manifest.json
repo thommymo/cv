@@ -1,11 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Thomas Moser",
+  "name": "This is the CV of Thomas Moser",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "192x192",
+      "sizes": "32x32",
       "type": "image/png"
+    },
+    {
+      "src": "favicon-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
     }
   ],
   "start_url": "./index.html",
