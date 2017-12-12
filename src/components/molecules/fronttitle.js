@@ -1,6 +1,7 @@
 import React from 'react'
 import { H1, H2 } from '../../components/atoms/typography'
 import { HeaderTitle } from '../atoms/containers'
+import { print } from '../../utils/breakpoints'
 
 export const FrontTitle = ({
   title,
@@ -19,6 +20,7 @@ const FrontHeaderTitle = HeaderTitle.extend`
   background-image:         linear-gradient(165deg, ${props => props.theme.colors.green} 20%,${props => props.theme.colors.black} 110%); /* Standard syntax; must be last */
   -webkit-background-clip: text;
   background-clip: text;
+  ${print.paper`margin-top:6em;`}
 `
 const H1Front = H1.extend`
   display: inline;
@@ -26,4 +28,5 @@ const H1Front = H1.extend`
 const H2Front = H2.extend`
   display: block;
   margin-top: 0.4em;
+  ${print.paper`margin-bottom:0em;`}
 `

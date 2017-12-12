@@ -1,4 +1,4 @@
-import { media } from '../../utils/breakpoints'
+import { media, print } from '../../utils/breakpoints'
 import styled, { css } from 'styled-components'
 
 /*
@@ -23,7 +23,9 @@ const coloredLink = css`
     -webkit-background-clip: text;
     background-clip: text;
     display: inline-block;
+    ${print.paper`color:black; background-image:none;`}
   }
+
 `
 
 /*
@@ -37,12 +39,14 @@ export const H1 = styled.h1.attrs({ type: "h1" })`
   border-bottom:solid 5px ${props => props.theme.colors.black};
   border-left:solid 8px transparent;
   display: inline-block;
+  ${print.paper`color:black;`}
 `
 export const H2 = styled.h2.attrs({ type: 'h2' })`
   font-weight:400;
   ${fontSize}
   ${lineHeight}
   display: inline-block;
+  ${print.paper`color:black;`}
 `
 export const H3 = styled.h3.attrs({ type: 'h3' })`
   font-weight:400;

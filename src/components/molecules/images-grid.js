@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FullWithImage } from '../atoms/images'
 import { H2 } from '../atoms/typography'
-import { media } from '../../utils/breakpoints'
+import { media,print } from '../../utils/breakpoints'
 
 export const ImagesGrid = ({
   title,
@@ -36,7 +36,7 @@ const ImageColumn = styled.div`
   ${media.tablet`width: calc(100% / ${props => props.columns} - 10px); padding-right: 10px;`}
   ${media.phone`width: 100%;`}
   & > img {
-  & > img {
     width: 100%;
   }
+  ${print.paper`width: 300px; padding-right: 10px;`}
 `

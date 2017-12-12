@@ -25,6 +25,11 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 			${css(...args)}
 		}
 	`
-
 	return acc
 }, {})
+
+export const print = {
+	paper: (...args) => css`
+		@media print {${css(...args)}}
+`
+}

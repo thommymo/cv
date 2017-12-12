@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../utils/breakpoints'
+import { media, print } from '../../utils/breakpoints'
 import { H1, H3 } from '../atoms/typography'
 import { HeaderTitle } from '../../components/atoms/containers'
 
@@ -59,6 +59,7 @@ const RotateRight = Rotate.extend`
   ${media.desktop`margin-right: -35px; margin-top: -100px;`}
   ${media.tablet`margin-right: -35px; margin-top: -100px;`}
   ${media.phone`margin-right: -14px; margin-top: -100px;`}
+  ${print.paper`margin-right: 35px; margin-top: -100px;`}
   & h3 {
     border-right: 5px solid transparent;
   }
@@ -70,6 +71,7 @@ const RotateLeft = Rotate.extend`
   ${media.desktop`margin-left: -35px; margin-top: -100px;`}
   ${media.tablet`margin-left: -35px; margin-top: -100px;`}
   ${media.phone`margin-left: -14px; margin-top: -100px;`}
+  ${print.paper`margin-left: 35px; margin-top: -100px;`}
   & h3 {
     border-left: 5px solid transparent;
   }

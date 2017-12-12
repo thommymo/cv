@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { H4 } from '../atoms/typography'
 import { githubIcon, closeIcon } from '../../utils/icons'
 import { Link } from 'react-router-dom'
+import { print } from '../../utils/breakpoints'
+
 
 export const Footer = ({props}) => (
   <StyledFooter gradient={props.gradient} >
@@ -64,6 +66,7 @@ const Middle = styled.div`
   justify-content: center;
   text-align: center;
   z-index:1000;
+  ${print.paper`display:none;`}
 `
 const BlackLink = styled.a`
   color: ${props => props.theme.colors.black} !important;

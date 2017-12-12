@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../utils/breakpoints'
+import { media, print } from '../../utils/breakpoints'
 import { P, H3, H4, H4Capitals } from '../atoms/typography'
 import { TextLink } from '../atoms/buttons'
 import { CSSTransition } from 'react-transition-group'
@@ -9,8 +9,6 @@ import SmallEntry from '../molecules/small-entry'
 
 //TODO: Add PropTypes
 //TODO: Check Frontend Performance: I think this is a bit slow...
-
-
 
 //CVEntries is a component which shows an entry in my CV and places the line on the left or right side of it.
 
@@ -119,6 +117,7 @@ const Content = styled.div`
   ${props => props.left ? `border-left: solid; border-left-width: 10px; border-left-color: ${props.theme.colors.blue}; margin-right:0px;` : ''};
   ${props => props.right ? `border-right: solid; border-right-width: 10px; border-right-color: ${props.theme.colors.blue}; margin-left:0px; text-align:right; ` : ''};
   flex:1;
+  ${print.paper`padding: 24px 20px 24px 20px;border-top-color:white;border-bottom-color:white;`}
 `
 // Styling for Timespan component elements
 const Article = styled.article`
@@ -151,6 +150,7 @@ const Organization = styled.div`
   ${media.desktop`margin-top: -20px; margin-bottom: -3.3em`}
   ${media.tablet`margin-top: -17px; margin-bottom: -2.7em`}
   ${media.phone`margin-top: -14px; margin-bottom: -2.4em`}
+  ${print.paper`margin-top: -14px; margin-bottom: -2.4em`}
 `
 const Excerpt = styled.div`
   display: flex;
@@ -162,6 +162,7 @@ const Excerpt = styled.div`
   ${media.desktop`margin-top: -3.7em;`}
   ${media.tablet`margin-top: -2.8em;`}
   ${media.phone`margin-top: -2.3em;`}
+  ${print.paper`margin-top: -2.3em;`}
 `
 
 /*
@@ -227,6 +228,7 @@ const StyledTimeSpan = H4.extend`
   ${props => props.rightposition ? 'text-align: left; margin-left: -12px' : 'text-align: right; margin-right: -12px'};
   text-align: center;
   color:${props => props.theme.colors.primary};
+  ${print.paper`display: flex; justify-content: center; flex-direction: column; height: 83px; padding-top: 9px;color:black;`};
 `
 
 const StyledTimeLine = styled.div`
@@ -241,6 +243,7 @@ const StyledTimeLine = styled.div`
   ${media.tablet`min-width:35px;`};
   ${media.phone`width:5px;overflow:hidden;`};
   ${media.phone`min-width:5px;`};
+  ${print.paper`width:35px;overflow:hidden;`};
 
   padding: 0 10px 0 10px;
   z-index: 20;
@@ -296,6 +299,10 @@ const StyledTimeLine = styled.div`
       position: absolute;
       z-index: 10000;
       }` : ''};
+    ${print.paper`
+      &::after {border:none;}
+      &::before {border:none;}
+      `}
 `
 
 const CVEntryTextLink = (props) => (

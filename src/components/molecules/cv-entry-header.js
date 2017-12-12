@@ -1,6 +1,7 @@
 import React from 'react';
 import { H1, H4Capitals } from '../../components/atoms/typography'
 import styled from 'styled-components'
+import { print } from '../../utils/breakpoints'
 
 /*
   Molecule
@@ -48,6 +49,7 @@ const HeaderWithBorder = styled.div`
   border-right-color: ${props=>props.theme.colors.primary};
   padding-bottom: 6em;
   position: relative;
+  ${print.paper`border:none;`}
 `
 const HeaderWithDate = styled.div`
   margin-top: -52px;

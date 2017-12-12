@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { media } from '../../utils/breakpoints'
+import { media, print } from '../../utils/breakpoints'
 
 export const CVEntryFooter = styled.div`
   border: solid 0px;
@@ -14,4 +14,5 @@ export const CVEntryFooter = styled.div`
   ${media.desktop`box-shadow: 700px 0px ${props=>props.theme.colors.primary}, -700px 0px ${props=>props.theme.colors.primary}; `}
   ${media.tablet`box-shadow: 300px 0px ${props=>props.theme.colors.primary}, -300px 0px ${props=>props.theme.colors.primary}; `}
   ${media.phone`box-shadow: 100px 0px ${props=>props.theme.colors.primary}, -100px 0px ${props=>props.theme.colors.primary}; `}
+  ${print.paper`box-shadow: none;border:none`}
 `

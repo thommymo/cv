@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {H4} from '../atoms/typography'
 import { Link, NavLink } from 'react-router-dom'
 import { closeIcon } from '../../utils/icons'
+import { print } from '../../utils/breakpoints'
 
 export const Header = ({props}) => (
   <StyledHeader gradient={props.gradient}>
@@ -29,6 +30,7 @@ const Img = styled.img`
 `
 const Navigation = styled.nav`
   display:flex;
+  ${print.paper`display:none;`}
 `
 const StyledHeader = styled.header`
   display: flex;
