@@ -1,7 +1,7 @@
 import React from 'react'
 import PageShell from '../../components/templates/page-shell'
 import { H2, P } from '../../components/atoms/typography'
-import { TextLinkBold } from '../../components/atoms/buttons'
+import { TextLinkBold, TextAnchorBold } from '../../components/atoms/buttons'
 import { Section, SectionCentered } from '../../components/atoms/containers'
 import { ImagesGrid } from '../../components/molecules/images-grid'
 import { LogoCloud } from '../../components/molecules/logo-cloud'
@@ -14,12 +14,12 @@ export const AboutMe = () => (
     <Section>
       <TextWithLabel label="Erfahrung">
         <P>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend.</P>
-        <P><TextLinkBold href="/cv">Mein Lebenslauf &rarr;</TextLinkBold></P>
+        <P><TextLinkBold to="/cv">Mein Lebenslauf &rarr;</TextLinkBold></P>
       </TextWithLabel>
       <TextWithLabel label="&#10084;-Technologie">
         <P>React, ES6 und alles was dazugehört.</P>
         <P><small>Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></P>
-        <P><TextLinkBold href="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextLinkBold></P>
+        <P><TextAnchorBold href="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextAnchorBold></P>
       </TextWithLabel>
       <TextWithLabel label="Sprachen">
         <P><small>
