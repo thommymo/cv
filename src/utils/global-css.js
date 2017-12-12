@@ -2,7 +2,7 @@ import { injectGlobal } from 'styled-components';
 import { timeout } from './constants'
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,400,200');
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200');
 
   body:before {
     height: 100vh;
@@ -44,34 +44,34 @@ injectGlobal`
   }
   .FadeIn-appear.FadeIn-appear-active {
     opacity: 1;
-    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1);
   }
   .FadeIn-enter {
     opacity: 0;
   }
   .FadeIn-enter.FadeIn-enter-active {
     opacity: 1;
-    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout)}ms;
   }
   .SlideIn-appear {
     opacity: 0;
   }
   .SlideIn-appear.SlideIn-appear-active {
     opacity: 1;
-    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1);
   }
   .SlideIn-enter {
     opacity: 0;
   }
   .SlideIn-enter.SlideIn-enter-active {
     opacity: 1;
-    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout*2)}ms;
+    transition: opacity ${(timeout*3)}ms cubic-bezier(.22,.07,.3,1) ${(timeout)}ms;
   }
   .SlideIn-exit {
     opacity: 1;
   }
   .SlideIn-exit.SlideIn-exit-active {
     opacity: 0;
-    transition: opacity ${(timeout*1.5)}ms cubic-bezier(.22,.07,.3,1);
+    transition: opacity ${(timeout*0.5)}ms cubic-bezier(.22,.07,.3,1);
   }
 `
