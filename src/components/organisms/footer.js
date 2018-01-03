@@ -25,6 +25,14 @@ export const Footer = ({props}) => (
         </WhiteLink>
       </Middle>
     }
+
+
+    <PrintOnlyMiddle>
+      <H4>
+        Thomas Moser, Bireggstrasse 33, 6003 Luzern, +41 76 380 60 08
+      </H4>
+    </PrintOnlyMiddle>
+
     { !props.gradient &&
       <Right>
         <H4>
@@ -34,6 +42,8 @@ export const Footer = ({props}) => (
     }
   </StyledFooter>
 )
+
+
 
 const StyledFooter = styled.footer`
   color: ${props => props.theme.colors.black};
@@ -52,12 +62,14 @@ const Right = styled.div`
   flex: 1;
   text-align: right;
   ${props => props.gradient ? 'display: none;':''}
+  ${print.paper`padding: 12px 10px;`}
 `
 const Left = styled.div`
   padding: 0 20px;
   flex: 1;
   text-align: left;
   ${props => props.gradient ? 'display: none;':''}
+  ${print.paper`display: none;`}
 `
 const Middle = styled.div`
   padding-bottom: 20px;
@@ -83,4 +95,10 @@ const WhiteLink = styled(Link)`
   &:hover {
     opacity: 0.8;
   }
+`
+const PrintOnlyMiddle = Left.extend`
+  visibility: none;
+  padding: 12px 0px;
+  flex: 5;
+  ${print.paper`visibility: visible;display: block;`}
 `
