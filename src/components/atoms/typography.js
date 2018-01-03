@@ -28,9 +28,8 @@ const coloredLink = css`
     ${print.paper`display: inline; color:${props => props.theme.colors.black}; background-image:none;`}
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
       display: inline;
-      color:${props => props.theme.colors.violet}; 
+      color:${props => props.theme.colors.violet};
       background-image:none;
-      background: none;
     }
   }
 `
@@ -49,6 +48,7 @@ export const H1 = styled.h1.attrs({ type: "h1" })`
   ${print.paper`border-bottom:solid 3px ${props => props.theme.colors.black};`}
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     color:${props => props.theme.colors.black};
+    background-image:none;
   }
 `
 export const H2 = styled.h2.attrs({ type: 'h2' })`
@@ -58,6 +58,7 @@ export const H2 = styled.h2.attrs({ type: 'h2' })`
   ${print.paper`color:${props => props.theme.colors.black};`}
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     color:${props => props.theme.colors.black};
+    background-image:none;
   }
 `
 export const H3 = styled.h3.attrs({ type: 'h3' })`

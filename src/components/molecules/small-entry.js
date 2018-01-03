@@ -89,6 +89,10 @@ const Title = H4Capitals.extend`
   }
   white-space: normal;
   width:140px;
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    color:${props => props.theme.colors.violet};
+    background-image:none;
+  }
 `
 const PSmallEntry = InnerHTML.extend`
   ${props => props.show ? `visibility: visible;` : "visibility: hidden;" }
