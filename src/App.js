@@ -6,6 +6,7 @@ import { timeoutTransition } from './utils/constants'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import PageNotFound from './components/pages/page-not-found'
 import { AboutMe } from './components/pages/aboutme'
+import { AboutMeEn } from './components/pages/aboutme-en'
 import './utils/global-css'
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
 
           <Switch location={this.props.location}>
             <Route exact path='/'><AboutMe/></Route>
+            <Route exact path='/aboutme'><AboutMeEn/></Route>
             <Route exact path='/cv' ><ShellCVEntriesWithData/></Route>
             <Route exact path='/:something/:id/'><ShellCVEntryWithData {...this.props}/></Route>
             <Route><PageNotFound/></Route>
