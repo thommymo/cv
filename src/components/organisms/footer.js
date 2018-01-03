@@ -98,6 +98,7 @@ const WhiteLink = styled(Link)`
 `
 const PrintOnlyMiddle = Left.extend`
   visibility: none;
+  display:none;
   padding: 12px 0px;
   flex: 5;
   ${print.paper`visibility: visible;display: block;`}
