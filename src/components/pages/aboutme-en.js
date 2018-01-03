@@ -13,7 +13,7 @@ export const AboutMeEn = () => (
     <FrontTitle title="Thomas Moser" subtitle="Frontend Web Developer" />
     <Section>
       <TextWithLabel label="Experience">
-        <P>7 years Web Developer, 7 years Product Owner and Project Manager and now Web Developer again with focus on Frontend.</P>
+        <P>7 years web developer, 7 years product owner and project manager and now web developer again with focus on frontend.</P>
         <P><TextLinkBold to="/cv">My CV (in German) &rarr;</TextLinkBold><APrintOnly href="https://www.thomasmoser.ch/cv/">thomasmoser.ch/cv/</APrintOnly></P>
       </TextWithLabel>
       <TextWithLabel label="Technology I &#10084;">
@@ -21,11 +21,11 @@ export const AboutMeEn = () => (
         <P><small>I built my CV with React, Styled Components, Storybook, Apollo, GraphQL and GraphCMS.</small></P>
         <P><TextAnchorBold href="https://github.com/thommymo/cv/">Code on Github &rarr;</TextAnchorBold><APrintOnly href="https://github.com/thommymo/cv/">github.com/thommymo/cv/</APrintOnly></P>
       </TextWithLabel>
-      <TextWithLabel label="Sprachen">
+      <TextWithLabel label="Languages">
         <P><small>
           German: mother tongue <br/>
-          Englisch: very good (I spent 4 months learning English in Canada)<br/>
-          French: lessons at school for 7 years
+          Englisch: very good. I spent 4 months learning English in Canada.<br/>
+          French: for 7 years lessons at school
         </small></P>
       </TextWithLabel>
     </Section>
@@ -63,7 +63,7 @@ export const AboutMeEn = () => (
     <SectionCentered>
       <ImagesGrid
         columns={2}
-        title="When working"
+        title="At work"
         images={[
           {handle: "dukoBERFSD247bmXJlDa"},
           {handle: "lzPM32gSje9TsZ6866We"}
@@ -72,7 +72,7 @@ export const AboutMeEn = () => (
     <SectionCentered>
       <ImagesGrid
         columns={3}
-        title="When having time off"
+        title="In my free time"
         images={[
           {handle: "HCgGXNqFTxOFVQa3hX4R"},
           {handle: "rg7ELbbGTH6AAb72hK7Z"},
