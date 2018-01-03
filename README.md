@@ -1,6 +1,6 @@
 # My CV
 
-This project is the react app for my [CV](https://www.thomasmoser.ch). 
+This project is a react app for my [CV](https://www.thomasmoser.ch). 
 
 ## Built With
 
