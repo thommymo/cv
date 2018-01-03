@@ -60,6 +60,15 @@ export const AboutMe = () => (
     </SectionCentered>
     <SectionCentered>
       <ImagesGrid
+        columns={2}
+        title="Bei der Arbeit"
+        images={[
+          {handle: "dukoBERFSD247bmXJlDa"},
+          {handle: "lzPM32gSje9TsZ6866We"}
+        ]}/>
+    </SectionCentered>
+    <SectionCentered>
+      <ImagesGrid
         columns={3}
         title="In der Freizeit"
         images={[
