@@ -38,5 +38,5 @@ const ImageColumn = styled.div`
   & > img {
     width: 100%;
   }
-  ${print.paper`width: 300px; padding-right: 10px;`}
+  ${print.paper`width: calc(100% / ${props => props.columns} - 10px); padding-right: 10px;`}
 `

@@ -20,7 +20,7 @@ const FrontHeaderTitle = HeaderTitle.extend`
   background-image:         linear-gradient(165deg, ${props => props.theme.colors.green} 20%,${props => props.theme.colors.black} 110%); /* Standard syntax; must be last */
   -webkit-background-clip: text;
   background-clip: text;
-  ${print.paper`margin-top:6em;`}
+  ${print.paper`margin-top:5em;`}
 `
 const H1Front = H1.extend`
   display: inline;

@@ -4,8 +4,9 @@ import { print } from '../../utils/breakpoints'
 //TODO: Check if section is the correct html paragraph for this.
 
 export const Section = styled.div`
-  padding-bottom: 5em;
+  padding-bottom: 3.5em;
   ${print.paper`margin-bottom:0em;`}
+  ${print.paper`padding-bottom:2em;`}
 `
 export const SectionCentered = Section.extend`
   text-align: center;

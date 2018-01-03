@@ -9,11 +9,13 @@ const fontSize = css`
   ${media.desktop`font-size: ${props => props.theme.fontSize[props.type].desktop};`}
   ${media.tablet`font-size: ${props => props.theme.fontSize[props.type].tablet};`}
   ${media.phone`font-size: ${props => props.theme.fontSize[props.type].phone};`}
+  ${print.paper`font-size: ${props => props.theme.fontSize[props.type].print};`}
 `
 const lineHeight = css`
   ${media.desktop`line-height: ${props => props.theme.lineHeight[props.type].desktop};`}
   ${media.tablet`line-height: ${props => props.theme.lineHeight[props.type].tablet};`}
   ${media.phone`line-height: ${props => props.theme.lineHeight[props.type].phone};`}
+  ${print.paper`line-height: ${props => props.theme.lineHeight[props.type].print};`}
 `
 const coloredLink = css`
   & a {
@@ -23,11 +25,10 @@ const coloredLink = css`
     -webkit-background-clip: text;
     background-clip: text;
     display: inline-block;
-    ${print.paper`color:black; background-image:none;`}
+    ${print.paper`display: inline; color:${props => props.theme.colors.black}; background-image:none;`}
+
   }
-
 `
-
 /*
   Typography
 */
@@ -39,14 +40,14 @@ export const H1 = styled.h1.attrs({ type: "h1" })`
   border-bottom:solid 5px ${props => props.theme.colors.black};
   border-left:solid 8px transparent;
   display: inline-block;
-  ${print.paper`color:black;`}
+  ${print.paper`color:${props => props.theme.colors.black};`}
+  ${print.paper`border-bottom:solid 3px ${props => props.theme.colors.black};`}
 `
 export const H2 = styled.h2.attrs({ type: 'h2' })`
   font-weight:400;
   ${fontSize}
   ${lineHeight}
-  display: inline-block;
-  ${print.paper`color:black;`}
+  ${print.paper`color:${props => props.theme.colors.black};`}
 `
 export const H3 = styled.h3.attrs({ type: 'h3' })`
   font-weight:400;
@@ -97,4 +98,16 @@ export const InnerHTML = styled.span`
   ${media.tablet`line-height: ${props => props.theme.lineHeight.h3.tablet};`}
   ${media.phone`line-height: ${props => props.theme.lineHeight.h3.phone};`}
 }
+`
+export const APrintOnly = styled.a`
+  visibility: hidden;
+  ${print.paper`
+    visibility:visible;
+    margin-left:-10px;
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 0.9em;
+    padding-right: 18px;
+    color:${props => props.theme.colors.violet};`
+  }
 `

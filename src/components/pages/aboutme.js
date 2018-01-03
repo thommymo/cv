@@ -1,6 +1,6 @@
 import React from 'react'
 import PageShell from '../../components/templates/page-shell'
-import { H2, P } from '../../components/atoms/typography'
+import { H2, P, APrintOnly } from '../../components/atoms/typography'
 import { TextLinkBold, TextAnchorBold } from '../../components/atoms/buttons'
 import { Section, SectionCentered } from '../../components/atoms/containers'
 import { ImagesGrid } from '../../components/molecules/images-grid'
@@ -14,12 +14,12 @@ export const AboutMe = () => (
     <Section>
       <TextWithLabel label="Erfahrung">
         <P>7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun wieder Web Developer mit Fokus auf Frontend.</P>
-        <P><TextLinkBold to="/cv">Mein Lebenslauf &rarr;</TextLinkBold></P>
+        <P><TextLinkBold to="/cv">Mein Lebenslauf &rarr;</TextLinkBold><APrintOnly href="https://www.thomasmoser.ch/cv/">thomasmoser.ch/cv/</APrintOnly></P>
       </TextWithLabel>
       <TextWithLabel label="&#10084;-Technologie">
         <P>React, ES6 und alles was dazugehört.</P>
         <P><small>Diesen CV habe ich mit React, Styled Components, Storybook, Apollo, GraphQL und GraphCMS erstellt.</small></P>
-        <P><TextAnchorBold href="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextAnchorBold></P>
+        <P><TextAnchorBold href="https://github.com/thommymo/cv/">Code auf Github &rarr;</TextAnchorBold><APrintOnly href="https://github.com/thommymo/cv/">github.com/thommymo/cv/</APrintOnly></P>
       </TextWithLabel>
       <TextWithLabel label="Sprachen">
         <P><small>
@@ -53,6 +53,8 @@ export const AboutMe = () => (
           Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic, Pädagogische Hochschule Zentralschweiz
         </small>
       </P>
+    </SectionCentered>
+    <SectionCentered>
       <H2>Auftraggeber</H2>
       <P>
         <small>UBS, Credit Suisse, Winterthur Versicherungen, Universität Zürich, Walo Bertschinger, Quickline, Akris, Doodah</small>

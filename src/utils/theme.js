@@ -12,64 +12,76 @@ export const theme = {
     p: {
       desktop: "1.4em",
       tablet: "1.3em",
-      phone: "1.25em"
+      phone: "1.25em",
+      print: "1.2em"
     },
     h1: {
       desktop: "4em",
       tablet: "2.5em",
-      phone: "2em"
+      phone: "2em",
+      print: "2.5em"
     },
     h2: {
       desktop: "2.25em",
       tablet: "2em",
-      phone: "1.625em"
+      phone: "1.625em",
+      print: "2em"
     },
     h3: {
       desktop: "1.75em",
       tablet: "1.5em",
-      phone: "1.375em"
+      phone: "1.375em",
+      print: "1.375em"
     },
     h4: {
       desktop: "1.125em",
       tablet: "1.125em",
-      phone: "1em"
+      phone: "1em",
+      print: "1em"
     },
     small: {
       desktop: "0.6em",
       tablet: "0.8em",
-      phone: "0.8em"
+      phone: "0.8em",
+      print: "0.7em"
     },
   },
   lineHeight: {
     p: {
       desktop: "1.4em",
       tablet: "1.3em",
-      phone: "1.3em"
+      phone: "1.3em",
+      print: "1.3em"
     },
     h1: {
       desktop: "1.25em",
       tablet: "1.25em",
-      phone: "1.25em"
+      phone: "1.25em",
+      print: "1.25em"
     },
     h2: {
       desktop: "1.25em",
       tablet: "1.25em",
-      phone: "1.15384615em"
+      phone: "1.15384615em",
+      print: "1.15384615em"
     },
     h3: {
       desktop: "1.7em",
       tablet: "1.4em",
-      phone: "1.3em"
+      phone: "1.3em",
+      print: "1.3em"
     },
     h4: {
       desktop: "1.22222222em",
       tablet: "1.22222222em",
-      phone: "1.22222222em"
+      phone: "1.22222222em",
+      print: "1.22222222em"
     },
     small: {
       desktop: "0.5em",
       tablet: "0.8em",
-      phone: "0.8em"
+      phone: "0.8em",
+      print: "0.5em"
     },
   }
 }

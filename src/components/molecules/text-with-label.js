@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Small, H3Capitals } from '../../components/atoms/typography'
-import { media } from '../../utils/breakpoints'
+import { media, print } from '../../utils/breakpoints'
 
 export const TextWithLabel = ({
   label,
@@ -18,12 +18,14 @@ export const TextWithLabel = ({
 )
 const Row = styled.div`
   ${media.desktop`display:flex;`}
+  ${print.paper`display:flex;`}
   margin-bottom:2em;
   max-width: 800px;
   margin: 1em auto;
 `
 const ColumnLabel = styled.div`
   ${media.desktop`padding-top:8px; text-align: right; padding-right: 40px;`}
+  ${print.paper`padding-top:7px; text-align: right; padding-right: 40px;`}
   flex:1;
 `
 const ColumnDescription = styled.div`

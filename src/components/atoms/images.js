@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { sizes, imagesizes, media } from '../../utils/breakpoints'
+import { sizes, imagesizes, media, print } from '../../utils/breakpoints'
 import styled, {css} from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
 import { timeout, baseurl} from '../../utils/constants'
@@ -19,9 +19,15 @@ export const Image = ({
           ${baseurl}resize=height:${height}/${handle} 1x,
           ${baseurl}resize=height:${height*2}/${handle} 2x,
         `}/>
-    <img src={`${baseurl}resize=height:${height}/${handle}`} alt={alt} height={height} />
+    <ImgSmall src={`${baseurl}resize=height:${height}/${handle}`} alt={alt} height={height} />
   </picture>
 )
+
+const ImgSmall = styled.img`
+  ${print.paper`height: 60px;`}
+`
+
+
 
 export const ImageDynWidth = ({
   handle,
