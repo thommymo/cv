@@ -9,9 +9,9 @@ export const sizes = {
 
 //according image sizes that should be produced
 export const imagesizes = {
-	phone: 215,
-	tablet: 431,
-	desktop: 769
+	phone: 430,
+	tablet: 768,
+	desktop: 1000
 }
 
 // Iterate through the sizes and create a media template
