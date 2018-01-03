@@ -27,7 +27,10 @@ const coloredLink = css`
     display: inline-block;
     ${print.paper`display: inline; color:${props => props.theme.colors.black}; background-image:none;`}
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      display: inline; color:${props => props.theme.colors.violet}; background-image:none;
+      display: inline;
+      color:${props => props.theme.colors.violet}; 
+      background-image:none;
+      background: none;
     }
   }
 `
