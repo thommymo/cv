@@ -21,6 +21,10 @@ const FrontHeaderTitle = HeaderTitle.extend`
   -webkit-background-clip: text;
   background-clip: text;
   ${print.paper`margin-top:5em;`}
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    color:${props => props.theme.colors.black};
+    background-image:none;
+  }
 `
 const H1Front = H1.extend`
   display: inline;

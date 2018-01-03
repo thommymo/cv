@@ -138,7 +138,12 @@ const Title = H3.extend`
     display:inline-block;
     ${props => props.right ?
       `background-image: -webkit-linear-gradient(165deg, ${props.theme.colors.violet} 20%,${props.theme.colors.blue} 120%); background-image: linear-gradient(165deg, ${props.theme.colors.violet} 20%,${props.theme.colors.blue} 120%);`:
-      `background-image: -webkit-linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%); background-image: linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%);`}; /* For Chrome and Safari */
+      `background-image: -webkit-linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%); background-image: linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%);`
+      }; /* For Chrome and Safari */
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      color:${props => props.theme.colors.black};
+      background-image:none;
+    }
   }
 `
 const Organization = styled.div`
