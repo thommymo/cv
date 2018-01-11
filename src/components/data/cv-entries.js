@@ -13,7 +13,7 @@ const CVEntriesState = ( { data : { loading=false, allCVEntrieses=false }} ) => 
     return(<CVIsLoading />)
   } else if (allCVEntrieses){
     //TODO: Update version number, if data changes
-    const dbPromise = idb.open('tm-cv',1,upgradeDB => {
+    const dbPromise = idb.open('tm-cv',2,upgradeDB => {
       upgradeDB.createObjectStore('keyval');
     }).then((db)=>{
       const tx = db.transaction('keyval','readwrite').objectStore('keyval').put(allCVEntrieses,'all-entries');
