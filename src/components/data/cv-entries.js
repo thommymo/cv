@@ -13,7 +13,7 @@ const CVEntriesState = ( { data : { loading=false, allCVEntrieses=false }} ) => 
     return(<CVIsLoading />)
   } else if (allCVEntrieses){
     //TODO: Update version number, if data changes
-    const dbPromise = idb.open('tm-cv',2,upgradeDB => {
+    const dbPromise = idb.open('tm-cv-1',1,upgradeDB => {
       upgradeDB.createObjectStore('keyval');
     }).then((db)=>{
       const tx = db.transaction('keyval','readwrite').objectStore('keyval').put(allCVEntrieses,'all-entries');
@@ -79,7 +79,7 @@ class ShellCVEntriesWithData extends React.Component {
   }
   componentWillMount(){
     //Check if data is available from indexedDB if yes set State to yes
-    idb.open('tm-cv', 1, upgradeDB => {
+    idb.open('tm-cv-1', 1, upgradeDB => {
       upgradeDB.createObjectStore('keyval');
     }).then((db)=>(
       db.transaction('keyval').objectStore('keyval').get('all-entries')
