@@ -16,7 +16,11 @@ injectGlobal`
     font-size: 100%;
     height: 100%;
     background-color: white; /*{white}*/
+    @media print {
+      width:850px;
+    }
   }
+
 
   .FadeInFast-enter {
     opacity: 0;
