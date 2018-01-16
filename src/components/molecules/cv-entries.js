@@ -144,6 +144,7 @@ const Title = H3.extend`
       color:${props => props.theme.colors.blue};
       background-image:none;
     }
+    ${print.paper`text-decoration:underline;font-weight:normal;`}
   }
 `
 const Organization = styled.div`
