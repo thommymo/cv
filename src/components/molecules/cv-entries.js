@@ -141,7 +141,7 @@ const Title = H3.extend`
       `background-image: -webkit-linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%); background-image: linear-gradient(165deg, ${props.theme.colors.blue} 20%,${props.theme.colors.green} 120%);`
       }; /* For Chrome and Safari */
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      color:${props => props.theme.colors.black};
+      color:${props => props.theme.colors.blue};
       background-image:none;
     }
   }
@@ -240,8 +240,8 @@ const StyledTimeLine = styled.div`
   position: relative;
   ${props => (props.left || props.bothleft) && !props.rightposition ? `background: linear-gradient(90deg, ${props.theme.colors.green} -50%,${props.theme.colors.blue} 100%);`: ''};
   ${props => (props.right || props.bothright) && props.rightposition  ? `background: linear-gradient(270deg, ${props.theme.colors.violet} -50%,${props.theme.colors.blue} 100%);` : ''};
-  ${props => !props.rightposition ? `box-shadow: 3px 0 0 0 ${props.theme.colors.blue}` : ''};
-  ${props => props.rightposition ? `box-shadow: -3px 0 0 0 ${props.theme.colors.blue}` : ''};
+  ${props => !props.rightposition ? `box-shadow: 4px 0 0 0 ${props.theme.colors.blue}` : ''};
+  ${props => props.rightposition ? `box-shadow: -4px 0 0 0 ${props.theme.colors.blue}` : ''};
   ${media.desktop`width:35px;`};
   ${media.desktop`min-width:35px;`};
   ${media.tablet`width:35px;`};
