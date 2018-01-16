@@ -4,7 +4,7 @@ import { H4Capitals, InnerHTML } from '../atoms/typography'
 import { CSSTransition } from 'react-transition-group'
 import { timeoutTransition } from '../../utils/constants'
 import { closeIconBlack } from '../../utils/icons'
-import { media } from '../../utils/breakpoints'
+import { media, print } from '../../utils/breakpoints'
 
 class SmallEntry extends Component {
   constructor(props) {
@@ -92,7 +92,6 @@ const Title = H4Capitals.extend`
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     color:${props => props.theme.colors.blue};
     background-image:none;
-    margin-right: 42px;
   }
 `
 const PSmallEntry = InnerHTML.extend`
@@ -133,6 +132,10 @@ const StyledSmallEntry = styled.div`
   font-size: 0.8em;
   ${media.phone`display:none;`};
   ${media.tablet`display:none;`};
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    margin-right: 42px;
+  }
+  ${print.paper`visibility:hidden;`}
 `
 const WeiterbildungBackground = styled.div`
   position:fixed;
