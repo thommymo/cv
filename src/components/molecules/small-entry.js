@@ -90,8 +90,9 @@ const Title = H4Capitals.extend`
   white-space: normal;
   width:140px;
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    color:${props => props.theme.colors.violet};
+    color:${props => props.theme.colors.blue};
     background-image:none;
+    margin-right: 42px;
   }
 `
 const PSmallEntry = InnerHTML.extend`
