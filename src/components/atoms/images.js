@@ -1,53 +1,58 @@
-import React, {Component} from 'react'
-import { sizes, imagesizes, media, print } from '../../utils/breakpoints'
-import styled, {css} from 'styled-components'
-import { CSSTransition } from 'react-transition-group'
-import { timeout, baseurl} from '../../utils/constants'
+import React, { Component } from "react"
+import { sizes, imagesizes, media, print } from "../../utils/breakpoints"
+import { P, PCapitals, H4Capitals } from "./typography"
+import styled, { css } from "styled-components"
+import { CSSTransition } from "react-transition-group"
+import { timeout, baseurl } from "../../utils/constants"
 
 /*
  TODO: Add loading of image
  */
 
-export const Image = ({
-  handle,
-  height,
-  alt
-}) => (
+export const Image = ({ handle, height, alt }) => (
   <picture>
     <source
       srcSet={`
           ${baseurl}resize=height:${height}/${handle} 1x,
-          ${baseurl}resize=height:${height*2}/${handle} 2x,
-        `}/>
-    <ImgSmall src={`${baseurl}resize=height:${height}/${handle}`} alt={alt} height={height} />
+          ${baseurl}resize=height:${height * 2}/${handle} 2x,
+        `}
+    />
+    <ImgSmall
+      src={`${baseurl}resize=height:${height}/${handle}`}
+      alt={alt}
+      height={height}
+    />
   </picture>
 )
 
 const ImgSmall = styled.img`
-  ${print.paper`height: 60px;`}
+  ${print.paper`height: 60px;`};
 `
 
-
-
-export const ImageDynWidth = ({
-  handle,
-  columns,
-  onLoad,
-  withShadow
-}) => (
+export const ImageDynWidth = ({ handle, columns, onLoad, withShadow }) => (
   <picture>
-    { Object.keys(sizes).map((label) => (
-      <source key={imagesizes[label]}
+    {Object.keys(sizes).map(label => (
+      <source
+        key={imagesizes[label]}
         media={`screen
     ${sizes[label][0] ? `and (min-width:${sizes[label][0]}px)` : ""}
     ${sizes[label][1] ? `and (max-width:${sizes[label][1]}px)` : ""}
     `}
         srcSet={`
-    ${baseurl}resize=width:${Math.ceil(imagesizes[label]/(label==="phone" ? 1 : columns))}/${handle} 1x,
-    ${baseurl}resize=width:${Math.ceil(imagesizes[label]*2/(label==="phone" ? 1 : columns))}/${handle} 2x,
-  `}/>
+    ${baseurl}resize=width:${Math.ceil(
+          imagesizes[label] / (label === "phone" ? 1 : columns)
+        )}/${handle} 1x,
+    ${baseurl}resize=width:${Math.ceil(
+          imagesizes[label] * 2 / (label === "phone" ? 1 : columns)
+        )}/${handle} 2x,
+  `}
+      />
     ))}
-    <Img src={`${baseurl}resize=width:${Math.ceil(800/columns)}/${handle}`} onLoad={onLoad} withShadow={withShadow}/>
+    <Img
+      src={`${baseurl}resize=width:${Math.ceil(800 / columns)}/${handle}`}
+      onLoad={onLoad}
+      withShadow={withShadow}
+    />
   </picture>
 )
 
@@ -56,7 +61,6 @@ Images
 */
 
 export class FullWithImage extends Component {
-
   constructor(props) {
     super(props)
     this.state = { opacity: 0, imageLoaded: false }
@@ -67,30 +71,43 @@ export class FullWithImage extends Component {
     this.setState({ opacity: 1 })
   }
 
-  render(){
-    const { handle, withBorder, withShadow } = this.props
+  render() {
+    const { handle, title, caption, withBorder, withShadow } = this.props
     const columns = this.props.columns ? this.props.columns : 1
     return (
-      <ImagePosition>
-        <CSSTransition
-          in={!(this.state.imageLoaded)}
-          classNames="ImageFadeIn"
-          timeout={(timeout*2)}
-        >
-          <PreviewImage imageLoaded={this.state.imageLoaded}>
-            <ImgBlured src={`${baseurl}resize=width:20/${handle}`}/>
-          </PreviewImage>
-        </CSSTransition>
-        <CSSTransition
-          in={this.state.imageLoaded}
-          classNames="ImageFadeIn"
-          timeout={(timeout*2)}
-        >
-          <WithBorder withBorder={this.props.withBorder} imageLoaded={this.state.imageLoaded}  >
-            <ImageDynWidth withShadow={this.props.withShadow} columns={columns} handle={handle} onLoad={this.handleImageLoaded.bind(this)}/>
-          </WithBorder>
-        </CSSTransition>
-      </ImagePosition>
+      <div>
+        {title && <H4Capitals>{title}</H4Capitals>}
+        {caption && <PCapitals>{caption}</PCapitals>}
+
+        <ImagePosition>
+          <CSSTransition
+            in={!this.state.imageLoaded}
+            classNames="ImageFadeIn"
+            timeout={timeout * 2}
+          >
+            <PreviewImage imageLoaded={this.state.imageLoaded}>
+              <ImgBlured src={`${baseurl}resize=width:20/${handle}`} />
+            </PreviewImage>
+          </CSSTransition>
+          <CSSTransition
+            in={this.state.imageLoaded}
+            classNames="ImageFadeIn"
+            timeout={timeout * 2}
+          >
+            <WithBorder
+              withBorder={this.props.withBorder}
+              imageLoaded={this.state.imageLoaded}
+            >
+              <ImageDynWidth
+                withShadow={this.props.withShadow}
+                columns={columns}
+                handle={handle}
+                onLoad={this.handleImageLoaded.bind(this)}
+              />
+            </WithBorder>
+          </CSSTransition>
+        </ImagePosition>
+      </div>
     )
   }
 }
@@ -98,7 +115,8 @@ const ImagePosition = styled.div`
   position: relative;
 `
 const PreviewImage = styled.div`
-  ${props => props.imageLoaded ? "opacity: 0; filter: alpha(opacity=0);" : ""};
+  ${props =>
+    props.imageLoaded ? "opacity: 0; filter: alpha(opacity=0);" : ""};
 `
 const Shadow = css`
   ${media.desktop`box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);`}
@@ -108,8 +126,8 @@ const Shadow = css`
   z-index: 1;
 `
 const Img = styled.img`
-  width:100%;
-  ${props => props.withShadow ? Shadow : ""};
+  width: 100%;
+  ${props => (props.withShadow ? Shadow : "")};
 `
 const ImgBlured = Img.extend`
   filter: blur(15px) brightness(0.9);
@@ -148,10 +166,11 @@ const Border = css`
   }
 `
 const WithBorder = styled.div`
-  ${props => props.withBorder ? Border : ""};
-  ${props => props.imageLoaded ? "" : "opacity: 0; filter: alpha(opacity=0);"};
-  position:absolute;
-  width:100%;
-  top:0px;
-  left:0px;
+  ${props => (props.withBorder ? Border : "")};
+  ${props =>
+    props.imageLoaded ? "" : "opacity: 0; filter: alpha(opacity=0);"};
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
 `
