@@ -18,7 +18,7 @@ class App extends Component {
           Transitions in context of routing are based on Paul Shermans
           "A shallow dive into React Router v4 Animated Transitions"
           https://medium.com/@pshrmn/a-shallow-dive-into-react-router-v4-animated-transitions-4b73f634992a
-          */}
+        */}
         <CSSTransition
           appear={true}
           timeout={timeoutTransition}
@@ -37,7 +37,7 @@ class App extends Component {
             <Route exact path="/cv">
               <ShellCVEntriesWithData />
             </Route>
-            <Route exact path="/r">
+            <Route exact path="/republik">
               <Republik />
             </Route>
             <Route exact path="/:something/:id/">

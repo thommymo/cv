@@ -14,6 +14,8 @@ export const ImagesGrid = ({ title, images, columns }) => (
             handle={image.handle}
             title={image.title}
             caption={image.caption}
+            link={image.link}
+            more={image.more}
             alt="Thomas beim Arbeiten"
             columns="2"
           />
@@ -33,13 +35,13 @@ const ImageRow = styled.div`
 const ImageColumn = styled.div`
   padding-bottom:5px;
   ${media.desktop`width: calc(100% / ${props =>
-    props.columns} - 10px); padding-right: 10px;`}
+    props.columns} - 28px); padding-right: 28px;`}
   ${media.tablet`width: calc(100% / ${props =>
-    props.columns} - 10px); padding-right: 10px;`}
+    props.columns} - 28px); padding-right: 28px;`}
   ${media.phone`width: 100%;`}
   & > img {
     width: 100%;
   }
   ${print.paper`width: calc(100% / ${props =>
-    props.columns} - 10px); padding-right: 10px;`}
+    props.columns} - 28px); padding-right: 28px;`}
 `

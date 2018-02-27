@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { sizes, imagesizes, media, print } from "../../utils/breakpoints"
-import { P, PCapitals, H4Capitals } from "./typography"
+import { P, H4Capitals, H3 } from "./typography"
+import { TextAnchorBold } from "../../components/atoms/buttons"
 import styled, { css } from "styled-components"
 import { CSSTransition } from "react-transition-group"
 import { timeout, baseurl } from "../../utils/constants"
@@ -60,6 +61,12 @@ export const ImageDynWidth = ({ handle, columns, onLoad, withShadow }) => (
 Images
 */
 
+const PImageCaption = P.extend`
+  margin-left: 15px;
+  margin-right: 10px;
+  min-height: 65px;
+`
+
 export class FullWithImage extends Component {
   constructor(props) {
     super(props)
@@ -72,12 +79,32 @@ export class FullWithImage extends Component {
   }
 
   render() {
-    const { handle, title, caption, withBorder, withShadow } = this.props
+    const {
+      handle,
+      title,
+      caption,
+      more,
+      link,
+      withBorder,
+      withShadow
+    } = this.props
     const columns = this.props.columns ? this.props.columns : 1
     return (
       <div>
         {title && <H4Capitals>{title}</H4Capitals>}
-        {caption && <PCapitals>{caption}</PCapitals>}
+        {caption && (
+          <PImageCaption>
+            <small>{caption}</small>
+          </PImageCaption>
+        )}
+        {more &&
+          link && (
+            <P>
+              <small>
+                <TextAnchorBold href={link}>{more} &rarr;</TextAnchorBold>
+              </small>
+            </P>
+          )}
 
         <ImagePosition>
           <CSSTransition
