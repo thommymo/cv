@@ -1,21 +1,24 @@
-import React from "react"
-import PageShell from "../../components/templates/page-shell"
-import { H2, P, APrintOnly } from "../../components/atoms/typography"
-import { TextLinkBold, TextAnchorBold } from "../../components/atoms/buttons"
-import { Section, SectionCentered } from "../../components/atoms/containers"
-import { ImagesGrid } from "../../components/molecules/images-grid"
-import { LogoCloud } from "../../components/molecules/logo-cloud"
-import { TextWithLabel } from "../../components/molecules/text-with-label"
-import { FrontTitle } from "../../components/molecules/fronttitle"
+import React from "react";
+import PageShell from "../../components/templates/page-shell";
+import { H2, P, APrintOnly } from "../../components/atoms/typography";
+import { TextLinkBold, TextAnchorBold } from "../../components/atoms/buttons";
+import { Section, SectionCentered } from "../../components/atoms/containers";
+import { ImagesGrid } from "../../components/molecules/images-grid";
+import { LogoCloud } from "../../components/molecules/logo-cloud";
+import { TextWithLabel } from "../../components/molecules/text-with-label";
+import { FrontTitle } from "../../components/molecules/fronttitle";
 
 export const AboutMe = () => (
   <PageShell withMainNavigation={true} title="Über mich">
-    <FrontTitle title="Thomas Moser" subtitle="Frontend Web Developer" />
+    <FrontTitle
+      title="Thomas Moser"
+      subtitle="Projektleiter und Web Developer"
+    />
     <Section>
       <TextWithLabel label="Erfahrung">
         <P>
-          7 Jahre Web Developer, 7 Jahre Product Owner und Projektleiter und nun
-          wieder Web Developer mit Fokus auf Frontend.
+          14 Jahre Web: 7 Jahre Web Developer, 7 Jahre Product Owner und
+          Projektleiter
         </P>
         <P>
           <TextLinkBold to="/cv">Mein Lebenslauf &rarr;</TextLinkBold>
@@ -41,21 +44,13 @@ export const AboutMe = () => (
           </APrintOnly>
         </P>
       </TextWithLabel>
-      <TextWithLabel label="Sprachen">
-        <P>
-          <small>
-            Deutsch: Muttersprache<br />
-            Englisch: sehr gut in Wort und Schrift (4-monatiger Aufenthalt in
-            Kanada)<br />
-            Französisch: Matura-Niveau (7 Jahre Unterricht)
-          </small>
-        </P>
-      </TextWithLabel>
     </Section>
     <SectionCentered>
       <LogoCloud
         title="Awards"
         images={[
+          { handle: "BIncWNLcQH6Wdzy3D3fR" },
+          { handle: "gqpatgRmTOe8uQnDgDwY" },
           { handle: "jsnZ6OFJSiKMI8XKIomE" },
           { handle: "ONnC5Gt6Tam0DOJDD4wJ" },
           { handle: "IZu0yTbaT3GrHZOSBKtj" },
@@ -74,7 +69,7 @@ export const AboutMe = () => (
       <P>
         <small>
           Schweizer Radio und Fernsehen, Luzerner Kantonsspital, Unic,
-          Pädagogische Hochschule Zentralschweiz
+          Pädagogische Hochschule Zentralschweiz, Smartive
         </small>
       </P>
     </SectionCentered>
@@ -82,8 +77,8 @@ export const AboutMe = () => (
       <H2>Auftraggeber</H2>
       <P>
         <small>
-          UBS, Credit Suisse, Winterthur Versicherungen, Universität Zürich,
-          Walo Bertschinger, Quickline, Akris, Doodah
+          Migros, UBS, Credit Suisse, Winterthur Versicherungen, Universität
+          Zürich, Walo Bertschinger, Quickline, Akris, Doodah
         </small>
       </P>
     </SectionCentered>
@@ -109,4 +104,4 @@ export const AboutMe = () => (
       />
     </SectionCentered>
   </PageShell>
-)
+);

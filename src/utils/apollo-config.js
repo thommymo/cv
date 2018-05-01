@@ -1,15 +1,14 @@
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { toIdValue } from 'apollo-utilities';
+import { ApolloClient } from "apollo-client";
+import { HttpLink } from "apollo-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { toIdValue } from "apollo-utilities";
 
 // create a network interface with data from my graphcms account
 
-const networkInterface =
-  new HttpLink({
-    headers: { Authorization: `Bearer ${process.env.REACT_APP_GRAPHQL_KEY}`},
-    uri: `${process.env.REACT_APP_GRAPHQL_URI}`
-  })
+const networkInterface = new HttpLink({
+  headers: { Authorization: `Bearer ${process.env.REACT_APP_GRAPHQL_KEY}` },
+  uri: `${process.env.REACT_APP_GRAPHQL_URI}`
+});
 
 /*
 
@@ -22,10 +21,9 @@ const networkInterface =
   my allCVEntrieses-queries with my CVEntries-queries.
 
 */
-const dataIdFromObject = o => o.id
+const dataIdFromObject = o => o.id;
 
 const cache = new InMemoryCache({
-
   dataIdFromObject, // custom function,
   /*
     addTypename stores the Typename in the apollo stores, this makes the store
@@ -40,13 +38,15 @@ const cache = new InMemoryCache({
   */
   cacheResolvers: {
     Query: {
-      CVEntries: (_, { id }) => toIdValue(dataIdFromObject({ __typename: 'allCVEntrieses', id })),
+      CVEntries: (_, { id }) => {
+        toIdValue(dataIdFromObject({ __typename: "allCVEntrieses", id }));
+      }
       //CVEntries: (_, args) => args.ids.map(id => toIdValue(dataIdFromObject({ __typename: 'allCVEntrieses', id: id }))),
-    },
-  },
-})
+    }
+  }
+});
 
 export const client = new ApolloClient({
   link: networkInterface,
-  cache: cache.restore(window.__APOLLO_STATE__ || {}),
-})
+  cache: cache.restore(window.__APOLLO_STATE__ || {})
+});
